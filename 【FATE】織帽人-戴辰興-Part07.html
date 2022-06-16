@@ -1,0 +1,1686 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Res的錨定之地 - 跑團區</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <style>
+        @font-face {
+            font-family: Whitney;
+            src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-300.woff);
+            font-weight: 300;
+        }
+
+        @font-face {
+            font-family: Whitney;
+            src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-400.woff);
+            font-weight: 400;
+        }
+
+        @font-face {
+            font-family: Whitney;
+            src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-500.woff);
+            font-weight: 500;
+        }
+
+        @font-face {
+            font-family: Whitney;
+            src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-600.woff);
+            font-weight: 600;
+        }
+
+        @font-face {
+            font-family: Whitney;
+            src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-700.woff);
+            font-weight: 700;
+        }
+
+        body {
+            background-color: #36393e;
+            color: #dcddde;
+            font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 17px;
+            font-weight: 400;
+        }
+
+        a {
+            color: #00aff4;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        img {
+            object-fit: contain;
+        }
+
+        .markdown {
+            max-width: 100%;
+            line-height: 1.3;
+            overflow-wrap: break-word;
+        }
+
+        .preserve-whitespace {
+            white-space: pre-wrap;
+        }
+
+        .spoiler-text {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+        }
+
+        .spoiler-text--hidden {
+            cursor: pointer;
+            background-color: #202225;
+            color: rgba(0, 0, 0, 0);
+        }
+
+        .spoiler-text--hidden:hover {
+            background-color: rgba(32, 34, 37, 0.8);
+        }
+
+        .spoiler-text--hidden::selection {
+            color: rgba(0, 0, 0, 0);
+        }
+
+        .quote {
+            display: flex;
+            margin: 0.05em 0;
+        }
+
+        .quote-border {
+            margin-right: 0.5em;
+            border: 2px solid #4f545c;
+            border-radius: 3px;
+        }
+
+        .pre {
+            background-color: #2f3136;
+            font-family: "Consolas", "Courier New", Courier, monospace;
+        }
+
+        .pre--multiline {
+            margin-top: 0.25em;
+            padding: 0.5em;
+            border: 2px solid #282b30;
+            border-radius: 5px;
+            color: #b9bbbe;
+        }
+
+        .pre--multiline.hljs {
+            background-color: #2f3136;
+            color: #b9bbbe;
+        }
+
+        .pre--inline {
+            padding: 2px;
+            border-radius: 3px;
+            font-size: 0.85em;
+        }
+
+        .mention {
+            border-radius: 3px;
+            padding: 0 2px;
+            color: #dee0fc;
+            background-color: rgba(88, 101, 242, .3);
+            font-weight: 500;
+        }
+
+        .mention:hover {
+            background-color: #5865f2;
+            color: #ffffff
+        }
+
+        .timestamp {
+            border-radius: 3px;
+            padding: 0 2px;
+            background-color: rgba(255, 255, 255, 0.06);
+        }
+
+        .emoji {
+            width: 1.325em;
+            height: 1.325em;
+            margin: 0 0.06em;
+            vertical-align: -0.4em;
+        }
+
+        .emoji--small {
+            width: 1em;
+            height: 1em;
+        }
+
+        .emoji--large {
+            width: 2.8em;
+            height: 2.8em;
+        }
+
+        .preamble {
+            display: grid;
+            margin: 0 0.3em 0.6em 0.3em;
+            max-width: 100%;
+            grid-template-columns: auto 1fr;
+        }
+
+        .preamble__guild-icon-container {
+            grid-column: 1;
+        }
+
+        .preamble__guild-icon {
+            max-width: 88px;
+            max-height: 88px;
+        }
+
+        .preamble__entries-container {
+            grid-column: 2;
+            margin-left: 0.6em;
+        }
+
+        .preamble__entry {
+            font-size: 1.4em;
+            color: #ffffff;
+        }
+
+        .preamble__entry--small {
+            font-size: 1em;
+        }
+
+        .chatlog {
+            max-width: 100%;
+        }
+
+        .chatlog__message-group {
+            display: grid;
+            margin: 0 0.6em;
+            padding: 0.9em 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            grid-template-columns: auto 1fr;
+        }
+
+        .chatlog__reference-symbol {
+            grid-column: 1;
+            margin: 8px 4px 4px 18px;
+            border-left: 2px solid #4f545c;
+            border-top: 2px solid #4f545c;
+            border-radius: 8px 0 0 0;
+        }
+
+        .chatlog__reference {
+            display: flex;
+            grid-column: 2;
+            margin-bottom: 0.25em;
+            font-size: 0.875em;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            align-items: center;
+            color: #b5b6b8;
+        }
+
+        .chatlog__reference-avatar {
+            border-radius: 50%;
+            width: 16px;
+            height: 16px;
+            margin-right: 0.25em;
+        }
+
+        .chatlog__reference-name {
+            margin-right: 0.3em;
+            font-weight: 600;
+        }
+
+        .chatlog__reference-content {
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .chatlog__reference-content a:hover {
+            text-decoration: none;
+        }
+
+        .chatlog__reference-link {
+            cursor: pointer;
+            color: #b5b6b8;
+        }
+
+        .chatlog__reference-link * {
+            display: inline;
+            pointer-events: none;
+        }
+
+        .chatlog__reference-link:hover {
+            color: #ffffff;
+        }
+
+        .chatlog__reference-link:hover *:not(.spoiler-text) {
+            color: #ffffff;
+        }
+
+        .chatlog__reference-edited-timestamp {
+            margin-left: 0.25em;
+            font-size: 0.8em;
+            unicode-bidi: bidi-override;
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        .chatlog__author-avatar-container {
+            grid-column: 1;
+            width: 40px;
+            height: 40px;
+            margin-right: 16px;
+        }
+
+        .chatlog__author-avatar {
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+        }
+
+        .chatlog__messages {
+            grid-column: 2;
+            min-width: 50%;
+            direction: ltr;
+        }
+
+        .chatlog__author-name {
+            font-weight: 500;
+            color: #ffffff;
+        }
+
+        .chatlog__timestamp {
+            margin-left: 0.3em;
+            font-size: 0.75em;
+            direction: ltr;
+            unicode-bidi: bidi-override;
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        .chatlog__message {
+            padding: 0.1em 0.3em;
+            margin: 0 -0.3em;
+            background-color: transparent;
+            transition: background-color 1s ease;
+        }
+
+        .chatlog__message--highlighted {
+            background-color: rgba(114, 137, 218, 0.2);
+        }
+
+        .chatlog__message--pinned {
+            background-color: rgba(249, 168, 37, 0.05);
+        }
+
+        .chatlog__content {
+            font-size: 0.95em;
+            word-wrap: break-word;
+        }
+
+        .chatlog__edited-timestamp {
+            margin-left: 0.15em;
+            font-size: 0.8em;
+        }
+
+        .chatlog__attachment {
+            display: inline-block;
+            position: relative;
+            margin-top: 0.3em;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .chatlog__attachment--hidden {
+            cursor: pointer;
+            box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+        }
+
+        .chatlog__attachment--hidden * {
+            pointer-events: none;
+        }
+
+        .chatlog__attachment-spoiler-caption {
+            display: none;
+            z-index: 999;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            padding: 0.4em 0.8em;
+            background-color: rgba(0, 0, 0, 0.9);
+            border-radius: 20px;
+            color: #dcddde;
+            font-size: 0.9em;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        .chatlog__attachment--hidden .chatlog__attachment-spoiler-caption {
+            display: block;
+        }
+
+        .chatlog__attachment--hidden:hover .chatlog__attachment-spoiler-caption {
+            color: #fff;
+        }
+
+        .chatlog__attachment-media {
+            vertical-align: top;
+            max-width: 45vw;
+            max-height: 500px;
+            border-radius: 3px;
+        }
+
+        .chatlog__attachment--hidden .chatlog__attachment-media {
+            filter: blur(44px);
+        }
+
+        .chatlog__attachment-generic {
+            width: 100%;
+            max-width: 520px;
+            height: 40px;
+            padding: 10px;
+            background-color: #2f3136;
+            border: 1px solid #292b2f;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .chatlog__attachment--hidden .chatlog__attachment-generic {
+            filter: blur(44px);
+        }
+
+        .chatlog__attachment-generic-icon {
+            float: left;
+            width: 30px;
+            height: 100%;
+            margin-right: 10px;
+        }
+
+        .chatlog__attachment-generic-size {
+            color: #72767d;
+            font-size: 12px;
+        }
+
+        .chatlog__attachment-generic-name {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        .chatlog__edited-timestamp {
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        .chatlog__embed {
+            display: flex;
+            margin-top: 0.3em;
+            max-width: 520px;
+        }
+
+        .chatlog__embed-color-pill {
+            flex-shrink: 0;
+            width: 0.25em;
+            border-top-left-radius: 3px;
+            border-bottom-left-radius: 3px;
+        }
+
+        .chatlog__embed-color-pill--default {
+            background-color: #202225;
+        }
+
+        .chatlog__embed-content-container {
+            display: flex;
+            flex-direction: column;
+            padding: 0.5em 0.6em;
+            background-color: rgba(46, 48, 54, 0.3);
+            border: 1px solid rgba(46, 48, 54, 0.6);
+            border-top-right-radius: 3px;
+            border-bottom-right-radius: 3px;
+        }
+
+        .chatlog__embed-content {
+            display: flex;
+            width: 100%;
+        }
+
+        .chatlog__embed-text {
+            flex: 1;
+        }
+
+        .chatlog__embed-author {
+            display: flex;
+            margin-bottom: 0.3em;
+            align-items: center;
+        }
+
+        .chatlog__embed-author-icon {
+            margin-right: 0.5em;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+        }
+
+        .chatlog__embed-author-name {
+            font-size: 0.875em;
+            font-weight: 600;
+            direction: ltr;
+            unicode-bidi: bidi-override;
+            color: #ffffff
+        }
+
+        .chatlog__embed-author-name-link {
+            color: #ffffff;
+        }
+
+        .chatlog__embed-title {
+            margin-bottom: 0.2em;
+            font-size: 0.875em;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .chatlog__embed-description {
+            font-weight: 500;
+            font-size: 0.85em;
+            color: #dcddde;
+        }
+
+        .chatlog__embed-fields {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0 0.5em;
+        }
+
+        .chatlog__embed-field {
+            flex: 0;
+            min-width: 100%;
+            max-width: 506px;
+            padding-top: 0.6em;
+            font-size: 0.875em;
+        }
+
+        .chatlog__embed-field--inline {
+            flex: 1;
+            flex-basis: auto;
+            min-width: 150px;
+        }
+
+        .chatlog__embed-field-name {
+            margin-bottom: 0.2em;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .chatlog__embed-field-value {
+            font-weight: 500;
+            color: #dcddde;
+        }
+
+        .chatlog__embed-thumbnail {
+            flex: 0;
+            margin-left: 1.2em;
+            max-width: 80px;
+            max-height: 80px;
+            border-radius: 3px;
+        }
+
+        .chatlog__embed-image-container {
+            margin-top: 0.6em;
+        }
+
+        .chatlog__embed-image {
+            max-width: 500px;
+            max-height: 400px;
+            border-radius: 3px;
+        }
+
+        .chatlog__embed-footer {
+            margin-top: 0.6em;
+            color: #dcddde;
+        }
+
+        .chatlog__embed-footer-icon {
+            margin-right: 0.2em;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            vertical-align: middle;
+        }
+
+        .chatlog__embed-footer-text {
+            vertical-align: middle;
+            font-size: 0.75em;
+            font-weight: 500;
+        }
+
+        .chatlog__embed-plainimage {
+            vertical-align: top;
+            max-width: 45vw;
+            max-height: 500px;
+            border-radius: 3px;
+        }
+
+        .chatlog__embed-spotify {
+            border: 0;
+        }
+
+        .chatlog__embed-youtube-container {
+            margin-top: 0.6em;
+        }
+
+        .chatlog__embed-youtube {
+            border: 0;
+            border-radius: 3px;
+        }
+
+        .chatlog__sticker {
+            width: 180px;
+            height: 180px;
+        }
+
+        .chatlog__sticker--media {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .chatlog__reactions {
+            display: flex;
+        }
+
+        .chatlog__reaction {
+            display: flex;
+            align-items: center;
+            margin: 0.35em 0.1em 0.1em 0;
+            padding: .125rem .375rem;
+            background-color: #2f3136;
+            border-radius: 8px;
+            border-color: transparent;
+            border-width: 1px;
+            border-style: solid;
+        }
+
+        .chatlog__reaction:hover {
+            border-color: hsla(0,0%,100%,.2);
+            border-width: 1px;
+            border-style: solid;
+            background-color: transparent;
+        }
+
+        .chatlog__reaction-count {
+            min-width: 9px;
+            margin-left: 0.35em;
+            font-size: 0.875em;
+            color: #b9bbbe;
+        }
+
+        .chatlog__reaction:hover .chatlog__reaction-count {
+            color: #dcddde;
+        }
+
+        .chatlog__bot-tag {
+            position: relative;
+            top: -.1em;
+            margin-left: 0.3em;
+            padding: 0.05em 0.3em;
+            border-radius: 3px;
+            line-height: 1.3;
+            background-color: #5865F2;
+            color: #ffffff;
+            font-size: 0.625em;
+            font-weight: 500;
+        }
+
+        .postamble {
+            margin: 1.4em 0.3em 0.6em 0.3em;
+            padding: 1em;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .postamble__entry {
+            color: #ffffff;
+        }
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/solarized-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.pre--multiline').forEach(e => hljs.highlightBlock(e));
+        });
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.8.1/lottie.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.chatlog__sticker--media[data-source]').forEach(e => {
+                const imageDataUrl = e.getAttribute('data-source');
+
+                const anim = lottie.loadAnimation({
+                  container: e,
+                  renderer: 'svg',
+                  loop: true,
+                  autoplay: true,
+                  path: imageDataUrl
+                });
+
+                anim.addEventListener('data_failed', () =>
+                    e.innerHTML = '<strong>[Sticker cannot be rendered]</strong>'
+                );
+            });
+        });
+    </script>
+
+    <script>
+        function scrollToMessage(event, id) {
+            var element = document.getElementById('message-' + id);
+
+            if (element) {
+                event.preventDefault();
+
+                element.classList.add('chatlog__message--highlighted');
+
+                window.scrollTo({
+                    top: element.getBoundingClientRect().top - document.body.getBoundingClientRect().top - (window.innerHeight / 2),
+                    behavior: 'smooth'
+                });
+
+                window.setTimeout(function() {
+                    element.classList.remove('chatlog__message--highlighted');
+                }, 2000);
+            }
+        }
+
+        function showSpoiler(event, element) {
+            if (element && element.classList.contains('spoiler-text--hidden')) {
+                event.preventDefault();
+                element.classList.remove('spoiler-text--hidden');
+            }
+            if (element && element.classList.contains('chatlog__attachment--hidden')) {
+                event.preventDefault();
+                element.classList.remove('chatlog__attachment--hidden');
+            }
+        }
+    </script>
+
+    <svg style="display: none">
+        <symbol id="icon-attachment" viewBox="0 0 720 960">
+            <path fill="#f4f5fb" d="M50,935a25,25,0,0,1-25-25V50A25,25,0,0,1,50,25H519.6L695,201.32V910a25,25,0,0,1-25,25Z" />
+            <path fill="#7789c4" d="M509.21,50,670,211.63V910H50V50H509.21M530,0H50A50,50,0,0,0,0,50V910a50,50,0,0,0,50,50H670a50,50,0,0,0,50-50h0V191Z" />
+            <path fill="#f4f5fb" d="M530,215a25,25,0,0,1-25-25V50a25,25,0,0,1,16.23-23.41L693.41,198.77A25,25,0,0,1,670,215Z" />
+            <path fill="#7789c4" d="M530,70.71,649.29,190H530V70.71M530,0a50,50,0,0,0-50,50V190a50,50,0,0,0,50,50H670a50,50,0,0,0,50-50Z" />
+        </symbol>
+    </svg>
+</head>
+<body>
+
+<div class="preamble">
+    <div class="preamble__guild-icon-container">
+        <img class="preamble__guild-icon" src="https://cdn.discordapp.com/icons/657482403937517568/e66834f9eb1ecd316e2b877b8e9c608e.png" alt="Guild icon" loading="lazy">
+    </div>
+    <div class="preamble__entries-container">
+        <div class="preamble__entry">Res的錨定之地</div>
+        <div class="preamble__entry">【ＦＡＴＥ】織帽人 / 跑團區</div>
+
+
+            <div class="preamble__entry preamble__entry--small">
+After 15-May-22 12:00 AM            </div>
+    </div>
+</div>
+
+<div class="chatlog">
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/225877193975136256/909c016bb9855e448eee6d094919a66d.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="藍刺蝟#7282" data-user-id="225877193975136256" style="color: rgb(52,152,219)">戴辰興（藍刺蝟）</span>
+
+
+        <span class="chatlog__timestamp">15-May-22 12:57 AM</span>
+
+            <div class="chatlog__message " data-message-id="975079318705299496" id="message-975079318705299496" title="Message sent: 15-May-22 12:57 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">距離在工地的事件結束過了幾天，辰興將心思放回學校工作中。
+真的就這樣結束了……至少對他來說是如此。他始終沒有再跨出一步，他仍然希望自己是作為一位普通的教師活下去。
+然而他也沒法壓抑心中對事件後續的猜疑。新聞報導的內容雖然聳動，但卻少了許多溫度……
+
+因此，今天他才約了采鈴，在事件告一段落之後少數還能聯絡的對象。
+記得當時他也是在這間M當勞和對方交換情報與想法，才因此正式涉入案件中……只是簡單說了「之前那家M當勞」，這個雙方都知道的地點。</span>
+
+                                <span class="chatlog__edited-timestamp" title="15-May-22 11:36 AM">(edited)</span>
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/240443207433977856/11852e24159e64d37d87368130aaa627.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Resastar#7402" data-user-id="240443207433977856" style="">Resastar</span>
+
+
+        <span class="chatlog__timestamp">15-May-22 11:14 AM</span>
+
+            <div class="chatlog__message " data-message-id="975234733543919646" id="message-975234733543919646" title="Message sent: 15-May-22 11:14 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">新聞的報導聚焦在五崧盟在警方突襲中暴露的種種罪證：毒品、槍械、賄賂，還有……作為狼帽組織的幕後黑手。
+一連串的證據揭露出來，一大票人都被拘留，而以往會出手解救的法官、立委等人，也都被網路上公開的資訊掀起民怨，導致自身難保，雖然這些非法手段取得的證據無法作為呈堂證供，但也足以對他們的職涯產生毀滅性的衝擊。
+五崧盟促使立委推動天啟者監控法案，壓制天啟者權益，打算透過監管名單尋找目標，並且用各種手段脅迫天啟者為他們辦事的計畫，也被廣為流傳。
+先前強行通關的監控法案在民憤下被打回重審，最後無疾而終。</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/248759644674195456/4e2f50645195ff07e5258c6c91e4bca6.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="紫紫#5726" data-user-id="248759644674195456" style="color: rgb(52,152,219)">朱采鈴（紫紫）</span>
+
+
+        <span class="chatlog__timestamp">16-May-22 01:04 PM</span>
+
+            <div class="chatlog__message " data-message-id="975624828977569833" id="message-975624828977569833" title="Message sent: 16-May-22 01:04 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">「──你還是想知道呢。」她說。
+「比我想的還早。」</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/225877193975136256/909c016bb9855e448eee6d094919a66d.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="藍刺蝟#7282" data-user-id="225877193975136256" style="color: rgb(52,152,219)">戴辰興（藍刺蝟）</span>
+
+
+        <span class="chatlog__timestamp">16-May-22 09:29 PM</span>
+
+            <div class="chatlog__message " data-message-id="975751726219010099" id="message-975751726219010099" title="Message sent: 16-May-22 09:29 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">「嗯……看著曾經見過的人、經歷過的事件變成冷冰冰的白紙黑字，心裡還是覺得不太舒適。」
+「……雖然事情看起來告一段落，但還是有人繼續在暗中行動著吧。妳也是其中的一員嗎？」</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/248759644674195456/4e2f50645195ff07e5258c6c91e4bca6.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="紫紫#5726" data-user-id="248759644674195456" style="color: rgb(52,152,219)">朱采鈴（紫紫）</span>
+
+
+        <span class="chatlog__timestamp">16-May-22 09:34 PM</span>
+
+            <div class="chatlog__message " data-message-id="975753096321974322" id="message-975753096321974322" title="Message sent: 16-May-22 09:34 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">「是啊，但也就是事情增加了些，跟以往工作差不多。」
+她沒露出厭煩或勞累的樣子。
+「現在算是休養期吧，雖然社會上看起來很亂，但那些是大人物要煩惱的事。」</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="975753239830073384" id="message-975753239830073384" title="Message sent: 16-May-22 09:35 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">「我們這些普通人做好自己比較重要。」</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/225877193975136256/909c016bb9855e448eee6d094919a66d.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="藍刺蝟#7282" data-user-id="225877193975136256" style="color: rgb(52,152,219)">戴辰興（藍刺蝟）</span>
+
+
+        <span class="chatlog__timestamp">16-May-22 11:55 PM</span>
+
+            <div class="chatlog__message " data-message-id="975788588321079316" id="message-975788588321079316" title="Message sent: 16-May-22 11:55 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">「普通人嗎……」
+「采鈴，除了你我之外，究竟還有多少普通人介入到這次的事件中呢？」</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/248759644674195456/4e2f50645195ff07e5258c6c91e4bca6.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="紫紫#5726" data-user-id="248759644674195456" style="color: rgb(52,152,219)">朱采鈴（紫紫）</span>
+
+
+        <span class="chatlog__timestamp">17-May-22 12:03 AM</span>
+
+            <div class="chatlog__message " data-message-id="975790537057656913" id="message-975790537057656913" title="Message sent: 17-May-22 12:03 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">「誰知道呢？我沒算過。但你說的這種人包括了狼帽、包括五崧盟、包括調查小組、包括所有後勤，甚至還有議員、記者、遊行群眾......」</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="975790768566456321" id="message-975790768566456321" title="Message sent: 17-May-22 12:04 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">「不管知情多少，每個人都在用自己的方式影響事件。」</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/225877193975136256/909c016bb9855e448eee6d094919a66d.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="藍刺蝟#7282" data-user-id="225877193975136256" style="color: rgb(52,152,219)">戴辰興（藍刺蝟）</span>
+
+
+        <span class="chatlog__timestamp">17-May-22 08:55 PM</span>
+
+            <div class="chatlog__message " data-message-id="976105759127535636" id="message-976105759127535636" title="Message sent: 17-May-22 08:55 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">「嘛……」辰興點點頭，理解采鈴的說法。
+無論能力如何、地位如何，誰不是以普通人的姿態出生的呢？
+
+「……警方原本就與狼帽串通好的嗎？我們只是配合著演一場戲？」停頓一陣子後，他開始問起心中關心的事情。</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/248759644674195456/4e2f50645195ff07e5258c6c91e4bca6.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="紫紫#5726" data-user-id="248759644674195456" style="color: rgb(52,152,219)">朱采鈴（紫紫）</span>
+
+
+        <span class="chatlog__timestamp">17-May-22 08:59 PM</span>
+
+            <div class="chatlog__message " data-message-id="976106631471452191" id="message-976106631471452191" title="Message sent: 17-May-22 08:59 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">「欸，這種問題不要亂問喔。」她笑笑。</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="976106884421550100" id="message-976106884421550100" title="Message sent: 17-May-22 09:00 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">「雖然我不在意，但不想涉入的話，最好別問這種知道後，會對你有生命危險的問題。」</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/225877193975136256/909c016bb9855e448eee6d094919a66d.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="藍刺蝟#7282" data-user-id="225877193975136256" style="color: rgb(52,152,219)">戴辰興（藍刺蝟）</span>
+
+
+        <span class="chatlog__timestamp">18-May-22 09:37 PM</span>
+
+            <div class="chatlog__message " data-message-id="976478691670515762" id="message-976478691670515762" title="Message sent: 18-May-22 09:37 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">「這樣說就我就明白了。」辰興苦笑了一下，將手伸向薯條。
+「看來我抽手是對的……」
+
+「不過，原先在狼帽的那些人呢？他們有辦法回歸普通生活嗎？」</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/248759644674195456/4e2f50645195ff07e5258c6c91e4bca6.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="紫紫#5726" data-user-id="248759644674195456" style="color: rgb(52,152,219)">朱采鈴（紫紫）</span>
+
+
+        <span class="chatlog__timestamp">18-May-22 10:15 PM</span>
+
+            <div class="chatlog__message " data-message-id="976488125914308659" id="message-976488125914308659" title="Message sent: 18-May-22 10:15 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">「這個國家對更生人的態度很討厭呢，不管是誰。」她嚼著薯條。</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="976488324397154406" id="message-976488324397154406" title="Message sent: 18-May-22 10:15 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">「但總是得努力一下，沒問題的。」</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="976488695207198792" id="message-976488695207198792" title="Message sent: 18-May-22 10:17 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">「你的學校生活過得如何了，有好轉嗎？」</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/225877193975136256/909c016bb9855e448eee6d094919a66d.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="藍刺蝟#7282" data-user-id="225877193975136256" style="color: rgb(52,152,219)">戴辰興（藍刺蝟）</span>
+
+
+        <span class="chatlog__timestamp">18-May-22 11:27 PM</span>
+
+            <div class="chatlog__message " data-message-id="976506235052494908" id="message-976506235052494908" title="Message sent: 18-May-22 11:27 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">「嗯……」辰興知道采鈴問的是什麼事情。
+他遲疑一下之後說道：
+「我們說好在事情告一段落後要一起出去看看。最近法案也漸漸從新聞頭條淡出，該兌現那個承諾了。」
+「只是她是我的學生……總覺得沒法脫離從這個身分關係。」</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/248759644674195456/4e2f50645195ff07e5258c6c91e4bca6.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="紫紫#5726" data-user-id="248759644674195456" style="color: rgb(52,152,219)">朱采鈴（紫紫）</span>
+
+
+        <span class="chatlog__timestamp">18-May-22 11:32 PM</span>
+
+            <div class="chatlog__message " data-message-id="976507539116130386" id="message-976507539116130386" title="Message sent: 18-May-22 11:32 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">「那就保留吧，不用勉強改變身分。」</span>
+
+                                <span class="chatlog__edited-timestamp" title="18-May-22 11:32 PM">(edited)</span>
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="976507749162704917" id="message-976507749162704917" title="Message sent: 18-May-22 11:33 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">「不過我們是大人，本來就會有很多社會身分，不止有師生男女。」</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="976507953374961694" id="message-976507953374961694" title="Message sent: 18-May-22 11:33 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">「展現出如何與自己複雜的身分共處，不也是老師的一種表率嗎？」</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/225877193975136256/909c016bb9855e448eee6d094919a66d.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="藍刺蝟#7282" data-user-id="225877193975136256" style="color: rgb(52,152,219)">戴辰興（藍刺蝟）</span>
+
+
+        <span class="chatlog__timestamp">19-May-22 08:35 PM</span>
+
+            <div class="chatlog__message " data-message-id="976825347469377586" id="message-976825347469377586" title="Message sent: 19-May-22 08:35 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">「……你說的也沒錯。」
+「要是我繼續猶豫、曖昧不清，沒辦法確定自己的角色，那對她來說只是更大的傷害。」
+「該先將關係理清楚的是我自己。」</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/248759644674195456/4e2f50645195ff07e5258c6c91e4bca6.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="紫紫#5726" data-user-id="248759644674195456" style="color: rgb(52,152,219)">朱采鈴（紫紫）</span>
+
+
+        <span class="chatlog__timestamp">19-May-22 08:49 PM</span>
+
+            <div class="chatlog__message " data-message-id="976829064641933352" id="message-976829064641933352" title="Message sent: 19-May-22 08:49 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">「沒事的。」她鼓勵道，「多表現一點自信就可以了，學生也會信賴你的。」</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/225877193975136256/909c016bb9855e448eee6d094919a66d.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="藍刺蝟#7282" data-user-id="225877193975136256" style="color: rgb(52,152,219)">戴辰興（藍刺蝟）</span>
+
+
+        <span class="chatlog__timestamp">19-May-22 09:05 PM</span>
+
+            <div class="chatlog__message " data-message-id="976832912274112614" id="message-976832912274112614" title="Message sent: 19-May-22 09:05 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">「謝謝……」辰興露出微笑點點頭。雖然不能說是消除了緊張感，但心裡總算踏實了點。
+
+「妳最近如何呢？既然是休養期，那麼暫時不用涉入新的事件吧。」
+「好像沒有聽妳提起過協助警方以外的事情。」</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/248759644674195456/4e2f50645195ff07e5258c6c91e4bca6.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="紫紫#5726" data-user-id="248759644674195456" style="color: rgb(52,152,219)">朱采鈴（紫紫）</span>
+
+
+        <span class="chatlog__timestamp">19-May-22 09:43 PM</span>
+
+            <div class="chatlog__message " data-message-id="976842549513842770" id="message-976842549513842770" title="Message sent: 19-May-22 09:43 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">「學校請假了嘛，最近才重返職場。」</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/248759644674195456/4e2f50645195ff07e5258c6c91e4bca6.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="紫紫#5726" data-user-id="248759644674195456" style="color: rgb(52,152,219)">朱采鈴（紫紫）</span>
+
+
+        <span class="chatlog__timestamp">19-May-22 10:01 PM</span>
+
+            <div class="chatlog__message " data-message-id="976847023263350784" id="message-976847023263350784" title="Message sent: 19-May-22 10:01 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">「而且該怎麼說呢...我還是比較喜歡專注公務的。」某方面來說，她很不擅長聊私事。</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/225877193975136256/909c016bb9855e448eee6d094919a66d.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="藍刺蝟#7282" data-user-id="225877193975136256" style="color: rgb(52,152,219)">戴辰興（藍刺蝟）</span>
+
+
+        <span class="chatlog__timestamp">21-May-22 02:45 PM</span>
+
+            <div class="chatlog__message " data-message-id="977462037942767636" id="message-977462037942767636" title="Message sent: 21-May-22 02:45 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">「這樣啊。那就祝妳工作順利吧。」
+辰興笑了笑，便不再多問。
+他將心思轉向自己的事情上，畢竟需要他做的事情還遠遠沒有結束。</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/240443207433977856/11852e24159e64d37d87368130aaa627.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Resastar#7402" data-user-id="240443207433977856" style="">Resastar</span>
+
+
+        <span class="chatlog__timestamp">21-May-22 03:39 PM</span>
+
+            <div class="chatlog__message " data-message-id="977475617383673876" id="message-977475617383673876" title="Message sent: 21-May-22 03:39 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">－－－－－－－－－－－－－－－－－－－－</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/240443207433977856/11852e24159e64d37d87368130aaa627.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Resastar#7402" data-user-id="240443207433977856" style="">Resastar</span>
+
+
+        <span class="chatlog__timestamp">21-May-22 07:41 PM</span>
+
+            <div class="chatlog__message " data-message-id="977536648529203250" id="message-977536648529203250" title="Message sent: 21-May-22 07:41 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">清風徐徐吹來，枝葉舞動的聲響伴隨芬多精的香氣落下。
+尚姍玨小臉蒼白，雙手撐著膝蓋喘氣，被汗水浸溼的瀏海貼在臉上，有種惹人憐愛的狼狽感。
+戴辰興站在她旁邊，兩人位處東部的某個森林公園，這是他們第一次遠赴外地的約會旅行。
+沒有認識的親友、沒有師生關係的枷鎖，少女逐漸變得不那麼拘謹，戴辰興也可以清楚感覺到她一直壓抑的心情終於得到釋放。
+作為天啟者受到的社會壓力、視為親人的寵物喪生的痛苦、被恐怖分子盯上的恐懼……
+前一段時間的她承受了太多不該在這個年齡面對的壓力，整個人陷入焦慮徬徨，總是缺乏安全感，讓戴辰興也備感壓力。
+幸好，隨著事件告一段落，尚姍玨對他的依賴也放鬆了些，雖然還是要在放學後用手機聊上很長一段時間，但至少不會在學校一直纏著他了。
+隨著打定主意從另一邊抽身，回歸校園的戴辰興有了更多的時間和心力思索自己面對的問題，也終於有了機會履行和少女出遊的承諾。</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/225877193975136256/909c016bb9855e448eee6d094919a66d.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="藍刺蝟#7282" data-user-id="225877193975136256" style="color: rgb(52,152,219)">戴辰興（藍刺蝟）</span>
+
+
+        <span class="chatlog__timestamp">22-May-22 08:28 PM</span>
+
+            <div class="chatlog__message " data-message-id="977910842874032128" id="message-977910842874032128" title="Message sent: 22-May-22 08:28 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">「呼……」辰興帶著姍玨走入山中步道。
+這個天氣正好適合運動，放鬆身心之餘也不會讓人感到過於炎熱。
+看著少女放開心懷，辰興也對她能逐漸走出同儕和學校帶來的壓力感到放心。
+
+來到一個高處的休息點後，辰興擦了擦汗水，帶姍玨去買點飲料。
+「以前有去爬山過嗎？跟媽媽或是朋友？」</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/240443207433977856/11852e24159e64d37d87368130aaa627.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Resastar#7402" data-user-id="240443207433977856" style="">Resastar</span>
+
+
+        <span class="chatlog__timestamp">22-May-22 10:47 PM</span>
+
+            <div class="chatlog__message " data-message-id="977945832504578078" id="message-977945832504578078" title="Message sent: 22-May-22 10:47 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">「以前沒有來過這種要爬山的森林公園……」
+尚姍玨喘了一會，稍微舒緩後勉強走到休息點的長椅坐下，戴辰興則是到最近的販賣機買了飲料回來。
+「小時候爸爸有帶我們爬過山，但後來他開始去大陸作生意，就越來越少回來，最後跟媽媽分開……」
+兩人的手腕浮現出鏈子，像是要緊緊鎖住戴辰興和她的羈絆一樣。
+她講述起自己的家庭往事，也詢問著戴辰興從小到大的一點一滴。
+這些日子以來，她主動探聽了戴辰興的喜好、興趣，還有他生活的每一個小習慣，積極渴望讓自己融入他的世界。
+一開始確實會有些不習慣，但隨著少女的努力，這種下班後有人等著自己吃飯，有人知道自己的口味跟喜好，願意聽他生活中的每一件瑣事和怨念，讓他覺得……</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/225877193975136256/909c016bb9855e448eee6d094919a66d.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="藍刺蝟#7282" data-user-id="225877193975136256" style="color: rgb(52,152,219)">戴辰興（藍刺蝟）</span>
+
+
+        <span class="chatlog__timestamp">24-May-22 07:56 PM</span>
+
+            <div class="chatlog__message " data-message-id="978627547208245259" id="message-978627547208245259" title="Message sent: 24-May-22 07:56 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">……這樣的關係也不壞。
+以往習慣的生活瑣事，在多了一個能分享的人後像是多了種不同的色彩。
+甚至讓他感到難以割捨。
+很難想像在對方離開之後要如何回到過去的生活。
+
+「姍玨，我們來拍張合照吧？」背對著山景，辰興取出相機來，詢問少女的意願。</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/240443207433977856/11852e24159e64d37d87368130aaa627.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Resastar#7402" data-user-id="240443207433977856" style="">Resastar</span>
+
+
+        <span class="chatlog__timestamp">24-May-22 09:14 PM</span>
+
+            <div class="chatlog__message " data-message-id="978647099249922120" id="message-978647099249922120" title="Message sent: 24-May-22 09:14 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">「嗯！拍完傳給我，我要當桌布！」
+尚姍玨伸手梳了梳瀏海，抱住戴辰興的手臂，踮起腳尖把臉湊到鏡頭前方。</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/225877193975136256/909c016bb9855e448eee6d094919a66d.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="藍刺蝟#7282" data-user-id="225877193975136256" style="color: rgb(52,152,219)">戴辰興（藍刺蝟）</span>
+
+
+        <span class="chatlog__timestamp">26-May-22 12:52 PM</span>
+
+            <div class="chatlog__message " data-message-id="979245703761109043" id="message-979245703761109043" title="Message sent: 26-May-22 12:52 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">辰興感受到少女身上傳來的溫暖。在經過一段時間後，他心裡已經不再產生排斥感了……或許代表他心中已經接受姍玨的陪伴了。
+他舉起手機，調整角度，以山為背景。
+「再靠過去一些……好，要拍了。」</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/240443207433977856/11852e24159e64d37d87368130aaa627.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Resastar#7402" data-user-id="240443207433977856" style="">Resastar</span>
+
+
+        <span class="chatlog__timestamp">26-May-22 01:58 PM</span>
+
+            <div class="chatlog__message " data-message-id="979262161480196107" id="message-979262161480196107" title="Message sent: 26-May-22 01:58 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">手機映照出兩人的容顏，戴辰興的自拍技術相當生疏，尚姍玨似乎也沒好到哪裡去。
+「左邊一點、左邊一點！」
+「欸你把我臉拍得好大！我要躲在後面，你往前一點！」
+兩人一邊討論一邊嘗試，戴辰興忘了自己拍了多少張照片，只知道手機裡滿滿都是少女的笑顏。
+也許比例失當，也許光線不對，也許也許還有無數青澀的失誤，但此時此刻的他們，靠在一起的臉龐洋溢著真摯的幸福。</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="975017911494246470" id="message-975017911494246470" title="Message sent: 26-May-22 01:59 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">－－－－－－－－完－－－－－－－－</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+
+
+    </div>
+</div>
+
+
+</div>
+
+<div class="postamble">
+    <div class="postamble__entry">Exported 34 message(s)</div>
+</div>
+
+</body>
+
+</html>

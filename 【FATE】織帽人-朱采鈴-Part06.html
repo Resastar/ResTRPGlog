@@ -1,0 +1,3449 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Res的錨定之地 - 副線跑團區</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <style>
+        @font-face {
+            font-family: Whitney;
+            src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-300.woff);
+            font-weight: 300;
+        }
+
+        @font-face {
+            font-family: Whitney;
+            src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-400.woff);
+            font-weight: 400;
+        }
+
+        @font-face {
+            font-family: Whitney;
+            src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-500.woff);
+            font-weight: 500;
+        }
+
+        @font-face {
+            font-family: Whitney;
+            src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-600.woff);
+            font-weight: 600;
+        }
+
+        @font-face {
+            font-family: Whitney;
+            src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-700.woff);
+            font-weight: 700;
+        }
+
+        body {
+            background-color: #36393e;
+            color: #dcddde;
+            font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 17px;
+            font-weight: 400;
+        }
+
+        a {
+            color: #00aff4;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        img {
+            object-fit: contain;
+        }
+
+        .markdown {
+            max-width: 100%;
+            line-height: 1.3;
+            overflow-wrap: break-word;
+        }
+
+        .preserve-whitespace {
+            white-space: pre-wrap;
+        }
+
+        .spoiler-text {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+        }
+
+        .spoiler-text--hidden {
+            cursor: pointer;
+            background-color: #202225;
+            color: rgba(0, 0, 0, 0);
+        }
+
+        .spoiler-text--hidden:hover {
+            background-color: rgba(32, 34, 37, 0.8);
+        }
+
+        .spoiler-text--hidden::selection {
+            color: rgba(0, 0, 0, 0);
+        }
+
+        .quote {
+            display: flex;
+            margin: 0.05em 0;
+        }
+
+        .quote-border {
+            margin-right: 0.5em;
+            border: 2px solid #4f545c;
+            border-radius: 3px;
+        }
+
+        .pre {
+            background-color: #2f3136;
+            font-family: "Consolas", "Courier New", Courier, monospace;
+        }
+
+        .pre--multiline {
+            margin-top: 0.25em;
+            padding: 0.5em;
+            border: 2px solid #282b30;
+            border-radius: 5px;
+            color: #b9bbbe;
+        }
+
+        .pre--multiline.hljs {
+            background-color: #2f3136;
+            color: #b9bbbe;
+        }
+
+        .pre--inline {
+            padding: 2px;
+            border-radius: 3px;
+            font-size: 0.85em;
+        }
+
+        .mention {
+            border-radius: 3px;
+            padding: 0 2px;
+            color: #dee0fc;
+            background-color: rgba(88, 101, 242, .3);
+            font-weight: 500;
+        }
+
+        .mention:hover {
+            background-color: #5865f2;
+            color: #ffffff
+        }
+
+        .timestamp {
+            border-radius: 3px;
+            padding: 0 2px;
+            background-color: rgba(255, 255, 255, 0.06);
+        }
+
+        .emoji {
+            width: 1.325em;
+            height: 1.325em;
+            margin: 0 0.06em;
+            vertical-align: -0.4em;
+        }
+
+        .emoji--small {
+            width: 1em;
+            height: 1em;
+        }
+
+        .emoji--large {
+            width: 2.8em;
+            height: 2.8em;
+        }
+
+        .preamble {
+            display: grid;
+            margin: 0 0.3em 0.6em 0.3em;
+            max-width: 100%;
+            grid-template-columns: auto 1fr;
+        }
+
+        .preamble__guild-icon-container {
+            grid-column: 1;
+        }
+
+        .preamble__guild-icon {
+            max-width: 88px;
+            max-height: 88px;
+        }
+
+        .preamble__entries-container {
+            grid-column: 2;
+            margin-left: 0.6em;
+        }
+
+        .preamble__entry {
+            font-size: 1.4em;
+            color: #ffffff;
+        }
+
+        .preamble__entry--small {
+            font-size: 1em;
+        }
+
+        .chatlog {
+            max-width: 100%;
+        }
+
+        .chatlog__message-group {
+            display: grid;
+            margin: 0 0.6em;
+            padding: 0.9em 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            grid-template-columns: auto 1fr;
+        }
+
+        .chatlog__reference-symbol {
+            grid-column: 1;
+            margin: 8px 4px 4px 18px;
+            border-left: 2px solid #4f545c;
+            border-top: 2px solid #4f545c;
+            border-radius: 8px 0 0 0;
+        }
+
+        .chatlog__reference {
+            display: flex;
+            grid-column: 2;
+            margin-bottom: 0.25em;
+            font-size: 0.875em;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            align-items: center;
+            color: #b5b6b8;
+        }
+
+        .chatlog__reference-avatar {
+            border-radius: 50%;
+            width: 16px;
+            height: 16px;
+            margin-right: 0.25em;
+        }
+
+        .chatlog__reference-name {
+            margin-right: 0.3em;
+            font-weight: 600;
+        }
+
+        .chatlog__reference-content {
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .chatlog__reference-content a:hover {
+            text-decoration: none;
+        }
+
+        .chatlog__reference-link {
+            cursor: pointer;
+            color: #b5b6b8;
+        }
+
+        .chatlog__reference-link * {
+            display: inline;
+            pointer-events: none;
+        }
+
+        .chatlog__reference-link:hover {
+            color: #ffffff;
+        }
+
+        .chatlog__reference-link:hover *:not(.spoiler-text) {
+            color: #ffffff;
+        }
+
+        .chatlog__reference-edited-timestamp {
+            margin-left: 0.25em;
+            font-size: 0.8em;
+            unicode-bidi: bidi-override;
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        .chatlog__author-avatar-container {
+            grid-column: 1;
+            width: 40px;
+            height: 40px;
+            margin-right: 16px;
+        }
+
+        .chatlog__author-avatar {
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+        }
+
+        .chatlog__messages {
+            grid-column: 2;
+            min-width: 50%;
+            direction: ltr;
+        }
+
+        .chatlog__author-name {
+            font-weight: 500;
+            color: #ffffff;
+        }
+
+        .chatlog__timestamp {
+            margin-left: 0.3em;
+            font-size: 0.75em;
+            direction: ltr;
+            unicode-bidi: bidi-override;
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        .chatlog__message {
+            padding: 0.1em 0.3em;
+            margin: 0 -0.3em;
+            background-color: transparent;
+            transition: background-color 1s ease;
+        }
+
+        .chatlog__message--highlighted {
+            background-color: rgba(114, 137, 218, 0.2);
+        }
+
+        .chatlog__message--pinned {
+            background-color: rgba(249, 168, 37, 0.05);
+        }
+
+        .chatlog__content {
+            font-size: 0.95em;
+            word-wrap: break-word;
+        }
+
+        .chatlog__edited-timestamp {
+            margin-left: 0.15em;
+            font-size: 0.8em;
+        }
+
+        .chatlog__attachment {
+            display: inline-block;
+            position: relative;
+            margin-top: 0.3em;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .chatlog__attachment--hidden {
+            cursor: pointer;
+            box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+        }
+
+        .chatlog__attachment--hidden * {
+            pointer-events: none;
+        }
+
+        .chatlog__attachment-spoiler-caption {
+            display: none;
+            z-index: 999;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            padding: 0.4em 0.8em;
+            background-color: rgba(0, 0, 0, 0.9);
+            border-radius: 20px;
+            color: #dcddde;
+            font-size: 0.9em;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        .chatlog__attachment--hidden .chatlog__attachment-spoiler-caption {
+            display: block;
+        }
+
+        .chatlog__attachment--hidden:hover .chatlog__attachment-spoiler-caption {
+            color: #fff;
+        }
+
+        .chatlog__attachment-media {
+            vertical-align: top;
+            max-width: 45vw;
+            max-height: 500px;
+            border-radius: 3px;
+        }
+
+        .chatlog__attachment--hidden .chatlog__attachment-media {
+            filter: blur(44px);
+        }
+
+        .chatlog__attachment-generic {
+            width: 100%;
+            max-width: 520px;
+            height: 40px;
+            padding: 10px;
+            background-color: #2f3136;
+            border: 1px solid #292b2f;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .chatlog__attachment--hidden .chatlog__attachment-generic {
+            filter: blur(44px);
+        }
+
+        .chatlog__attachment-generic-icon {
+            float: left;
+            width: 30px;
+            height: 100%;
+            margin-right: 10px;
+        }
+
+        .chatlog__attachment-generic-size {
+            color: #72767d;
+            font-size: 12px;
+        }
+
+        .chatlog__attachment-generic-name {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        .chatlog__edited-timestamp {
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        .chatlog__embed {
+            display: flex;
+            margin-top: 0.3em;
+            max-width: 520px;
+        }
+
+        .chatlog__embed-color-pill {
+            flex-shrink: 0;
+            width: 0.25em;
+            border-top-left-radius: 3px;
+            border-bottom-left-radius: 3px;
+        }
+
+        .chatlog__embed-color-pill--default {
+            background-color: #202225;
+        }
+
+        .chatlog__embed-content-container {
+            display: flex;
+            flex-direction: column;
+            padding: 0.5em 0.6em;
+            background-color: rgba(46, 48, 54, 0.3);
+            border: 1px solid rgba(46, 48, 54, 0.6);
+            border-top-right-radius: 3px;
+            border-bottom-right-radius: 3px;
+        }
+
+        .chatlog__embed-content {
+            display: flex;
+            width: 100%;
+        }
+
+        .chatlog__embed-text {
+            flex: 1;
+        }
+
+        .chatlog__embed-author {
+            display: flex;
+            margin-bottom: 0.3em;
+            align-items: center;
+        }
+
+        .chatlog__embed-author-icon {
+            margin-right: 0.5em;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+        }
+
+        .chatlog__embed-author-name {
+            font-size: 0.875em;
+            font-weight: 600;
+            direction: ltr;
+            unicode-bidi: bidi-override;
+            color: #ffffff
+        }
+
+        .chatlog__embed-author-name-link {
+            color: #ffffff;
+        }
+
+        .chatlog__embed-title {
+            margin-bottom: 0.2em;
+            font-size: 0.875em;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .chatlog__embed-description {
+            font-weight: 500;
+            font-size: 0.85em;
+            color: #dcddde;
+        }
+
+        .chatlog__embed-fields {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0 0.5em;
+        }
+
+        .chatlog__embed-field {
+            flex: 0;
+            min-width: 100%;
+            max-width: 506px;
+            padding-top: 0.6em;
+            font-size: 0.875em;
+        }
+
+        .chatlog__embed-field--inline {
+            flex: 1;
+            flex-basis: auto;
+            min-width: 150px;
+        }
+
+        .chatlog__embed-field-name {
+            margin-bottom: 0.2em;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .chatlog__embed-field-value {
+            font-weight: 500;
+            color: #dcddde;
+        }
+
+        .chatlog__embed-thumbnail {
+            flex: 0;
+            margin-left: 1.2em;
+            max-width: 80px;
+            max-height: 80px;
+            border-radius: 3px;
+        }
+
+        .chatlog__embed-image-container {
+            margin-top: 0.6em;
+        }
+
+        .chatlog__embed-image {
+            max-width: 500px;
+            max-height: 400px;
+            border-radius: 3px;
+        }
+
+        .chatlog__embed-footer {
+            margin-top: 0.6em;
+            color: #dcddde;
+        }
+
+        .chatlog__embed-footer-icon {
+            margin-right: 0.2em;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            vertical-align: middle;
+        }
+
+        .chatlog__embed-footer-text {
+            vertical-align: middle;
+            font-size: 0.75em;
+            font-weight: 500;
+        }
+
+        .chatlog__embed-plainimage {
+            vertical-align: top;
+            max-width: 45vw;
+            max-height: 500px;
+            border-radius: 3px;
+        }
+
+        .chatlog__embed-spotify {
+            border: 0;
+        }
+
+        .chatlog__embed-youtube-container {
+            margin-top: 0.6em;
+        }
+
+        .chatlog__embed-youtube {
+            border: 0;
+            border-radius: 3px;
+        }
+
+        .chatlog__sticker {
+            width: 180px;
+            height: 180px;
+        }
+
+        .chatlog__sticker--media {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .chatlog__reactions {
+            display: flex;
+        }
+
+        .chatlog__reaction {
+            display: flex;
+            align-items: center;
+            margin: 0.35em 0.1em 0.1em 0;
+            padding: .125rem .375rem;
+            background-color: #2f3136;
+            border-radius: 8px;
+            border-color: transparent;
+            border-width: 1px;
+            border-style: solid;
+        }
+
+        .chatlog__reaction:hover {
+            border-color: hsla(0,0%,100%,.2);
+            border-width: 1px;
+            border-style: solid;
+            background-color: transparent;
+        }
+
+        .chatlog__reaction-count {
+            min-width: 9px;
+            margin-left: 0.35em;
+            font-size: 0.875em;
+            color: #b9bbbe;
+        }
+
+        .chatlog__reaction:hover .chatlog__reaction-count {
+            color: #dcddde;
+        }
+
+        .chatlog__bot-tag {
+            position: relative;
+            top: -.1em;
+            margin-left: 0.3em;
+            padding: 0.05em 0.3em;
+            border-radius: 3px;
+            line-height: 1.3;
+            background-color: #5865F2;
+            color: #ffffff;
+            font-size: 0.625em;
+            font-weight: 500;
+        }
+
+        .postamble {
+            margin: 1.4em 0.3em 0.6em 0.3em;
+            padding: 1em;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .postamble__entry {
+            color: #ffffff;
+        }
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/solarized-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.pre--multiline').forEach(e => hljs.highlightBlock(e));
+        });
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.8.1/lottie.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.chatlog__sticker--media[data-source]').forEach(e => {
+                const imageDataUrl = e.getAttribute('data-source');
+
+                const anim = lottie.loadAnimation({
+                  container: e,
+                  renderer: 'svg',
+                  loop: true,
+                  autoplay: true,
+                  path: imageDataUrl
+                });
+
+                anim.addEventListener('data_failed', () =>
+                    e.innerHTML = '<strong>[Sticker cannot be rendered]</strong>'
+                );
+            });
+        });
+    </script>
+
+    <script>
+        function scrollToMessage(event, id) {
+            var element = document.getElementById('message-' + id);
+
+            if (element) {
+                event.preventDefault();
+
+                element.classList.add('chatlog__message--highlighted');
+
+                window.scrollTo({
+                    top: element.getBoundingClientRect().top - document.body.getBoundingClientRect().top - (window.innerHeight / 2),
+                    behavior: 'smooth'
+                });
+
+                window.setTimeout(function() {
+                    element.classList.remove('chatlog__message--highlighted');
+                }, 2000);
+            }
+        }
+
+        function showSpoiler(event, element) {
+            if (element && element.classList.contains('spoiler-text--hidden')) {
+                event.preventDefault();
+                element.classList.remove('spoiler-text--hidden');
+            }
+            if (element && element.classList.contains('chatlog__attachment--hidden')) {
+                event.preventDefault();
+                element.classList.remove('chatlog__attachment--hidden');
+            }
+        }
+    </script>
+
+    <svg style="display: none">
+        <symbol id="icon-attachment" viewBox="0 0 720 960">
+            <path fill="#f4f5fb" d="M50,935a25,25,0,0,1-25-25V50A25,25,0,0,1,50,25H519.6L695,201.32V910a25,25,0,0,1-25,25Z" />
+            <path fill="#7789c4" d="M509.21,50,670,211.63V910H50V50H509.21M530,0H50A50,50,0,0,0,0,50V910a50,50,0,0,0,50,50H670a50,50,0,0,0,50-50h0V191Z" />
+            <path fill="#f4f5fb" d="M530,215a25,25,0,0,1-25-25V50a25,25,0,0,1,16.23-23.41L693.41,198.77A25,25,0,0,1,670,215Z" />
+            <path fill="#7789c4" d="M530,70.71,649.29,190H530V70.71M530,0a50,50,0,0,0-50,50V190a50,50,0,0,0,50,50H670a50,50,0,0,0,50-50Z" />
+        </symbol>
+    </svg>
+</head>
+<body>
+
+<div class="preamble">
+    <div class="preamble__guild-icon-container">
+        <img class="preamble__guild-icon" src="https://cdn.discordapp.com/icons/657482403937517568/e66834f9eb1ecd316e2b877b8e9c608e.png" alt="Guild icon" loading="lazy">
+    </div>
+    <div class="preamble__entries-container">
+        <div class="preamble__entry">Res的錨定之地</div>
+        <div class="preamble__entry">【ＦＡＴＥ】織帽人 / 副線跑團區</div>
+
+
+            <div class="preamble__entry preamble__entry--small">
+Between 14-Apr-22 12:00 AM and 12-May-22 12:00 AM            </div>
+    </div>
+</div>
+
+<div class="chatlog">
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/240443207433977856/11852e24159e64d37d87368130aaa627.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Resastar#7402" data-user-id="240443207433977856" style="">Resastar</span>
+
+
+        <span class="chatlog__timestamp">14-Apr-22 03:05 PM</span>
+
+            <div class="chatlog__message " data-message-id="964058867908632596" id="message-964058867908632596" title="Message sent: 14-Apr-22 03:05 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">－－－－－－１２月７日（一）－－－－－－
+／命運點重振</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/240443207433977856/11852e24159e64d37d87368130aaa627.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Resastar#7402" data-user-id="240443207433977856" style="">Resastar</span>
+
+
+        <span class="chatlog__timestamp">14-Apr-22 03:43 PM</span>
+
+            <div class="chatlog__message " data-message-id="964068309257564180" id="message-964068309257564180" title="Message sent: 14-Apr-22 03:43 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">山海大樓後方的小巷，兩個並排的垃圾子母車靠牆堆方，散發著逼人的臭味。
+其中一個子母車下方車輪損壞，變成無法移動的巨型垃圾桶，似乎也因此被掛了大鎖不開放使用。
+若不是朱成靖的能力，恐怕不會有人發現這個子母車就是暗道的門戶。</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/248759644674195456/4e2f50645195ff07e5258c6c91e4bca6.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="紫紫#5726" data-user-id="248759644674195456" style="color: rgb(52,152,219)">朱采鈴（紫紫）</span>
+
+
+        <span class="chatlog__timestamp">14-Apr-22 08:21 PM</span>
+
+            <div class="chatlog__message " data-message-id="964138238803603456" id="message-964138238803603456" title="Message sent: 14-Apr-22 08:21 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">她孤身在此，等待著行動開始。
+雖然今天「眼睛」不在身邊，但對她的發揮影響並不大。
+耳機戴上，手持對講機，一切便盡在耳中。</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/240443207433977856/11852e24159e64d37d87368130aaa627.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Resastar#7402" data-user-id="240443207433977856" style="">Resastar</span>
+
+
+        <span class="chatlog__timestamp">14-Apr-22 10:35 PM</span>
+
+            <div class="chatlog__message " data-message-id="964172174057431070" id="message-964172174057431070" title="Message sent: 14-Apr-22 10:35 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">朱采鈴埋伏在小巷內，看著朱成靖手繪的簡易地圖，手上是隨時和攻堅小組通訊的對講機，耳朵則掛著自己的聖物。
+她聽見了警方突入山海大樓的迅疾攻勢被槍響打斷，聽見了高層五崧盟中間份子驚怒交加的怒吼，以及他們竭盡全力想要謀求生路的嘗試。
+……無數電話被撥打出去，許多見不得人的陰暗證據被揭露出來威脅任何有力人士介入，但在這些人真的做出些什麼之前，警方已經攻到地下室的毒品倉庫前。
+隨著第一聲槍響，高層的大佬砸碎了瓷器，紅著眼下令打手們掏出隱藏的槍械反擊，自己卻是籌謀著準備潛逃。</span>
+
+                                <span class="chatlog__edited-timestamp" title="14-Apr-22 10:36 PM">(edited)</span>
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="964173645796753508" id="message-964173645796753508" title="Message sent: 14-Apr-22 10:41 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">地下密室的滑門被攻堅小隊拉開，她聽見小隊長向戴辰興詢問的對話，以及下方密室的聲響。
+遲緩的拖行聲伴隨容器傾倒、液體撒出的聲響，聽起來像是邁不開步伐的老嫗打翻了水桶。
+除此之外，對照著地圖，密室內有兩個腳步走向曲折迂迴的暗道。</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/240443207433977856/11852e24159e64d37d87368130aaa627.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Resastar#7402" data-user-id="240443207433977856" style="">Resastar</span>
+
+
+        <span class="chatlog__timestamp">15-Apr-22 11:40 PM</span>
+
+            <div class="chatlog__message " data-message-id="964550690062082109" id="message-964550690062082109" title="Message sent: 15-Apr-22 11:40 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">朱采鈴傾聽著密室周圍的動靜，同時以對講機聯繫戴辰興所在的攻堅小隊。
+她及時發覺對方的意圖提出警告，聽著小隊長果斷準備犯險衝進密室，手上的對講機卻突然切換了頻道。
+機械化的、明顯經過變音處理的聲音傳出：
+「朱采鈴，對妳來說，警察存在的目的是什麼？」</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/248759644674195456/4e2f50645195ff07e5258c6c91e4bca6.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="紫紫#5726" data-user-id="248759644674195456" style="color: rgb(52,152,219)">朱采鈴（紫紫）</span>
+
+
+        <span class="chatlog__timestamp">15-Apr-22 11:53 PM</span>
+
+            <div class="chatlog__message " data-message-id="964554184982663229" id="message-964554184982663229" title="Message sent: 15-Apr-22 11:53 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">是誰——怎麼會被截斷——目的——局勢不對，我應該——
+超快速的思考跳躍後，她選擇按下通話。
+「這問題我想很多年了，可惜還沒有好答案。問這話的你，又是抱持什麼理想？」</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/240443207433977856/11852e24159e64d37d87368130aaa627.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Resastar#7402" data-user-id="240443207433977856" style="">Resastar</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-22 12:13 AM</span>
+
+            <div class="chatlog__message " data-message-id="964559024873930804" id="message-964559024873930804" title="Message sent: 16-Apr-22 12:13 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">「防堵危害、制裁犯罪。」</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="964559237147668511" id="message-964559237147668511" title="Message sent: 16-Apr-22 12:14 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">對方的回答相當簡單，卻又似乎能衍生出許多不同方向的解釋。</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/248759644674195456/4e2f50645195ff07e5258c6c91e4bca6.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="紫紫#5726" data-user-id="248759644674195456" style="color: rgb(52,152,219)">朱采鈴（紫紫）</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-22 10:21 AM</span>
+
+            <div class="chatlog__message " data-message-id="964712123110391848" id="message-964712123110391848" title="Message sent: 16-Apr-22 10:21 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">「那你出現，想必是覺得警察做得不夠好囉？」
+伸展筋骨，她做好運動準備。</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/240443207433977856/11852e24159e64d37d87368130aaa627.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Resastar#7402" data-user-id="240443207433977856" style="">Resastar</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-22 10:33 AM</span>
+
+            <div class="chatlog__message " data-message-id="964715050742992997" id="message-964715050742992997" title="Message sent: 16-Apr-22 10:33 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">「警察是有極限的，需要外力才能做好該做的事。」</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="964716022030544956" id="message-964716022030544956" title="Message sent: 16-Apr-22 10:37 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">在短暫的醞釀後，對方給出了回應並提出反問：
+「不採取極端手段，五崧盟會逍遙法外，天啟者的爭議也不會有結果。」</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/248759644674195456/4e2f50645195ff07e5258c6c91e4bca6.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="紫紫#5726" data-user-id="248759644674195456" style="color: rgb(52,152,219)">朱采鈴（紫紫）</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-22 10:46 AM</span>
+
+            <div class="chatlog__message " data-message-id="964718276036948018" id="message-964718276036948018" title="Message sent: 16-Apr-22 10:46 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">「是的，這點我一向很認同，事實上我也不認為曾啟倫的理想有錯。」
+但是。
+「那麼為什麼，你們實行理想的手段，是犧牲別人的性命呢？」</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/240443207433977856/11852e24159e64d37d87368130aaa627.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Resastar#7402" data-user-id="240443207433977856" style="">Resastar</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-22 10:49 AM</span>
+
+            <div class="chatlog__message " data-message-id="964719168924565526" id="message-964719168924565526" title="Message sent: 16-Apr-22 10:49 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">片刻的停頓後，對方給出了答案：
+「電車難題，我選拉下開關。」</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/248759644674195456/4e2f50645195ff07e5258c6c91e4bca6.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="紫紫#5726" data-user-id="248759644674195456" style="color: rgb(52,152,219)">朱采鈴（紫紫）</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-22 11:01 AM</span>
+
+            <div class="chatlog__message " data-message-id="964722262290874388" id="message-964722262290874388" title="Message sent: 16-Apr-22 11:01 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">「我會把讓他們進鐵軌的人殺掉。」
+這就是她與狼帽最大的不同。
+「聰明的人，應該會像你一樣選最優秀的解題法吧，可惜我不聰明。」</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/240443207433977856/11852e24159e64d37d87368130aaa627.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Resastar#7402" data-user-id="240443207433977856" style="">Resastar</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-22 11:10 AM</span>
+
+            <div class="chatlog__message " data-message-id="964724329101271080" id="message-964724329101271080" title="Message sent: 16-Apr-22 11:10 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">「不衝突。」
+對方似乎並不排斥朱采鈴的選擇：
+「極端手段結束了，後續我們可以合作。」</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/248759644674195456/4e2f50645195ff07e5258c6c91e4bca6.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="紫紫#5726" data-user-id="248759644674195456" style="color: rgb(52,152,219)">朱采鈴（紫紫）</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-22 11:30 AM</span>
+
+            <div class="chatlog__message " data-message-id="964729358654795796" id="message-964729358654795796" title="Message sent: 16-Apr-22 11:30 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">她浮著笑容，一字一字地說出。
+「我只跟人類合作。你殺了我的學生，你不是人。」</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/240443207433977856/11852e24159e64d37d87368130aaa627.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Resastar#7402" data-user-id="240443207433977856" style="">Resastar</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-22 11:39 AM</span>
+
+            <div class="chatlog__message " data-message-id="964731645989093428" id="message-964731645989093428" title="Message sent: 16-Apr-22 11:39 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">「可惜了。」
+話音落下，朱采鈴手上的對講機不再出聲，卻也沒有切回原本的頻道。
+她可以聽到那兩人在密道內短暫停留，接著是沙土滑動的聲音。
+他們的位置偏離了成靖繪製的地圖，速度慢了很多，大概相當於普通人緩步行走的速度，但目的地變得難以確認。</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/248759644674195456/4e2f50645195ff07e5258c6c91e4bca6.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="紫紫#5726" data-user-id="248759644674195456" style="color: rgb(52,152,219)">朱采鈴（紫紫）</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-22 11:51 AM</span>
+
+            <div class="chatlog__message " data-message-id="964734731767922749" id="message-964734731767922749" title="Message sent: 16-Apr-22 11:51 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">「他在邀請我呢。」
+跟不跟？當然跟了。她撥電話給趙鄢平。
+「主謀動向不明，我要專注跟隨他了，告訴攻堅隊我無法再支援。」
+隨後，采鈴便切換模式，將所有注意力放在地下移動的人，追蹤對方。</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/240443207433977856/11852e24159e64d37d87368130aaa627.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Resastar#7402" data-user-id="240443207433977856" style="">Resastar</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-22 11:15 PM</span>
+
+            <div class="chatlog__message " data-message-id="964906916654510080" id="message-964906916654510080" title="Message sent: 16-Apr-22 11:15 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">「收到，小心，需要支援隨時聯繫。」
+趙鄢平的回話很快傳來。</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="964907767464873995" id="message-964907767464873995" title="Message sent: 16-Apr-22 11:18 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">在地下移動的人完全偏離了昨日成靖找到的暗道路線，似乎有特殊的方式可以在地形穿行。
+地上的建物和巷子讓朱采鈴的追蹤變得有些困難，對方的移動軌跡也利用了這一點，地下每一段的移動在地上都得繞開一大段路才能跟上。</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/248759644674195456/4e2f50645195ff07e5258c6c91e4bca6.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="紫紫#5726" data-user-id="248759644674195456" style="color: rgb(52,152,219)">朱采鈴（紫紫）</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-22 11:53 PM</span>
+
+            <div class="chatlog__message " data-message-id="964916432515239948" id="message-964916432515239948" title="Message sent: 16-Apr-22 11:53 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">4d3-8+2 察覺</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/544462904037081138/826b76664e4c68ff4d29076c48a02bed.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="HKTRPG#4989" data-user-id="544462904037081138" style="color: rgb(96,125,139)">HKTRPG</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">16-Apr-22 11:53 PM</span>
+
+            <div class="chatlog__message " data-message-id="964916434624974858" id="message-964916434624974858" title="Message sent: 16-Apr-22 11:53 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="紫紫#5726">@朱采鈴（紫紫）</span> 
+4d3-8+2：察覺
+4[1+1+1+1]-8+2 = -2</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/248759644674195456/4e2f50645195ff07e5258c6c91e4bca6.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="紫紫#5726" data-user-id="248759644674195456" style="color: rgb(52,152,219)">朱采鈴（紫紫）</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-22 11:54 PM</span>
+
+            <div class="chatlog__message " data-message-id="964916749222969434" id="message-964916749222969434" title="Message sent: 16-Apr-22 11:54 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">/消耗1魔力援引【察知人聲的耳機】重骰</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="964916783800795198" id="message-964916783800795198" title="Message sent: 16-Apr-22 11:54 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">4d3-8+2</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/544462904037081138/826b76664e4c68ff4d29076c48a02bed.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="HKTRPG#4989" data-user-id="544462904037081138" style="color: rgb(96,125,139)">HKTRPG</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">16-Apr-22 11:54 PM</span>
+
+            <div class="chatlog__message " data-message-id="964916785260425286" id="message-964916785260425286" title="Message sent: 16-Apr-22 11:54 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="紫紫#5726">@朱采鈴（紫紫）</span> 
+4d3-8+2：
+8[2+1+2+3]-8+2 = 2</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/248759644674195456/4e2f50645195ff07e5258c6c91e4bca6.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="紫紫#5726" data-user-id="248759644674195456" style="color: rgb(52,152,219)">朱采鈴（紫紫）</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-22 11:55 PM</span>
+
+            <div class="chatlog__message " data-message-id="964916861835804693" id="message-964916861835804693" title="Message sent: 16-Apr-22 11:55 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">/消耗1命運點援引【善於傾聽的退伍教官】+2</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="964917408634658906" id="message-964917408634658906" title="Message sent: 16-Apr-22 11:57 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">4d3-8+1 靈敏</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/544462904037081138/826b76664e4c68ff4d29076c48a02bed.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="HKTRPG#4989" data-user-id="544462904037081138" style="color: rgb(96,125,139)">HKTRPG</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">16-Apr-22 11:57 PM</span>
+
+            <div class="chatlog__message " data-message-id="964917409968431174" id="message-964917409968431174" title="Message sent: 16-Apr-22 11:57 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="紫紫#5726">@朱采鈴（紫紫）</span> 
+4d3-8+1：靈敏
+7[2+1+3+1]-8+1 = 0</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/248759644674195456/4e2f50645195ff07e5258c6c91e4bca6.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="紫紫#5726" data-user-id="248759644674195456" style="color: rgb(52,152,219)">朱采鈴（紫紫）</span>
+
+
+        <span class="chatlog__timestamp">17-Apr-22 11:09 AM</span>
+
+            <div class="chatlog__message " data-message-id="965086577204289588" id="message-965086577204289588" title="Message sent: 17-Apr-22 11:09 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">穿過大街、越過小巷，她的心思始終放在地底。
+如同持有地圖與指針的旅人，即使道路崎嶇昏暗，也不憂無法抵達山頂。</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/240443207433977856/11852e24159e64d37d87368130aaa627.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Resastar#7402" data-user-id="240443207433977856" style="">Resastar</span>
+
+
+        <span class="chatlog__timestamp">17-Apr-22 11:32 PM</span>
+
+            <div class="chatlog__message " data-message-id="965273612498137160" id="message-965273612498137160" title="Message sent: 17-Apr-22 11:32 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">朱采鈴追蹤聲音，拐進了某個正在開發的新區塊。
+兩塊初步完成建築結構的工地座落路邊，一旁還有個新建好的樓房，都是規整方正的五層樓房。
+對方的地道出口似乎就開在中間那塊工地的地下。</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="965273652729896970" id="message-965273652729896970" title="Message sent: 17-Apr-22 11:32 PM">
+
+                    <div class="chatlog__attachment " onclick="">
+
+                            <a href="https://cdn.discordapp.com/attachments/871240997164679218/965273652406931566/18d590190f282fd5.jpg">
+                                <img class="chatlog__attachment-media" src="https://cdn.discordapp.com/attachments/871240997164679218/965273652406931566/18d590190f282fd5.jpg" alt="Image attachment" title="Image: 18d590190f282fd5.jpg (19.39 KB)" loading="lazy">
+                            </a>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="965273674489937990" id="message-965273674489937990" title="Message sent: 17-Apr-22 11:32 PM">
+
+                    <div class="chatlog__attachment " onclick="">
+
+                            <a href="https://cdn.discordapp.com/attachments/871240997164679218/965273674301181992/a44ccabb024b9304.jpg">
+                                <img class="chatlog__attachment-media" src="https://cdn.discordapp.com/attachments/871240997164679218/965273674301181992/a44ccabb024b9304.jpg" alt="Image attachment" title="Image: a44ccabb024b9304.jpg (13.1 KB)" loading="lazy">
+                            </a>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="965274723435020308" id="message-965274723435020308" title="Message sent: 17-Apr-22 11:37 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">／揭露場景形象：【偏僻無人的新區塊】、【迷濛冷冽的清晨時分】、【結實簡陋的建築工地】、【<span class="spoiler-text spoiler-text--hidden" onclick="showSpoiler(event, this)"> 　　　　</span> 】。
+／由於挑戰中的靈敏檢定失敗，？？？在局勢形象【<span class="spoiler-text spoiler-text--hidden" onclick="showSpoiler(event, this)"> 　　　　</span> 】上獲得１次免費援引。</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/248759644674195456/4e2f50645195ff07e5258c6c91e4bca6.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="紫紫#5726" data-user-id="248759644674195456" style="color: rgb(52,152,219)">朱采鈴（紫紫）</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-22 01:37 PM</span>
+
+            <div class="chatlog__message " data-message-id="965486271046766635" id="message-965486271046766635" title="Message sent: 18-Apr-22 01:37 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">OK，就是這裡了......
+她將這個地點告知趙副組，然後便邁進工地。
+比起事先調查，她更擅長以身涉險，因此腳步雖放低音量，身姿卻十分坦然，專注目標動向。</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/240443207433977856/11852e24159e64d37d87368130aaa627.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Resastar#7402" data-user-id="240443207433977856" style="">Resastar</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-22 08:20 PM</span>
+
+            <div class="chatlog__message " data-message-id="965587674352205905" id="message-965587674352205905" title="Message sent: 18-Apr-22 08:20 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">－－－－－－－－衝突開始－－－－－－－－</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="965589202228101130" id="message-965589202228101130" title="Message sent: 18-Apr-22 08:26 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">行動順序：
+「紅帽」＞「獵人」＞朱采鈴＞「織帽人」
+戴辰興、黑仔將於第二回合結束後登場</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="965590950577582090" id="message-965590950577582090" title="Message sent: 18-Apr-22 08:33 PM">
+
+                    <div class="chatlog__attachment " onclick="">
+
+                            <a href="https://cdn.discordapp.com/attachments/871240997164679218/965590950309154846/1.jpg">
+                                <img class="chatlog__attachment-media" src="https://cdn.discordapp.com/attachments/871240997164679218/965590950309154846/1.jpg" alt="Image attachment" title="Image: 1.jpg (25.53 KB)" loading="lazy">
+                            </a>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="965591334020841572" id="message-965591334020841572" title="Message sent: 18-Apr-22 08:35 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">場景形象：【偏僻無人的新區塊】、【迷濛冷冽的清晨時分】、【結實簡陋的建築工地】、【 <span class="spoiler-text spoiler-text--hidden" onclick="showSpoiler(event, this)"> 　　　</span> （獵人１／１）】</span>
+
+                                <span class="chatlog__edited-timestamp" title="18-Apr-22 08:35 PM">(edited)</span>
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="965591537859842069" id="message-965591537859842069" title="Message sent: 18-Apr-22 08:36 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">－－－－－－－－－－－－－－－－－－－－</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="965592783480033320" id="message-965592783480033320" title="Message sent: 18-Apr-22 08:40 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">朱采鈴聽到先前追蹤的兩人分路而行，一人走上工地建築的頂樓，另一人則留在地道出口的一樓。
+她聽到拋擲物品的聲音，不知名的物體落在地上沒有太多彈跳，也沒有硬物碰撞的脆響，只有沉悶的餘音在空曠的建築內迴盪。</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="965592905530093619" id="message-965592905530093619" title="Message sent: 18-Apr-22 08:41 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">4d3-8+1 「紅帽」：資源-創建優勢</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/544462904037081138/826b76664e4c68ff4d29076c48a02bed.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="HKTRPG#4989" data-user-id="544462904037081138" style="color: rgb(96,125,139)">HKTRPG</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">18-Apr-22 08:41 PM</span>
+
+            <div class="chatlog__message " data-message-id="965592907820191804" id="message-965592907820191804" title="Message sent: 18-Apr-22 08:41 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="Resastar#7402">@Resastar</span> 
+4d3-8+1：「紅帽」：資源-創建優勢
+4[1+1+1+1]-8+1 = -3</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/240443207433977856/11852e24159e64d37d87368130aaa627.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Resastar#7402" data-user-id="240443207433977856" style="">Resastar</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-22 08:43 PM</span>
+
+            <div class="chatlog__message " data-message-id="965593292152664124" id="message-965593292152664124" title="Message sent: 18-Apr-22 08:43 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">/以１點魔力援引「逝者不死的殘破墓碑」重骰</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="965593322905301052" id="message-965593322905301052" title="Message sent: 18-Apr-22 08:43 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">4d3-8+1 「紅帽」：資源-創建優勢</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/544462904037081138/826b76664e4c68ff4d29076c48a02bed.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="HKTRPG#4989" data-user-id="544462904037081138" style="color: rgb(96,125,139)">HKTRPG</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">18-Apr-22 08:43 PM</span>
+
+            <div class="chatlog__message " data-message-id="965593325455433748" id="message-965593325455433748" title="Message sent: 18-Apr-22 08:43 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="Resastar#7402">@Resastar</span> 
+4d3-8+1：「紅帽」：資源-創建優勢
+7[3+2+1+1]-8+1 = 0</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/240443207433977856/11852e24159e64d37d87368130aaa627.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Resastar#7402" data-user-id="240443207433977856" style="">Resastar</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-22 08:44 PM</span>
+
+            <div class="chatlog__message " data-message-id="965593675918893066" id="message-965593675918893066" title="Message sent: 18-Apr-22 08:44 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">／援引兩點魔力＋２</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="965594029934915704" id="message-965594029934915704" title="Message sent: 18-Apr-22 08:45 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">／「紅帽」建立局勢形象【蟄伏的凶器】，可免費援引一次</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/240443207433977856/11852e24159e64d37d87368130aaa627.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Resastar#7402" data-user-id="240443207433977856" style="">Resastar</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-22 08:56 PM</span>
+
+            <div class="chatlog__message " data-message-id="965596779716415560" id="message-965596779716415560" title="Message sent: 18-Apr-22 08:56 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">4d3-8+2 「獵人」：資源-創建優勢</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/544462904037081138/826b76664e4c68ff4d29076c48a02bed.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="HKTRPG#4989" data-user-id="544462904037081138" style="color: rgb(96,125,139)">HKTRPG</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">18-Apr-22 08:56 PM</span>
+
+            <div class="chatlog__message " data-message-id="965596781310271568" id="message-965596781310271568" title="Message sent: 18-Apr-22 08:56 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="Resastar#7402">@Resastar</span> 
+4d3-8+2：「獵人」：資源-創建優勢
+9[1+3+3+2]-8+2 = 3</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/240443207433977856/11852e24159e64d37d87368130aaa627.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Resastar#7402" data-user-id="240443207433977856" style="">Resastar</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-22 08:58 PM</span>
+
+            <div class="chatlog__message " data-message-id="965597106268151878" id="message-965597106268151878" title="Message sent: 18-Apr-22 08:58 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">／「獵人」在局勢形象【<span class="spoiler-text spoiler-text--hidden" onclick="showSpoiler(event, this)"> 　　　</span> 】上額外獲得一次免費援引，共計兩次。</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="965597799800524800" id="message-965597799800524800" title="Message sent: 18-Apr-22 09:00 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">朱采鈴聽到位處工地五樓的那人拿起某樣東西，接著是電器啟動的聲音，但無法確切得知對方究竟在做什麼準備。</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/248759644674195456/4e2f50645195ff07e5258c6c91e4bca6.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="紫紫#5726" data-user-id="248759644674195456" style="color: rgb(52,152,219)">朱采鈴（紫紫）</span>
+
+
+        <span class="chatlog__timestamp">19-Apr-22 07:56 PM</span>
+
+            <div class="chatlog__message " data-message-id="965943905214398514" id="message-965943905214398514" title="Message sent: 19-Apr-22 07:56 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">她走到了工地一樓。
+逐二兔者不得一兔。因此采鈴暫時轉移焦點，將所有力量放在一樓的目標。
+「你好啊。」她注視著紅帽。</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="965943959102820402" id="message-965943959102820402" title="Message sent: 19-Apr-22 07:56 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">4d3-8+2 推算未來
+/消耗魔力再+1</span>
+
+                                <span class="chatlog__edited-timestamp" title="20-Apr-22 12:53 PM">(edited)</span>
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/544462904037081138/826b76664e4c68ff4d29076c48a02bed.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="HKTRPG#4989" data-user-id="544462904037081138" style="color: rgb(96,125,139)">HKTRPG</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">19-Apr-22 07:56 PM</span>
+
+            <div class="chatlog__message " data-message-id="965943963506851862" id="message-965943963506851862" title="Message sent: 19-Apr-22 07:56 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="紫紫#5726">@朱采鈴（紫紫）</span> 
+4d3-8+2：推算未來
+11[3+2+3+3]-8+2 = 5</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/240443207433977856/11852e24159e64d37d87368130aaa627.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Resastar#7402" data-user-id="240443207433977856" style="">Resastar</span>
+
+
+        <span class="chatlog__timestamp">20-Apr-22 01:05 AM</span>
+
+            <div class="chatlog__message " data-message-id="966021688137515008" id="message-966021688137515008" title="Message sent: 20-Apr-22 01:05 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">／朱采鈴揭露「紅帽」的局勢形象【退避與突襲的動向】，可免費援引兩次</span>
+
+                                <span class="chatlog__edited-timestamp" title="20-Apr-22 01:09 PM">(edited)</span>
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="966022625744814080" id="message-966022625744814080" title="Message sent: 20-Apr-22 01:09 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">眼前蒼白如死屍的女子沒有回話，現在沒有，未來也沒有。
+但她的行動已經做出了回應。
+女子將會伏低身子，鬣狗般地後撤觀望，同時地面預先布下的埋伏將會陡然暴起。
+一切盡在掌握之中，一如既往。</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="966022951885484033" id="message-966022951885484033" title="Message sent: 20-Apr-22 01:10 AM">
+
+                    <div class="chatlog__attachment " onclick="">
+
+                            <a href="https://cdn.discordapp.com/attachments/871240997164679218/966022951998750822/2.jpg">
+                                <img class="chatlog__attachment-media" src="https://cdn.discordapp.com/attachments/871240997164679218/966022951998750822/2.jpg" alt="Image attachment" title="Image: 2.jpg (25.82 KB)" loading="lazy">
+                            </a>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/248759644674195456/4e2f50645195ff07e5258c6c91e4bca6.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="紫紫#5726" data-user-id="248759644674195456" style="color: rgb(52,152,219)">朱采鈴（紫紫）</span>
+
+
+        <span class="chatlog__timestamp">20-Apr-22 12:21 PM</span>
+
+            <div class="chatlog__message " data-message-id="966191811553022012" id="message-966191811553022012" title="Message sent: 20-Apr-22 12:21 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">不喜歡說話的類型啊…這樣也很好。
+她腳底微微緊繃，等待圖窮匕現的那一刻同時發動。</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/240443207433977856/11852e24159e64d37d87368130aaa627.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Resastar#7402" data-user-id="240443207433977856" style="">Resastar</span>
+
+
+        <span class="chatlog__timestamp">20-Apr-22 12:30 PM</span>
+
+            <div class="chatlog__message " data-message-id="966194231586725908" id="message-966194231586725908" title="Message sent: 20-Apr-22 12:30 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">朱采鈴繃緊神經，做足了準備打算再對方暴起時同步發動。
+工地內視線昏暗，灰白的水泥牆厚實堅固，只有大開的門洞與窗口容納外頭的天光透入。
+工地一樓除了樑柱、樓梯與牆面外，其它建築都尚未動工，角落隱約看得到機器運作的紅色光點，也不知道是監視器還是什麼東西。
+先前捕捉到的地道出口應該也在角落，但昏暗的燈光下看不清楚確切位置。</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/240443207433977856/11852e24159e64d37d87368130aaa627.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Resastar#7402" data-user-id="240443207433977856" style="">Resastar</span>
+
+
+        <span class="chatlog__timestamp">20-Apr-22 12:45 PM</span>
+
+            <div class="chatlog__message " data-message-id="966197991306297427" id="message-966197991306297427" title="Message sent: 20-Apr-22 12:45 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">眼前的女子不發一語，整個人的姿態神情彷彿地獄裡爬出的復仇惡鬼。
+「狼帽一直在接觸逃犯和潛在犯罪份子，讓他們參與行動，這些資料罪證在台北車站B4置物櫃的第15格，密碼是198964。」
+說話的是先前那個聲音，從對講機中傳出，講述的內容讓朱采鈴即使在劍拔弩張的現在也不得不分心記誦。</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="966198327349760030" id="message-966198327349760030" title="Message sent: 20-Apr-22 12:47 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">4d3-8+2 「織帽人」：社交-創建優勢</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/544462904037081138/826b76664e4c68ff4d29076c48a02bed.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="HKTRPG#4989" data-user-id="544462904037081138" style="color: rgb(96,125,139)">HKTRPG</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">20-Apr-22 12:47 PM</span>
+
+            <div class="chatlog__message " data-message-id="966198331481128990" id="message-966198331481128990" title="Message sent: 20-Apr-22 12:47 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="Resastar#7402">@Resastar</span> 
+4d3-8+2：「織帽人」：社交-創建優勢
+11[2+3+3+3]-8+2 = 5</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/248759644674195456/4e2f50645195ff07e5258c6c91e4bca6.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="紫紫#5726" data-user-id="248759644674195456" style="color: rgb(52,152,219)">朱采鈴（紫紫）</span>
+
+
+        <span class="chatlog__timestamp">20-Apr-22 12:51 PM</span>
+
+            <div class="chatlog__message " data-message-id="966199494981062677" id="message-966199494981062677" title="Message sent: 20-Apr-22 12:51 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">但是，誰知道資訊真假？尤其此時說出，其心可誅。</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="966199583988391936" id="message-966199583988391936" title="Message sent: 20-Apr-22 12:52 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">4d3-8+2 社交防禦</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/544462904037081138/826b76664e4c68ff4d29076c48a02bed.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="HKTRPG#4989" data-user-id="544462904037081138" style="color: rgb(96,125,139)">HKTRPG</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">20-Apr-22 12:52 PM</span>
+
+            <div class="chatlog__message " data-message-id="966199584680452158" id="message-966199584680452158" title="Message sent: 20-Apr-22 12:52 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="紫紫#5726">@朱采鈴（紫紫）</span> 
+4d3-8+2：社交防禦
+10[3+1+3+3]-8+2 = 4</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/240443207433977856/11852e24159e64d37d87368130aaa627.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Resastar#7402" data-user-id="240443207433977856" style="">Resastar</span>
+
+
+        <span class="chatlog__timestamp">20-Apr-22 01:13 PM</span>
+
+            <div class="chatlog__message " data-message-id="966204992329486396" id="message-966204992329486396" title="Message sent: 20-Apr-22 01:13 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">即使難辨真假，但對方主動釋出線索，朱采鈴的警察本能依然記下了這些資訊。
+難免地，這也分散了她的專注力。</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="966205500746260521" id="message-966205500746260521" title="Message sent: 20-Apr-22 01:15 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">／「織帽人」使朱采鈴承受局勢形象「分心記誦」，「織帽人」可免費援引一次</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/240443207433977856/11852e24159e64d37d87368130aaa627.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Resastar#7402" data-user-id="240443207433977856" style="">Resastar</span>
+
+
+        <span class="chatlog__timestamp">20-Apr-22 02:54 PM</span>
+
+            <div class="chatlog__message " data-message-id="966230434021269554" id="message-966230434021269554" title="Message sent: 20-Apr-22 02:54 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">－－－－－－－－第二回合－－－－－－－－</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="966231834872643624" id="message-966231834872643624" title="Message sent: 20-Apr-22 03:00 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">眼前的女子沒有放過這個機會，正如朱采鈴先前所「聽」見的，她向後退避，同時四周預先拋下的東西猛然竄起，撲向中間的朱采鈴。
+除了先前見過的蜘蛛，還有毒蛇甚至貓狗的屍體。
+它們撲了上來，與其說是攻擊，似乎更像是……試圖纏住朱采鈴。</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="966232037495304273" id="message-966232037495304273" title="Message sent: 20-Apr-22 03:01 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">4d3-8+3 「紅帽」：操作-創建優勢</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/544462904037081138/826b76664e4c68ff4d29076c48a02bed.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="HKTRPG#4989" data-user-id="544462904037081138" style="color: rgb(96,125,139)">HKTRPG</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">20-Apr-22 03:01 PM</span>
+
+            <div class="chatlog__message " data-message-id="966232039881850880" id="message-966232039881850880" title="Message sent: 20-Apr-22 03:01 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="Resastar#7402">@Resastar</span> 
+4d3-8+3：「紅帽」：操作-創建優勢
+9[3+3+2+1]-8+3 = 4</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/240443207433977856/11852e24159e64d37d87368130aaa627.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Resastar#7402" data-user-id="240443207433977856" style="">Resastar</span>
+
+
+        <span class="chatlog__timestamp">20-Apr-22 03:02 PM</span>
+
+            <div class="chatlog__message " data-message-id="966232349094334494" id="message-966232349094334494" title="Message sent: 20-Apr-22 03:02 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">／援引局勢形象「蟄伏的凶器」、「分心記誦」，檢定+4</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/248759644674195456/4e2f50645195ff07e5258c6c91e4bca6.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="紫紫#5726" data-user-id="248759644674195456" style="color: rgb(52,152,219)">朱采鈴（紫紫）</span>
+
+
+        <span class="chatlog__timestamp">20-Apr-22 07:42 PM</span>
+
+            <div class="chatlog__message " data-message-id="966302926136016896" id="message-966302926136016896" title="Message sent: 20-Apr-22 07:42 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">抓住正確時機，她在屍塊們撲上時旋身躲避，以滑鏟之姿從底部穿越。</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="966302991835627611" id="message-966302991835627611" title="Message sent: 20-Apr-22 07:43 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">4d3-8+1 靈敏防禦</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/544462904037081138/826b76664e4c68ff4d29076c48a02bed.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="HKTRPG#4989" data-user-id="544462904037081138" style="color: rgb(96,125,139)">HKTRPG</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">20-Apr-22 07:43 PM</span>
+
+            <div class="chatlog__message " data-message-id="966302993911787611" id="message-966302993911787611" title="Message sent: 20-Apr-22 07:43 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="紫紫#5726">@朱采鈴（紫紫）</span> 
+4d3-8+1：靈敏防禦
+6[1+1+2+2]-8+1 = -1</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/248759644674195456/4e2f50645195ff07e5258c6c91e4bca6.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="紫紫#5726" data-user-id="248759644674195456" style="color: rgb(52,152,219)">朱采鈴（紫紫）</span>
+
+
+        <span class="chatlog__timestamp">20-Apr-22 07:43 PM</span>
+
+            <div class="chatlog__message " data-message-id="966303185964785735" id="message-966303185964785735" title="Message sent: 20-Apr-22 07:43 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">4d3+8+1 消耗1魔力重骰</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/544462904037081138/826b76664e4c68ff4d29076c48a02bed.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="HKTRPG#4989" data-user-id="544462904037081138" style="color: rgb(96,125,139)">HKTRPG</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">20-Apr-22 07:43 PM</span>
+
+            <div class="chatlog__message " data-message-id="966303187554410546" id="message-966303187554410546" title="Message sent: 20-Apr-22 07:43 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="紫紫#5726">@朱采鈴（紫紫）</span> 
+4d3+8+1：消耗1魔力重骰
+9[3+1+3+2]+8+1 = 18</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/248759644674195456/4e2f50645195ff07e5258c6c91e4bca6.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="紫紫#5726" data-user-id="248759644674195456" style="color: rgb(52,152,219)">朱采鈴（紫紫）</span>
+
+
+        <span class="chatlog__timestamp">20-Apr-22 07:44 PM</span>
+
+            <div class="chatlog__message " data-message-id="966303225261219871" id="message-966303225261219871" title="Message sent: 20-Apr-22 07:44 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">//嗯咳不對</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="966303290444886047" id="message-966303290444886047" title="Message sent: 20-Apr-22 07:44 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">4d3-8+1</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/544462904037081138/826b76664e4c68ff4d29076c48a02bed.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="HKTRPG#4989" data-user-id="544462904037081138" style="color: rgb(96,125,139)">HKTRPG</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">20-Apr-22 07:44 PM</span>
+
+            <div class="chatlog__message " data-message-id="966303291753496636" id="message-966303291753496636" title="Message sent: 20-Apr-22 07:44 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="紫紫#5726">@朱采鈴（紫紫）</span> 
+4d3-8+1：
+8[1+2+3+2]-8+1 = 1</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/240443207433977856/11852e24159e64d37d87368130aaa627.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Resastar#7402" data-user-id="240443207433977856" style="">Resastar</span>
+
+
+        <span class="chatlog__timestamp">20-Apr-22 08:43 PM</span>
+
+            <div class="chatlog__message " data-message-id="966318149391769630" id="message-966318149391769630" title="Message sent: 20-Apr-22 08:43 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">／絕妙的成功，「紅帽」使朱采鈴承受局勢形象【被糾纏的雙腿】，可免費援引兩次</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/240443207433977856/11852e24159e64d37d87368130aaa627.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Resastar#7402" data-user-id="240443207433977856" style="">Resastar</span>
+
+
+        <span class="chatlog__timestamp">20-Apr-22 08:55 PM</span>
+
+            <div class="chatlog__message " data-message-id="966321087317168192" id="message-966321087317168192" title="Message sent: 20-Apr-22 08:55 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">朱采鈴巧妙地旋身躲避，身形和行屍們錯身而過，眼看就要突破重圍直逼後方的女子，其中那條大狗的頭顱卻陡然脫離身軀，張開大口向下墜落。
+……被轉移的注意力在關鍵時刻發揮出了效果，朱采鈴輕巧地避過咬合的犬牙，但滑剷的姿態也因此停滯了片刻。
+倏忽即逝的破綻被對手捕捉，爛了一半的黑貓撲上朱采鈴的腿，尾巴上掛著的毒蛇綑上了另一隻腳，將她的雙腿糾纏成一塊。</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="966321670887456798" id="message-966321670887456798" title="Message sent: 20-Apr-22 08:57 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">／朱采鈴掌握的局勢形象【退避與突襲的動向（２）】轉變為【牽制與突襲的動向（２）】</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="966322301375230012" id="message-966322301375230012" title="Message sent: 20-Apr-22 08:59 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">朱采鈴持續追蹤對手的動向，注意到對方似乎只打算用這些行屍走肉牽扯她的行動，而這代表著……
+工地大樓上方，機械啟動的聲音突兀地響起，高速轉動的嗡鳴聲意味著真正的後手殺招即將發動。</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="966323252488183829" id="message-966323252488183829" title="Message sent: 20-Apr-22 09:03 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">／揭露局勢形象【<span class="spoiler-text spoiler-text--hidden" onclick="showSpoiler(event, this)"> 　　　</span> 】為【鎖定目標的監控設備（獵人２）】</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="966323759982206986" id="message-966323759982206986" title="Message sent: 20-Apr-22 09:05 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">／揭露「獵人」聖物形象【穿梭障礙的螺旋鑽頭】</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="966324491766628362" id="message-966324491766628362" title="Message sent: 20-Apr-22 09:08 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">／揭露「獵人」特技【天誅地滅】：與目標處於垂直位置時，可以使用鑽頭穿透夾層衝刺，以資源進行攻擊。</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="966325020739645480" id="message-966325020739645480" title="Message sent: 20-Apr-22 09:10 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">／以２點魔力完美援引【穿梭障礙的螺旋鑽頭】，以特技進行自動成功的攻擊行動</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="966325136712138802" id="message-966325136712138802" title="Message sent: 20-Apr-22 09:11 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">／援引【鎖定目標的監控設備】２次、【被糾纏的雙腿】２次，檢定＋８</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="966326458165395476" id="message-966326458165395476" title="Message sent: 20-Apr-22 09:16 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">一層又一層的地板被無形的力量鑿出圓形孔洞，朱采鈴從耳機內聽見的聲響讓她勾勒出明確的畫面：
+高速旋轉的鑽頭從天而降，穿過下方的通道直指她的心口，驚雷般直墜向下。</span>
+
+                                <span class="chatlog__edited-timestamp" title="20-Apr-22 09:27 PM">(edited)</span>
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="966327357851967509" id="message-966327357851967509" title="Message sent: 20-Apr-22 09:19 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">4d3-8+2 「獵人」：資源-攻擊</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/544462904037081138/826b76664e4c68ff4d29076c48a02bed.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="HKTRPG#4989" data-user-id="544462904037081138" style="color: rgb(96,125,139)">HKTRPG</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">20-Apr-22 09:19 PM</span>
+
+            <div class="chatlog__message " data-message-id="966327359185768508" id="message-966327359185768508" title="Message sent: 20-Apr-22 09:19 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="Resastar#7402">@Resastar</span> 
+4d3-8+2：「獵人」：資源-攻擊
+8[3+3+1+1]-8+2 = 2</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/248759644674195456/4e2f50645195ff07e5258c6c91e4bca6.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="紫紫#5726" data-user-id="248759644674195456" style="color: rgb(52,152,219)">朱采鈴（紫紫）</span>
+
+
+        <span class="chatlog__timestamp">20-Apr-22 09:20 PM</span>
+
+            <div class="chatlog__message " data-message-id="966327586131152996" id="message-966327586131152996" title="Message sent: 20-Apr-22 09:20 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">4d3-8+1 靈敏</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/544462904037081138/826b76664e4c68ff4d29076c48a02bed.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="HKTRPG#4989" data-user-id="544462904037081138" style="color: rgb(96,125,139)">HKTRPG</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">20-Apr-22 09:20 PM</span>
+
+            <div class="chatlog__message " data-message-id="966327587871793183" id="message-966327587871793183" title="Message sent: 20-Apr-22 09:20 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="紫紫#5726">@朱采鈴（紫紫）</span> 
+4d3-8+1：靈敏
+9[2+2+3+2]-8+1 = 2</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/248759644674195456/4e2f50645195ff07e5258c6c91e4bca6.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="紫紫#5726" data-user-id="248759644674195456" style="color: rgb(52,152,219)">朱采鈴（紫紫）</span>
+
+
+        <span class="chatlog__timestamp">20-Apr-22 09:36 PM</span>
+
+            <div class="chatlog__message " data-message-id="966331543767363654" id="message-966331543767363654" title="Message sent: 20-Apr-22 09:36 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">/2點魔力完美援引，兩次形象援引+4，4點傷害劃中度後果【左臂碎裂】</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="966331899515654224" id="message-966331899515654224" title="Message sent: 20-Apr-22 09:37 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">只是暫時的束縛，這還難不倒她。
+但五樓從天而降的威脅，逼迫人在頃刻間做出決斷。</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="966332438378860575" id="message-966332438378860575" title="Message sent: 20-Apr-22 09:40 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">她舉起手臂，準確地撞向墜落的鑽頭，卻無法改變方向，只令準心稍微偏了一點點。</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="966332862024515645" id="message-966332862024515645" title="Message sent: 20-Apr-22 09:41 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">鑽頭發出沉悶的攪動碎裂聲，穿過小臂、釘住肩頭，再狠狠撞擊地面。</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="966333957459304528" id="message-966333957459304528" title="Message sent: 20-Apr-22 09:46 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">她的右手抓住了鑽頭，然後開始感受到疼痛。
+想也不想，下意識便拔出凶器。
+「──啊啊！！！」</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="966334885667168306" id="message-966334885667168306" title="Message sent: 20-Apr-22 09:49 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">沉重的喘息將精神壓迫擺脫，腎上腺素充滿肢體。
+她將那些束縛雙腳的蟲蛇走獸一一清除。</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="966335774691819560" id="message-966335774691819560" title="Message sent: 20-Apr-22 09:53 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">4d3-8+3 搏鬥解除局形</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/544462904037081138/826b76664e4c68ff4d29076c48a02bed.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="HKTRPG#4989" data-user-id="544462904037081138" style="color: rgb(96,125,139)">HKTRPG</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">20-Apr-22 09:53 PM</span>
+
+            <div class="chatlog__message " data-message-id="966335776214376568" id="message-966335776214376568" title="Message sent: 20-Apr-22 09:53 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="紫紫#5726">@朱采鈴（紫紫）</span> 
+4d3-8+3：搏鬥解除局形
+7[1+2+3+1]-8+3 = 2</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/240443207433977856/11852e24159e64d37d87368130aaa627.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Resastar#7402" data-user-id="240443207433977856" style="">Resastar</span>
+
+
+        <span class="chatlog__timestamp">20-Apr-22 10:11 PM</span>
+
+            <div class="chatlog__message " data-message-id="966340317831913562" id="message-966340317831913562" title="Message sent: 20-Apr-22 10:11 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">／克服平手，少許代價成功</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="966341310527180860" id="message-966341310527180860" title="Message sent: 20-Apr-22 10:15 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">箭矢般的鑽頭貫穿肉體，被朱采鈴拔出後消失在她手中，明顯是被主人召回重整。
+鮮血湧出，朱采鈴強忍傷口的劇痛扯開束縛雙腿的肉塊，在腎上腺素的刺激下脫離了包圍圈。
+然而對方也利用這段時間後撤，瘦削的身影消失在向上的樓梯口。</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/248759644674195456/4e2f50645195ff07e5258c6c91e4bca6.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="紫紫#5726" data-user-id="248759644674195456" style="color: rgb(52,152,219)">朱采鈴（紫紫）</span>
+
+
+        <span class="chatlog__timestamp">20-Apr-22 10:18 PM</span>
+
+            <div class="chatlog__message " data-message-id="966342135404191784" id="message-966342135404191784" title="Message sent: 20-Apr-22 10:18 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">「哈......走吧。」
+傷口大到無法應急處理了。她拖著傷勢，向樓梯口追去。</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/240443207433977856/11852e24159e64d37d87368130aaa627.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Resastar#7402" data-user-id="240443207433977856" style="">Resastar</span>
+
+
+        <span class="chatlog__timestamp">20-Apr-22 10:22 PM</span>
+
+            <div class="chatlog__message " data-message-id="966343029642367066" id="message-966343029642367066" title="Message sent: 20-Apr-22 10:22 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">「不退嗎？為什麼？」
+對講機中傳來對方的聲音，即便工地的一層樓已經沒有其他人在場，但監控設備閃爍的紅光表明對方仍注視著朱采鈴。</span>
+
+                                <span class="chatlog__edited-timestamp" title="20-Apr-22 10:22 PM">(edited)</span>
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/248759644674195456/4e2f50645195ff07e5258c6c91e4bca6.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="紫紫#5726" data-user-id="248759644674195456" style="color: rgb(52,152,219)">朱采鈴（紫紫）</span>
+
+
+        <span class="chatlog__timestamp">20-Apr-22 10:26 PM</span>
+
+            <div class="chatlog__message " data-message-id="966344011566698510" id="message-966344011566698510" title="Message sent: 20-Apr-22 10:26 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">關於決心的問題，她認為她答過了，因此沒有回覆。</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/240443207433977856/11852e24159e64d37d87368130aaa627.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Resastar#7402" data-user-id="240443207433977856" style="">Resastar</span>
+
+
+        <span class="chatlog__timestamp">20-Apr-22 10:34 PM</span>
+
+            <div class="chatlog__message " data-message-id="966346205951062026" id="message-966346205951062026" title="Message sent: 20-Apr-22 10:34 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">短暫的沉默後，對方似乎已經得到無聲的回應，於是接續到下一個問題：
+「你想做到什麼程度？你能做到什麼程度？」
+朱采鈴從對方的詢問中感覺到某種異樣，這並不是戰場上該問的問題，對方應該很清楚雙方沒有妥協的餘地。
+從先前的布局來看，對方應該不是那些庸碌的蠢貨，但他仍然在這寶貴的空隙拋出這樣的問題，而不是繼續用言語拉扯戰局。
+戰場中的監控設備代表對方撤到這裡是預先的安排，能做到這樣，想要甩開朱采鈴也不是什麼問題，只要在地下中多穿過幾個難以繞行的建築街區就行了。
+正如先前出發時的明悟，朱采鈴明白這是一個邀請，但為什麼對方會發出這樣的邀請呢？</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/248759644674195456/4e2f50645195ff07e5258c6c91e4bca6.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="紫紫#5726" data-user-id="248759644674195456" style="color: rgb(52,152,219)">朱采鈴（紫紫）</span>
+
+
+        <span class="chatlog__timestamp">20-Apr-22 10:57 PM</span>
+
+            <div class="chatlog__message " data-message-id="966352033856761986" id="message-966352033856761986" title="Message sent: 20-Apr-22 10:57 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">她當然明白，以自己資質能做到多少事。
+能佈這麼多局的人，不會需要重複聽朱采鈴的過往人生，替他簡介自己的目標即可。
+她為了他停步兩秒回應。</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/248759644674195456/4e2f50645195ff07e5258c6c91e4bca6.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="紫紫#5726" data-user-id="248759644674195456" style="color: rgb(52,152,219)">朱采鈴（紫紫）</span>
+
+
+        <span class="chatlog__timestamp">20-Apr-22 11:06 PM</span>
+
+            <div class="chatlog__message " data-message-id="966354212227256350" id="message-966354212227256350" title="Message sent: 20-Apr-22 11:06 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">「我要做出能給所有人看見，天啟者做的大善舉。我要為做不到或不願做的人，當一名領頭示範的老師。」</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/240443207433977856/11852e24159e64d37d87368130aaa627.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Resastar#7402" data-user-id="240443207433977856" style="">Resastar</span>
+
+
+        <span class="chatlog__timestamp">20-Apr-22 11:10 PM</span>
+
+            <div class="chatlog__message " data-message-id="966355105739837440" id="message-966355105739837440" title="Message sent: 20-Apr-22 11:10 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">對講機中傳來一聲輕笑，以及簡短的回應：「好。」
+隨後便沒了聲響。</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="966355264334860338" id="message-966355264334860338" title="Message sent: 20-Apr-22 11:10 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">4d3-8+2 「織帽人」：靈敏-克服（移動）</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/544462904037081138/826b76664e4c68ff4d29076c48a02bed.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="HKTRPG#4989" data-user-id="544462904037081138" style="color: rgb(96,125,139)">HKTRPG</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">20-Apr-22 11:10 PM</span>
+
+            <div class="chatlog__message " data-message-id="966355267199578122" id="message-966355267199578122" title="Message sent: 20-Apr-22 11:10 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="Resastar#7402">@Resastar</span> 
+4d3-8+2：「織帽人」：靈敏-克服（移動）
+11[3+2+3+3]-8+2 = 5</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/240443207433977856/11852e24159e64d37d87368130aaa627.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Resastar#7402" data-user-id="240443207433977856" style="">Resastar</span>
+
+
+        <span class="chatlog__timestamp">21-Apr-22 08:34 PM</span>
+
+            <div class="chatlog__message " data-message-id="966678252049551451" id="message-966678252049551451" title="Message sent: 21-Apr-22 08:34 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">－－－－－－－－轉至主線－－－－－－－－</span>
+
+                        </div>
+                    </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+
+</div>
+
+<div class="postamble">
+    <div class="postamble__entry">Exported 115 message(s)</div>
+</div>
+
+</body>
+
+</html>
