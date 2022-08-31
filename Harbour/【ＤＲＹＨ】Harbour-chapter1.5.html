@@ -1,0 +1,2093 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Res的錨定之地 - 跑團區</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <style>
+        @font-face {
+            src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-300.woff);
+            font-family: Whitney;
+            font-weight: 300;
+        }
+
+        @font-face {
+            src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-400.woff);
+            font-family: Whitney;
+            font-weight: 400;
+        }
+
+        @font-face {
+            src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-500.woff);
+            font-family: Whitney;
+            font-weight: 500;
+        }
+
+        @font-face {
+            src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-600.woff);
+            font-family: Whitney;
+            font-weight: 600;
+        }
+
+        @font-face {
+            src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-700.woff);
+            font-family: Whitney;
+            font-weight: 700;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            background-color: #36393e;
+            color: #dcddde;
+            font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 17px;
+            font-weight: 400;
+        }
+
+        a {
+            color: #00aff4;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        img {
+            object-fit: contain;
+            image-rendering: high-quality;
+            image-rendering: -webkit-optimize-contrast;
+        }
+
+        .preamble {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            max-width: 100%;
+            padding: 1rem;
+        }
+
+        .preamble__guild-icon-container {
+            grid-column: 1;
+        }
+
+        .preamble__guild-icon {
+            max-width: 88px;
+            max-height: 88px;
+        }
+
+        .preamble__entries-container {
+            grid-column: 2;
+            margin-left: 1rem;
+        }
+
+        .preamble__entry {
+            margin-bottom: 0.15rem;
+            color: #ffffff;
+            font-size: 1.4rem;
+        }
+
+        .preamble__entry--small {
+            font-size: 1rem;
+        }
+
+        .chatlog {
+            padding: 1rem 0;
+            width: 100%;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .chatlog__message-group {
+            margin-bottom: 1rem;
+        }
+
+        .chatlog__message-container {
+            background-color: transparent;
+            transition: background-color 1s ease;
+        }
+
+        .chatlog__message-container--highlighted {
+            background-color: rgba(114, 137, 218, 0.2);
+        }
+
+        .chatlog__message-container--pinned {
+            background-color: rgba(249, 168, 37, 0.05);
+        }
+
+        .chatlog__message {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            padding: 0.15rem 0;
+            direction: ltr;
+            unicode-bidi: bidi-override;
+        }
+
+        .chatlog__message:hover {
+            background-color: #32353b;
+        }
+
+        .chatlog__message:hover .chatlog__short-timestamp {
+            display: block;
+        }
+
+        .chatlog__message-aside {
+            grid-column: 1;
+            width: 72px;
+            padding: 0.15rem 0.15rem 0 0.15rem;
+            text-align: center;
+        }
+
+        .chatlog__reference-symbol {
+            height: 10px;
+            margin: 6px 4px 4px 36px;
+            border-left: 2px solid #4f545c;
+            border-top: 2px solid #4f545c;
+            border-radius: 8px 0 0 0;
+        }
+
+        .chatlog__avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .chatlog__short-timestamp {
+            display: none;
+            color: #a3a6aa;
+            font-size: 0.75rem;
+            font-weight: 500;
+            direction: ltr;
+            unicode-bidi: bidi-override;
+        }
+
+        .chatlog__message-primary {
+            grid-column: 2;
+            min-width: 0;
+        }
+
+        .chatlog__reference {
+            display: flex;
+            margin-bottom: 0.15rem;
+            align-items: center;
+            color: #b5b6b8;
+            font-size: 0.875rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .chatlog__reference-avatar {
+            width: 16px;
+            height: 16px;
+            margin-right: 0.25rem;
+            border-radius: 50%;
+        }
+
+        .chatlog__reference-author {
+            margin-right: 0.3rem;
+            font-weight: 600;
+        }
+
+        .chatlog__reference-content {
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .chatlog__reference-link {
+            cursor: pointer;
+        }
+
+        .chatlog__reference-link * {
+            display: inline;
+            pointer-events: none;
+        }
+
+        .chatlog__reference-link .hljs {
+            display: inline;
+        }
+
+        .chatlog__reference-link:hover {
+            color: #ffffff;
+        }
+
+        .chatlog__reference-link:hover *:not(.chatlog__markdown-spoiler) {
+            color: inherit;
+        }
+
+        .chatlog__reference-edited-timestamp {
+            margin-left: 0.25rem;
+            color: #a3a6aa;
+            font-size: 0.75rem;
+            font-weight: 500;
+            direction: ltr;
+            unicode-bidi: bidi-override;
+        }
+
+        .chatlog__header {
+            margin-bottom: 0.1rem;
+        }
+
+        .chatlog__author {
+            font-weight: 500;
+            color: #ffffff;
+        }
+
+        .chatlog__bot-label {
+            position: relative;
+            top: -0.1rem;
+            margin-left: 0.3rem;
+            padding: 0.05rem 0.3rem;
+            border-radius: 3px;
+            background-color: #5865F2;
+            color: #ffffff;
+            font-size: 0.625rem;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .chatlog__timestamp {
+            margin-left: 0.3rem;
+            color: #a3a6aa;
+            font-size: 0.75rem;
+            font-weight: 500;
+            direction: ltr;
+            unicode-bidi: bidi-override;
+        }
+
+        .chatlog__content {
+            padding-right: 1rem;
+            font-size: 0.95rem;
+            word-wrap: break-word;
+        }
+
+        .chatlog__edited-timestamp {
+            margin-left: 0.15rem;
+            color: #a3a6aa;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .chatlog__attachment {
+            position: relative;
+            width: fit-content;
+            margin-top: 0.3rem;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .chatlog__attachment--hidden {
+            cursor: pointer;
+            box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+        }
+
+        .chatlog__attachment--hidden * {
+            pointer-events: none;
+        }
+
+        .chatlog__attachment-spoiler-caption {
+            display: none;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            z-index: 999;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.9);
+            color: #dcddde;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.05rem;
+        }
+
+        .chatlog__attachment--hidden .chatlog__attachment-spoiler-caption {
+            display: block;
+        }
+
+        .chatlog__attachment--hidden:hover .chatlog__attachment-spoiler-caption {
+            color: #fff;
+        }
+
+        .chatlog__attachment-media {
+            max-width: 45vw;
+            max-height: 500px;
+            vertical-align: top;
+            border-radius: 3px;
+        }
+
+        .chatlog__attachment--hidden .chatlog__attachment-media {
+            filter: blur(44px);
+        }
+
+        .chatlog__attachment-generic {
+            max-width: 520px;
+            width: 100%;
+            height: 40px;
+            padding: 10px;
+            border: 1px solid #292b2f;
+            border-radius: 3px;
+            background-color: #2f3136;
+            overflow: hidden;
+        }
+
+        .chatlog__attachment--hidden .chatlog__attachment-generic {
+            filter: blur(44px);
+        }
+
+        .chatlog__attachment-generic-icon {
+            float: left;
+            width: 30px;
+            height: 100%;
+            margin-right: 10px;
+        }
+
+        .chatlog__attachment-generic-size {
+            color: #72767d;
+            font-size: 12px;
+        }
+
+        .chatlog__attachment-generic-name {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        .chatlog__embed {
+            display: flex;
+            margin-top: 0.3rem;
+            max-width: 520px;
+        }
+
+        .chatlog__embed-color-pill {
+            flex-shrink: 0;
+            width: 0.25rem;
+            border-top-left-radius: 3px;
+            border-bottom-left-radius: 3px;
+        }
+
+        .chatlog__embed-color-pill--default {
+            background-color: #202225;
+        }
+
+        .chatlog__embed-content-container {
+            display: flex;
+            flex-direction: column;
+            padding: 0.5rem 0.6rem;
+            border: 1px solid rgba(46, 48, 54, 0.6);
+            border-top-right-radius: 3px;
+            border-bottom-right-radius: 3px;
+            background-color: rgba(46, 48, 54, 0.3);
+        }
+
+        .chatlog__embed-content {
+            display: flex;
+            width: 100%;
+        }
+
+        .chatlog__embed-text {
+            flex: 1;
+        }
+
+        .chatlog__embed-author-container {
+            display: flex;
+            margin-bottom: 0.5rem;
+            align-items: center;
+        }
+
+        .chatlog__embed-author-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 0.5rem;
+            border-radius: 50%;
+        }
+
+        .chatlog__embed-author {
+            color: #ffffff;
+            font-size: 0.875rem;
+            font-weight: 600;
+            direction: ltr;
+            unicode-bidi: bidi-override;
+        }
+
+        .chatlog__embed-author-link {
+            color: #ffffff;
+        }
+
+        .chatlog__embed-title {
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .chatlog__embed-description {
+            color: #dcddde;
+            font-weight: 500;
+            font-size: 0.85rem;
+        }
+
+        .chatlog__embed-fields {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0 0.5rem;
+        }
+
+        .chatlog__embed-field {
+            flex: 0;
+            min-width: 100%;
+            max-width: 506px;
+            padding-top: 0.6rem;
+            font-size: 0.875rem;
+        }
+
+        .chatlog__embed-field--inline {
+            flex: 1;
+            flex-basis: auto;
+            min-width: 50px;
+        }
+
+        .chatlog__embed-field-name {
+            margin-bottom: 0.2rem;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .chatlog__embed-field-value {
+            color: #dcddde;
+            font-weight: 500;
+        }
+
+        .chatlog__embed-thumbnail {
+            flex: 0;
+            max-width: 80px;
+            max-height: 80px;
+            margin-left: 1.2rem;
+            border-radius: 3px;
+        }
+
+        .chatlog__embed-image-container {
+            margin-top: 0.6rem;
+        }
+
+        .chatlog__embed-image {
+            max-width: 500px;
+            max-height: 400px;
+            border-radius: 3px;
+        }
+
+        .chatlog__embed-footer {
+            margin-top: 0.6rem;
+            color: #dcddde;
+        }
+
+        .chatlog__embed-footer-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 0.2rem;
+            border-radius: 50%;
+            vertical-align: middle;
+        }
+
+        .chatlog__embed-footer-text {
+            vertical-align: middle;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .chatlog__embed-plainimage {
+            max-width: 45vw;
+            max-height: 500px;
+            vertical-align: top;
+            border-radius: 3px;
+        }
+
+        .chatlog__embed-spotify {
+            border: 0;
+        }
+
+        .chatlog__embed-youtube-container {
+            margin-top: 0.6rem;
+        }
+
+        .chatlog__embed-youtube {
+            border: 0;
+            border-radius: 3px;
+        }
+
+        .chatlog__sticker {
+            width: 180px;
+            height: 180px;
+        }
+
+        .chatlog__sticker--media {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .chatlog__reactions {
+            display: flex;
+        }
+
+        .chatlog__reaction {
+            display: flex;
+            margin: 0.35rem 0.1rem 0.1rem 0;
+            padding: 0.125rem 0.375rem;
+            border: 1px solid transparent;
+            border-radius: 8px;
+            background-color: #2f3136;
+            align-items: center;
+        }
+
+        .chatlog__reaction:hover {
+            border: 1px solid hsla(0,0%,100%,.2);
+            background-color: transparent;
+        }
+
+        .chatlog__reaction-count {
+            min-width: 9px;
+            margin-left: 0.35rem;
+            color: #b9bbbe;
+            font-size: 0.875rem;
+        }
+
+        .chatlog__reaction:hover .chatlog__reaction-count {
+            color: #dcddde;
+        }
+
+        .chatlog__markdown {
+            max-width: 100%;
+            line-height: 1.3;
+            overflow-wrap: break-word;
+        }
+
+        .chatlog__markdown-preserve {
+            white-space: pre-wrap;
+        }
+
+        .chatlog__markdown-spoiler {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+        }
+
+        .chatlog__markdown-spoiler--hidden {
+            cursor: pointer;
+            background-color: #202225;
+            color: rgba(0, 0, 0, 0);
+        }
+
+        .chatlog__markdown-spoiler--hidden:hover {
+            background-color: rgba(32, 34, 37, 0.8);
+        }
+
+        .chatlog__markdown-spoiler--hidden::selection {
+            color: rgba(0, 0, 0, 0);
+        }
+
+        .chatlog__markdown-quote {
+            display: flex;
+            margin: 0.05rem 0;
+        }
+
+        .chatlog__markdown-quote-border {
+            margin-right: 0.5rem;
+            border: 2px solid #4f545c;
+            border-radius: 3px;
+        }
+
+        .chatlog__markdown-pre {
+            background-color: #2f3136;
+            font-family: "Consolas", "Courier New", Courier, monospace;
+        }
+
+        .chatlog__markdown-pre--multiline {
+            margin-top: 0.25rem;
+            padding: 0.5rem;
+            border: 2px solid #282b30;
+            border-radius: 5px;
+            color: #b9bbbe;
+        }
+
+        .chatlog__markdown-pre--multiline.hljs {
+            background-color: inherit;
+            color: inherit;
+        }
+
+        .chatlog__markdown-pre--inline {
+            padding: 2px;
+            border-radius: 3px;
+            font-size: 0.85rem;
+        }
+
+        .chatlog__markdown-mention {
+            border-radius: 3px;
+            padding: 0 2px;
+            background-color: rgba(88, 101, 242, .3);
+            color: #dee0fc;
+            font-weight: 500;
+        }
+
+        .chatlog__markdown-mention:hover {
+            background-color: #5865f2;
+            color: #ffffff
+        }
+
+        .chatlog__markdown-timestamp {
+            border-radius: 3px;
+            padding: 0 2px;
+            color: #a3a6aa;
+        }
+
+        .chatlog__emoji {
+            width: 1.325rem;
+            height: 1.325rem;
+            margin: 0 0.06rem;
+            vertical-align: -0.4rem;
+        }
+
+        .chatlog__emoji--small {
+            width: 1rem;
+            height: 1rem;
+        }
+
+        .chatlog__emoji--large {
+            width: 2.8rem;
+            height: 2.8rem;
+        }
+
+        .postamble {
+            padding: 1.25rem;
+        }
+
+        .postamble__entry {
+            color: #ffffff;
+        }
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/solarized-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.chatlog__markdown-pre--multiline').forEach(e => hljs.highlightBlock(e));
+        });
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.8.1/lottie.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.chatlog__sticker--media[data-source]').forEach(e => {
+                const imageDataUrl = e.getAttribute('data-source');
+
+                const anim = lottie.loadAnimation({
+                  container: e,
+                  renderer: 'svg',
+                  loop: true,
+                  autoplay: true,
+                  path: imageDataUrl
+                });
+
+                anim.addEventListener('data_failed', () =>
+                    e.innerHTML = '<strong>[Sticker cannot be rendered]</strong>'
+                );
+            });
+        });
+    </script>
+
+    <script>
+        function scrollToMessage(event, id) {
+            var element = document.getElementById('chatlog__message-container-' + id);
+            if (!element)
+                return;
+
+            event.preventDefault();
+            element.classList.add('chatlog__message-container--highlighted');
+
+            window.scrollTo({
+                top: element.getBoundingClientRect().top - document.body.getBoundingClientRect().top - (window.innerHeight / 2),
+                behavior: 'smooth'
+            });
+
+            window.setTimeout(function() {
+                element.classList.remove('chatlog__message-container--highlighted');
+            }, 2000);
+        }
+
+        function showSpoiler(event, element) {
+            if (!element)
+                return;
+
+            if (element.classList.contains('chatlog__attachment--hidden')) {
+                event.preventDefault();
+                element.classList.remove('chatlog__attachment--hidden');
+            }
+
+            if (element.classList.contains('chatlog__markdown-spoiler--hidden')) {
+                event.preventDefault();
+                element.classList.remove('chatlog__markdown-spoiler--hidden');
+            }
+        }
+    </script>
+
+    <svg style="display: none">
+        <symbol id="attachment-icon" viewBox="0 0 720 960">
+            <path fill="#f4f5fb" d="M50,935a25,25,0,0,1-25-25V50A25,25,0,0,1,50,25H519.6L695,201.32V910a25,25,0,0,1-25,25Z"/>
+            <path fill="#7789c4" d="M509.21,50,670,211.63V910H50V50H509.21M530,0H50A50,50,0,0,0,0,50V910a50,50,0,0,0,50,50H670a50,50,0,0,0,50-50h0V191Z"/>
+            <path fill="#f4f5fb" d="M530,215a25,25,0,0,1-25-25V50a25,25,0,0,1,16.23-23.41L693.41,198.77A25,25,0,0,1,670,215Z"/>
+            <path fill="#7789c4" d="M530,70.71,649.29,190H530V70.71M530,0a50,50,0,0,0-50,50V190a50,50,0,0,0,50,50H670a50,50,0,0,0,50-50Z"/>
+        </symbol>
+    </svg>
+</head>
+<body>
+
+<div class="preamble">
+    <div class="preamble__guild-icon-container">
+        <img class="preamble__guild-icon" src="https://cdn.discordapp.com/icons/657482403937517568/e66834f9eb1ecd316e2b877b8e9c608e.png" alt="Guild icon" loading="lazy">
+    </div>
+    <div class="preamble__entries-container">
+        <div class="preamble__entry">Res的錨定之地</div>
+        <div class="preamble__entry">【ＤＲＹＨ】Harbour / 跑團區</div>
+
+
+            <div class="preamble__entry preamble__entry--small">
+Between 07-Aug-22 05:26 PM and 10-Aug-22 12:00 AM            </div>
+    </div>
+</div>
+
+<div class="chatlog">
+
+
+
+<div class="chatlog__message-group">
+    <div id="chatlog__message-container-1005768865093001286" class="chatlog__message-container " data-message-id="1005768865093001286">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <img class="chatlog__avatar" src="https://cdn.discordapp.com/avatars/240443207433977856/11852e24159e64d37d87368130aaa627.png?size=512" alt="Avatar" loading="lazy">
+            </div>
+
+            <div class="chatlog__message-primary">
+                    <div class="chatlog__header">
+                        <span class="chatlog__author" style="" title="GM#7402" data-user-id="240443207433977856">GM</span>
+
+
+                        <span class="chatlog__timestamp">07-Aug-22 05:26 PM</span>
+                    </div>
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve">HBR組織的正式成員都是擁有天賦的失眠者，他們的睡眠受到嚴密管控，只容許在組織的安全屋內，每隔一段時間進行短暫的休息。
+蘇子離聽說過有人支撐不住陷入昏睡，整個人成了失控的節點，被夢魘循線穿梭過來，最後花了組織相當大的功夫才封鎖住消息。</span>
+
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+    <div id="chatlog__message-container-1005770263046144061" class="chatlog__message-container " data-message-id="1005770263046144061">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <div class="chatlog__short-timestamp" title="07-Aug-22 05:31 PM">17:31</div>
+            </div>
+
+            <div class="chatlog__message-primary">
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve">正因如此，身心狀態始終未能徹底康復的蘇子離，在走出公司後未能及時注意到埋伏的江君然，被他堵了正著。</span>
+
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+    <div id="chatlog__message-container-1005770691259416620" class="chatlog__message-container " data-message-id="1005770691259416620">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <div class="chatlog__short-timestamp" title="07-Aug-22 05:33 PM">17:33</div>
+            </div>
+
+            <div class="chatlog__message-primary">
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve">距離事件發生已經過了兩、三個禮拜，不僅是鍥而不捨的好友，連那個叫做林安嫺的少女也追著蘇子離打探消息。</span>
+
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+    <div id="chatlog__message-container-1005771025914531901" class="chatlog__message-container " data-message-id="1005771025914531901">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <div class="chatlog__short-timestamp" title="07-Aug-22 05:34 PM">17:34</div>
+            </div>
+
+            <div class="chatlog__message-primary">
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve">他持續敷衍拖延，一直到江君然徹底失去耐心的現在，才終於避無可避地被堵在停車場。</span>
+
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+    <div id="chatlog__message-container-1005771212099686410" class="chatlog__message-container " data-message-id="1005771212099686410">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <div class="chatlog__short-timestamp" title="07-Aug-22 05:35 PM">17:35</div>
+            </div>
+
+            <div class="chatlog__message-primary">
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve">「蘇、子、離！你還要耍賴到什麼時候？還不快點把真相告訴我！」</span>
+
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+    <div id="chatlog__message-container-1005771461413318746" class="chatlog__message-container " data-message-id="1005771461413318746">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <div class="chatlog__short-timestamp" title="07-Aug-22 05:36 PM">17:36</div>
+            </div>
+
+            <div class="chatlog__message-primary">
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve">HBR的成員看著眼前的男子，注意到他愈發青黑的眼袋，無法不懷疑對方是否也同樣覺醒成了失眠者。</span>
+
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+    <div id="chatlog__message-container-1005771642355580939" class="chatlog__message-container " data-message-id="1005771642355580939">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <div class="chatlog__short-timestamp" title="07-Aug-22 05:37 PM">17:37</div>
+            </div>
+
+            <div class="chatlog__message-primary">
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve">如果真是如此，那他什麼都不知道也相當危險，至少不能讓他毫無警覺地陷入沉眠。</span>
+
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+    <div id="chatlog__message-container-1005811115286081639" class="chatlog__message-container " data-message-id="1005811115286081639">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <img class="chatlog__avatar" src="https://cdn.discordapp.com/avatars/286770637853294593/1b4d3b7616f7bd8823948da82c3c22bf.png?size=512" alt="Avatar" loading="lazy">
+            </div>
+
+            <div class="chatlog__message-primary">
+                    <div class="chatlog__header">
+                        <span class="chatlog__author" style="color: rgb(31, 139, 76)" title="蘇子離（Ｒ君）#9670" data-user-id="286770637853294593">蘇子離（Ｒ君）</span>
+
+
+                        <span class="chatlog__timestamp">07-Aug-22 08:14 PM</span>
+                    </div>
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve">計算著從現在的位置衝向機車並且騎車逃逸的可能性──是不可能的事情。
+尚未復原的疲憊讓他就連能否跑贏好友都是個問題。
+男人大大的嘆了口氣，投降的舉起雙手：「你先冷靜點。」
+沒有錯過對方青黑的眼袋，蘇子離心中又增添了些沉重，手指向遠方一旁轉角的Louisa coffee，接著說道：「總之，我們找個地方吧，這裡不適合。」</span>
+
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+    <div id="chatlog__message-container-1005815479551668264" class="chatlog__message-container " data-message-id="1005815479551668264">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <img class="chatlog__avatar" src="https://cdn.discordapp.com/avatars/240443207433977856/11852e24159e64d37d87368130aaa627.png?size=512" alt="Avatar" loading="lazy">
+            </div>
+
+            <div class="chatlog__message-primary">
+                    <div class="chatlog__header">
+                        <span class="chatlog__author" style="" title="GM#7402" data-user-id="240443207433977856">GM</span>
+
+
+                        <span class="chatlog__timestamp">07-Aug-22 08:31 PM</span>
+                    </div>
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve">「好，走吧。」
+江君然走在蘇子離身側，保持一伸手就能把他抓住的位置。
+來到咖啡廳後，他直接向櫃檯點了兩人平常會點的咖啡，沒有給好友任何拖延的機會。
+他主導著來到角落的雙人座，把蘇子離關在內側，他雙手一放壓住桌子兩側，盯著後者說道：
+「好，你可以交代了。」</span>
+
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+    <div id="chatlog__message-container-1005831322176077874" class="chatlog__message-container " data-message-id="1005831322176077874">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <img class="chatlog__avatar" src="https://cdn.discordapp.com/avatars/286770637853294593/1b4d3b7616f7bd8823948da82c3c22bf.png?size=512" alt="Avatar" loading="lazy">
+            </div>
+
+            <div class="chatlog__message-primary">
+                    <div class="chatlog__header">
+                        <span class="chatlog__author" style="color: rgb(31, 139, 76)" title="蘇子離（Ｒ君）#9670" data-user-id="286770637853294593">蘇子離（Ｒ君）</span>
+
+
+                        <span class="chatlog__timestamp">07-Aug-22 09:34 PM</span>
+                    </div>
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve">拿起咖啡喝了一口，入口微酸，吞下肚後只剩嘗起來有些平凡的苦味殘留在舌尖。
+蘇子離望著對方同樣疲憊的樣貌，沒有回答他的問題，反而是話鋒一轉反問道：「你幾天沒睡了？」</span>
+
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+    <div id="chatlog__message-container-1005879256787714058" class="chatlog__message-container " data-message-id="1005879256787714058">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <img class="chatlog__avatar" src="https://cdn.discordapp.com/avatars/240443207433977856/11852e24159e64d37d87368130aaa627.png?size=512" alt="Avatar" loading="lazy">
+            </div>
+
+            <div class="chatlog__message-primary">
+                    <div class="chatlog__header">
+                        <span class="chatlog__author" style="" title="GM#7402" data-user-id="240443207433977856">GM</span>
+
+
+                        <span class="chatlog__timestamp">08-Aug-22 12:45 AM</span>
+                    </div>
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve">「不要再轉移話題──」
+江君然先是橫眉怒目準備發飆，但盯著蘇子離的目光卻停頓了一會，似乎是想到什麼，壓抑住脾氣回答了問題：
+「上次廢墟探險之後都沒睡過，怎樣，別再東扯西扯了，直接說清楚不行嗎？」</span>
+
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+    <div id="chatlog__message-container-1005885156265033788" class="chatlog__message-container " data-message-id="1005885156265033788">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <img class="chatlog__avatar" src="https://cdn.discordapp.com/avatars/286770637853294593/1b4d3b7616f7bd8823948da82c3c22bf.png?size=512" alt="Avatar" loading="lazy">
+            </div>
+
+            <div class="chatlog__message-primary">
+                    <div class="chatlog__header">
+                        <span class="chatlog__author" style="color: rgb(31, 139, 76)" title="蘇子離（Ｒ君）#9670" data-user-id="286770637853294593">蘇子離（Ｒ君）</span>
+
+
+                        <span class="chatlog__timestamp">08-Aug-22 01:08 AM</span>
+                    </div>
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve">「快要三個禮拜。」
+默默在心中算出好友清醒的時間，蘇子離原本就沉底的心更是又下墜了幾分。
+錯開與江君然相交的視線，他從口袋中掏出了黑色的公務機，解開指紋鎖點入和上司交談的聊天室內。
+『D先生，遇見了另一位可能的覺醒者，請指示下一步動作。』
+
+「……你難道都不覺得奇怪嗎？」手指幾度停頓，最後仍是將文字送出。
+蘇子離再度啜了一口咖啡：「一般人是不可能保持這麼長時間的清醒的。」</span>
+
+                            <span class="chatlog__edited-timestamp" title="08-Aug-22 01:16 AM">(edited)</span>
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+    <div id="chatlog__message-container-1006023088909066322" class="chatlog__message-container " data-message-id="1006023088909066322">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <img class="chatlog__avatar" src="https://cdn.discordapp.com/avatars/240443207433977856/11852e24159e64d37d87368130aaa627.png?size=512" alt="Avatar" loading="lazy">
+            </div>
+
+            <div class="chatlog__message-primary">
+                    <div class="chatlog__header">
+                        <span class="chatlog__author" style="" title="GM#7402" data-user-id="240443207433977856">GM</span>
+
+
+                        <span class="chatlog__timestamp">08-Aug-22 10:16 AM</span>
+                    </div>
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve">蘇子離操作公務機的時候，雙手撐著桌沿的江君然俯身向前，就這麼盯著他的手機螢幕。</span>
+
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+    <div id="chatlog__message-container-1006023349840916520" class="chatlog__message-container " data-message-id="1006023349840916520">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <div class="chatlog__short-timestamp" title="08-Aug-22 10:17 AM">10:17</div>
+            </div>
+
+            <div class="chatlog__message-primary">
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve">「所以我才一直要找你問清楚啊，他媽的，你再喝咖啡我就揍你！」</span>
+
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+    <div id="chatlog__message-container-1006023603483054141" class="chatlog__message-container " data-message-id="1006023603483054141">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <div class="chatlog__short-timestamp" title="08-Aug-22 10:18 AM">10:18</div>
+            </div>
+
+            <div class="chatlog__message-primary">
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve">好友慢條斯理啜飲咖啡的姿態讓江君然相當不爽，但這樣的反應已經比蘇子離預期的要平和許多了。</span>
+
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+    <div id="chatlog__message-container-1006023926792605817" class="chatlog__message-container " data-message-id="1006023926792605817">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <div class="chatlog__short-timestamp" title="08-Aug-22 10:19 AM">10:19</div>
+            </div>
+
+            <div class="chatlog__message-primary">
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve">手機「叮」的一聲，迅速傳來回覆：「引導他到公司接受審查並入職，可以適度透露資訊，或運用公務身份。」</span>
+
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+    <div id="chatlog__message-container-1006024013157507073" class="chatlog__message-container " data-message-id="1006024013157507073">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <div class="chatlog__short-timestamp" title="08-Aug-22 10:20 AM">10:20</div>
+            </div>
+
+            <div class="chatlog__message-primary">
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve">「好，你可以講了吧，現在、立刻、馬上！」</span>
+
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+    <div id="chatlog__message-container-1006024246159495200" class="chatlog__message-container " data-message-id="1006024246159495200">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <div class="chatlog__short-timestamp" title="08-Aug-22 10:21 AM">10:21</div>
+            </div>
+
+            <div class="chatlog__message-primary">
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve">讀完回覆的瞬間，江君然的臉壓了過來，居高臨下，和蘇子離的臉僅僅隔著幾公分的距離。</span>
+
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+    <div id="chatlog__message-container-1006027335151140897" class="chatlog__message-container " data-message-id="1006027335151140897">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <img class="chatlog__avatar" src="https://cdn.discordapp.com/avatars/286770637853294593/1b4d3b7616f7bd8823948da82c3c22bf.png?size=512" alt="Avatar" loading="lazy">
+            </div>
+
+            <div class="chatlog__message-primary">
+                    <div class="chatlog__header">
+                        <span class="chatlog__author" style="color: rgb(31, 139, 76)" title="蘇子離（Ｒ君）#9670" data-user-id="286770637853294593">蘇子離（Ｒ君）</span>
+
+
+                        <span class="chatlog__timestamp">08-Aug-22 10:33 AM</span>
+                    </div>
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve">好友這樣咄咄逼人的態度讓蘇子離後靠椅背想和對方拉開距離。
+幾乎是馬上就跳出回應的聊天室，注意到對方同樣盯著公務機的螢幕，蘇子離迅速閱讀完D的回應後馬上把手機又收回口袋內。
+「想知道真相的話就跟我來。」
+既然已經獲得上級的首肯，不知是覺得直接帶到公司去更省事，抑或是不想由自己來解釋這一切，與好友的憤怒相比之下，蘇子離更顯得疲憊與淡然。
+站起身，立場逆轉，現在是他由上往下看向友人。男人嘆氣道：「與其聽我的說明，不如你自己親眼見證會比較好吧。」</span>
+
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+    <div id="chatlog__message-container-1006029075074273340" class="chatlog__message-container " data-message-id="1006029075074273340">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <img class="chatlog__avatar" src="https://cdn.discordapp.com/avatars/240443207433977856/11852e24159e64d37d87368130aaa627.png?size=512" alt="Avatar" loading="lazy">
+            </div>
+
+            <div class="chatlog__message-primary">
+                    <div class="chatlog__header">
+                        <span class="chatlog__author" style="" title="GM#7402" data-user-id="240443207433977856">GM</span>
+
+
+                        <span class="chatlog__timestamp">08-Aug-22 10:40 AM</span>
+                    </div>
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve">蘇子離持續迴避開口的態度讓江君然更加不悅，他瞇起眼瞪著好友道：
+「我們現在就過去，你在路上把事情好好講清楚，我要聽你說！」</span>
+
+                            <span class="chatlog__edited-timestamp" title="08-Aug-22 10:41 AM">(edited)</span>
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+    <div id="chatlog__message-container-1006029180577792000" class="chatlog__message-container " data-message-id="1006029180577792000">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <div class="chatlog__short-timestamp" title="08-Aug-22 10:40 AM">10:40</div>
+            </div>
+
+            <div class="chatlog__message-primary">
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve">他連自己的咖啡都沒拿，就這麼跟著蘇子離走出咖啡廳。</span>
+
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+    <div id="chatlog__message-container-1006031613102129152" class="chatlog__message-container " data-message-id="1006031613102129152">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <img class="chatlog__avatar" src="https://cdn.discordapp.com/avatars/286770637853294593/1b4d3b7616f7bd8823948da82c3c22bf.png?size=512" alt="Avatar" loading="lazy">
+            </div>
+
+            <div class="chatlog__message-primary">
+                    <div class="chatlog__header">
+                        <span class="chatlog__author" style="color: rgb(31, 139, 76)" title="蘇子離（Ｒ君）#9670" data-user-id="286770637853294593">蘇子離（Ｒ君）</span>
+
+
+                        <span class="chatlog__timestamp">08-Aug-22 10:50 AM</span>
+                    </div>
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve">在路上叫了輛計程車，蘇子離讓江君然先上車，然後向司機報了組織所在的園區地址。
+而對於好友的窮追猛打，他只有搖搖頭，眼神掃向前方司機。
+「這裡不方便。」
+
+計程車錢不意外的也報了公帳。
+一路上率先走在前頭領著好友來到組織的所在地，從夜色中踏入辦公樓，櫃台辦事人員迎上來幫兩人做了登記。
+得知D已經在等著自己的到來時蘇子離並沒有多意外，畢竟他也知道組織在招募人才上的飢渴。
+領著好友走進電梯並按下上司辦公室所在樓層，蘇子離看著樓層數目逐漸攀升，直到電梯停下，鐵門打開。</span>
+
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+    <div id="chatlog__message-container-1006045468364636281" class="chatlog__message-container " data-message-id="1006045468364636281">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <img class="chatlog__avatar" src="https://cdn.discordapp.com/avatars/240443207433977856/11852e24159e64d37d87368130aaa627.png?size=512" alt="Avatar" loading="lazy">
+            </div>
+
+            <div class="chatlog__message-primary">
+                    <div class="chatlog__header">
+                        <span class="chatlog__author" style="" title="GM#7402" data-user-id="240443207433977856">GM</span>
+
+
+                        <span class="chatlog__timestamp">08-Aug-22 11:45 AM</span>
+                    </div>
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve">電梯攀上七樓的短短數秒間，江君然在電梯裡又埋怨了幾句，這才隨著蘇子離走向D先生的辦公室。
+這位負責統籌Harbour封印行動的主管坐在電腦桌前，他幹練的秘書已經把入職相關文件擺在辦公室的會客桌上。
+他穿著長年不變的整齊西裝，戴著常見的方框眼鏡，衣著打扮並不出奇，但凌厲的目光卻顯得格外出眾。
+「子離，接下來就交給我吧。」女秘書迎了上來，引導江君然入座的同時也送蘇子離出門。</span>
+
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+    <div id="chatlog__message-container-1006059603559194724" class="chatlog__message-container " data-message-id="1006059603559194724">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <img class="chatlog__avatar" src="https://cdn.discordapp.com/avatars/286770637853294593/1b4d3b7616f7bd8823948da82c3c22bf.png?size=512" alt="Avatar" loading="lazy">
+            </div>
+
+            <div class="chatlog__message-primary">
+                    <div class="chatlog__header">
+                        <span class="chatlog__author" style="color: rgb(31, 139, 76)" title="蘇子離（Ｒ君）#9670" data-user-id="286770637853294593">蘇子離（Ｒ君）</span>
+
+
+                        <span class="chatlog__timestamp">08-Aug-22 12:41 PM</span>
+                    </div>
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve">最後離開辦公室前，蘇子離轉頭看了江君然和D一眼，後在秘書的指引下離開了房間帶上門。
+
+
+沒有急著回家，男人來到了公司設置的咖啡廳，尚未吃晚餐只喝了一杯咖啡，他的胃袋已經開始發出抗議。
+向店員點了一個加蛋的三明治，坐在沙發區的蘇子離用自己的手機發給好友訊息。
+『我在下面的咖啡廳等你。』</span>
+
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+    <div id="chatlog__message-container-1006064216060477501" class="chatlog__message-container " data-message-id="1006064216060477501">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <img class="chatlog__avatar" src="https://cdn.discordapp.com/avatars/240443207433977856/11852e24159e64d37d87368130aaa627.png?size=512" alt="Avatar" loading="lazy">
+            </div>
+
+            <div class="chatlog__message-primary">
+                    <div class="chatlog__header">
+                        <span class="chatlog__author" style="" title="GM#7402" data-user-id="240443207433977856">GM</span>
+
+
+                        <span class="chatlog__timestamp">08-Aug-22 01:00 PM</span>
+                    </div>
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve">訊息一時間沒有回應，蘇子離在咖啡廳吃完了一整個三明治，才接到江君然的傳訊。
+過沒多久，好友出現在咖啡廳，手裡拿著一個同款的黑色公務電話。</span>
+
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+    <div id="chatlog__message-container-1006065406672371782" class="chatlog__message-container " data-message-id="1006065406672371782">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <div class="chatlog__short-timestamp" title="08-Aug-22 01:04 PM">13:04</div>
+            </div>
+
+            <div class="chatlog__message-primary">
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve">「快十年了……你瞞了我好久，你明明就知道我一直在找什麼。」
+他瞪著高一就認識的好友，雙手撐著桌沿，用先前在外頭咖啡廳的姿態開口道：
+「來，你現在是不是該交代些什麼。」</span>
+
+                            <span class="chatlog__edited-timestamp" title="08-Aug-22 01:05 PM">(edited)</span>
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+    <div id="chatlog__message-container-1006071176138862663" class="chatlog__message-container " data-message-id="1006071176138862663">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <img class="chatlog__avatar" src="https://cdn.discordapp.com/avatars/286770637853294593/1b4d3b7616f7bd8823948da82c3c22bf.png?size=512" alt="Avatar" loading="lazy">
+            </div>
+
+            <div class="chatlog__message-primary">
+                    <div class="chatlog__header">
+                        <span class="chatlog__author" style="color: rgb(31, 139, 76)" title="蘇子離（Ｒ君）#9670" data-user-id="286770637853294593">蘇子離（Ｒ君）</span>
+
+
+                        <span class="chatlog__timestamp">08-Aug-22 01:27 PM</span>
+                    </div>
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve">「這份工作沒有你想像中的輕鬆。」
+
+不是以朋友的姿態而是以前輩的身分開口道，蘇子離雙手抱胸，也不知道自己是在抗拒些什麼。
+沒想到最終好友也會踏上與自己相同的道路，不自覺地垂下肩膀嘆了口氣：「……不過、我可能欠你一個道歉，所以，抱歉。」
+「我有注意，但這些年來我一直沒看過她。」他們倆個都知道蘇子離口中的人是誰。</span>
+
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+    <div id="chatlog__message-container-1006074532227977256" class="chatlog__message-container " data-message-id="1006074532227977256">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <img class="chatlog__avatar" src="https://cdn.discordapp.com/avatars/240443207433977856/11852e24159e64d37d87368130aaa627.png?size=512" alt="Avatar" loading="lazy">
+            </div>
+
+            <div class="chatlog__message-primary">
+                    <div class="chatlog__header">
+                        <span class="chatlog__author" style="" title="GM#7402" data-user-id="240443207433977856">GM</span>
+
+
+                        <span class="chatlog__timestamp">08-Aug-22 01:41 PM</span>
+                    </div>
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve">「哼、哼！行啦，那你這麼多年以來查到了什麼？」
+江君然接受了蘇子離的道歉，坐到他的對面，催促對方講述更多線索。
+這麼多年以來，這是他距離真相最近的一刻，蘇子離可以看見他充滿血絲的雙眼。
+他聽過朋友談起那段過往，父母把妹妹的失蹤歸咎於他，而他也對自己的漫不經心充滿愧疚，幸福的家庭從那時候開始分崩離析，這件事始終壓迫著他。</span>
+
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+    <div id="chatlog__message-container-1006086112688742400" class="chatlog__message-container " data-message-id="1006086112688742400">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <img class="chatlog__avatar" src="https://cdn.discordapp.com/avatars/286770637853294593/1b4d3b7616f7bd8823948da82c3c22bf.png?size=512" alt="Avatar" loading="lazy">
+            </div>
+
+            <div class="chatlog__message-primary">
+                    <div class="chatlog__header">
+                        <span class="chatlog__author" style="color: rgb(31, 139, 76)" title="蘇子離（Ｒ君）#9670" data-user-id="286770637853294593">蘇子離（Ｒ君）</span>
+
+
+                        <span class="chatlog__timestamp">08-Aug-22 02:27 PM</span>
+                    </div>
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve">「君思的事情的確是重合節點造成的，檔案編號TT95089。」
+點開自己的手機而不是公務機，蘇子離滑開記事本，將自己所知的內容盡數展開在對方眼前，並開始同江君然一一匯報。
+「……現實越界的情況的確不常見，是當時的成員疏忽了。」
+講到一個段落，蘇子離頓了頓，觀察著好友的反應。
+「我能理解你的心情，不過，阿然，你要知道，這不是什麼打怪遊戲。」
+多少年了，一直是以保護者的角色自居並獨自走來，箇中的滋味蘇子離再清楚不過。
+像是要佐證一樣，他拉開衣服袖子露出上臂曾經因任務受傷而留下的傷疤，幾乎是要從手臂延伸至肩頭：「如果一不小心，是會死人的。」
+也不知道這樣坦白到底是用意何在，或許他只是不想好友被一時之間的發現與興奮沖昏了頭。</span>
+
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+    <div id="chatlog__message-container-1006088546517524540" class="chatlog__message-container " data-message-id="1006088546517524540">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <img class="chatlog__avatar" src="https://cdn.discordapp.com/avatars/240443207433977856/11852e24159e64d37d87368130aaa627.png?size=512" alt="Avatar" loading="lazy">
+            </div>
+
+            <div class="chatlog__message-primary">
+                    <div class="chatlog__header">
+                        <span class="chatlog__author" style="" title="GM#7402" data-user-id="240443207433977856">GM</span>
+
+
+                        <span class="chatlog__timestamp">08-Aug-22 02:36 PM</span>
+                    </div>
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve">江君然抿著唇，仔仔細細把這些資料看了又看，才閉上雙眼，深深呼吸了好幾口氣。
+「我知道了，我會繼續查下去。」
+他重新睜開眼睛，看著蘇子離的傷疤道：
+「現在我也是組織成員了，你的秘密也不用藏了，之後出任務我也要加入，新人不是都要有人帶嗎？下次任務我跟你一起去。」</span>
+
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+    <div id="chatlog__message-container-1006088672376012820" class="chatlog__message-container " data-message-id="1006088672376012820">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <div class="chatlog__short-timestamp" title="08-Aug-22 02:37 PM">14:37</div>
+            </div>
+
+            <div class="chatlog__message-primary">
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve">看起來，蘇子離的諫言沒有多少成效。</span>
+
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+    <div id="chatlog__message-container-1006094833787600936" class="chatlog__message-container " data-message-id="1006094833787600936">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <img class="chatlog__avatar" src="https://cdn.discordapp.com/avatars/286770637853294593/1b4d3b7616f7bd8823948da82c3c22bf.png?size=512" alt="Avatar" loading="lazy">
+            </div>
+
+            <div class="chatlog__message-primary">
+                    <div class="chatlog__header">
+                        <span class="chatlog__author" style="color: rgb(31, 139, 76)" title="蘇子離（Ｒ君）#9670" data-user-id="286770637853294593">蘇子離（Ｒ君）</span>
+
+
+                        <span class="chatlog__timestamp">08-Aug-22 03:01 PM</span>
+                    </div>
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve">「下次任務你跟我一起去？」
+看來對方是一點都沒有把自己的話聽進去，或許是因為這幾天下來的疲憊再加上來自各方面累積的壓力，蘇子離罕見的動了些氣。
+「你知道自己的天賦是什麼了嗎？接下來會面對怎樣的敵人、組織的規章、任務的流程是什麼、所有應該要知道的資訊你都還不了解，就想著下次出任務要跟我一起去？你到底有沒有把我剛才的話聽進去。」
+「上次的事件你不是同樣也有感覺嗎？一個不小心，把命搭進去那是時時刻刻的事情。」
+他不認為自己把話說重了，因為對蘇子離而言，自己就是以如此謹小慎微的態度在執行任務的。</span>
+
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+    <div id="chatlog__message-container-1006097918794674216" class="chatlog__message-container " data-message-id="1006097918794674216">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <img class="chatlog__avatar" src="https://cdn.discordapp.com/avatars/240443207433977856/11852e24159e64d37d87368130aaa627.png?size=512" alt="Avatar" loading="lazy">
+            </div>
+
+            <div class="chatlog__message-primary">
+                    <div class="chatlog__header">
+                        <span class="chatlog__author" style="" title="GM#7402" data-user-id="240443207433977856">GM</span>
+
+
+                        <span class="chatlog__timestamp">08-Aug-22 03:13 PM</span>
+                    </div>
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve">「嘖，天賦我已經有點感覺了，很快就能找到怎麼用，規章什麼的跟著學不是更快嗎？死讀書有什麼用？」
+江君然先是槓了幾句，才認真回應道：
+「我看過組織的入職條例了，光是例行的調查任務就有很多津貼，我準備辭職過來專心做這些，入職培訓什麼的很快就能完成了。」
+他看著難掩怒氣的蘇子離，擺了擺手道：
+「我是不可能放棄的，所以不是越早上手越安全嗎？把命搭進去的覺悟我早就有了。」</span>
+
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+    <div id="chatlog__message-container-1006104687604408410" class="chatlog__message-container " data-message-id="1006104687604408410">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <img class="chatlog__avatar" src="https://cdn.discordapp.com/avatars/286770637853294593/1b4d3b7616f7bd8823948da82c3c22bf.png?size=512" alt="Avatar" loading="lazy">
+            </div>
+
+            <div class="chatlog__message-primary">
+                    <div class="chatlog__header">
+                        <span class="chatlog__author" style="color: rgb(31, 139, 76)" title="蘇子離（Ｒ君）#9670" data-user-id="286770637853294593">蘇子離（Ｒ君）</span>
+
+
+                        <span class="chatlog__timestamp">08-Aug-22 03:40 PM</span>
+                    </div>
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve">只見好友不但沒把自己的話聽進去，甚至一意孤行，蘇子離不知何時起緊緊捏著手中三明治的紙袋，甚至連紙袋被扯破都毫無自覺。
+主要是江君然某方面也算是句句有理，但過往的經歷讓他深刻體會到這並不是條好走的路。
+更何況好友那樣的態度，就彷彿在否定著自己這十幾年來的兢兢業業一般。
+
+聽完好友的辯解，蘇子離不知嘆了今天的第幾口氣，抿著嘴唇強壓下心中的怒火：「你就這樣貿然辭職，叔叔阿姨那邊怎麼解釋，如果被問起來你要怎麼說？」
+「我知道你不可能放棄，我也沒有要你放棄，不如說當成為覺醒者時你就已經沒有選擇的餘地了，我只要求你做事再仔細小心一點，連這樣的請求都太過分嗎？」
+「就連我在組織待超過十年，面對夢魘和惡意化身時依然沒有多大的把握，你才剛進來不到──我看看，四個小時，就已經想著要出任務了。」
+
+「退一萬步說好了，就算……」難得話多和表現出情緒上的大起伏，蘇子離越說越激動，到最後咖啡廳內只剩下他的聲音。
+後知後覺意識到這點的男人話語戛然而止，閉上眼，再度睜開時已經將湧出的怒氣押回了眼底。
+「總之，在你熟悉自己的天賦跟培訓完之前，我是不會帶你出任務的──這部分我也會跟D先生匯報。」</span>
+
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+    <div id="chatlog__message-container-1006116575281152111" class="chatlog__message-container " data-message-id="1006116575281152111">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <img class="chatlog__avatar" src="https://cdn.discordapp.com/avatars/240443207433977856/11852e24159e64d37d87368130aaa627.png?size=512" alt="Avatar" loading="lazy">
+            </div>
+
+            <div class="chatlog__message-primary">
+                    <div class="chatlog__header">
+                        <span class="chatlog__author" style="" title="GM#7402" data-user-id="240443207433977856">GM</span>
+
+
+                        <span class="chatlog__timestamp">08-Aug-22 04:28 PM</span>
+                    </div>
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve">「反正他們現在也不在乎我到底在做什麼。」
+江君然抿了抿脣，帶著幾分怨念，語氣卻是放緩了些：
+「我知道任務很危險，我不會隨便亂來，我只是 ……反正我會很快完成培訓審查什麼的，你就等著吧，到時候組織也認可你就沒話說了吧！」</span>
+
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+    <div id="chatlog__message-container-1006117025619382292" class="chatlog__message-container " data-message-id="1006117025619382292">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <div class="chatlog__short-timestamp" title="08-Aug-22 04:29 PM">16:29</div>
+            </div>
+
+            <div class="chatlog__message-primary">
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve">看上去，至少江君然的協同任務申請會被壓到相關流程結束，但蘇子離很清楚失眠者如果專心一致，把二十四小時都用在訓練，效果會有多驚人。
+這些步驟恐怕沒辦法攔他太久。</span>
+
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+    <div id="chatlog__message-container-1006125262636851230" class="chatlog__message-container " data-message-id="1006125262636851230">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <img class="chatlog__avatar" src="https://cdn.discordapp.com/avatars/286770637853294593/1b4d3b7616f7bd8823948da82c3c22bf.png?size=512" alt="Avatar" loading="lazy">
+            </div>
+
+            <div class="chatlog__message-primary">
+                    <div class="chatlog__header">
+                        <span class="chatlog__author" style="color: rgb(31, 139, 76)" title="蘇子離（Ｒ君）#9670" data-user-id="286770637853294593">蘇子離（Ｒ君）</span>
+
+
+                        <span class="chatlog__timestamp">08-Aug-22 05:02 PM</span>
+                    </div>
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve">「……隨便你吧，我要回去休息了。」
+
+他不知道自己即將面對的是什麼。
+蘇子離在心中這樣告訴自己。搖搖頭，男人站起身，轉頭走了幾步，最後還是難敵心中的擔憂，又停住腳步補充道：「……如果你有需要什麼再聯絡我。」
+「還有幫我告訴林小姐，請她不要再連絡我了，我沒有什麼可以跟她說的，你也別跟她多說些什麼，沒有必要把一般人捲進來。」</span>
+
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+    <div id="chatlog__message-container-1006127081031217222" class="chatlog__message-container " data-message-id="1006127081031217222">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <img class="chatlog__avatar" src="https://cdn.discordapp.com/avatars/240443207433977856/11852e24159e64d37d87368130aaa627.png?size=512" alt="Avatar" loading="lazy">
+            </div>
+
+            <div class="chatlog__message-primary">
+                    <div class="chatlog__header">
+                        <span class="chatlog__author" style="" title="GM#7402" data-user-id="240443207433977856">GM</span>
+
+
+                        <span class="chatlog__timestamp">08-Aug-22 05:09 PM</span>
+                    </div>
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve">「好，我等等去檔案室，有發現我也會告訴你。」
+談話告一段落，江君然拿起咖啡廳菜單，似乎終於想到要吃點東西。
+聽到林安嫺的消息，他苦笑了一下抬頭道：
+「別說了，我保密條例簽下去，之後也要躲著她了。」</span>
+
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+    <div id="chatlog__message-container-1006375619694710866" class="chatlog__message-container " data-message-id="1006375619694710866">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <img class="chatlog__avatar" src="https://cdn.discordapp.com/avatars/240443207433977856/11852e24159e64d37d87368130aaa627.png?size=512" alt="Avatar" loading="lazy">
+            </div>
+
+            <div class="chatlog__message-primary">
+                    <div class="chatlog__header">
+                        <span class="chatlog__author" style="" title="GM#7402" data-user-id="240443207433977856">GM</span>
+
+
+                        <span class="chatlog__timestamp">09-Aug-22 09:37 AM</span>
+                    </div>
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve">對話告一段落，蘇子離重新邁開腳步，留下背後的江君然接替他的位置啃起三明治。</span>
+
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+    <div id="chatlog__message-container-1006375633133248633" class="chatlog__message-container " data-message-id="1006375633133248633">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <div class="chatlog__short-timestamp" title="09-Aug-22 09:37 AM">09:37</div>
+            </div>
+
+            <div class="chatlog__message-primary">
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve">－－－－－－－－－－－－－－－－－－－－</span>
+
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+    <div id="chatlog__message-container-1006409851125104641" class="chatlog__message-container " data-message-id="1006409851125104641">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <img class="chatlog__avatar" src="https://cdn.discordapp.com/avatars/286770637853294593/1b4d3b7616f7bd8823948da82c3c22bf.png?size=512" alt="Avatar" loading="lazy">
+            </div>
+
+            <div class="chatlog__message-primary">
+                    <div class="chatlog__header">
+                        <span class="chatlog__author" style="color: rgb(31, 139, 76)" title="蘇子離（Ｒ君）#9670" data-user-id="286770637853294593">蘇子離（Ｒ君）</span>
+
+
+                        <span class="chatlog__timestamp">09-Aug-22 11:53 AM</span>
+                    </div>
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve">手指在螢幕上落下幾次，鍵入的訊息不久又被刪除，就這樣反覆，蘇子離思考著用句遣詞，往復琢磨著已經成形的句子。
+這時的茶水間沒什麼人，落地窗外灑下的陽光照得整個空間金燦燦的。
+趁著工作時休息的空檔，男子窩在一個角落，盯著手中黑色的公務機良久。
+無論怎麼拼寫就是沒辦法讓自己滿意，指尖在玻璃上規律地敲擊著。
+螢幕幾次亮起又暗下，蘇子離有些煩躁的將一旁的瓶裝綠茶一飲而盡。
+『D先生，上次的報告書內容部分似乎有誤。』
+歸檔的報告書中，自己據實描寫與夢魘交流的過程部分被整段刪除，不只如此，當他查閱過往的報告時，曾經僅僅有幾次和夢魘嘗試交流的紀錄也不翼而飛。
+他隱約有感覺，依照流程的嚴謹，自己的報告多半是被組織給示意修改過了。
+一旦有了疑問，就像被種下一顆種子一樣，困惑在蘇子離的心底隨著時間經過而越發壯大。
+
+男人掙扎著，最後還是心一橫，將訊息給送了出去。</span>
+
+                            <span class="chatlog__edited-timestamp" title="09-Aug-22 04:07 PM">(edited)</span>
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+    <div id="chatlog__message-container-1006430860175745074" class="chatlog__message-container " data-message-id="1006430860175745074">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <img class="chatlog__avatar" src="https://cdn.discordapp.com/avatars/240443207433977856/11852e24159e64d37d87368130aaa627.png?size=512" alt="Avatar" loading="lazy">
+            </div>
+
+            <div class="chatlog__message-primary">
+                    <div class="chatlog__header">
+                        <span class="chatlog__author" style="" title="GM#7402" data-user-id="240443207433977856">GM</span>
+
+
+                        <span class="chatlog__timestamp">09-Aug-22 01:16 PM</span>
+                    </div>
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve">一如既往，訊息在送出後的幾秒內被讀取，但回覆來得卻是晚了些許。
+「報告內容中與夢魘交流的部分被我們刪除了，這部分的內容會備檔在更高權限的檔案。
+「在公開檔案中，我們不希望激起成員的好奇心，正如你所面對的狀況，和夢魘交流可能導致更危險的處境，不少夢魘的能力會透過時間逐漸加深影響，直接消除是最穩妥的方針。
+「研究表明，部分夢魘可能源自失控的人類，即使保留部分神智，他們也不再受控，是現實世界的嚴重威脅，了解更多只會造成你們任務的阻礙。」</span>
+
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+    <div id="chatlog__message-container-1006431328373329981" class="chatlog__message-container " data-message-id="1006431328373329981">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <div class="chatlog__short-timestamp" title="09-Aug-22 01:18 PM">13:18</div>
+            </div>
+
+            <div class="chatlog__message-primary">
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve">對方的回應比起蘇子離預期得要平淡許多，給出了他們消除資訊卻沒有對蘇子離做出任何懲處或警告的原因。</span>
+
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+    <div id="chatlog__message-container-1006475179079254067" class="chatlog__message-container " data-message-id="1006475179079254067">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <img class="chatlog__avatar" src="https://cdn.discordapp.com/avatars/286770637853294593/1b4d3b7616f7bd8823948da82c3c22bf.png?size=512" alt="Avatar" loading="lazy">
+            </div>
+
+            <div class="chatlog__message-primary">
+                    <div class="chatlog__header">
+                        <span class="chatlog__author" style="color: rgb(31, 139, 76)" title="蘇子離（Ｒ君）#9670" data-user-id="286770637853294593">蘇子離（Ｒ君）</span>
+
+
+                        <span class="chatlog__timestamp">09-Aug-22 04:13 PM</span>
+                    </div>
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve">上司的回應等於不打自招，蘇子離望著D的回覆入神地想著。
+這麼多年相處下來，他是知道就算再追問下去大概也得不到其他的答案了，可男人心中的疑問不只存在於和夢魘交流的表層，而是交流後得到的資訊。
+『但當時和夢魘的交流過程中對方提到了預兆之壺，基於組織的隱蔽性，我並不能理解為何夢魘能夠知曉這些？』</span>
+
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+    <div id="chatlog__message-container-1006573926488481854" class="chatlog__message-container " data-message-id="1006573926488481854">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <img class="chatlog__avatar" src="https://cdn.discordapp.com/avatars/240443207433977856/11852e24159e64d37d87368130aaa627.png?size=512" alt="Avatar" loading="lazy">
+            </div>
+
+            <div class="chatlog__message-primary">
+                    <div class="chatlog__header">
+                        <span class="chatlog__author" style="" title="GM#7402" data-user-id="240443207433977856">GM</span>
+
+
+                        <span class="chatlog__timestamp">09-Aug-22 10:45 PM</span>
+                    </div>
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve">「組織致力於避免兩界重合，作為另一個世界的入侵者，它們對於封印節點的預兆之壺存在強烈敵意，遭遇時請務必守護好預兆之壺。」</span>
+
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+    <div id="chatlog__message-container-1006574047833894992" class="chatlog__message-container " data-message-id="1006574047833894992">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <div class="chatlog__short-timestamp" title="09-Aug-22 10:45 PM">22:45</div>
+            </div>
+
+            <div class="chatlog__message-primary">
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve">Ｄ先生沒有直接回答蘇子離的問題，但似乎又解答了一些他的疑問。</span>
+
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+    <div id="chatlog__message-container-1006586273005326336" class="chatlog__message-container " data-message-id="1006586273005326336">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <img class="chatlog__avatar" src="https://cdn.discordapp.com/avatars/286770637853294593/1b4d3b7616f7bd8823948da82c3c22bf.png?size=512" alt="Avatar" loading="lazy">
+            </div>
+
+            <div class="chatlog__message-primary">
+                    <div class="chatlog__header">
+                        <span class="chatlog__author" style="color: rgb(31, 139, 76)" title="蘇子離（Ｒ君）#9670" data-user-id="286770637853294593">蘇子離（Ｒ君）</span>
+
+
+                        <span class="chatlog__timestamp">09-Aug-22 11:34 PM</span>
+                    </div>
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve">D避重就輕地將問題帶過，蘇子離知道這已經是此次對話的極限了。
+
+『了解，謝謝您。』
+
+發送訊息，對於夢魘和預兆之壺的疑惑不減反增，或許組織的檔案室會有更多資訊，但就像上司說的，備檔會需要更高的權限，不是他一個普通成員能觸及的。
+毫無解決辦法的頭緒，蘇子離疲憊地揉了揉雙眼，後嘆了口氣（這些日子發生的事情幾乎是要讓他把這二十多年的氣都一次吐光），走出了茶水間。</span>
+
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</div>
+
+<div class="postamble">
+    <div class="postamble__entry">Exported 47 message(s)</div>
+</div>
+
+</body>
+
+</html>
