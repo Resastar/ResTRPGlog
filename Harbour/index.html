@@ -7,29 +7,41 @@
 		var TITLE, INDEX;
 
 		function init(){
+			// Handle Title
 			document.title = TITLE;
 
-			var arr = INDEX.map( link => {
-				return `<div class="LinkObj" onClick="link(this, '${link.url}')">${link.title}</div>`;
+			// Render PageLink Object
+			var arr = INDEX.map( (link, idx) => {
+				return `<div class="LinkObj" onClick="link(this, ${idx})">${link.title}</div>`;
 			});
 			var navPanel = document.getElementById("MainNav");
 			navPanel.innerHTML = arr.join('');
 
-			var defaultElem = document.getElementsByClassName('LinkObj')[0];
-			link(defaultElem, INDEX[0].url);
+			// Set Default Page
+			const urlParams = new URLSearchParams(window.location.search);
+			var pageIdx = parseInt(urlParams.get('p'));
+			if(pageIdx==null || isNaN(pageIdx)) pageIdx = 0;
+
+			var defaultElem = document.getElementsByClassName('LinkObj')[pageIdx];
+			link(defaultElem, pageIdx);
 		}
-		function link(elem, url){
+		function link(elem, pageIdx){
+			// Render PageLink Objects Active
 			var arr = document.getElementsByClassName('LinkObj');
 			for(var i=0; i<arr.length; i++){
 				if(arr[i].classList.contains('active')){
 					arr[i].classList.remove('active');
 				}
 			}
-
 			elem.classList.add("active");
 
+			// Render Page
 			var embdPanel = document.getElementById("MainContext");
-			embdPanel.src = url;
+			embdPanel.src = INDEX[pageIdx].url;
+
+			// Modify URL
+			const path = window.location.pathname
+			window.history.pushState({ additionalInformation: 'Updated the URL with JS' }, TITLE, path+`?p=${pageIdx}`);
 		}
 		window.onload = init;
 	</script>
@@ -69,11 +81,14 @@
 		#MainNav .LinkObj.active { background: #6a6185; }
 		#MainContext {
 			flex-grow: 1;
+			border: 0;
 		}
 	</style>
 </head>
 <div id="MainFrame">
 	<div id="MainNav"></div>
-	<embed id="MainContext" type="text/html" src="" >
+	<iframe id="MainContext" type="text/html" src="" >
+		你的瀏覽器不支援 iframe
+	</iframe>
 </div>
 </html>
