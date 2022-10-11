@@ -1,0 +1,79 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="./index.js"></script>
+	<script>
+		var TITLE, INDEX;
+
+		function init(){
+			document.title = TITLE;
+
+			var arr = INDEX.map( link => {
+				return `<div class="LinkObj" onClick="link(this, '${link.url}')">${link.title}</div>`;
+			});
+			var navPanel = document.getElementById("MainNav");
+			navPanel.innerHTML = arr.join('');
+
+			var defaultElem = document.getElementsByClassName('LinkObj')[0];
+			link(defaultElem, INDEX[0].url);
+		}
+		function link(elem, url){
+			var arr = document.getElementsByClassName('LinkObj');
+			for(var i=0; i<arr.length; i++){
+				if(arr[i].classList.contains('active')){
+					arr[i].classList.remove('active');
+				}
+			}
+
+			elem.classList.add("active");
+
+			var embdPanel = document.getElementById("MainContext");
+			embdPanel.src = url;
+		}
+		window.onload = init;
+	</script>
+	<style>
+		body {
+			background: #454752;
+			color: white;
+			margin: 0;
+		}
+
+		#MainFrame {
+			display: flex;
+			flex-direction: column;
+			height: calc(100vh);
+		}
+		#MainNav {
+			display: flex;
+			justify-content: center;
+			flex-wrap: wrap;
+			background: #25222e;
+			padding-top: 0.5rem;
+			max-height: 110px;
+			overflow: auto;
+		}
+		#MainNav .LinkObj {
+			cursor: pointer;
+			padding: .7rem;
+			margin: 0 5px 10px 5px;
+
+			border: 3px groove #bfbfbf;
+			background: #101014;
+			color: white;
+			font-size: 12px;
+		}
+		#MainNav .LinkObj:hover { background: #474656; }
+		#MainNav .LinkObj:active { background: black; }
+		#MainNav .LinkObj.active { background: #6a6185; }
+		#MainContext {
+			flex-grow: 1;
+		}
+	</style>
+</head>
+<div id="MainFrame">
+	<div id="MainNav"></div>
+	<embed id="MainContext" type="text/html" src="" >
+</div>
+</html>
