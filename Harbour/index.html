@@ -12,28 +12,27 @@
 
 			// Render PageLink Object
 			var arr = INDEX.map( (link, idx) => {
-				return `<div class="LinkObj" onClick="link(this, ${idx})">${link.title}</div>`;
+				return `<div class="LinkObj btn" onClick="link(${idx})">${link.title}</div>`;
 			});
-			var navPanel = document.getElementById("MainNav");
+			var navPanel = document.getElementById("NavbarInner");
 			navPanel.innerHTML = arr.join('');
 
 			// Set Default Page
-			const urlParams = new URLSearchParams(window.location.search);
-			var pageIdx = parseInt(urlParams.get('p'));
-			if(pageIdx==null || isNaN(pageIdx)) pageIdx = 0;
-
-			var defaultElem = document.getElementsByClassName('LinkObj')[pageIdx];
-			link(defaultElem, pageIdx);
+			var pageIdx = getCurrentPageIdx();
+			link(pageIdx);
 		}
-		function link(elem, pageIdx){
-			// Render PageLink Objects Active
+		function link(pageIdx){
+			// Render PageLink Objects Deactive
 			var arr = document.getElementsByClassName('LinkObj');
 			for(var i=0; i<arr.length; i++){
 				if(arr[i].classList.contains('active')){
 					arr[i].classList.remove('active');
 				}
 			}
+			// Render PageLink Object Active
+			const elem = getLinkElemByIdx(pageIdx);
 			elem.classList.add("active");
+			elem.scrollIntoView({ behavior: 'smooth', inline: 'center'});
 
 			// Render Page
 			var embdPanel = document.getElementById("MainContext");
@@ -43,50 +42,90 @@
 			const path = window.location.pathname
 			window.history.pushState({ additionalInformation: 'Updated the URL with JS' }, TITLE, path+`?p=${pageIdx}`);
 		}
+		function prevPage(){
+			const currentPageIdx = getCurrentPageIdx();
+			if(currentPageIdx<=0) return ;
+
+			link(currentPageIdx - 1);
+		}
+		function nextPage(){
+			const currentPageIdx = getCurrentPageIdx();
+			if(currentPageIdx>=INDEX.length-1) return ;
+
+			link(currentPageIdx + 1);
+		}
+
+		function getLinkElemByIdx(idx){
+			return document.getElementsByClassName('LinkObj')[idx];
+		}
+		function getCurrentPageIdx(){
+			const urlParams = new URLSearchParams(window.location.search);
+			const currentPageIdx = parseInt(urlParams.get('p'));
+			if(currentPageIdx==null || isNaN(currentPageIdx)) return 0;
+			return currentPageIdx;
+		}
 		window.onload = init;
 	</script>
 	<style>
-		body {
-			background: #454752;
-			color: white;
-			margin: 0;
-		}
+		body { background:#454752; color:white; margin:0; }
 
 		#MainFrame {
 			display: flex;
 			flex-direction: column;
 			height: calc(100vh);
 		}
-		#MainNav {
+		#MainNavbarOuter {
 			display: flex;
 			justify-content: center;
 			flex-wrap: wrap;
 			background: #25222e;
-			padding-top: 0.5rem;
-			max-height: 110px;
-			overflow: auto;
+			padding: 0.5rem 0;
+			border-bottom: outset 10px #25222e;
 		}
-		#MainNav .LinkObj {
-			cursor: pointer;
-			padding: .7rem;
-			margin: 0 5px 10px 5px;
+		#MainNavbar { display:flex; width:100%; flex-grow:1; justify-content:space-between; align-items:center; }
+		#NavbarInnerFrame { flex-grow:1; overflow-x: auto; }
+		#NavbarInner { display:inline-flex; justify-content: flex-start; }
+		#NavbarInner .LinkObj { margin:10px 5px; font-size: 12px; }
 
-			border: 3px groove #bfbfbf;
-			background: #101014;
-			color: white;
-			font-size: 12px;
-		}
-		#MainNav .LinkObj:hover { background: #474656; }
-		#MainNav .LinkObj:active { background: black; }
-		#MainNav .LinkObj.active { background: #6a6185; }
 		#MainContext {
 			flex-grow: 1;
 			border: 0;
 		}
+
+		#prevBtn, #nextBtn { 
+			margin:0 10px; padding:1.4rem 0.7rem;
+			background: #14144c;
+		}
+		.btn {
+			cursor: pointer;
+			padding:.7rem;
+			border: 3px groove #bfbfbf;
+			background: #101014;
+			color: white;
+			flex-shrink: 0;
+		}
+
+		.btn:hover { background: #474656; }
+		.btn:active { background: black !important; }
+		.btn.active { background: #6a6185; }
+		#prevBtn:hover, #nextBtn:hover { background: #2b2589; }
+
+		#NavbarInnerFrame::-webkit-scrollbar { height:10px; background-color:#666; }
+		#NavbarInnerFrame::-webkit-scrollbar-thumb { background-color: #dedee5; }
 	</style>
 </head>
 <div id="MainFrame">
-	<div id="MainNav"></div>
+	<div id="MainNavbarOuter">
+		<div id="MainNavbar">
+			<div id="prevBtn" class="btn" onClick="prevPage()">上一頁</div>
+			<div id="NavbarInnerFrame">
+				<center>
+				<div id="NavbarInner"></div>
+			</center>
+			</div>
+			<div id="nextBtn" class="btn" onClick="nextPage()">下一頁</div>
+		</div>
+	</div>
 	<iframe id="MainContext" type="text/html" src="" >
 		你的瀏覽器不支援 iframe
 	</iframe>
