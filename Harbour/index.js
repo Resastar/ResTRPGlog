@@ -1,5 +1,6 @@
 var TITLE = "【DRYH】Harbour";
 var INDEX = [
+	{ title: "團務區", url: "https://docs.google.com/spreadsheets/d/1stBqzTID3fc3sKMyVVk7wJKIKEfyilxk19EA1R8JPQU/edit#gid=608821430", },
 	{ title: "01：腐巢", url: "【ＤＲＹＨ】Harbour-chapter1.html", },
 	{ title: "幕間01", url: "【ＤＲＹＨ】Harbour-chapter1.5.html", },
 	{ title: "02：隙間", url: "【ＤＲＹＨ】Harbour-chapter2.html", },
