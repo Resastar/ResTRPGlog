@@ -16,4 +16,5 @@ var INDEX = [
 	{ title: "幕間07", url: "【ＤＲＹＨ】Harbour-chapter7.5.html", },
 	{ title: "08：命運復歸", url: "【ＤＲＹＨ】Harbour-chapter8.html", },
 	{ title: "幕間08", url: "【ＤＲＹＨ】Harbour-chapter8.5.html", },
+	{ title: "09：風雲復歸", url: "【ＤＲＹＨ】Harbour-chapter9.html", },
 ];
