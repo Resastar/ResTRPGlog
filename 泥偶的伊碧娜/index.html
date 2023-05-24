@@ -1,0 +1,135 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta property="og:title" content="【FATE】泥偶的伊碧娜-團錄彙整">
+	<meta property="og:type" content="website">
+	<script src="./index.js"></script>
+	<script>
+		var TITLE, INDEX;
+
+		function init(){
+			// Handle Title
+			document.title = TITLE;
+
+			// Render PageLink Object
+			var arr = INDEX.map( (link, idx) => {
+				return `<div class="LinkObj btn" onClick="link(${idx})">${link.title}</div>`;
+			});
+			var navPanel = document.getElementById("NavbarInner");
+			navPanel.innerHTML = arr.join('');
+
+			// Set Default Page
+			var pageIdx = getCurrentPageIdx();
+			link(pageIdx);
+		}
+		function link(pageIdx){
+			// Render PageLink Objects Deactive
+			var arr = document.getElementsByClassName('LinkObj');
+			for(var i=0; i<arr.length; i++){
+				if(arr[i].classList.contains('active')){
+					arr[i].classList.remove('active');
+				}
+			}
+			// Render PageLink Object Active
+			const elem = getLinkElemByIdx(pageIdx);
+			elem.classList.add("active");
+			elem.scrollIntoView({ behavior: 'smooth', inline: 'center'});
+
+			// Render Page
+			var embdPanel = document.getElementById("MainContext");
+			embdPanel.src = INDEX[pageIdx].url;
+
+			// Modify URL
+			const path = window.location.pathname
+			window.history.pushState({ additionalInformation: 'Updated the URL with JS' }, TITLE, path+`?p=${pageIdx}`);
+		}
+		function prevPage(){
+			const currentPageIdx = getCurrentPageIdx();
+			if(currentPageIdx<=0) return ;
+
+			link(currentPageIdx - 1);
+		}
+		function nextPage(){
+			const currentPageIdx = getCurrentPageIdx();
+			if(currentPageIdx>=INDEX.length-1) return ;
+
+			link(currentPageIdx + 1);
+		}
+
+		function getLinkElemByIdx(idx){
+			return document.getElementsByClassName('LinkObj')[idx];
+		}
+		function getCurrentPageIdx(){
+			const urlParams = new URLSearchParams(window.location.search);
+			const currentPageIdx = parseInt(urlParams.get('p'));
+			if(currentPageIdx==null || isNaN(currentPageIdx)) return 0;
+			return currentPageIdx;
+		}
+		window.onload = init;
+	</script>
+	<style>
+		body { background:#454752; color:white; margin:0; }
+
+		#MainFrame {
+			display: flex;
+			flex-direction: column;
+			height: calc(100vh);
+		}
+		#MainNavbarOuter {
+			display: flex;
+			justify-content: center;
+			flex-wrap: wrap;
+			background: #25222e;
+			padding: 0.5rem 0;
+			border-bottom: outset 10px #25222e;
+		}
+		#MainNavbar { display:flex; width:100%; flex-grow:1; justify-content:space-between; align-items:center; }
+		#NavbarInnerFrame { flex-grow:1; overflow-x: auto; }
+		#NavbarInner { display:inline-flex; justify-content: flex-start; }
+		#NavbarInner .LinkObj { margin:10px 5px; font-size: 12px; }
+
+		#MainContext {
+			flex-grow: 1;
+			border: 0;
+		}
+
+		#prevBtn, #nextBtn { 
+			margin:0 10px; padding:1.4rem 0.7rem;
+			background: #14144c;
+		}
+		.btn {
+			cursor: pointer;
+			padding:.7rem;
+			border: 3px groove #bfbfbf;
+			background: #101014;
+			color: white;
+			flex-shrink: 0;
+		}
+
+		.btn:hover { background: #474656; }
+		.btn:active { background: black !important; }
+		.btn.active { background: #6a6185; }
+		#prevBtn:hover, #nextBtn:hover { background: #2b2589; }
+
+		#NavbarInnerFrame::-webkit-scrollbar { height:10px; background-color:#666; }
+		#NavbarInnerFrame::-webkit-scrollbar-thumb { background-color: #dedee5; }
+	</style>
+</head>
+<div id="MainFrame">
+	<div id="MainNavbarOuter">
+		<div id="MainNavbar">
+			<div id="prevBtn" class="btn" onClick="prevPage()">上一頁</div>
+			<div id="NavbarInnerFrame">
+				<center>
+				<div id="NavbarInner"></div>
+			</center>
+			</div>
+			<div id="nextBtn" class="btn" onClick="nextPage()">下一頁</div>
+		</div>
+	</div>
+	<iframe id="MainContext" type="text/html" src="" >
+		你的瀏覽器不支援 iframe
+	</iframe>
+</div>
+</html>
