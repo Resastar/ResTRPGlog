@@ -10,4 +10,5 @@ var INDEX = [
 	{ title: "克蒙阿朵堂", url: "伊碧娜4.5.html", },
 	{ title: "狼嚎", url: "伊碧娜05.html", },
 	{ title: "追亡逐北", url: "伊碧娜5.5.html", },
+	{ title: "烏札的領袖們", url: "伊碧娜06.html", },
 ];
