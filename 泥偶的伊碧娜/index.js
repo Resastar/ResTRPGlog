@@ -13,4 +13,5 @@ var INDEX = [
 	{ title: "烏札的領袖們", url: "伊碧娜06.html", },
 	{ title: "決心", url: "伊碧娜07.html", },
 	{ title: "聖三巫", url: "伊碧娜08.html", },
+	{ title: "格古拉之夜", url: "伊碧娜09.html", },
 ];
