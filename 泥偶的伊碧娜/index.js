@@ -4,7 +4,7 @@ var INDEX = [
 	{ title: "山嵐之年", url: "伊碧娜00.html", },
 	{ title: "雨驟風狂", url: "伊碧娜01.html", },
 	{ title: "暮落驚雷", url: "伊碧娜02.html", },
-	{ title: "雨盡泉臨", url: "伊碧娜03.html", },
+	{ title: "雨寂泉流", url: "伊碧娜03.html", },
 	{ title: "薩滿新世代", url: "伊碧娜03-5.html", },
 	{ title: "聲息", url: "伊碧娜04.html", },
 	{ title: "克蒙阿朵堂", url: "伊碧娜4.5.html", },
