@@ -19,5 +19,5 @@ var INDEX = [
 	{ title: "夜宴", url: "伊碧娜12.html", },
 	{ title: "歸於黑暗", url: "伊碧娜13.html", },
 	{ title: "拂曉", url: "伊碧娜14.html", },
-	{ title: "烈陽閃焰", url: "伊碧娜15.html", },
+	{ title: "閃焰", url: "伊碧娜15.html", },
 ];
