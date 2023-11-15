@@ -1,0 +1,864 @@
+
+<html>
+<head>
+<meta charset="utf-8">
+<meta property="og:title" content="夜、星、夢">
+<meta property="og:description" content="">
+<title>夜、星、夢</title>
+<style>
+h1{ color:white; margin: 5px 0; }
+body{ background:#454752; }
+._subtitle { color:#ddd; margin:5px 0 20px 0; }
+._sectTitle { background:#ddd; margin-top:30px; padding:10px;font-weight:bold;font-size:1.3rem;text-align:center; }
+._hidden { display:none; }
+.center { display:flex; flex-direction:column; align-items:center; }
+#_main { display:flex; flex-direction:column; align-items:end; }
+._script {width: 100%;}
+
+
+._halt { padding:30px 0; }
+._talk { margin:5px 0; display:flex; border:1px solid black; background:#1e1e1e; color:#eee; width:100%; max-width:1080px; border-radius:5px; }
+._leftCol { width:122px; }
+._rightCol { width:calc(100% - 126px); }
+._actorName{ padding:5px 10px; height:20px; font-size:18px; }
+._actorImg { margin:6px; width:110px; height:110px; background-repeat:no-repeat; background-size:cover; background-color:#2a2a2a; }
+._actorWords { margin:5px; background:#2a2a2a; font-size:1.1rem; padding:10px; height:calc(100% - 60px); border-radius:5px; }
+._sectTitle { border-radius:5px; margin-bottom:5px; }
+
+@media only screen and (max-width: 400px) {
+._leftCol { width:100px; }
+._rightCol { width:calc(100% - 100px); }
+._actorImg { margin:35px 0 5px 10px; width: 85px; height: 85px; }
+}
+
+._talk.otherCh { width:calc(50%); text-align:right; margin-left:auto; }
+._talk.otherCh ._leftCol { display:none; }
+._talk.otherCh ._rightCol { width:100%; }
+._talk.otherCh ._actorWords { background:black;color:white; }
+
+._actor_0 ._actorName { color: #888888; }
+._actor_0 ._actorName::after { content:"GM"; }
+._actor_0 ._actorImg { background-image:url(); } 
+._actor_1 ._actorName { color: #3353d1; }
+._actor_1 ._actorName::after { content:"川巫"; }
+._actor_1 ._actorImg { background-image:url(https://images.plurk.com/2CX3iiY9knaVGVKGGompOP.png); } 
+._actor_2 ._actorName { color: #5770d6; }
+._actor_2 ._actorName::after { content:"泉巫"; }
+._actor_2 ._actorImg { background-image:url(https://images.plurk.com/7hJNhctuQc5Y6I4PcGqe98.png); } 
+._actor_3 ._actorName { color: #68c926; }
+._actor_3 ._actorName::after { content:"伊碧娜"; }
+._actor_3 ._actorImg { background-image:url(https://images.plurk.com/73mP88lHDs8x9tL88V5evV.png); } 
+._actor_4 ._actorName { color: #be9113; }
+._actor_4 ._actorName::after { content:"阿雷塔"; }
+._actor_4 ._actorImg { background-image:url(https://images.plurk.com/2MkzggPfcTtUQjdClQWPmX.png); } 
+._actor_5 ._actorName { color: #888888; }
+._actor_5 ._actorName::after { content:"西萊"; }
+._actor_5 ._actorImg { background-image:url(https://images.plurk.com/2581VTxJXTPmYi0jMkAJBz.png); } 
+._actor_6 ._actorName { color: #888888; }
+._actor_6 ._actorName::after { content:"瑪塔"; }
+._actor_6 ._actorImg { background-image:url(https://images.plurk.com/1P6G3gKr7JQA5XJA9IlDV8.png); } 
+._actor_7 ._actorName { color: #888888; }
+._actor_7 ._actorName::after { content:"哈伊達"; }
+._actor_7 ._actorImg { background-image:url(https://images.plurk.com/6nDW0vFtvr9qKdHlTf2j6M.png); } 
+._actor_8 ._actorName { color: #888888; }
+._actor_8 ._actorName::after { content:"system"; }
+._actor_8 ._actorImg { background-image:url(); } 
+._actor_9 ._actorName { color: #888888; }
+._actor_9 ._actorName::after { content:"魯希"; }
+._actor_9 ._actorImg { background-image:url(https://images.plurk.com/1GlNICE6Cq0mlJdAYHudXP.png); } 
+._actor_10 ._actorName { color: #3fafde; }
+._actor_10 ._actorName::after { content:"潘"; }
+._actor_10 ._actorImg { background-image:url(https://images.plurk.com/4av9rMynOAmvtRQTAws4Eo.png); } 
+._actor_11 ._actorName { color: #0b32d0; }
+._actor_11 ._actorName::after { content:"霖巫"; }
+._actor_11 ._actorImg { background-image:url(https://images.plurk.com/40kk0o8DVqqYuuZw43iiyO.png); } 
+._actor_12 ._actorName { color: #daa97c; }
+._actor_12 ._actorName::after { content:"桑拉恩"; }
+._actor_12 ._actorImg { background-image:url(https://images.plurk.com/2eFZpiXER2FcxDUDOUdPqR.png); } 
+._actor_13 ._actorName { color: #9963c5; }
+._actor_13 ._actorName::after { content:"加瓦瓦烏格"; }
+._actor_13 ._actorImg { background-image:url(https://images.plurk.com/631zlKCfYU3svtDN2puHWv.png); } 
+._actor_14 ._actorName { color: #b12020; }
+._actor_14 ._actorName::after { content:"波恩布拉米"; }
+._actor_14 ._actorImg { background-image:url(https://images.plurk.com/7CEChytNsNHIsRumWG8zKy.png); } 
+._actor_15 ._actorName { color: #e87864; }
+._actor_15 ._actorName::after { content:"茜茜"; }
+._actor_15 ._actorImg { background-image:url(https://images.plurk.com/7myKi5zk0H3COKWQDn6km4.png); } 
+._actor_16 ._actorName { color: #888888; }
+._actor_16 ._actorName::after { content:"力"; }
+._actor_16 ._actorImg { background-image:url(https://images.plurk.com/CPjH0cxE2re6qOvINfA1I.png); } 
+._actor_17 ._actorName { color: #7e5002; }
+._actor_17 ._actorName::after { content:"伊萬"; }
+._actor_17 ._actorImg { background-image:url(https://images.plurk.com/1qH3BdzdfraJrpoEgNhWgL.png); } 
+._actor_18 ._actorName { color: #daa97c; }
+._actor_18 ._actorName::after { content:"隆吉爾"; }
+._actor_18 ._actorImg { background-image:url(https://images.plurk.com/6QfEz26fSsUbDxtyPnu3Gq.png); } 
+._actor_19 ._actorName { color: #888888; }
+._actor_19 ._actorName::after { content:"烏札戰士"; }
+._actor_19 ._actorImg { background-image:url(https://images.plurk.com/3xL71K3rSBSTbX4nVd70cb.png); } 
+._actor_20 ._actorName { color: #b51212; }
+._actor_20 ._actorName::after { content:"狼群"; }
+._actor_20 ._actorImg { background-image:url(https://images.plurk.com/50YBMcKFFvmwYOUYBbMPN9.png); } 
+._actor_21 ._actorName { color: #888888; }
+._actor_21 ._actorName::after { content:"比"; }
+._actor_21 ._actorImg { background-image:url(https://images.plurk.com/15nbb11hsDKk0ai7At6OsV.png); } 
+._actor_22 ._actorName { color: #daa97c; }
+._actor_22 ._actorName::after { content:"努薩哈"; }
+._actor_22 ._actorImg { background-image:url(https://images.plurk.com/38j398FsNDfffUiW42Ijvg.png); } 
+._actor_23 ._actorName { color: #e4ce3f; }
+._actor_23 ._actorName::after { content:"印阿斯莫"; }
+._actor_23 ._actorImg { background-image:url(https://images.plurk.com/24gApbvnCsKHizi6hpB60Z.png); } 
+._actor_24 ._actorName { color: #e01f1f; }
+._actor_24 ._actorName::after { content:"克蒙阿朵堂"; }
+._actor_24 ._actorImg { background-image:url(https://images.plurk.com/5Hk6Q66o7CJ7eFK0sqWZbJ.png); } 
+._actor_25 ._actorName { color: #e8c545; }
+._actor_25 ._actorName::after { content:"張泛"; }
+._actor_25 ._actorImg { background-image:url(https://images.plurk.com/6Tq7Tyxcd5Td0hg4xmUXuN.png); } 
+._actor_26 ._actorName { color: #888888; }
+._actor_26 ._actorName::after { content:"格拉莫拉"; }
+._actor_26 ._actorImg { background-image:url(https://images.plurk.com/647J4MuWUOL9srHk9dOUQw.png); } 
+._actor_27 ._actorName { color: #888888; }
+._actor_27 ._actorName::after { content:"拉爾加"; }
+._actor_27 ._actorImg { background-image:url(https://images.plurk.com/2fgGYqrzx1H5Ws3Oy5baPI.png); } 
+</style>
+</head>
+<body class="center">
+<div class="_hidden">
+<version>hazmole_v1.0</version>
+</div>
+
+<h1>夜、星、夢</h1>
+<div class="_subtitle"></div>
+
+<div id="_main"><div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg _hidden"></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">大鍋燉煮著魚湯，烤肉在架上散溢誘人的香氣，長桌上也擺滿簡單切開的水果。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg _hidden"></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">命名祭是百湧家家戶戶都會舉辦的儀式，作為慶祝孩子在世上站穩腳步的紀念，並沒有太過嚴肅的流程或祭儀。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg _hidden"></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">不過，畢竟是聖三巫的繼承者們，這場命名祭屬於整個部落。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg _hidden"></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">居民們把各自家裡的桌子都搬了出來，整個廣場熱鬧喧嘩，食物的香氣和人們的歡笑，讓伊碧娜久違地感受到以往安逸日子的氛圍。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_1">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">川巫帶著三個男孩，雙手垂湧出繩索般的水流，環繞聖三巫的繼承人，托住他們邁開蹣跚的步伐，咿咿呀呀地向前走去。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">泉巫雙手垂在身前交握，低頭關切著男孩們的動作。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">注意到伊碧娜的視線，她抬起頭，目光和好友交會時自然地彎起微笑，她輕輕揮了揮小手，和伊碧娜打過招呼。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_3">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">看到摯友的笑容，伊碧娜也暫時忘卻方才在屋內發生的爭執，嘴角微微彎起，也揮了揮手，迎了過去。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_3">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「泉，最近還好嗎？」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「還可以，我有越來越知道自己該怎麼做了。」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">矜持的少女和以往比起來，確實多了幾分薩滿的威儀，看得出來，在這段期間她承擔了許多。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">不過，她上前挽住伊碧娜手臂後，面對自己的好友，臉上還是浮出了熟悉的靦腆笑容。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_1">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">川巫牽著男孩們，向伊碧娜點頭致意後，先行走向祭典舉行的廣場中央。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_3">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「那太好了。」<br>伊碧娜輕拍著泉巫挽上的手臂。雖然多少會擔心泉巫肩上的擔子會不會太重，但在經歷了這麼多後，她還是為友人的成長感到欣喜。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_3">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「孩子的命名，已經想好了嗎？」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「嗯！我想好了，我想要叫他『星』，希望他能成為在黑夜中發光的人。」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">泉巫的依然纖細柔順，但感覺得出來更有力、也更敢用力的堅定。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「伊碧娜呢？妳想好了嗎？」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_3">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「對呢……這麼說百湧的取名方式跟烏札不太一樣呢……」<br>伊碧娜思索了一下。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_3">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「星……跟夜……那麼，嗯，我有想法了。」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_3">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">儘管實際上只思索了片刻，但在伊碧娜的腦海中卻像是經歷了好幾個小時。<br>她理解川巫在「夜」中懷抱的執著與仇恨，她感謝泉巫在「星」中寄託的希望。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_3">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">那麼……身為她們的友人，身為這三個孩子的姐姐。<br>這浮上自己心頭的名字，或許再適合不過了吧。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_3">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「……待會儀式中再公開吧？」<br>伊碧娜有些俏皮的將手指抵在自己唇上，賣了個關子。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「真不愧是伊碧娜！」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">泉巫搖晃起好友的手臂，用崇拜的目光望向好友，那神情和一年前的她沒有多少區別。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg _hidden"></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">－－－－－－－－－－－－－－－－－－－－</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_1">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">命名祭的流程相當簡單，川巫走到廣場中央，把男孩們分開，讓泉巫、伊碧娜一人牽起一名男孩。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_1">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">她率先牽著男孩中最大的那個，沒有運用薩滿的能力，只是單純牽他慢慢邁步，走到鋪著石板的圓形空地。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg _hidden"></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">男孩咿咿呀呀地邁開蹣跚的步伐，停下後歪著頭打量川巫，滿臉好奇。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_1">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">川巫彎腰低頭，和男孩對視片刻，才重新抬起頭，舉高他的小手，宣佈道：</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_1">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「孩子的名字是夜，將太陽熄滅的黑夜，願流水潔淨他的心靈。」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_1">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">她伸出另一隻手，從掌心撒出水流，潑溼了男孩的頭髮。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg _hidden"></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">廣場上歡呼喧鬧著，還聽得到交頭接耳的討論，明顯有人聽出了川巫對未來的規劃。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_1">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">川巫抱起驚愕過後開始哭鬧的男孩，讓出了位置。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">泉巫牽著第二個男孩，讓他慢慢走到廣場中央，站好之後，才摸了摸他的頭髮，起身宣佈道：</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「這個孩子的名字是星，是黑夜之中綻發光芒的希望，願流水潔淨他的心靈。」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">她把手輕輕放在男孩腦後，讓泉水浸濕男孩的頭髮。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg _hidden"></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">男孩沒有哭鬧，睜大了眼睛注視泉巫。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">泉巫露出寵溺的笑容，彎腰牽著男孩慢慢走出廣場中央。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">她來到伊碧娜身旁，伸手把準備好的空桶注滿清水，並向旁邊的人要來勺子遞給伊碧娜。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_3">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">接過勺子後，伊碧娜輕輕蹲在剩下的孩子身邊，牽起他的手後，溫柔的帶領他走到廣場上。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_3">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「這孩子的名字是夢，讓和平美好的夢想堅守心中，願流水潔淨他的心靈。」<br>和緩但清晰的嗓音從廣場中心擴散，伊碧娜讓清水流下，輕撫著弟弟的腦袋。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_3">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">──願你的存在能提醒我們，夢不在遙方，而在眼前。<br>閉起眼睛，一次呼吸後，伊碧娜看著身邊的孩子，暗自低語著。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_1">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">川巫抱著孩子，嘴角掛著這段時間以來保持的微笑，眼中沒有笑意，平靜地看著盟友的祈願。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">泉巫水藍色的眸子突然睜大，直勾勾地盯著伊碧娜。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">不知道想到了什麼，她的嘴角自然而然揚了起來，反應出乎意料的大。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg _hidden"></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">男孩和他的兄弟有著相同的黑色眸子，澄澈的瞳孔倒映著伊碧娜的身影。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg _hidden"></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">靜靜地和姊姊對視了片刻後，他突然咯咯大笑，伸手抱了過來。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_3">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">抱住了這活潑的男孩，感受這小小的溫暖，伊碧娜感覺心中的重擔似乎也減輕了少許。嘴角露出微笑，伊碧娜順勢將男孩抱起，慢慢走回原位，與另外兩位薩滿會合。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg _hidden"></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">命名祭的儀式相當簡單，決定名字後，三名薩滿各自抱著夜、星、夢，拿起小杯子餵他們喝了一口清水，接著薩滿再和廣場上的人們一同飲下一杯清水，儀式便告一段落。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg _hidden"></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">接下來就是自由享用餐點的時刻。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_1">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">川巫重新照顧起三個男孩，帶著他們熟悉部落的人們。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">泉巫則是拉起伊碧娜的手，帶她沿著河流往上走，來到沒有旁人的河岸。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「伊碧娜，妳給孩子取的名字……」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">百湧的薩滿和烏札的薩滿對視，伊碧娜注意到泉巫身上的刺青邊緣有些模糊，像是鮮血滴落清水時暈染的模樣。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_3">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「就跟妳聽到的一樣……」<br>伊碧娜點點頭。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「嗯！那妳跟我想得一樣。」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">泉巫甜甜地笑了起來，隨後認真地注視著伊碧娜道：</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「川巫對夜的期待……我不希望看到那樣的未來。」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">內向的少女毫不保留自己的想法，堅定地抬頭與好友四目相交：</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「我已經決定了，我要斷絕這段仇恨的連鎖。」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_3">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「我的想法也是一樣……仇恨與爭鬥，帶來的只有死亡……」<br>伊碧娜輕嘆。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_3">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「我的弟弟們，就交給妳了……露。」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_3">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「讓夜……不要成為太陽熄滅後的死寂之夜，<br>　而是能讓星空閃爍，沉眠美夢的寧靜之夜。」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「這就是我打算做的，伊碧娜，就像妳對夢的期待，我想讓美夢帶來和平。」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">泉巫握住伊碧娜的手，她的小手冰涼如水，甚至出了點汗。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「川巫……不會比桑拉恩更難下手，我會讓她在美夢裡休息到孩子們長大。」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_3">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「……」<br>伊碧娜的心中閃過一絲不安，她想張口說些什麼，但最後還是低下了頭。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_3">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「願大地之母的祝福與妳同在。」<br>緊緊握住泉巫的雙手，伊碧娜送上了祝福。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「願流水與我們同在。」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">泉巫與伊碧娜雙手交握，蔚藍色的眸子深沉如淵。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg _hidden"></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">－－－－－－－－－－－－－－－－－－－－</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg _hidden"></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">※命運點重振</div>
+</div>
+</div></div><!--EOS--></div>
+</body>
+</html>
