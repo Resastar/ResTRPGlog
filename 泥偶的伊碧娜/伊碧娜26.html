@@ -1,0 +1,981 @@
+
+<html>
+<head>
+<meta charset="utf-8">
+<meta property="og:title" content="破裂">
+<meta property="og:description" content="">
+<title>破裂</title>
+<style>
+h1{ color:white; margin: 5px 0; }
+body{ background:#454752; }
+._subtitle { color:#ddd; margin:5px 0 20px 0; }
+._sectTitle { background:#ddd; margin-top:30px; padding:10px;font-weight:bold;font-size:1.3rem;text-align:center; }
+._hidden { display:none; }
+.center { display:flex; flex-direction:column; align-items:center; }
+#_main { display:flex; flex-direction:column; align-items:end; }
+._script {width: 100%;}
+
+
+._halt { padding:30px 0; }
+._talk { margin:5px 0; display:flex; border:1px solid black; background:#1e1e1e; color:#eee; width:100%; max-width:1080px; border-radius:5px; }
+._leftCol { width:122px; }
+._rightCol { width:calc(100% - 126px); }
+._actorName{ padding:5px 10px; height:20px; font-size:18px; }
+._actorImg { margin:6px; width:110px; height:110px; background-repeat:no-repeat; background-size:cover; background-color:#2a2a2a; }
+._actorWords { margin:5px; background:#2a2a2a; font-size:1.1rem; padding:10px; height:calc(100% - 60px); border-radius:5px; }
+._sectTitle { border-radius:5px; margin-bottom:5px; }
+
+@media only screen and (max-width: 400px) {
+._leftCol { width:100px; }
+._rightCol { width:calc(100% - 100px); }
+._actorImg { margin:35px 0 5px 10px; width: 85px; height: 85px; }
+}
+
+._talk.otherCh { width:calc(50%); text-align:right; margin-left:auto; }
+._talk.otherCh ._leftCol { display:none; }
+._talk.otherCh ._rightCol { width:100%; }
+._talk.otherCh ._actorWords { background:black;color:white; }
+
+._actor_0 ._actorName { color: #888888; }
+._actor_0 ._actorName::after { content:"GM"; }
+._actor_0 ._actorImg { background-image:url(); } 
+._actor_1 ._actorName { color: #b12020; }
+._actor_1 ._actorName::after { content:"波恩布拉米"; }
+._actor_1 ._actorImg { background-image:url(https://images.plurk.com/7CEChytNsNHIsRumWG8zKy.png); } 
+._actor_2 ._actorName { color: #68c926; }
+._actor_2 ._actorName::after { content:"伊碧娜"; }
+._actor_2 ._actorImg { background-image:url(https://images.plurk.com/73mP88lHDs8x9tL88V5evV.png); } 
+._actor_3 ._actorName { color: #888888; }
+._actor_3 ._actorName::after { content:"烏札戰士"; }
+._actor_3 ._actorImg { background-image:url(https://images.plurk.com/3xL71K3rSBSTbX4nVd70cb.png); } 
+._actor_4 ._actorName { color: #888888; }
+._actor_4 ._actorName::after { content:"system"; }
+._actor_4 ._actorImg { background-image:url(); } 
+._actor_5 ._actorName { color: #e87864; }
+._actor_5 ._actorName::after { content:"茜茜"; }
+._actor_5 ._actorImg { background-image:url(https://images.plurk.com/7myKi5zk0H3COKWQDn6km4.png); } 
+._actor_6 ._actorName { color: #e4ce3f; }
+._actor_6 ._actorName::after { content:"印阿斯莫"; }
+._actor_6 ._actorImg { background-image:url(https://images.plurk.com/24gApbvnCsKHizi6hpB60Z.png); } 
+._actor_7 ._actorName { color: #3fafde; }
+._actor_7 ._actorName::after { content:"潘"; }
+._actor_7 ._actorImg { background-image:url(https://images.plurk.com/4av9rMynOAmvtRQTAws4Eo.png); } 
+._actor_8 ._actorName { color: #9963c5; }
+._actor_8 ._actorName::after { content:"加瓦瓦烏格"; }
+._actor_8 ._actorImg { background-image:url(https://images.plurk.com/631zlKCfYU3svtDN2puHWv.png); } 
+._actor_9 ._actorName { color: #5770d6; }
+._actor_9 ._actorName::after { content:"泉巫"; }
+._actor_9 ._actorImg { background-image:url(https://images.plurk.com/7hJNhctuQc5Y6I4PcGqe98.png); } 
+._actor_10 ._actorName { color: #daa97c; }
+._actor_10 ._actorName::after { content:"努薩哈"; }
+._actor_10 ._actorImg { background-image:url(https://images.plurk.com/38j398FsNDfffUiW42Ijvg.png); } 
+._actor_11 ._actorName { color: #e01f1f; }
+._actor_11 ._actorName::after { content:"克蒙阿朵堂"; }
+._actor_11 ._actorImg { background-image:url(https://images.plurk.com/5Hk6Q66o7CJ7eFK0sqWZbJ.png); } 
+._actor_12 ._actorName { color: #0b32d0; }
+._actor_12 ._actorName::after { content:"霖巫"; }
+._actor_12 ._actorImg { background-image:url(https://images.plurk.com/40kk0o8DVqqYuuZw43iiyO.png); } 
+._actor_13 ._actorName { color: #3353d1; }
+._actor_13 ._actorName::after { content:"川巫"; }
+._actor_13 ._actorImg { background-image:url(https://images.plurk.com/2CX3iiY9knaVGVKGGompOP.png); } 
+._actor_14 ._actorName { color: #7e5002; }
+._actor_14 ._actorName::after { content:"伊萬"; }
+._actor_14 ._actorImg { background-image:url(https://images.plurk.com/1qH3BdzdfraJrpoEgNhWgL.png); } 
+._actor_15 ._actorName { color: #888888; }
+._actor_15 ._actorName::after { content:"魯希"; }
+._actor_15 ._actorImg { background-image:url(https://images.plurk.com/1GlNICE6Cq0mlJdAYHudXP.png); } 
+._actor_16 ._actorName { color: #888888; }
+._actor_16 ._actorName::after { content:"哈伊達"; }
+._actor_16 ._actorImg { background-image:url(https://images.plurk.com/6nDW0vFtvr9qKdHlTf2j6M.png); } 
+._actor_17 ._actorName { color: #888888; }
+._actor_17 ._actorName::after { content:"力"; }
+._actor_17 ._actorImg { background-image:url(https://images.plurk.com/CPjH0cxE2re6qOvINfA1I.png); } 
+._actor_18 ._actorName { color: #be9113; }
+._actor_18 ._actorName::after { content:"阿雷塔"; }
+._actor_18 ._actorImg { background-image:url(https://images.plurk.com/2MkzggPfcTtUQjdClQWPmX.png); } 
+._actor_19 ._actorName { color: #888888; }
+._actor_19 ._actorName::after { content:"西萊"; }
+._actor_19 ._actorImg { background-image:url(https://images.plurk.com/2581VTxJXTPmYi0jMkAJBz.png); } 
+._actor_20 ._actorName { color: #888888; }
+._actor_20 ._actorName::after { content:"瑪塔"; }
+._actor_20 ._actorImg { background-image:url(https://images.plurk.com/1P6G3gKr7JQA5XJA9IlDV8.png); } 
+._actor_21 ._actorName { color: #888888; }
+._actor_21 ._actorName::after { content:"比"; }
+._actor_21 ._actorImg { background-image:url(https://images.plurk.com/15nbb11hsDKk0ai7At6OsV.png); } 
+._actor_22 ._actorName { color: #b51212; }
+._actor_22 ._actorName::after { content:"狼群"; }
+._actor_22 ._actorImg { background-image:url(https://images.plurk.com/50YBMcKFFvmwYOUYBbMPN9.png); } 
+._actor_23 ._actorName { color: #e8c545; }
+._actor_23 ._actorName::after { content:"張泛"; }
+._actor_23 ._actorImg { background-image:url(https://images.plurk.com/6Tq7Tyxcd5Td0hg4xmUXuN.png); } 
+._actor_24 ._actorName { color: #888888; }
+._actor_24 ._actorName::after { content:"格拉莫拉"; }
+._actor_24 ._actorImg { background-image:url(https://images.plurk.com/647J4MuWUOL9srHk9dOUQw.png); } 
+._actor_25 ._actorName { color: #888888; }
+._actor_25 ._actorName::after { content:"拉爾加"; }
+._actor_25 ._actorImg { background-image:url(https://images.plurk.com/2fgGYqrzx1H5Ws3Oy5baPI.png); } 
+._actor_26 ._actorName { color: #daa97c; }
+._actor_26 ._actorName::after { content:"桑拉恩"; }
+._actor_26 ._actorImg { background-image:url(https://images.plurk.com/2eFZpiXER2FcxDUDOUdPqR.png); } 
+</style>
+</head>
+<body class="center">
+<div class="_hidden">
+<version>hazmole_v1.0</version>
+</div>
+
+<h1>破裂</h1>
+<div class="_subtitle"></div>
+
+<div id="_main"><div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg _hidden"></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">在弟弟們的命名祭過後，伊碧娜尚未得到百湧變動的消息，烏札部落就先迎來了另一個變動的發起者。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg _hidden"></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">有了潘薩滿造訪的經歷，今天守衛崗哨的格拉莫拉沒有像上次力那麼匆忙慌亂，但在稍微看清楚天空上的人影時，他的動作也急切了許多。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg _hidden"></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">當伊碧娜聽到戰士長的敲門呼喚，走出房門時，正好看見波恩布拉米粗暴地落在廣場上，兩條化為熊掌的粗實大腿半陷到地面，周圍還看得到撞擊的凹陷、裂痕，以及漫天飛揚的沙塵。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_1">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「喲，泥偶的薩滿，來得挺快的嘛。」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_1">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">他一邊把腳從地下拔出來，一邊扭動脖子，雙手抱胸道：</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_1">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「吶，上次妳的人跟我說茜茜帶著孩子跑了，我找了一圈沒找到，妳是不是該給我個交代？」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「波恩布拉米薩滿。」<br>伊碧娜維持著戒備，緩步上前迎接這位來訪的不速之客。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「……茜茜的事，我很遺憾。<br>　但如果連你也找不到，那我們自然也不會得知茜茜的下落，不是嗎？」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_1">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「呸，之前是看在妳的面子上才讓她躲在這裡的，妳就這樣雙手一攤想要當作什麼都沒發生嗎？」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_1">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">他雙手抱胸，居高臨下斜視著伊碧娜道：</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_1">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「我已經去過吼洪翁部落了，就當小屁孩薩滿沒說謊好了，他們知道的地方我都查過了，就剩妳這邊那個首領說的什麼鬼大漢。」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_1">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">他露出猙獰的笑容，瞪視著烏札的薩滿道：</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_1">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「我要求不多，他們那個商隊下次過來的時候，妳把他們抓來給我就好，我自己會處理。」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「我們部落的首領已經在您的關照下失去了行動能力。」<br>伊碧娜的聲音沒有放入感情，冷淡的提起波恩布拉米之前做過的行徑。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「關於這件事，我想我已經沒有太多能幫上忙的部分了。」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_1">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「那妳就是要跟我對抗的意思囉？」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_1">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">肆無忌憚的薩滿放開雙手，筋肉虯結的身軀開始緩緩浮出鱗片，整個人又膨脹了一小圈。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「在盟約之下，我不願意與您敵對，波恩布拉米薩滿。」<br>伊碧娜垂下雙眼，右手拄著的聖物輕敲地面，微微擾動著土石。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「如果你想知道大漢的位置，我能請商隊在下次來訪時為你畫一份地圖。」<br>「但為了你而危害來訪的客人，這件事請恕我無法同意。」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_1">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「交出幾個外人都不敢的話，那不就是妳把茜茜藏起來的嗎？」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_1">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">他齜牙咧嘴，露出逐漸變得尖利交錯的牙齒，身後披散的長髮也硬化匯聚，沿著頸背延伸出青藍色的棘刺。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「如果你不信任我的話，有何必來找我呢？」<br>「還是說，這就是你對待盟友的方式嗎？波恩布拉米薩滿。」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">平常的話，伊碧娜應該是不會用這麼直接的方式去頂撞眼前的男人。<br>但兄長被變成廢人的仇恨，儘管沒有如火焰熊熊燃燒，仍隱隱影響了少女的態度。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_1">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「怯，幾個外人算什麼，要不是盟友，妳現在就該倒在地上回話了。」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_1">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">他的頭顱慢慢發藍、拉長，四根長角從腦後伸長，伊碧娜認出那是……克蒙阿朵堂的輪廓。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「看在盟約的份上，請回吧，波恩布拉米薩滿，這裡沒有你要的東西。」<br>聖物重重敲在地上，泥偶的形狀也逐漸浮現。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_1">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「地圖有個屁用，看來要先讓妳搞清楚狀況才行了。」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg _hidden"></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">－－－－－－－－衝突開始－－－－－－－－</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg _hidden"></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">※伊碧娜因為【首領阿雷塔之妹】陷入麻煩，獲得１點命運點</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_1">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">科蒙的薩滿不再說話，咧開嘴發出低吼，整個腦袋迅速變形，高大的身軀向前彎曲，大半個身子被層層交疊的鱗片與棘刺覆蓋。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_1">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">伊碧娜彷彿回到了那個河岸，看見那猙獰的頭顱，甚至心跳加速的壓抑感都重現於眼前，但有個相當大的差異──青藍色的鱗片下沒了黯淡的紅光，只留下堅韌的軀體和尖利的爪牙。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_1">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">※揭露特技：〈龍脈威壓〉：波恩布拉米變化為克蒙阿朵堂的樣子，散發出懾人的威壓，所在的區塊內，敵人創造優勢行動的被動難度值+2。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">※觸發絕技「瞬思塑形」<br>衝突開始時自動進行一次創造優勢行動，使用「工匠」技能製造［泥戰偶］形象。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">4DF+3 #工匠(創造優勢) (4DF+3) ＞ [ ][ ][-][+]+3 ＞ Good(+3)</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">※消耗1點命運點(3/3)，援引［守護部落］，使判定結果+2</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">在擾動的泥石中，八條彷彿藤蔓的巨大觸手瞬間崛起，而那藏著駭人獨眼的大壺也緩緩浮現，擋在了伊碧娜與化做凶獸的薩滿面前。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg _hidden"></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">※創建優勢成功，伊碧娜建立局勢形象【泥戰偶（百手壺）】，可以免費援引１次。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">後退一步，拉開距離，伊碧娜沒有貿然攻擊。她知道，儘管自己多有鍛鍊，但憑自己泥偶的強度要束縛住眼前的戰鬥派薩滿還是太過勉強。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">因此，她再次讓石杖輕敲地面，詠唱禱詞。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「沉睡在土壤中的『崁德拉哈（土龍）』，為了你祝福的人們張開口吧。」<br>地面開始震動，體型不輸百手壺的巨大泥娃娃在廣場底下成形，發出咆哮，原本平整的土地也隨著巨龍的翻騰而開始起伏。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">4DF+3 #工匠(創造優勢) (4DF+3) ＞ [-][-][ ][+]+3 ＞ Fair(+2)</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">※消耗1點命運點(2/3)，援引［烏札部落的豐饒之地］，使判定結果+2</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg _hidden"></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">※創建優勢成功，伊碧娜建立局勢形象【泥戰偶（土龍）】，可以免費援引１次。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_3">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">烏札部落的人們一開始就在外圍觀，看見動起了手，立刻遵循薩滿先前的吩咐退到更遠處，但口中的支援呼喊卻沒有停過。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_3">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">他們相信薩滿可以戰勝對手。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_1">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">動物的頭顱沒有說出人類的語言，但伊碧娜完全可以從對方的低吼聲中聽出輕視的意味。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_1">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">人類的雙腿向前邁步，踏出幾步後立刻猛力蹬出，被鱗片覆蓋的爪子直接迎向百手壺的觸手，一把抓住就向上猛力拉扯。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_1">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">s4DF+4 (4DF+4) ＞ [-][-][+][-]+4 ＞ Fair(+2)</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_1">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">※援引超凡形象【鯤鵬饕餮】，檢定+5</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">4DF+3 #駕駛(防禦) (4DF+3) ＞ [ ][ ][ ][+]+3 ＞ Great(+4)</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_1">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">即使變成怪獸的樣子，依然可以看見波恩布拉米身上隨著發力膨脹的肌肉輪廓。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg _hidden"></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">地方龜裂，沙塵飛揚，埋藏地底的泥偶被他硬生生扯出地面，隨著一個旋身甩到後方的路面，整個軀體連同觸手砸在地上攤平，留下凹陷的痕跡。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg _hidden"></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">※絕妙成功，波恩布拉米使【泥戰偶（百手壺）】轉變為【翻覆的泥戰偶（百手壺）】，可以免費援引２次</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_4">
+<div class="_leftCol">
+<div class="_actorImg _hidden"></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">[ 伊碧娜 ] 精神壓力軌 : 1 → 3</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg _hidden"></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「妳以為這種破爛可以攔住我嗎？」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_1">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">巨大的泥偶被甩到身後，即使前方隆起的土堆下還有其他阻礙，半人半獸的薩滿甩了甩手，逕自邁步向前。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">儘管早就知道波恩布拉米的強大，但實際對峙，卻又是截然不同的壓迫感。<br>無論粗壯的泥製觸手如何甩動、試圖纏繞、綑綁、鞭打，眼前的怪物都像是毫不當回事的將其一一化解。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「波恩布拉米薩滿，就算戰勝我，你也得不到你想要的東西。」<br>伊碧娜表面上仍強裝冷靜，但潛伏在地底下的地龍一直找不到攻擊機會，作為屏障的百手壺也已經被丟到一旁，敵我之間已經沒有阻礙。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_1">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「哼，那我就只好在這裡等那個鬼商隊了，我可不會浪費時間，既然待在這裡，就讓妳們的人替我生孩子吧。」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_1">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">沙塵飛揚下，半人半獸的身影模糊不清，正如那野獸頭顱含糊粗厚的聲線。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_1">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「我今天就教妳一個道理：強大的獵人就算獵不到熊，抓到什麼都是收獲；但弱小的獵人遇到熊就只能成為牠的收獲。」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_1">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">他捏起爪子，聲音和樣貌都是純然的獸性：「強大就是一切、勝者永遠不會吃虧。」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">從伊碧娜的話語中可以窺見，恐怕在她心中仍存有「敗北也是無可奈何」的念頭。儘管敵人來勢洶洶，但就算輸掉，在盟約的約束下，恐怕對方也不會做出多過分的事吧。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">但眼前這個已經深陷巫羅羅的男人不一樣，直到現在，伊碧娜才被迫認知到這一點：對方正如外表所看到的一樣，是一頭徹頭徹尾的野獸。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">而野獸，是不會手下留情的。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「你這……」<br>咬緊牙關，伊碧娜集中起精神，將內心的軟弱抹去。<br>她知道，她心中的那股一直隱隱燃燒的火焰知道。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">是時候了。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「……你會後悔的，波恩布拉米。」<br>不再用薩滿稱呼對方，伊碧娜聲音中的溫度頓時掉了好幾度。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">聖杖刺入地面，發出琥珀色的光輝。伊碧娜調動全靈全力，讓感官沿著地脈增幅、擴展、將大地之母賜予她的力量毫無保留的注入大地之中。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「願子女的仇敵被粉碎歸塵，『提亞穆拉特（地母的憤怒）』。」<br>隨著詠唱之詞，倒臥在一旁的百手壺彷彿痙攣一樣，巨大的觸手顫抖，厚實的壺身溶解，隨著如暴走般流竄的靈力變形、扭曲、重塑。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">4DF+3 #工匠(創造優勢) (4DF+3) ＞ [+][-][+][+]+3 ＞ Superb(+5)</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">很快的，為了束縛敵人行動的的觸手被湧上的泥石覆蓋，化成了粗糙尖銳的鱗片，化成了兇惡的頸部，而由無數黑曜石碎片構成的爪牙也取代了觸手的末端，變成了彷彿巨蛇、又似凶魚的頭部。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">厚重的壺身也在泥石的不斷補充下長出了六足，生出了如米爾德薩斯（毒蠍）一般的刺尾。一度圓滑可愛的輪廓，如今全是為了傷害、致命而生的尖刺與荊棘。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">比所有大樹更高，甚至比主屋還要龐大，有著九頭龍首、宛如神話中災難化身的泥偶，就這麼化做了現實。怪獸的紅眼緊盯著另一頭怪物，張開爪牙。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg _hidden"></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">※絕妙成功，伊碧娜使【翻覆的泥戰偶（百手壺）】轉變為【九首龍石偶】，共可以免費援引３次，波恩布拉米的免費援引因敘事改變失效</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">※使用聖物「柱石之杖」<br>標記１點失控(5/5)，承受２點精神壓力，為「九首大地龍」附加有２次免費援引的局勢形象［堅岩棘鱗］。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_4">
+<div class="_leftCol">
+<div class="_actorImg _hidden"></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">[ 伊碧娜 ] 精神壓力軌 : 3 → 1</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_4">
+<div class="_leftCol">
+<div class="_actorImg _hidden"></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">[ 伊碧娜 ] 瘋狂 : 3 → 4</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">※獲得新的瘋狂形象［對敵必須心狠］，失控標記重置</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_1">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「喲喲喲，這不是看起來挺有樣子的嘛！」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_1">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">半人半獸的薩滿終於停下腳步，瞥了伊碧娜單薄的身形一眼，回頭上下打量巨大猙獰的石偶，咧開犬牙交錯的大口道：</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_1">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「我決定了！妳一定要給我生個孩子！」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「不用麻煩了。」伊碧娜的聲音從未有過如此無情。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「你今天就會死在這裡。」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg _hidden"></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">－－－－－－－－－－－－－－－－－－－－</div>
+</div>
+</div></div><!--EOS--></div>
+</body>
+</html>
