@@ -10,5 +10,6 @@ var INDEX = [
 	{ title: "雨過天晴", url: "藤藤蛇06.html", },
 	{ title: "陽光明媚", url: "藤藤蛇07.html", },
 	{ title: "遍體鱗傷", url: "藤藤蛇08.html", },
+	{ title: "勇往直前", url: "藤藤蛇09.html", },
 
 ];
