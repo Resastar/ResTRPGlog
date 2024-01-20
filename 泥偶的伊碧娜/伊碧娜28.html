@@ -1,0 +1,971 @@
+
+<html>
+<head>
+<meta charset="utf-8">
+<meta property="og:title" content="決裂">
+<meta property="og:description" content="">
+<title>決裂</title>
+<style>
+h1{ color:white; margin: 5px 0; }
+body{ background:#454752; }
+._subtitle { color:#ddd; margin:5px 0 20px 0; }
+._sectTitle { background:#ddd; margin-top:30px; padding:10px;font-weight:bold;font-size:1.3rem;text-align:center; }
+._hidden { display:none; }
+.center { display:flex; flex-direction:column; align-items:center; }
+#_main { display:flex; flex-direction:column; align-items:end; }
+._script {width: 100%;}
+
+
+._halt { padding:30px 0; }
+._talk { margin:5px 0; display:flex; border:1px solid black; background:#1e1e1e; color:#eee; width:100%; max-width:1080px; border-radius:5px; }
+._leftCol { width:122px; }
+._rightCol { width:calc(100% - 126px); }
+._actorName{ padding:5px 10px; height:20px; font-size:18px; }
+._actorImg { margin:6px; width:110px; height:110px; background-repeat:no-repeat; background-size:cover; background-color:#2a2a2a; }
+._actorWords { margin:5px; background:#2a2a2a; font-size:1.1rem; padding:10px; height:calc(100% - 60px); border-radius:5px; }
+._sectTitle { border-radius:5px; margin-bottom:5px; }
+
+@media only screen and (max-width: 400px) {
+._leftCol { width:100px; }
+._rightCol { width:calc(100% - 100px); }
+._actorImg { margin:35px 0 5px 10px; width: 85px; height: 85px; }
+}
+
+._talk.otherCh { width:calc(50%); text-align:right; margin-left:auto; }
+._talk.otherCh ._leftCol { display:none; }
+._talk.otherCh ._rightCol { width:100%; }
+._talk.otherCh ._actorWords { background:black;color:white; }
+
+._actor_0 ._actorName { color: #3fafde; }
+._actor_0 ._actorName::after { content:"潘"; }
+._actor_0 ._actorImg { background-image:url(https://images.plurk.com/4av9rMynOAmvtRQTAws4Eo.png); } 
+._actor_1 ._actorName { color: #888888; }
+._actor_1 ._actorName::after { content:"烏札戰士"; }
+._actor_1 ._actorImg { background-image:url(https://images.plurk.com/3xL71K3rSBSTbX4nVd70cb.png); } 
+._actor_2 ._actorName { color: #b12020; }
+._actor_2 ._actorName::after { content:"波恩布拉米"; }
+._actor_2 ._actorImg { background-image:url(https://images.plurk.com/7CEChytNsNHIsRumWG8zKy.png); } 
+._actor_3 ._actorName { color: #68c926; }
+._actor_3 ._actorName::after { content:"伊碧娜"; }
+._actor_3 ._actorImg { background-image:url(https://images.plurk.com/73mP88lHDs8x9tL88V5evV.png); } 
+._actor_4 ._actorName { color: #888888; }
+._actor_4 ._actorName::after { content:"GM"; }
+._actor_4 ._actorImg { background-image:url(); } 
+._actor_5 ._actorName { color: #888888; }
+._actor_5 ._actorName::after { content:"力"; }
+._actor_5 ._actorImg { background-image:url(https://images.plurk.com/CPjH0cxE2re6qOvINfA1I.png); } 
+._actor_6 ._actorName { color: #888888; }
+._actor_6 ._actorName::after { content:"格拉莫拉"; }
+._actor_6 ._actorImg { background-image:url(https://images.plurk.com/647J4MuWUOL9srHk9dOUQw.png); } 
+._actor_7 ._actorName { color: #888888; }
+._actor_7 ._actorName::after { content:"西萊"; }
+._actor_7 ._actorImg { background-image:url(https://images.plurk.com/2581VTxJXTPmYi0jMkAJBz.png); } 
+._actor_8 ._actorName { color: #e87864; }
+._actor_8 ._actorName::after { content:"茜茜"; }
+._actor_8 ._actorImg { background-image:url(https://images.plurk.com/7myKi5zk0H3COKWQDn6km4.png); } 
+._actor_9 ._actorName { color: #888888; }
+._actor_9 ._actorName::after { content:"system"; }
+._actor_9 ._actorImg { background-image:url(); } 
+._actor_10 ._actorName { color: #e4ce3f; }
+._actor_10 ._actorName::after { content:"印阿斯莫"; }
+._actor_10 ._actorImg { background-image:url(https://images.plurk.com/24gApbvnCsKHizi6hpB60Z.png); } 
+._actor_11 ._actorName { color: #9963c5; }
+._actor_11 ._actorName::after { content:"加瓦瓦烏格"; }
+._actor_11 ._actorImg { background-image:url(https://images.plurk.com/631zlKCfYU3svtDN2puHWv.png); } 
+._actor_12 ._actorName { color: #5770d6; }
+._actor_12 ._actorName::after { content:"泉巫"; }
+._actor_12 ._actorImg { background-image:url(https://images.plurk.com/7hJNhctuQc5Y6I4PcGqe98.png); } 
+._actor_13 ._actorName { color: #daa97c; }
+._actor_13 ._actorName::after { content:"努薩哈"; }
+._actor_13 ._actorImg { background-image:url(https://images.plurk.com/38j398FsNDfffUiW42Ijvg.png); } 
+._actor_14 ._actorName { color: #e01f1f; }
+._actor_14 ._actorName::after { content:"克蒙阿朵堂"; }
+._actor_14 ._actorImg { background-image:url(https://images.plurk.com/5Hk6Q66o7CJ7eFK0sqWZbJ.png); } 
+._actor_15 ._actorName { color: #0b32d0; }
+._actor_15 ._actorName::after { content:"霖巫"; }
+._actor_15 ._actorImg { background-image:url(https://images.plurk.com/40kk0o8DVqqYuuZw43iiyO.png); } 
+._actor_16 ._actorName { color: #3353d1; }
+._actor_16 ._actorName::after { content:"川巫"; }
+._actor_16 ._actorImg { background-image:url(https://images.plurk.com/2CX3iiY9knaVGVKGGompOP.png); } 
+._actor_17 ._actorName { color: #7e5002; }
+._actor_17 ._actorName::after { content:"伊萬"; }
+._actor_17 ._actorImg { background-image:url(https://images.plurk.com/1qH3BdzdfraJrpoEgNhWgL.png); } 
+._actor_18 ._actorName { color: #888888; }
+._actor_18 ._actorName::after { content:"魯希"; }
+._actor_18 ._actorImg { background-image:url(https://images.plurk.com/1GlNICE6Cq0mlJdAYHudXP.png); } 
+._actor_19 ._actorName { color: #888888; }
+._actor_19 ._actorName::after { content:"哈伊達"; }
+._actor_19 ._actorImg { background-image:url(https://images.plurk.com/6nDW0vFtvr9qKdHlTf2j6M.png); } 
+._actor_20 ._actorName { color: #be9113; }
+._actor_20 ._actorName::after { content:"阿雷塔"; }
+._actor_20 ._actorImg { background-image:url(https://images.plurk.com/2MkzggPfcTtUQjdClQWPmX.png); } 
+._actor_21 ._actorName { color: #888888; }
+._actor_21 ._actorName::after { content:"瑪塔"; }
+._actor_21 ._actorImg { background-image:url(https://images.plurk.com/1P6G3gKr7JQA5XJA9IlDV8.png); } 
+._actor_22 ._actorName { color: #888888; }
+._actor_22 ._actorName::after { content:"比"; }
+._actor_22 ._actorImg { background-image:url(https://images.plurk.com/15nbb11hsDKk0ai7At6OsV.png); } 
+._actor_23 ._actorName { color: #b51212; }
+._actor_23 ._actorName::after { content:"狼群"; }
+._actor_23 ._actorImg { background-image:url(https://images.plurk.com/50YBMcKFFvmwYOUYBbMPN9.png); } 
+._actor_24 ._actorName { color: #e8c545; }
+._actor_24 ._actorName::after { content:"張泛"; }
+._actor_24 ._actorImg { background-image:url(https://images.plurk.com/6Tq7Tyxcd5Td0hg4xmUXuN.png); } 
+._actor_25 ._actorName { color: #888888; }
+._actor_25 ._actorName::after { content:"拉爾加"; }
+._actor_25 ._actorImg { background-image:url(https://images.plurk.com/2fgGYqrzx1H5Ws3Oy5baPI.png); } 
+._actor_26 ._actorName { color: #daa97c; }
+._actor_26 ._actorName::after { content:"桑拉恩"; }
+._actor_26 ._actorImg { background-image:url(https://images.plurk.com/2eFZpiXER2FcxDUDOUdPqR.png); } 
+</style>
+</head>
+<body class="center">
+<div class="_hidden">
+<version>hazmole_v1.0</version>
+</div>
+
+<h1>決裂</h1>
+<div class="_subtitle"></div>
+
+<div id="_main"><div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「住手！」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">盟約主持人的聲音從高空遠遠傳來。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_1">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">烏札的人們拱衛著薩滿，以自己更加脆弱的肉身擋在單薄的少女面前。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">化為猛獸的薩滿只能看出大略的人形，右手猙獰的青藍色利爪已經高高舉起……</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_3">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「……不要……」遲來的恐懼緊抓著伊碧娜的心臟，她發出嗚咽，泥地不穩定的震動著，倉促湧出的泥手卻怎麼樣也無法阻止猛獸的迫近。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_3">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">腳步踉蹌，她強迫自己向前。想用自己的身體擋住那逼近而來的攻擊。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「痛快，給我倒下吧！」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">戰鬥的勝者肆意張揚地大笑，利爪毫不猶豫地落下──</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_6">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">甲冑精良的戰士長第一個衝上去，卻被突如其來的鱷魚尾巴掃倒在地。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_4">
+<div class="_leftCol">
+<div class="_actorImg _hidden"></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">伊碧娜看著眼前男子絲毫沒有留手的攻擊，彷彿已經可以看見自己下一刻倒在血泊被生擒活捉的未來。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_5">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">然而，一股力道從旁邊把伊碧娜扯到後方，一直站在薩滿身旁的少年終於克服恐懼，挺身而出。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_5">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">薩滿的力量不是普通人能夠抵擋的，一道深長的豁口從左肩延伸到腰側，幾乎把他整個人剖開。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_5">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">大量鮮血飛濺而出，少年張口似乎想說什麼，但口中湧出的只有血液，他最後回眸望向伊碧娜，眼神中的光彩迅速黯淡，潛藏許久的話語終究沒能傳達。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_3">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「力－－」<br>在那一刻，伊碧娜眼前的畫面靜止了，身體彷彿浸入了冬天的湖水一般打起寒顫。她早以見證過族人的死去，但從來沒有這一次這麼鮮明、這麼痛苦。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_3">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">如果不是因為自己的貿然決斷，他本應可以不用迎接這樣的命運。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_3">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">怔怔的看著眼前的景象，一向冷靜的伊碧娜就像是失了魂似的，失去了反應的能力。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「伊碧娜，我們到了！」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">潘的聲音幾乎和流光般的身形同時抵達，藍衣的盟約主持者出現在烏札薩滿面前，張開雙手攔阻逼近的波恩布拉米。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「住手，波恩布拉米！」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「嘖，潘，這次可不是我的問題。」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">波恩布拉米收回利爪，雙手抱胸，斜斜看著失神的伊碧娜道：</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「是這傢伙要跟我對抗的，現在她輸了，我帶她走沒問題吧？」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「什、什麼？」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">盟約的主持者似乎還有些搞不清楚狀況，急忙回頭望向烏札的薩滿。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_6">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「明明就是他先出手的！他要搶薩滿去生孩子！」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_6">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">看著部落的少年死在眼前，自己卻還沒接近敵人就被甩開，戰士長的怒火幾乎要化為實質。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_1">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">烏札的戰士們紛紛拿出武器，不顧彼此戰力懸殊，圍住了波恩布拉米。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_7">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">西萊沒有上前，但卻來到好友身旁，正如先前力站在伊碧娜身旁的姿態。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「哼，她堅持要幫茜茜騙我，難道不用補償我嗎？」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">對於周圍的烏札人們視若無睹，科蒙的薩滿眼中只有潘和伊碧娜。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_4">
+<div class="_leftCol">
+<div class="_actorImg _hidden"></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">目光沒有焦距的伊碧娜，眼角的餘光卻瞥見了一抹艷紅。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_8">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">怎麼想都不會出現在這裡的茜茜薩滿，抱著聖物虎哈號從波恩布拉米後方逼近，她的靴子踩在塵土飛揚的大地上，卻沒有傳出一絲一毫的聲響。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_8">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">※茜茜建立局勢形象【遏止聲響】，可以免費援引一次。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_3">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「……！」<br>一瞬間懷疑自己是不是看錯了，友人的身影讓伊碧娜瞪大了雙眼。<br>……是幻覺嗎？還是……是潘，做了什麼……？</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">潘似乎對茜茜的出現並不訝異，但對於她正準備採取的行動……</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「波恩布拉米，你真的不能讓茜茜撫養她的女兒嗎？」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">他抬起頭，瞇起眼睛凝視男子。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「──那是我的女兒！」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">男子毫不退讓。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_3">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「所有人，退後－－」<br>在電光石火之間，伊碧娜明白了茜茜出現在這裡的原因、她的目的、以及她接下來的行動。顧不得深思熟慮，幾乎是下意識的，她向著她的族人喊道，手杖敲擊地面，讓泥偶升起－－</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_1">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">面對著野獸薩滿的烏札戰士們自然也能看見茜茜薩滿，這時聽見伊碧娜的命令，並未遲疑，迅速向外退開。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「要再打嗎？來──」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">波恩布拉米沒有想到後方的變故，只以為是伊碧娜終於按捺不住想要動手了。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_8">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「那就打！」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_8">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">女薩滿高聲大喊，先前完全死寂的聲音瞬間轉換成響徹雲霄的巨響，甚至讓飛揚的沙塵鼓盪出肉眼可見的震波。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_8">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">※虎哈號：將【遏止聲響】轉換為【巨響爆發】，並對所在區域所有人（包含自己）進行一次難度 6 的攻擊行動。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_3">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">轉瞬之間，從地面升起的泥偶就在摧枯拉朽的巨聲中復又粉碎，但即使如此，它們也確實完成了他們唯一的任務：守護部落的成員。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_3">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">族人安全退去，但少年的屍身仍舊躺在原地。幾乎是直覺反應，伊碧娜沒有跟著往後退，而是在泥偶碎裂的同時，擋在了力的身前，代替他承受了轟隆的巨聲衝擊。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_3">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">4DF+1 #體魄(防禦) (4DF+1) ＞ [ ][+][-][ ]+1 ＞ Average(+1)</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_4">
+<div class="_leftCol">
+<div class="_actorImg _hidden"></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">※伊碧娜承受後果【聽力受損】，GM可以免費援引一次。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_9">
+<div class="_leftCol">
+<div class="_actorImg _hidden"></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">[ 伊碧娜 ] 後果 : 2 → 1</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">s4DF+1  (4DF+1) ＞ [-][+][ ][+]+1 ＞ Fair(+2)</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">※潘承受2點傷害。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_8">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">s4DF+4  (4DF+4) ＞ [-][ ][ ][ ]+4 ＞ Good(+3)</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_8">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">※茜茜承受2點傷害。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_9">
+<div class="_leftCol">
+<div class="_actorImg _hidden"></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">[ 茜茜 ] 物理壓力軌 : 4 → 2</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">s4DF+4 (4DF+4) ＞ [+][ ][+][ ]+4 ＞ Fantastic(+6)</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_8">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">※免費援引【巨響爆發】1次，檢定難度+2</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_4">
+<div class="_leftCol">
+<div class="_actorImg _hidden"></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">※波恩布拉米承受1點傷害，承受後果【雙耳滲血】，茜茜可以免費援引一次。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_4">
+<div class="_leftCol">
+<div class="_actorImg _hidden"></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">巨響過後，伊碧娜感覺耳邊滿是迴盪的低沉嗡鳴，什麼也聽不清楚。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_4">
+<div class="_leftCol">
+<div class="_actorImg _hidden"></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">但她可以看見波恩布拉米雙耳滲出鮮血，瞪大了眼睛回頭注視茜茜，即使身上的傷勢越來越重，卻絲毫沒有打消他的戰意。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_8">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">茜茜的虎哈號已經湊到嘴邊，卻被潘伸手攔阻。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">盟約的主導者仍嘗試著盡最大努力，說服波恩布拉米妥協，但久別重逢的雙方看上去完全沒有要和解的意思。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_7">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">少女看著擋在自己身前的泥偶破碎，注意到伊碧娜完全沒有防護自己，似乎還受了點傷，她立刻咬牙靠了過去，守在好友身旁。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_6">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">戰士長觀望情勢，指揮著戰士隊退出這片範圍，自己卻是同樣來到薩滿身旁守衛。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_3">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「潘，放棄吧……」<br>伊碧娜出聲，才注意到她連自己的聲音都快聽不清楚了。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_3">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「事已至此……讓她們，讓我們……為這件事劃下結尾吧。」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_3">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">或許，聽不到自己的聲音也是件好事吧。起碼，這樣一來，伊碧娜還能忽略掉內心傳來那股隱約的刺痛感。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「不、不！」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">潘的聲音直接傳達到伊碧娜心中，但他的抗拒意圖卻強烈到出乎伊碧娜的意料。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「伊碧娜，在那天過後，我就發誓，絕對不會再讓盟友死在我的面前。」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">他伸出雙手，從伊碧娜身前離開，來到了波恩布拉米身旁。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「我不會讓他對你們下殺手，也不會接受你們對他下殺手。」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">※揭露潘瘋狂形象【跨過我的屍體】</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_8">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「潘……」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_8">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">茜茜的動作停頓了片刻，接著她目光轉向伊碧娜，輕輕點了點頭，深吸了一大口氣……</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_8">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">伊碧娜明白這位女薩滿不打算停手。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_4">
+<div class="_leftCol">
+<div class="_actorImg _hidden"></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">※強迫伊碧娜瘋狂形象【對敵必須心狠】，波恩布拉米必須對他的所作所為付出代價，伊碧娜不能容忍這個威脅繼續存在，即使要跟潘敵對，即使要把波恩布拉米跟潘都親手殺死，她也不能停手。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_3">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">※接受瘋狂強迫，獲得1點命運點(1/3)，失控標記增加(5/5)<br>※獲得新的瘋狂形象［扼殺紛爭於搖籃］，失控標記鎖定</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_3">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「潘……」伊碧娜閉上眼，深吸一口氣。<br>在目擊了少年的犧牲後，她下定了決心，跨過了最後的那一道檻。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_3">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">無論代價是什麼，她都不能忍受再有這樣的悲劇出現在自己眼前。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_3">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「……對不起。」<br>力量從靈魂的身處湧現，擁抱了自己最後的巫羅羅，伊碧娜重新睜開了眼睛。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_3">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">將少年的屍體捧起，交給在身旁守護自己的摯友，伊碧娜頷首，起身，踏出腳步。<br>她的雙眼充滿了決心、力量……以及瘋狂。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_3">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「我會阻止你。」</div>
+</div>
+</div></div><!--EOS--></div>
+</body>
+</html>

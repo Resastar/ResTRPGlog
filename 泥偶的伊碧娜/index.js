@@ -32,4 +32,5 @@ var INDEX = [
 	{ title: "夜、星、夢", url: "伊碧娜25.html", }, 
 	{ title: "破裂", url: "伊碧娜26.html", }, 
 	{ title: "斷裂", url: "伊碧娜27.html", }, 
+	{ title: "決裂", url: "伊碧娜28.html", }, 
 ];
