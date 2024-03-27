@@ -38,4 +38,5 @@ var INDEX = [
 	{ title: "紛爭的搖籃", url: "伊碧娜31.html", }, 
 	{ title: "山嵐", url: "伊碧娜32.html", }, 
 	{ title: "山崩", url: "伊碧娜33.html", }, 
+	{ title: "水枯", url: "伊碧娜34.html", }, 
 ];
