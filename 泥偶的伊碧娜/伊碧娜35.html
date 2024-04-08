@@ -1,0 +1,520 @@
+
+<html>
+<head>
+<meta charset="utf-8">
+<meta property="og:title" content="水湧">
+<meta property="og:description" content="">
+<title>水湧</title>
+<style>
+h1{ color:white; margin: 5px 0; }
+body{ background:#454752; }
+._subtitle { color:#ddd; margin:5px 0 20px 0; }
+._sectTitle { background:#ddd; margin-top:30px; padding:10px;font-weight:bold;font-size:1.3rem;text-align:center; }
+._hidden { display:none; }
+.center { display:flex; flex-direction:column; align-items:center; }
+#_main { display:flex; flex-direction:column; align-items:end; }
+._script {width: 100%;}
+
+
+._halt { padding:30px 0; }
+._talk { margin:5px 0; display:flex; border:1px solid black; background:#1e1e1e; color:#eee; width:100%; max-width:1080px; border-radius:5px; }
+._leftCol { width:122px; }
+._rightCol { width:calc(100% - 126px); }
+._actorName{ padding:5px 10px; height:20px; font-size:18px; }
+._actorImg { margin:6px; width:110px; height:110px; background-repeat:no-repeat; background-size:cover; background-color:#2a2a2a; }
+._actorWords { margin:5px; background:#2a2a2a; font-size:1.1rem; padding:10px; height:calc(100% - 60px); border-radius:5px; }
+._sectTitle { border-radius:5px; margin-bottom:5px; }
+
+@media only screen and (max-width: 400px) {
+._leftCol { width:100px; }
+._rightCol { width:calc(100% - 100px); }
+._actorImg { margin:35px 0 5px 10px; width: 85px; height: 85px; }
+}
+
+._talk.otherCh { width:calc(50%); text-align:right; margin-left:auto; }
+._talk.otherCh ._leftCol { display:none; }
+._talk.otherCh ._rightCol { width:100%; }
+._talk.otherCh ._actorWords { background:black;color:white; }
+
+._actor_0 ._actorName { color: #888888; }
+._actor_0 ._actorName::after { content:"GM"; }
+._actor_0 ._actorImg { background-image:url(); } 
+._actor_1 ._actorName { color: #68c926; }
+._actor_1 ._actorName::after { content:"伊碧娜"; }
+._actor_1 ._actorImg { background-image:url(https://images.plurk.com/73mP88lHDs8x9tL88V5evV.png); } 
+._actor_2 ._actorName { color: #3c4e96; }
+._actor_2 ._actorName::after { content:"夜"; }
+._actor_2 ._actorImg { background-image:url(https://images.plurk.com/2BhEGWJLmAu2JrkIbTxDwI.png); } 
+._actor_3 ._actorName { color: #3353d1; }
+._actor_3 ._actorName::after { content:"川巫"; }
+._actor_3 ._actorImg { background-image:url(https://images.plurk.com/2CX3iiY9knaVGVKGGompOP.png); } 
+._actor_4 ._actorName { color: #708af0; }
+._actor_4 ._actorName::after { content:"星"; }
+._actor_4 ._actorImg { background-image:url(https://images.plurk.com/2BhEGWJLmAu2JrkIbTxDwI.png); } 
+._actor_5 ._actorName { color: #5770d6; }
+._actor_5 ._actorName::after { content:"夢"; }
+._actor_5 ._actorImg { background-image:url(https://images.plurk.com/2BhEGWJLmAu2JrkIbTxDwI.png); } 
+._actor_6 ._actorName { color: #daa97c; }
+._actor_6 ._actorName::after { content:"桑拉恩"; }
+._actor_6 ._actorImg { background-image:url(https://images.plurk.com/2eFZpiXER2FcxDUDOUdPqR.png); } 
+._actor_7 ._actorName { color: #e87864; }
+._actor_7 ._actorName::after { content:"茜茜"; }
+._actor_7 ._actorImg { background-image:url(https://images.plurk.com/7myKi5zk0H3COKWQDn6km4.png); } 
+._actor_8 ._actorName { color: #9963c5; }
+._actor_8 ._actorName::after { content:"加瓦瓦烏格"; }
+._actor_8 ._actorImg { background-image:url(https://images.plurk.com/631zlKCfYU3svtDN2puHWv.png); } 
+._actor_9 ._actorName { color: #3fafde; }
+._actor_9 ._actorName::after { content:"潘"; }
+._actor_9 ._actorImg { background-image:url(https://images.plurk.com/4av9rMynOAmvtRQTAws4Eo.png); } 
+._actor_10 ._actorName { color: #5770d6; }
+._actor_10 ._actorName::after { content:"泉巫"; }
+._actor_10 ._actorImg { background-image:url(https://images.plurk.com/7hJNhctuQc5Y6I4PcGqe98.png); } 
+._actor_11 ._actorName { color: #e8c545; }
+._actor_11 ._actorName::after { content:"張泛"; }
+._actor_11 ._actorImg { background-image:url(https://images.plurk.com/6Tq7Tyxcd5Td0hg4xmUXuN.png); } 
+._actor_12 ._actorName { color: #b12020; }
+._actor_12 ._actorName::after { content:"波恩布拉米"; }
+._actor_12 ._actorImg { background-image:url(https://images.plurk.com/7CEChytNsNHIsRumWG8zKy.png); } 
+._actor_13 ._actorName { color: #888888; }
+._actor_13 ._actorName::after { content:"哈伊達"; }
+._actor_13 ._actorImg { background-image:url(https://images.plurk.com/6nDW0vFtvr9qKdHlTf2j6M.png); } 
+._actor_14 ._actorName { color: #888888; }
+._actor_14 ._actorName::after { content:"烏札戰士"; }
+._actor_14 ._actorImg { background-image:url(https://images.plurk.com/3xL71K3rSBSTbX4nVd70cb.png); } 
+._actor_15 ._actorName { color: #888888; }
+._actor_15 ._actorName::after { content:"力"; }
+._actor_15 ._actorImg { background-image:url(https://images.plurk.com/CPjH0cxE2re6qOvINfA1I.png); } 
+._actor_16 ._actorName { color: #888888; }
+._actor_16 ._actorName::after { content:"格拉莫拉"; }
+._actor_16 ._actorImg { background-image:url(https://images.plurk.com/647J4MuWUOL9srHk9dOUQw.png); } 
+._actor_17 ._actorName { color: #888888; }
+._actor_17 ._actorName::after { content:"西萊"; }
+._actor_17 ._actorImg { background-image:url(https://images.plurk.com/2581VTxJXTPmYi0jMkAJBz.png); } 
+._actor_18 ._actorName { color: #888888; }
+._actor_18 ._actorName::after { content:"system"; }
+._actor_18 ._actorImg { background-image:url(); } 
+._actor_19 ._actorName { color: #e4ce3f; }
+._actor_19 ._actorName::after { content:"印阿斯莫"; }
+._actor_19 ._actorImg { background-image:url(https://images.plurk.com/24gApbvnCsKHizi6hpB60Z.png); } 
+._actor_20 ._actorName { color: #daa97c; }
+._actor_20 ._actorName::after { content:"努薩哈"; }
+._actor_20 ._actorImg { background-image:url(https://images.plurk.com/38j398FsNDfffUiW42Ijvg.png); } 
+._actor_21 ._actorName { color: #e01f1f; }
+._actor_21 ._actorName::after { content:"克蒙阿朵堂"; }
+._actor_21 ._actorImg { background-image:url(https://images.plurk.com/5Hk6Q66o7CJ7eFK0sqWZbJ.png); } 
+._actor_22 ._actorName { color: #0b32d0; }
+._actor_22 ._actorName::after { content:"霖巫"; }
+._actor_22 ._actorImg { background-image:url(https://images.plurk.com/40kk0o8DVqqYuuZw43iiyO.png); } 
+._actor_23 ._actorName { color: #7e5002; }
+._actor_23 ._actorName::after { content:"伊萬"; }
+._actor_23 ._actorImg { background-image:url(https://images.plurk.com/1qH3BdzdfraJrpoEgNhWgL.png); } 
+._actor_24 ._actorName { color: #888888; }
+._actor_24 ._actorName::after { content:"魯希"; }
+._actor_24 ._actorImg { background-image:url(https://images.plurk.com/1GlNICE6Cq0mlJdAYHudXP.png); } 
+._actor_25 ._actorName { color: #be9113; }
+._actor_25 ._actorName::after { content:"阿雷塔"; }
+._actor_25 ._actorImg { background-image:url(https://images.plurk.com/2MkzggPfcTtUQjdClQWPmX.png); } 
+._actor_26 ._actorName { color: #888888; }
+._actor_26 ._actorName::after { content:"瑪塔"; }
+._actor_26 ._actorImg { background-image:url(https://images.plurk.com/1P6G3gKr7JQA5XJA9IlDV8.png); } 
+._actor_27 ._actorName { color: #888888; }
+._actor_27 ._actorName::after { content:"比"; }
+._actor_27 ._actorImg { background-image:url(https://images.plurk.com/15nbb11hsDKk0ai7At6OsV.png); } 
+._actor_28 ._actorName { color: #b51212; }
+._actor_28 ._actorName::after { content:"狼群"; }
+._actor_28 ._actorImg { background-image:url(https://images.plurk.com/50YBMcKFFvmwYOUYBbMPN9.png); } 
+._actor_29 ._actorName { color: #888888; }
+._actor_29 ._actorName::after { content:"拉爾加"; }
+._actor_29 ._actorImg { background-image:url(https://images.plurk.com/2fgGYqrzx1H5Ws3Oy5baPI.png); } 
+</style>
+</head>
+<body class="center">
+<div class="_hidden">
+<version>hazmole_v1.0</version>
+</div>
+
+<h1>水湧</h1>
+<div class="_subtitle"></div>
+
+<div id="_main"><div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg _hidden"></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">山嵐六年，烏札部落以聯盟的名義將群山歸於一統。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg _hidden"></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">因朵部落收容的無數難民、沃部落藏匿的流亡傳承，以及所有尚存於世的部落薩滿聯合起來試圖對抗伊碧娜，卻在烏札薩滿強硬的石偶鐵拳下被鎮壓。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg _hidden"></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">至此，無敵的薩滿成為群山的女王，整片群山的樣貌取決於她的意志。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg _hidden"></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">她的行蹤神出鬼沒，只有重大祭典才會回到烏札，其餘時間總是在驅逐獸群和部落，人們怨聲載道，沒有人知道她到底想做什麼。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg _hidden"></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">她可以分享心聲的盟友們都已不在，曾經親近的兄長也在雙方的自我封閉下漸行漸遠……</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg _hidden"></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">－－－－－－－－－－－－－－－－－－－－</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg _hidden"></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">身形龐大的棕熊守在山洞前，奮不顧身地撲向螳螂石偶，卻絲毫無法撼動對方冷酷堅硬的軀殼。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg _hidden"></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">螳螂石偶雙鐮揮落，深深斬入大熊的肩膀，將其牢牢箝制。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg _hidden"></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">大熊發出絕望的嚎叫，仇恨地瞪著眼前的怪物，以及那對金黃色的冷酷雙眸。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_1">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「好，去吧。」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_1">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">群山的女王冷淡地下達指令。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「哇！哇！好、好厲害！」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">小男孩奶聲奶氣地發出一大串意義不明的聲音，接著才邁開小短腿衝了上去，握緊拳頭向前亂打，空氣中凝結出些許水珠，灑落在大熊身上，並沒有造成實質上的傷害。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「嘿！嘿！我也要、好厲害！」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">專心「戰鬥」的小男孩一拳打在大熊小腿，對方試圖抬腿的動作被螳螂石偶徹底壓制，但男孩還是往後跌倒。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_3">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">一股水流輕輕把男孩托起，百湧的薩滿站在遠處，雙手抱胸，對於伊碧娜介入自己對繼承者的訓練，她一如既往沒有表達任何意見，只是這樣遠遠觀望，偶爾出手彌補像這樣的小疏失。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_4">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">三胞胎的大哥奮力搏鬥時，排行第二的男孩卻有些遲疑，歪著頭望向後方的山洞，拉著弟弟走了進去。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_5">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">老么乖巧地跟上二哥的腳步，晃著小手、瞇著水汪汪的眼睛踏進黑暗。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_1">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">一隻蜘蛛泥偶攀附在山洞的頂部，悄無聲息地跟了上去。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg _hidden"></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">巨大的棕熊瘋狂掙扎，卻只是讓鮮血更加劇烈地湧出，在螳螂石偶的箝制下，牠甚至連傷害腳下男孩的機會都沒有。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">毫無懸念的「戰鬥」隨著大熊倒下而結束，氣喘吁吁的夜爬上敵人的屍體，深藍的衣服浸滿血跡，他得意洋洋地揮舞拳頭，學著野獸發出勝利的咆哮。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_4">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">男孩的弟弟們也從山洞離開，他們吃力地從洞內運出一隻小小的熊崽，星走在前方雙手拉著幼熊拖行，雛獸的身下隱約看得見水流將牠稍稍托起。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_5">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">最小的男孩眼裡滿是好奇，他在後方雙手推運熊崽，清澈的泉水向下流淌，匯入承重的小河。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg _hidden"></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">熊崽睡得很沉，甚至連夜的嘶吼都沒能吵醒牠，也因此得以免於目睹不堪的畫面。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_1">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">伊碧娜不知道想起了什麼，臉上一直掛著的溫柔微笑稍稍凝滯了片刻。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_1">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「殺了牠。」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_1">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">她說。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_5">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「咦？」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_5">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">男孩疑惑地抬頭，也不知道是沒有聽懂還是不願聽懂。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_4">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「這個養大、好大好大、可以、可以好大好大，我們就、可以……站在後面！」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_4">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">河川的繼承人明顯更有自己的想法，他轉過頭來據理力爭，雖然有些辭不達意，但內心的傾向卻充分展現。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">「好大好大、可是、可是、水，嘿！哈！唰！就、就倒下了！我好厲害！你們也可以、好厲害！」</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_2">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">男孩從大熊身上爬下來，慷慨激昂地發表自己的看法，雖然具體的論點有些含糊，但明顯更站在伊碧娜這一方。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_1">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">伊碧娜沒有打斷他們，只是默默注視夢仍然抱著幼崽的雙手，嘴唇微微抿起。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_0">
+<div class="_leftCol">
+<div class="_actorImg _hidden"></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">雛獸身下的水流突然暴漲，裹挾著牠往外頭離去。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_1">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">伊碧娜注意到，與男孩們的運送不同，這股水流把幼熊的整個腦袋都壓到了水裡。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_3">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">男孩們的導師接手後續的步驟，完成了伊碧娜的指示。</div>
+</div>
+</div></div><!--EOS-->
+<div class="_script" data-type="talk">
+<div class="_talk mainCh _actor_3">
+<div class="_leftCol">
+<div class="_actorImg "></div>
+</div>
+<div class="_rightCol">
+<div class="_actorName"></div>
+<div class="_actorWords">兩人目光遠遠相對，停頓了片刻後便各自別開。</div>
+</div>
+</div></div><!--EOS--></div>
+</body>
+</html>
