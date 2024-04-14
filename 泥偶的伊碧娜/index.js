@@ -40,4 +40,5 @@ var INDEX = [
 	{ title: "山崩", url: "伊碧娜33.html", }, 
 	{ title: "水枯", url: "伊碧娜34.html", }, 
 	{ title: "水湧", url: "伊碧娜35.html", }, 
+	{ title: "改天換地", url: "伊碧娜36.html", }, 
 ];
