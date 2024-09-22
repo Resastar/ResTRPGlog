@@ -8,5 +8,6 @@ var INDEX = [
 	{ title: "04", url: "04", },
 	{ title: "05", url: "05", },
 	{ title: "06", url: "06", },
+	{ title: "07", url: "07", },
 
 ];
