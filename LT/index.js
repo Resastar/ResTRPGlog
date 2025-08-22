@@ -4,6 +4,7 @@ var INDEX = [
 	{ title: "第一站：索萊鎮", members: [
 		{ title: "00：新世界", url: "索萊鎮00", },
 		{ title: "01：新生活", url: "索萊鎮01", },
+		{ title: "02：生與死", url: "索萊鎮02", },
 	] },
 
 ];
