@@ -2,134 +2,192 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta property="og:title" content="【FATE】蓋斯德大陸紀行">
+	<meta property="og:title" content="【FATE】蓋斯德大陸紀行 - 團錄彙整">
 	<meta property="og:type" content="website">
 	<script src="./index.js"></script>
 	<script>
 		var TITLE, INDEX;
+		var PageIdxArr = [];
+		var activePageBtnElem = null;
 
 		function init(){
 			// Handle Title
 			document.title = TITLE;
+			document.getElementById("Header-Title").textContent = TITLE;
 
-			// Render PageLink Object
-			var arr = INDEX.map( (link, idx) => {
-				return `<div class="LinkObj btn" onClick="link(${idx})">${link.title}</div>`;
-			});
-			var navPanel = document.getElementById("NavbarInner");
-			navPanel.innerHTML = arr.join('');
-
-			// Set Default Page
-			var pageIdx = getCurrentPageIdx();
-			link(pageIdx);
-		}
-		function link(pageIdx){
-			// Render PageLink Objects Deactive
-			var arr = document.getElementsByClassName('LinkObj');
-			for(var i=0; i<arr.length; i++){
-				if(arr[i].classList.contains('active')){
-					arr[i].classList.remove('active');
-				}
-			}
-			// Render PageLink Object Active
-			const elem = getLinkElemByIdx(pageIdx);
-			elem.classList.add("active");
-			elem.scrollIntoView({ behavior: 'smooth', inline: 'center'});
-
-			// Render Page
-			var embdPanel = document.getElementById("MainContext");
-			embdPanel.src = INDEX[pageIdx].url;
-
-			// Modify URL
-			const path = window.location.pathname
-			window.history.pushState({ additionalInformation: 'Updated the URL with JS' }, TITLE, path+`?p=${pageIdx}`);
-		}
-		function prevPage(){
-			const currentPageIdx = getCurrentPageIdx();
-			if(currentPageIdx<=0) return ;
-
-			link(currentPageIdx - 1);
-		}
-		function nextPage(){
-			const currentPageIdx = getCurrentPageIdx();
-			if(currentPageIdx>=INDEX.length-1) return ;
-
-			link(currentPageIdx + 1);
-		}
-
-		function getLinkElemByIdx(idx){
-			return document.getElementsByClassName('LinkObj')[idx];
-		}
-		function getCurrentPageIdx(){
-			const urlParams = new URLSearchParams(window.location.search);
-			const currentPageIdx = parseInt(urlParams.get('p'));
-			if(currentPageIdx==null || isNaN(currentPageIdx)) return 0;
-			return currentPageIdx;
+			renderNavBar();
+			setDefaultPage();
 		}
 		window.onload = init;
+
+		function renderNavBar() {
+			const navBarElem = document.getElementById("Menu");
+			var elemArr = INDEX.map((item, idx) => genNavItemElem(item, idx));
+			navBarElem.innerHTML = elemArr.join('');
+		}
+		function genNavItemElem(item, idx) {
+			if (!!item.members)
+				return genNavGroupElem(item, idx);
+			else {
+				PageIdxArr.push("" + idx);
+				return genNavLinkElem(item, idx)
+			}
+		}
+		function genNavLinkElem(linkItem, idx) {
+			const attr = [
+				`onClick="link(this)"`,
+				`data-idx="${idx}"`
+			];
+			return `<div class="NavLink" ${attr.join(' ')}">${linkItem.title}</div>`;
+		}
+		function genNavGroupElem(groupItem, groupIdx) {
+			const idx_prefix = groupIdx + '-';
+			const memberArr = groupItem.members.map((item, idx) => genNavItemElem(item, idx_prefix + idx));
+			return `<div class="NavGroupOuter">
+				<div class="NavGroupTitle" onClick="toggleGroup(this)">${groupItem.title}</div>
+				<div class="NavGroupInner">${memberArr.join('')}</div>
+			</div>`;
+		}
+
+		function setDefaultPage() {
+			// Read URL
+			const urlParams = new URLSearchParams(window.location.search);
+			const urlPageIdx = urlParams.get('p');
+			
+			if (PageIdxArr.includes(urlPageIdx)) {
+				renderPage(urlPageIdx);
+			} else {
+				renderPage(PageIdxArr[0]);
+			}
+		}
+
+		function gotoPage(step) {
+			const currentPageIdx = activePageBtnElem.attributes["data-idx"].value;
+			const arrIdx = PageIdxArr.findIndex(idx => idx === currentPageIdx);
+			if ((arrIdx + step) >= PageIdxArr.length) return ;
+			if ((arrIdx + step) < 0) return ;
+
+			renderPage(PageIdxArr[arrIdx + step]);
+		}
+		function link(elem) {
+			if (activePageBtnElem == elem) return ;
+
+			const elemIdx = elem.attributes["data-idx"].value;
+			renderPage(elemIdx);
+		}
+		function renderPage(index) {
+			const idxArr = index.split("-");
+			let arrPointer = INDEX;
+			let elem = null;
+			for (idx of idxArr) {
+				const item = arrPointer[parseInt(idx)];
+				if (!!item.members) arrPointer = item.members;
+				else {
+					url = item.url
+				}
+			}
+
+			// Modify Iframe
+			const iframeElem = document.getElementById("Context");
+			iframeElem.src = url;
+			// Modify URL
+			const path = window.location.pathname
+			window.history.pushState({ additionalInformation: 'Updated the URL with JS' }, TITLE, path+`?p=${index}`);
+
+			// find & Mark Active
+			markActive(index);
+		}
+		function markActive(index) {
+			const elemArr = document.querySelectorAll(`[data-idx="${index}"]`);
+			if (!elemArr || elemArr.length <= 0) return ;
+			
+			// toggle Active
+			const elem = elemArr[0];
+			elem.classList.add("Active");
+			if (activePageBtnElem) {
+				activePageBtnElem.classList.remove("Active");
+			}
+			activePageBtnElem = elem;
+			
+			// unfold Parent Group
+			let elemPointer = elem;
+			while (elemPointer.id !== "Menu") {
+				if (elemPointer.classList.contains("NavGroupOuter")) {
+					elemPointer.classList.add("Unfold");
+				}
+				elemPointer = elemPointer.parentElement;
+			}
+		}
+
+		function toggleMenu() {
+			const navBarElem = document.getElementById("Menu");
+			toggle(navBarElem);
+		}
+		function toggleGroup(elem) {
+			toggle(elem.parentElement);
+		}
+		function toggle(elem) {
+			const className = "Unfold";
+			if (elem.classList.contains(className)) {
+				elem.classList.remove(className);
+			} else {
+				elem.classList.add(className);
+			}	
+		}
 	</script>
 	<style>
-		body { background:#454752; color:white; margin:0; }
+		body { margin:0; overflow:hidden; }
+		#MainFrameOuter { display:flex; flex-direction:column; height:calc(100vh); width:calc(100vw); }
+		#MainFrameInner { display:flex; flex-direction:row; flex-grow:1; }
 
-		#MainFrame {
-			display: flex;
-			flex-direction: column;
-			height: calc(100vh);
-		}
-		#MainNavbarOuter {
-			display: flex;
-			justify-content: center;
-			flex-wrap: wrap;
-			background: #25222e;
-			padding: 0.5rem 0;
-			border-bottom: outset 10px #25222e;
-		}
-		#MainNavbar { display:flex; width:100%; flex-grow:1; justify-content:space-between; align-items:center; }
-		#NavbarInnerFrame { flex-grow:1; overflow-x: auto; }
-		#NavbarInner { display:inline-flex; justify-content: flex-start; }
-		#NavbarInner .LinkObj { margin:10px 5px; font-size: 12px; }
+		#Header { height:40px; color:azure; background:#141414; display:flex; align-items:center; justify-content:flex-start; }
+		#Header-Title { margin-left:5px; border-left:1px solid #717171; padding:0 8px; font-size:18px; }
+		.Header-Btn { padding:5px; width:30px; text-align:center; cursor:pointer; font-size:22px; }
 
-		#MainContext {
-			flex-grow: 1;
-			border: 0;
+		#Menu { background:#141414; color:azure; height:calc(100vh - 40px); display:flex; flex-direction:column; gap:2px; overflow-y: auto;
+			width:0;
+			-webkit-transition: width .5s ease-in-out;
+			-moz-transition: width .5s ease-in-out;
+			-o-transition: width .5s ease-in-out;
+			transition: width .5s ease-in-out;
 		}
-
-		#prevBtn, #nextBtn { 
-			margin:0 10px; padding:1.4rem 0.7rem;
-			background: #14144c;
+		#Menu.Unfold {
+			width:300px;
+			padding: 0 1px;
+			-webkit-transition: width .5s ease-in-out;
+			-moz-transition: width .5s ease-in-out;
+			-o-transition: width .5s ease-in-out;
+			transition: width .5s ease-in-out;
 		}
-		.btn {
-			cursor: pointer;
-			padding:.7rem;
-			border: 3px groove #bfbfbf;
-			background: #101014;
-			color: white;
-			flex-shrink: 0;
-		}
+		.NavGroupTitle { cursor:pointer; padding:5px 10px; border:4px double #726681; background:#2f2a3d; }
+		.NavGroupTitle::before { content:"▶"; margin-right:8px; }
+		.NavGroupInner { display:flex; flex-direction:column; gap:2px; padding-left:10px; margin-top:2px; height:0; overflow: hidden; }
 
-		.btn:hover { background: #474656; }
-		.btn:active { background: black !important; }
-		.btn.active { background: #6a6185; }
-		#prevBtn:hover, #nextBtn:hover { background: #2b2589; }
+		.NavGroupOuter.Unfold .NavGroupTitle::before { content:"▼"; margin-right:6px; }
+		.NavGroupOuter.Unfold .NavGroupInner { height: auto; }
 
-		#NavbarInnerFrame::-webkit-scrollbar { height:10px; background-color:#666; }
-		#NavbarInnerFrame::-webkit-scrollbar-thumb { background-color: #dedee5; }
+		.NavLink { cursor:pointer; padding:5px 10px; border:1px solid #71757b; }
+		.NavLink:hover { background-color:#515055 }
+		.NavLink.Active { cursor:inherit; background-color:#515055; }
+
+		#Context { flex-grow:1; border:0; }
+		
 	</style>
 </head>
-<div id="MainFrame">
-	<div id="MainNavbarOuter">
-		<div id="MainNavbar">
-			<div id="prevBtn" class="btn" onClick="prevPage()">上一頁</div>
-			<div id="NavbarInnerFrame">
-				<center>
-				<div id="NavbarInner"></div>
-			</center>
-			</div>
-			<div id="nextBtn" class="btn" onClick="nextPage()">下一頁</div>
-		</div>
+<body>
+<div id="MainFrameOuter">
+	<div id="Header">
+		<div class="Header-Btn" onclick="toggleMenu()" title="展開目錄">☰</div>
+		<div class="Header-Btn" onclick="gotoPage(-1)" title="上一頁">◀</div>
+		<div class="Header-Btn" onclick="gotoPage(+1)" title="下一頁">▶</div>
+		<div id="Header-Title"></div>
 	</div>
-	<iframe id="MainContext" type="text/html" src="" >
-		你的瀏覽器不支援 iframe
-	</iframe>
+	<div id="MainFrameInner">
+		<div id="Menu">B</div>
+		<iframe id="Context" type="text/html" src="">
+			你的瀏覽器不支援 iframe
+		</iframe>
+	</div>
 </div>
+</body>
 </html>
