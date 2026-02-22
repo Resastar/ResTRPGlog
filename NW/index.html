@@ -1,0 +1,193 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta property="og:title" content="【神我狩】致新世界 - 團錄彙整">
+	<meta property="og:type" content="website">
+	<script src="./index.js"></script>
+	<script>
+		var TITLE, INDEX;
+		var PageIdxArr = [];
+		var activePageBtnElem = null;
+
+		function init(){
+			// Handle Title
+			document.title = TITLE;
+			document.getElementById("Header-Title").textContent = TITLE;
+
+			renderNavBar();
+			setDefaultPage();
+		}
+		window.onload = init;
+
+		function renderNavBar() {
+			const navBarElem = document.getElementById("Menu");
+			var elemArr = INDEX.map((item, idx) => genNavItemElem(item, idx));
+			navBarElem.innerHTML = elemArr.join('');
+		}
+		function genNavItemElem(item, idx) {
+			if (!!item.members)
+				return genNavGroupElem(item, idx);
+			else {
+				PageIdxArr.push("" + idx);
+				return genNavLinkElem(item, idx)
+			}
+		}
+		function genNavLinkElem(linkItem, idx) {
+			const attr = [
+				`onClick="link(this)"`,
+				`data-idx="${idx}"`
+			];
+			return `<div class="NavLink" ${attr.join(' ')}">${linkItem.title}</div>`;
+		}
+		function genNavGroupElem(groupItem, groupIdx) {
+			const idx_prefix = groupIdx + '-';
+			const memberArr = groupItem.members.map((item, idx) => genNavItemElem(item, idx_prefix + idx));
+			return `<div class="NavGroupOuter">
+				<div class="NavGroupTitle" onClick="toggleGroup(this)">${groupItem.title}</div>
+				<div class="NavGroupInner">${memberArr.join('')}</div>
+			</div>`;
+		}
+
+		function setDefaultPage() {
+			// Read URL
+			const urlParams = new URLSearchParams(window.location.search);
+			const urlPageIdx = urlParams.get('p');
+			
+			if (PageIdxArr.includes(urlPageIdx)) {
+				renderPage(urlPageIdx);
+			} else {
+				renderPage(PageIdxArr[0]);
+			}
+		}
+
+		function gotoPage(step) {
+			const currentPageIdx = activePageBtnElem.attributes["data-idx"].value;
+			const arrIdx = PageIdxArr.findIndex(idx => idx === currentPageIdx);
+			if ((arrIdx + step) >= PageIdxArr.length) return ;
+			if ((arrIdx + step) < 0) return ;
+
+			renderPage(PageIdxArr[arrIdx + step]);
+		}
+		function link(elem) {
+			if (activePageBtnElem == elem) return ;
+
+			const elemIdx = elem.attributes["data-idx"].value;
+			renderPage(elemIdx);
+		}
+		function renderPage(index) {
+			const idxArr = index.split("-");
+			let arrPointer = INDEX;
+			let elem = null;
+			for (idx of idxArr) {
+				const item = arrPointer[parseInt(idx)];
+				if (!!item.members) arrPointer = item.members;
+				else {
+					url = item.url
+				}
+			}
+
+			// Modify Iframe
+			const iframeElem = document.getElementById("Context");
+			iframeElem.src = url;
+			// Modify URL
+			const path = window.location.pathname
+			window.history.pushState({ additionalInformation: 'Updated the URL with JS' }, TITLE, path+`?p=${index}`);
+
+			// find & Mark Active
+			markActive(index);
+		}
+		function markActive(index) {
+			const elemArr = document.querySelectorAll(`[data-idx="${index}"]`);
+			if (!elemArr || elemArr.length <= 0) return ;
+			
+			// toggle Active
+			const elem = elemArr[0];
+			elem.classList.add("Active");
+			if (activePageBtnElem) {
+				activePageBtnElem.classList.remove("Active");
+			}
+			activePageBtnElem = elem;
+			
+			// unfold Parent Group
+			let elemPointer = elem;
+			while (elemPointer.id !== "Menu") {
+				if (elemPointer.classList.contains("NavGroupOuter")) {
+					elemPointer.classList.add("Unfold");
+				}
+				elemPointer = elemPointer.parentElement;
+			}
+		}
+
+		function toggleMenu() {
+			const navBarElem = document.getElementById("Menu");
+			toggle(navBarElem);
+		}
+		function toggleGroup(elem) {
+			toggle(elem.parentElement);
+		}
+		function toggle(elem) {
+			const className = "Unfold";
+			if (elem.classList.contains(className)) {
+				elem.classList.remove(className);
+			} else {
+				elem.classList.add(className);
+			}	
+		}
+	</script>
+	<style>
+		body { margin:0; overflow:hidden; }
+		#MainFrameOuter { display:flex; flex-direction:column; height:calc(100vh); width:calc(100vw); }
+		#MainFrameInner { display:flex; flex-direction:row; flex-grow:1; }
+
+		#Header { height:40px; color:azure; background:#141414; display:flex; align-items:center; justify-content:flex-start; }
+		#Header-Title { margin-left:5px; border-left:1px solid #717171; padding:0 8px; font-size:18px; }
+		.Header-Btn { padding:5px; width:30px; text-align:center; cursor:pointer; font-size:22px; }
+
+		#Menu { background:#141414; color:azure; height:calc(100vh - 40px); display:flex; flex-direction:column; gap:2px; overflow-y: auto;
+			width:0;
+			-webkit-transition: width .5s ease-in-out;
+			-moz-transition: width .5s ease-in-out;
+			-o-transition: width .5s ease-in-out;
+			transition: width .5s ease-in-out;
+		}
+		#Menu.Unfold {
+			width:300px;
+			padding: 0 1px;
+			-webkit-transition: width .5s ease-in-out;
+			-moz-transition: width .5s ease-in-out;
+			-o-transition: width .5s ease-in-out;
+			transition: width .5s ease-in-out;
+		}
+		.NavGroupTitle { cursor:pointer; padding:5px 10px; border:4px double #726681; background:#2f2a3d; }
+		.NavGroupTitle::before { content:"▶"; margin-right:8px; }
+		.NavGroupInner { display:flex; flex-direction:column; gap:2px; padding-left:10px; margin-top:2px; height:0; overflow: hidden; }
+
+		.NavGroupOuter.Unfold .NavGroupTitle::before { content:"▼"; margin-right:6px; }
+		.NavGroupOuter.Unfold .NavGroupInner { height: auto; }
+
+		.NavLink { cursor:pointer; padding:5px 10px; border:1px solid #71757b; }
+		.NavLink:hover { background-color:#515055 }
+		.NavLink.Active { cursor:inherit; background-color:#515055; }
+
+		#Context { flex-grow:1; border:0; }
+		
+	</style>
+</head>
+<body>
+<div id="MainFrameOuter">
+	<div id="Header">
+		<div class="Header-Btn" onclick="toggleMenu()" title="展開目錄">☰</div>
+		<div class="Header-Btn" onclick="gotoPage(-1)" title="上一頁">◀</div>
+		<div class="Header-Btn" onclick="gotoPage(+1)" title="下一頁">▶</div>
+		<div id="Header-Title"></div>
+	</div>
+	<div id="MainFrameInner">
+		<div id="Menu">B</div>
+		<iframe id="Context" type="text/html" src="">
+			你的瀏覽器不支援 iframe
+		</iframe>
+	</div>
+</div>
+</body>
+</html>
