@@ -1,0 +1,4852 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="場景 II">
+        <meta property="og:description" content="">
+        <title>場景 II</title>
+        <style>
+            :root{
+                --color-bg: #454752;
+                --color-title: #FFFFFF;
+                --color-subtitle: #dddddd;
+                --color-talk-bg: #1E1E1E;
+                --color-talk-panel-bg: #2A2A2A;
+                --color-talk-panel-text: #EEEEEE;
+            }
+            body { display:flex; flex-direction:column; align-items:center; background:var(--color-bg); }
+            h1{ margin: 5px 0; color:var(--color-title); }
+            ._hidden { display:none !important; }
+            ._main { display:flex; flex-direction:column; align-items:stretch; gap:10px; width:100%; max-width:1080px; }
+            ._subtitle { color:var(--color-subtitle); margin-top:0; margin-bottom: 20px; }
+            ._sctitle { background:#ddd; margin-top:30px; padding:10px;font-weight:bold;font-size:1.3rem;text-align:center; }
+
+            ._talk { display:flex; flex-direction:row; gap:2px; background:var(--color-talk-bg); width:100%; border-radius:5px; }
+            ._talk ._lCol { width:110px; flex-shrink:0; margin:6px; margin-right:0; }
+            ._talk ._rCol { flex:1; display:flex; flex-direction: column; }
+            ._talk ._img { width:110px; height:110px; background-repeat:no-repeat; background-size:cover; background-color:#ffffff10; }
+            ._talk ._name { margin:6px; height:20px; font-size:18px; display:flex; justify-content:space-between; }
+            ._talk ._channel { margin-left:5px; color:#888888; display:none; }
+            ._talk ._content { flex:1; margin:6px; background:var(--color-talk-panel-bg); color:var(--color-talk-panel-text); font-size:1.1rem; padding:10px; border-radius:5px; }
+            ._talk._other { width:50%; margin-left:auto; }
+            ._talk._other ._lCol { display:none; }
+            ._talk._other ._name { justify-content:end; }
+            ._talk._other ._channel { display:block; }
+            ._talk._other ._content { background:black; color:white; text-align:right; }
+
+            ._halt { padding:30px 0; }
+            ._sctitle { border-radius:5px; }
+            ._bg-img { display:flex; justify-content: center; }
+            ._bg-img img { max-width:100%; max-height:400px; }
+
+            ._actor_2f0bfcd37ec6 ._name { color:#888888; content:'GM'; }
+            ._actor_2f0bfcd37ec6 ._img { background-image:url(''); display:none; }
+            ._actor_4c9527c182af ._name { color:#888888; content:'珠輝 存魅'; }
+            ._actor_4c9527c182af ._img { background-image:url('https://images.plurk.com/3JbHrmRndeaNkrgkYxUYwO.png'); display:block; }
+            ._actor_b5686c6bed39 ._name { color:#fe8fa5; content:'奧拉莉絲'; }
+            ._actor_b5686c6bed39 ._img { background-image:url('https://images.plurk.com/4DG80IqFxEVTJi4Q9O7eOb.png'); display:block; }
+            ._actor_1de92057a275 ._name { color:#888888; content:'system'; }
+            ._actor_1de92057a275 ._img { background-image:url(''); display:none; }
+            ._actor_5b4e770f8b5c ._name { color:#888888; content:'闡吾仁道'; }
+            ._actor_5b4e770f8b5c ._img { background-image:url('https://images.plurk.com/1kGyQSemoyFYPaKxy5yOnR.png'); display:block; }
+            ._actor_6627eb8a664f ._name { color:#888888; content:'按鍵商人'; }
+            ._actor_6627eb8a664f ._img { background-image:url('https://images.plurk.com/4vH4aKNJgucrMJvyrbsegO.png'); display:block; }
+            ._actor_4c001b66dc97 ._name { color:#888888; content:'望恩赴義'; }
+            ._actor_4c001b66dc97 ._img { background-image:url('https://images.plurk.com/4zg2Do550CQIgUQu97FEO3.png'); display:block; }
+            ._actor_7144c749272e ._name { color:#888888; content:'艾默能助'; }
+            ._actor_7144c749272e ._img { background-image:url('https://images.plurk.com/1sxKZediK6z6sBHicf8P3k.png'); display:block; }
+            ._actor_066c71787cdc ._name { color:#888888; content:'魚肉香茗'; }
+            ._actor_066c71787cdc ._img { background-image:url('https://images.plurk.com/2HF4RCPRLUGDK4kUKApy74.png'); display:block; }
+            ._actor_812b6d4ef2c7 ._name { color:#888888; content:'霹靂霹靂'; }
+            ._actor_812b6d4ef2c7 ._img { background-image:url('https://images.plurk.com/2DlluGhutZPwXJbgG2bGKL.png'); display:block; }
+            ._actor_179558da5011 ._name { color:#888888; content:'女帝'; }
+            ._actor_179558da5011 ._img { background-image:url('https://images.plurk.com/3GxaQ14z2MsmudKyyPZwUI.png'); display:block; }
+            ._actor_42e806565968 ._name { color:#888888; content:'珠輝 羽生'; }
+            ._actor_42e806565968 ._img { background-image:url('https://images.plurk.com/5ytlrtGIAP7wttZXFnGuh7.png'); display:block; }
+            ._actor_7b7ac99b1ef4 ._name { color:#888888; content:'竹內 不亂軒'; }
+            ._actor_7b7ac99b1ef4 ._img { background-image:url('https://images.plurk.com/1l2UAn6pcxGO6uke4xUprY.png'); display:block; }
+            ._actor_32137b6998ea ._name { color:#888888; content:'始座勇者'; }
+            ._actor_32137b6998ea ._img { background-image:url('https://images.plurk.com/JTxH2EKSfNPirNPkJzHTM.png'); display:block; }
+            ._actor_d6e5b4adfb04 ._name { color:#888888; content:'貓宮 正義'; }
+            ._actor_d6e5b4adfb04 ._img { background-image:url('https://images.plurk.com/2dhnz5769g3zXvvu07GSOi.png'); display:block; }
+        </style>
+        <meta-data class="_hidden">
+            <channel>
+                _ch_9bdfee0ddf5c: { name:"主要"; main:true; hide:false; }
+            </channel>
+        </meta-data>
+    </head>
+    <body>
+        <div class="_hidden"><version>hazmole_v2.0</version></div>
+        <h1>場景 II</h1>
+        <div class="_subtitle">疆域淪陷</div>
+
+        <div class="_main">
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">回復耗竭靈力</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c9527c182af _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">1D6 #靈力回復(補) (1D6) ＞ 6</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b5686c6bed39 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            奧拉莉絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">1D6 (1D6) ＞ 1</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">戰鬥開始</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5b4e770f8b5c _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            闡吾仁道
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「原來如此……我懂了，繼上次的鏡像怪之後，這次是記憶幻象的敵人嗎？是類似心魔之類的考驗嗎？這樣的話，是不是代表這個遊戲其實可以讀取我們的記憶？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6627eb8a664f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            按鍵商人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「聽起來超棒的不是嗎？從記憶復刻的量身打造遊戲體驗！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c001b66dc97 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            望恩赴義
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「如果是這樣的話 出來吧 我過往的汙點們！我要把你們碎屍萬段啊啊啊啊啊！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7144c749272e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾默能助
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「妳前男友是真的該死個幾次 我也有想揍的人 但為什麼出現的是PZ啊！！！</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_066c71787cdc _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">一如既往，進入指揮模式的魚肉香茗沒有和大家一起閒聊，而是迅速用遊戲內建的系統燈號，指示眾人列出陣形。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_812b6d4ef2c7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「早就想修理艾默了。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c9527c182af _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「看起來還能溝通的樣子呢……呀吼～」<br>存魅平靜地笑著，有些沒緊張感地揮了揮手。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c9527c182af _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「嗯……PZ 跟莉絲，他們姑且算是受害者，請盡可能不要傷到他們的靈魂喔。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_2f0bfcd37ec6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">霹靂霹靂作為神我狩的形象和平時遊戲中的形象相當接近，以至於一登場，臉上就跳出了滿滿的金色問號，那是對面玩家們標示出來的系統記號。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b5686c6bed39 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            奧拉莉絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「我知道，但戰鬥是戰鬥，我不會手下留情，頂多有點皮肉痛而已。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_812b6d4ef2c7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">霹靂揮手把那些問號弄開。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_812b6d4ef2c7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「是這樣沒錯。不過，妳也知道我們公會大家的實力。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_812b6d4ef2c7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">霹靂身週閃起綠色的電光，裝扮看起來就像她平常玩遊戲的造型。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_812b6d4ef2c7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「我們說不定會被攻略的。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">識別判定</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c9527c182af _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">2d6+3 #識別判定(知性) (2D6+3) ＞ 2[1,1]+3 ＞ 5</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b5686c6bed39 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            奧拉莉絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">2D6+1 #知性判定 (2D6+1) ＞ 10[4,6]+1 ＞ 11</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_812b6d4ef2c7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">2D6+10 #知性判定 (2D6+10) ＞ 12[6,6]+10 ＞ 22</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1de92057a275 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">[ 珠輝 存魅 ] 大失敗：一顆骰面變為 1</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b5686c6bed39 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            奧拉莉絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">【靈力操作】6 → 1 ，判定修正值 -5</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">情報公開</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_2f0bfcd37ec6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">※魚肉香茗<br>Lv.2 不死 (1)<br>知名度10 | 體型2 | 弱點［寒氣］［電擊］<br>智能：狡猾 | 感官：普通 | 移動：步行<br>======================================<br>行動值：12　生命力：30　裝甲：3　結界：3<br>命中：15　迴避：13　發動：20　抵抗：9　看破：11<br>======================================<br>【手砲】：射擊攻擊／9格／1體<br>進行武器攻擊，給對象［形狀：射擊］ 5d+5 的物理傷害。<br>--------------------------------------<br>《神秘禮物》：開始／戰鬥地帶／範圍<br>指定 3X3 的範圍，標記為 [ 驚喜預備 ] 。<br>--------------------------------------<br>《驚喜揭曉》：結束／戰鬥地帶／範圍／減半<br>給標記為 [ 驚喜預備 ] 範圍內的所有對象［屬性：火炎］ 30 的魔法傷害。［被動判定］失敗時，對象獲得［狀態變化：倒地］。<br>--------------------------------------</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_2f0bfcd37ec6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">※闡吾仁道<br>	Lv.3 不死 (1)<br>知名度12 | 體型3 | 弱點［閃光］<br>智能：高 | 感官：普通 | 移動：步行<br>======================================<br>行動值：8　生命力：30　裝甲：0　結界：5<br>命中：5　迴避：7　發動：15　抵抗：13　看破：15<br>======================================<br>【鞭笞】: 肉搏攻擊／接近狀態／範圍<br>進行武器攻擊，給對象［形狀:錘］ 1d+6 的物理傷害。<br>--------------------------------------<br>《末日預兆》：魔法攻擊／8格／2體／消滅<br>一輪一次，給對象［屬性：幻覺］，2d+5 的魔法傷害。受到至少１點這個傷害的對象將獲得［狀態變化：苦痛］。<br>--------------------------------------<br>《舊日囈語》: 結束／戰鬥地帶／戰鬥地帶<br>只能對處於不利的［狀態變化］的對象使用，給對象［屬性：幻覺］ 20 的魔法傷害。<br>--------------------------------------</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_2f0bfcd37ec6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">※望恩赴義<br>	Lv.2 不死 (1)<br>知名度12 | 體型2 | 弱點［風壓］<br>智能：高 | 感官：普通 | 移動：步行<br>======================================<br>行動值：17　生命力：25　裝甲：0　結界：0<br>命中：17　迴避：13　發動：5　抵抗：5　看破：10<br>======================================<br>【毒刃】: 肉搏攻擊／接近狀態／1體<br>進行武器攻擊，給對象［屬性：魔毒／形狀：劍］，4d+10 的物理傷害。受到至少１點這個傷害的對象將獲得［狀態變化：猛毒］。（猛毒強度：7）<br>--------------------------------------<br>《蟄伏》: 準備／使用者／使用者<br>不消耗時機，使用者的行動值減少任意數值，讓自己的行動次序延後。<br>--------------------------------------<br>《亡命》: 準備／10格／1體<br>一場戰鬥一次，不消耗時機，使用者無視［接近狀態］，以［設置］的方式與對象交換彼此的位置。<br>--------------------------------------</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_2f0bfcd37ec6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">※艾默能助<br>Lv.3 不死 (1)<br>知名度10 | 體型3 | 弱點：［磁力］［幻覺］<br>智能：高 | 感官：普通 | 移動：步行<br>======================================<br>行動值：7　生命力：50　裝甲：10　結界：0<br>命中：13　迴避：16　發動：5　抵抗：13　看破：12<br>======================================<br>【致勝斬】: 肉搏攻擊／接近狀態／範圍<br>進行武器攻擊，給對象［形狀：劍 ] 2d+10 的物理傷害。每個［被動判定］失敗的對象，［回復］使用者的【生命力】 15 點。<br>--------------------------------------<br>《騎士精神》：防禦／接近狀態／１體<br>傷害減少時使用。使用者代為承受對象受到的傷害（【抵抗】判定自動失敗）。<br>這個《天賦》無法對［對象：範圍、戰鬥地帶］的［攻擊行動］使用。<br>--------------------------------------<br>《旗是荊繩》：準備／接近狀態／１體／抵抗不可<br>傷害減少時使用。直到下一輪［結束］之前，對象的［簡易移動］的距離變為０格，［戰鬥移動］ -2 格，［全力移動］ -4 格（最低０格）。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_2f0bfcd37ec6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">※按鍵商人<br>Lv.2 不死 (1)<br>知名度10 | 體型3 | 弱點［火炎］［魔毒］<br>智能：高 | 感官：魔力 | 移動：步行<br>======================================<br>行動值：10　生命力：40　裝甲：0　結界：10<br>命中：11　迴避：13　發動：5　抵抗：20　看破：10<br>======================================<br>【木蕭吹箭】: 射擊攻擊／5格／1體<br>進行武器攻擊，給對象［形狀：射擊］ 3d 的物理傷害。受到至少１點這個傷害的對象將獲得［狀態變化：猛毒］。（猛毒強度：4）<br>--------------------------------------<br>《戰爭咆哮》 特殊／5格／1體<br>傷害減少時使用。對象進行的［魔法攻擊］的［對象］變為［1體］，並由使用者承受該［傷害］。這時受到的［傷害］視為【抵抗】判定失敗。<br>1輪（場景）中只能使用1次。<br>--------------------------------------<br>《世界之聲》 結束／使用者<br>對象［回復］ 20 點【生命力】。<br>--------------------------------------</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_066c71787cdc _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「先抓脆皮。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_066c71787cdc _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">指揮者把集火的標記定在身材纖細的存魅腦袋上。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_066c71787cdc _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">她的左手按住身旁的寶箱，寶箱化為虛影，出現在哨塔門口的人群上空，上下跳動著像是要活起來。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_066c71787cdc _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">【神秘禮物】：開始／戰鬥地帶／範圍。指定 3X3 的範圍，標記為 [ 驚喜預備 ] 。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c9527c182af _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">※使用天賦《影碎》　代價：1、2<br>→讓艾默能助變為［狀態：倒地］<br>→獲得 1 超越靈力</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1de92057a275 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">[ 珠輝 存魅 ] 超越靈力 : 1 → 2</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c9527c182af _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">※使用天賦《怪力移動》<br>→進行一次體力判定，目標值 12</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c9527c182af _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">2D6+9 #體力判定 (2D6+9) ＞ 5[2,3]+9 ＞ 14</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c9527c182af _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">【靈力操作】2 → 1 ，判定修正值 -1</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c9527c182af _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">1格 #簡易移動</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c9527c182af _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">※使用天賦《噬靈閃》　代價：2、超　對象：闡吾仁道<br>→發動武器效果，攻擊距離變為［7格］</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1de92057a275 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">[ 珠輝 存魅 ] 超越靈力 : 2 → 1</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c9527c182af _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">2D6+7 #命中判定 (2D6+7) ＞ 10[4,6]+7 ＞ 17</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5b4e770f8b5c _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            闡吾仁道
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">※迴避=7</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c9527c182af _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">※命中成功，計算傷害<br>※造成 6x3階 + 25 = 43物理傷害</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1de92057a275 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">[ 闡吾仁道 ] 生命力 : 30 → 0</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1de92057a275 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">[ 珠輝 存魅 ] 超越靈力 : 1 → 2</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c9527c182af _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">背著巨大月環向前疾馳，踩在艾默能助的盾牌上，兩腳輕點，一個扭力將其摔倒在地後，存魅宛如舞蹈一樣抓著柵欄向後空翻，圓環如鏢旋出－－</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c9527c182af _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「抱歉囉，仁道，但掩體對我們來說並沒有太大的意義呢。」<br>輕描淡寫地接住飛回來的圓環，存魅輕笑。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5b4e770f8b5c _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            闡吾仁道
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">無數粗壯的觸手在身前匯聚，但在那巨大的月環前，高度、柵欄與觸手都毫無意義。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5b4e770f8b5c _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            闡吾仁道
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">鋒利的月環旋繞一圈，幾乎把它削成兩半，但又精準地苟住最後一絲生命，只是讓他徹底失去行動能力。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5b4e770f8b5c _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            闡吾仁道
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「屁、屁啦！誰、誰有看到那是什麼機制？憑什麼直接秒人啦？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5b4e770f8b5c _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            闡吾仁道
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">倒在地上的闡吾仁道似乎沒有失去通話能力，一連串的分析、吐槽與怨念在他頭上刷滿半個空中的聊天框。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c001b66dc97 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            望恩赴義
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「魚魚 我要上了！那個狗屁輸出又快又痛 一定超脆 ！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c001b66dc97 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            望恩赴義
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">回應她的是金色的驚嘆號。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c001b66dc97 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            望恩赴義
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「欸……」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c001b66dc97 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            望恩赴義
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">隨著一聲咋舌，躍躍欲試的刺客聽從指揮，潛伏了下來。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c001b66dc97 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            望恩赴義
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">【蟄伏】: 準備／使用者／使用者。不消耗時機，使用者的行動值減少任意數值，讓自己的行動次序延後。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b5686c6bed39 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            奧拉莉絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">6格 #戰鬥移動</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b5686c6bed39 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            奧拉莉絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">※使用天賦《人騎一體》　代價：4、4　對象：艾默能助<br>物理攻擊階級+2</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b5686c6bed39 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            奧拉莉絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">※使用天賦《靈力變換機構》代價：無 ，對象：奧拉莉絲<br>1→超</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b5686c6bed39 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            奧拉莉絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">※使用天賦《靈光猛擊》代價：超、6，對象：奧拉莉絲<br>物理攻擊階級+2</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b5686c6bed39 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            奧拉莉絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">※武器天賦《傳說的弗蘭克斯斧》，能作為［射擊武器］投擲，這時變為［形狀：射擊／距離：【體力】格／對象：2體］。目標：艾默能助</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b5686c6bed39 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            奧拉莉絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">2D6+8 #命中判定 (2D6+8) ＞ 8[3,5]+8 ＞ 16</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7144c749272e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾默能助
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">※迴避=16</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b5686c6bed39 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            奧拉莉絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">※命中成功，計算傷害<br>※造成 5x5階 + 30 = 55物理傷害</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7144c749272e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾默能助
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">※裝甲=10</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1de92057a275 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">[ 艾默能助 ] 生命力 : 50 → 5</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b5686c6bed39 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            奧拉莉絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「來吧，《光輝》！」<br>隨著奧拉莉絲一聲呼喊，瞬間的閃光柱包圍柱奧拉莉絲，下一秒，在少女的身下多了一台充滿科技感的鐵騎，乍看下如馬，可同時又有著兩個輪子，騎上坐騎的奧拉莉絲，向著左方疾馳而去。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b5686c6bed39 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            奧拉莉絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「做好覺悟！」一邊移動的同時，奧拉莉絲解開了大劍上的皮繩，纖細的手腕揮舞起繩索，將大劍如同投擲物一般向艾默甩去，從空中的巨劍就這樣無慈悲的插進艾默的體內。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7144c749272e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾默能助
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「沃草！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7144c749272e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾默能助
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">看到存魅駭人的月環傷害後，他的大盾就始終朝著那個方向，沒想到奧拉莉絲迅速機動到了另一側發起攻擊。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7144c749272e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾默能助
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「嗚啊！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7144c749272e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾默能助
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">疏忽的結果就是被一柄大劍從背後刺穿，胸口中心像是長出一條額外的手臂。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7144c749272e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾默能助
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">不過，作為「玩家」，只要血量沒有歸零，就相當於沒有受傷！</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7144c749272e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾默能助
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「太扯了吧 我差點被秒欸 這真的沒有做壞嗎？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c9527c182af _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「可能是因為你們仇恨沒拉好嗎？」<br>存魅悠哉悠哉地插了一句。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7144c749272e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾默能助
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「我什麼都還沒有做啊啊啊啊啊！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5b4e770f8b5c _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            闡吾仁道
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「這副本應該搞錯等級了吧 這怎麼看都不是我們該打的怪啊！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5b4e770f8b5c _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            闡吾仁道
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">已經倒下的闡吾仁道也忍不住傾訴心中的哀怨。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_812b6d4ef2c7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「因為這是一款糞Game，快卸載吧。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_066c71787cdc _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「敵人 AI 很高，副本開荒第一次能試多少就試多少，先轉火！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_066c71787cdc _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">金色的鎖定標轉移到奧拉莉絲頭上，同時響起的還有一聲槍鳴。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_066c71787cdc _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">【手砲】：射擊攻擊／9格／1體。進行武器攻擊，給對象［形狀：射擊］ 5d+5 的物理傷害。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_066c71787cdc _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">※命中=15</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_066c71787cdc _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">※目標：奧拉莉絲</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b5686c6bed39 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            奧拉莉絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">2D6+6 #迴避判定 (2D6+6) ＞ 6[2,4]+6 ＞ 12</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_066c71787cdc _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">5d+5 #傷害 (5D6+5) ＞ 22[2,3,5,6,6]+5 ＞ 27</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1de92057a275 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">[ 奧拉莉絲 ] 生命力 : 59 → 39</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_066c71787cdc _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">巨大的鋼鐵彈丸從高空的哨塔射擊下來，精準打在少女的右肩上。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b5686c6bed39 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            奧拉莉絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「啊？」突然被從另一方攻擊，奧拉莉絲帶著殺意看向魚肉香茗，那雙眼中彷彿在說著，你‧就‧是‧下‧一‧個。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6627eb8a664f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            按鍵商人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「Yes sir！captain teemo on duty~」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6627eb8a664f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            按鍵商人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">騎在羊駝上的小矮人拿起木蕭，偷偷摸摸地從奧拉莉絲的視線死角暗箭傷人。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6627eb8a664f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            按鍵商人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">1格 #簡易移動</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6627eb8a664f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            按鍵商人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">【木蕭吹箭】: 射擊攻擊／5格／1體。進行武器攻擊，給對象［形狀：射擊］ 3d 的物理傷害。受到至少１點這個傷害的對象將獲得［狀態變化：猛毒］。（猛毒強度：4）</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6627eb8a664f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            按鍵商人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">※命中=11</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b5686c6bed39 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            奧拉莉絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">2D6+6 #迴避判定 (2D6+6) ＞ 9[3,6]+6 ＞ 15</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6627eb8a664f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            按鍵商人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">一支小小的翠綠吹箭從柵欄縫隙飛了過去。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b5686c6bed39 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            奧拉莉絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">或許是已經感受到自己成為眾矢之的，奧拉莉絲迅速的抽回大劍將它抵在眼前，擋下那一擊。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_2f0bfcd37ec6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「叮！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_2f0bfcd37ec6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">吹箭打在大劍的劍面上，發出一聲清脆的聲響。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7144c749272e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾默能助
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">趁著這個空檔，胸前插著巨劍的艾默能住從地上爬了起來，給身後的輸出手讓出了空間。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c001b66dc97 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            望恩赴義
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「魚魚 我想砍人啊啊啊啊啊！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c001b66dc97 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            望恩赴義
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">口中喊著這樣的口號，但狂躁的刺客卻是遵循指揮，把這可能是唯一的輸出機會讓給了團隊。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c001b66dc97 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            望恩赴義
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">8格 #戰鬥移動</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c001b66dc97 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            望恩赴義
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">【亡命】準備／10格／1體。一場戰鬥一次，不消耗時機，使用者無視［接近狀態］，以［設置］的方式與對象交換彼此的位置。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7144c749272e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾默能助
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">艾默能助在望恩赴義身形消失的瞬間，就掏出了一桿戰旗插到身前。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c001b66dc97 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            望恩赴義
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">一陣陰影繚繞，望恩赴義從原位消失，取而代之的是騎著機械馬的奧拉莉絲。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7144c749272e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾默能助
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">戰旗下方的土壤開始蠕動，粗壯的荊棘開始發芽，恐怕下一回合就會長成足以纏繞目標的繩索。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_812b6d4ef2c7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">1格 #簡易移動</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_812b6d4ef2c7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">※使用天賦《強襲模組》代價：2、3，對象：障礙物兩體（傳承的寫本效果）［屬性：電擊］，［階級：3］的［魔法傷害］</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_812b6d4ef2c7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">2D6+9 #發動判定 (2D6+9) ＞ 4[1,3]+9 ＞ 13</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_812b6d4ef2c7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「嗯－－」霹靂剛剛在看自己的技能。似乎在這世界，她也可以用跟遊戲裡差不多的能力。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_812b6d4ef2c7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「不要離我太遠喔。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_812b6d4ef2c7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">霹靂看著奧拉莉絲跑遠，又被敵人傳回來，出聲提醒道。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_812b6d4ef2c7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">接著她往後退了一步，伸手指著天空。幾道雷順勢劈下來，打向哨站的外牆。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_812b6d4ef2c7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「衝啊！我的士兵們。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5b4e770f8b5c _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            闡吾仁道
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「不要啊啊啊啊啊 你殺我好了 再殺我一次 不要拆牆啊啊啊！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6627eb8a664f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            按鍵商人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「啊啊啊啊啊啊！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6627eb8a664f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            按鍵商人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">羊駝仰頭發出淒厲的長鳴，正好延長了闡吾仁道的尾音。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6627eb8a664f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            按鍵商人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">【戰爭咆哮】 特殊／5格／1體。傷害減少時使用。對象進行的［魔法攻擊］的［對象］變為［1體］，並由使用者承受該［傷害］。這時受到的［傷害］視為【抵抗】判定失敗。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_812b6d4ef2c7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">//21電擊傷害</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6627eb8a664f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            按鍵商人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">※結界=10</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1de92057a275 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">[ 按鍵商人 ] 生命力 : 40 → 29</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c9527c182af _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「哎呀……」存魅摀著臉頰，看著友人們彼此身體更在意牆壁的舉止。<br>「……這就是那個……『酷吏怕』嗎？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_2f0bfcd37ec6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">天上的雷電被牽引過來，直接劈在按鍵商人身上。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6627eb8a664f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            按鍵商人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「不用擔心 因為 我來了！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_812b6d4ef2c7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「那句話應該要用在保住隊友的時候比較帥吧。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_812b6d4ef2c7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">看到對面也有坦，霹靂有點不爽。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5b4e770f8b5c _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            闡吾仁道
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「你救了我的命！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6627eb8a664f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            按鍵商人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">他打了個響指，把木蕭湊到嘴邊，吹出了一段熟悉的旋律。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6627eb8a664f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            按鍵商人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">儘管沒有人聲，但眾人耳邊彷彿可以聽見那些歌詞：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6627eb8a664f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            按鍵商人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「Never gonna give you up,<br>Never gonna let you down,<br>Never gonna run around and desert you~」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6627eb8a664f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            按鍵商人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">他的上身隨著旋律擺動，傷勢開始迅速恢復。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_812b6d4ef2c7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「好煩喔。冥月，等一下打他！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6627eb8a664f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            按鍵商人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">【世界之聲】 結束／使用者。對象［回復］ 20 點【生命力】。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1de92057a275 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">[ 按鍵商人 ] 生命力 : 29 → 40</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_066c71787cdc _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">【驚喜揭曉】：結束／戰鬥地帶／範圍／減半。給標記為 [ 驚喜預備 ] 範圍內的所有對象［屬性：火炎］ 30 的魔法傷害。［被動判定］失敗時，對象獲得［狀態變化：倒地］。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_066c71787cdc _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">※發動=20</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b5686c6bed39 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            奧拉莉絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">2D6+3 #抵抗判定 (2D6+3) ＞ 6[2,4]+3 ＞ 9</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1de92057a275 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">[ 奧拉莉絲 ] 生命力 : 39 → 16</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_812b6d4ef2c7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">※使用天賦《治癒的神寶》代價：2，對象：奧拉莉絲　［回復］25 點【生命力】</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1de92057a275 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">[ 奧拉莉絲 ] 生命力 : 16 → 41</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_066c71787cdc _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">空中的寶箱虛影突然打開，亮出了裡面的──炸彈！</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_066c71787cdc _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">隨著巨響與硝煙，奧拉莉絲直接被震倒在地。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_812b6d4ef2c7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">就在這瞬間，幾隻小機器人從霹靂身後飛出來，手中拿著鐵鎚和釘子。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_812b6d4ef2c7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">小機器人在奧拉莉絲身旁敲敲打打，出於不明的原因，火焰造成的傷害就被修復了。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_812b6d4ef2c7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">甚至看起來比之前更有精神！</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_812b6d4ef2c7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「不用擔心，因為，我來了！」霹靂說。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5b4e770f8b5c _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            闡吾仁道
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「真的不對啦 這個副本一定做壞了 我要投訴！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6627eb8a664f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            按鍵商人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「Yooooooo bro, nice！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6627eb8a664f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            按鍵商人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">羊駝上的小矮人露出了潔白的四顆牙齒，以及一根大拇指。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b5686c6bed39 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            奧拉莉絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">奧拉莉絲擦擦嘴角，雖然身上的傷口頂多就是模仿人類的人工皮破掉而已，但對於已經完沒模仿人類的AI來說，連這種無意義的動作也一併學習了下來。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">回復耗竭靈力</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1de92057a275 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">[ 珠輝 存魅 ] 超越靈力 : 2 → 1</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c9527c182af _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">3B6 #靈力回復 (3B6) ＞ 3,3,5</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b5686c6bed39 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            奧拉莉絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">4B6 (4B6) ＞ 6,2,3,1</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_812b6d4ef2c7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">3b6 (3B6) ＞ 1,5,2</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_066c71787cdc _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">【神秘禮物】：開始／戰鬥地帶／範圍。指定 3X3 的範圍，標記為 [ 驚喜預備 ] 。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_066c71787cdc _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">箭樓上的指揮官面色沉靜，把手按上另一個寶箱，這次封鎖的是霹靂霹靂周圍一圈的位置。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c9527c182af _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">※使用天賦《影碎》　代價：2、3<br>→讓艾默能助變為［狀態：倒地］<br>→獲得 1 超越靈力</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1de92057a275 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">[ 珠輝 存魅 ] 超越靈力 : 1 → 2</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c9527c182af _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">※使用天賦《怪力移動》<br>→進行一次體力判定，目標值 12</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c9527c182af _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">2D6+9 #體力判定 (2D6+9) ＞ 5[1,4]+9 ＞ 14</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c9527c182af _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">【靈力操作】4 → 3 ，判定修正值 -1</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c9527c182af _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">※使用武器攻擊　對象：艾默能助</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c9527c182af _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">2D6+7 #命中判定 (2D6+7) ＞ 9[4,5]+7 ＞ 16</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7144c749272e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾默能助
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">※迴避=14（倒地 -2 ）</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c9527c182af _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">※命中成功，計算傷害<br>※造成 5x1階 + 25 = 30物理傷害</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1de92057a275 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">[ 艾默能助 ] 生命力 : 5 → 0</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c9527c182af _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">※使用天賦《影日向》　代價：超、超<br>→無代價使用《噬靈閃》　對象：望恩赴義</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1de92057a275 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">[ 珠輝 存魅 ] 超越靈力 : 2 → 0</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c9527c182af _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">2D6+7 #命中判定 (2D6+7) ＞ 2[1,1]+7 ＞ 9</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1de92057a275 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">[ 珠輝 存魅 ] 大失敗，一顆骰面變為 1</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c9527c182af _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「嗯，總之，先乖乖待著吧……沒事的，不會讓你們停止心跳的。」<br>存魅輕輕說著，再次一個掃腿將艾默能助踢倒後，月環直直劈下，徹底削開裝甲。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c9527c182af _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">吸了一口氣，集中漆黑色的靈力，正打算一口氣終止望恩赴義的行動能力時，存魅的行動卻陡然一剎，皺起了眉頭。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c9527c182af _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「嗯……讓人不快的感覺呢。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7144c749272e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾默能助
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「嗚 除了操作不像 這真的很冥月」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7144c749272e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾默能助
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">鎧甲破碎的艾默能助倒在地上，進入和闡吾仁道相同的旁觀模式。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_812b6d4ef2c7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「……快點發現啊，笨蛋。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c001b66dc97 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            望恩赴義
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「我來報仇！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c001b66dc97 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            望恩赴義
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「嘗嘗我這塗了毒的小刀！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c001b66dc97 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            望恩赴義
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">纏繞著繃帶的枯瘦手臂捏著一把扭曲的小刀，望恩赴義口中發出讓人不寒而慄的嗜血笑聲。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c001b66dc97 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            望恩赴義
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">8格 #戰鬥移動</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c001b66dc97 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            望恩赴義
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">【毒刃】肉搏攻擊／接近狀態／1體。進行武器攻擊，給對象［屬性：魔毒／形狀：劍］，4d+10 的物理傷害。受到至少１點這個傷害的對象將獲得［狀態變化：猛毒］。（猛毒強度：7）</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c001b66dc97 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            望恩赴義
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">※命中=17</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c001b66dc97 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            望恩赴義
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">※目標：奧拉莉絲</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b5686c6bed39 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            奧拉莉絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">2D6+6 #迴避判定 (2D6+6) ＞ 10[5,5]+6 ＞ 16</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c001b66dc97 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            望恩赴義
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">4D+10 (4D6+10) ＞ 14[1,3,5,5]+10 ＞ 24</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_812b6d4ef2c7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">※裝備效果《生贄的祭器》：1場戰鬥1次，［距離：7格／對象：1體］的［攻擊行動］的［對象］變為［1體］，由使用者承受傷害。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1de92057a275 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">[ 霹靂霹靂 ] 生命力 : 59 → 44</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_812b6d4ef2c7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「你報仇前有先確認目標嗎？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_812b6d4ef2c7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">刀子不曉得為什麼插到霹靂身上。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c001b66dc97 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            望恩赴義
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「三小啦 花勒發」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c001b66dc97 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            望恩赴義
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">暴衝突進後勢在必得的一刀消失在虛空中，戳在一段距離外的霹靂霹靂身上，一頭霧水的望恩赴義重心失衡，陷入了短暫的破綻。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b5686c6bed39 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            奧拉莉絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">/解除倒地</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b5686c6bed39 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            奧拉莉絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">※使用天賦《靈光猛擊》代價：1、2，對象：奧拉莉絲<br>物理攻擊階級+2</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b5686c6bed39 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            奧拉莉絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">※武器天賦《傳說的弗蘭克斯斧》，能作為［射擊武器］投擲，這時變為［形狀：射擊／距離：【體力】格／對象：2體］。目標：按鍵商人、望恩赴義</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b5686c6bed39 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            奧拉莉絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">2D6+8 #命中判定 (2D6+8) ＞ 6[2,4]+8 ＞ 14</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b5686c6bed39 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            奧拉莉絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">【靈力操作】2 → 6 ，判定修正值 +4</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c001b66dc97 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            望恩赴義
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">※迴避=13</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6627eb8a664f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            按鍵商人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">※迴避=13</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b5686c6bed39 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            奧拉莉絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">※命中成功，計算傷害<br>※造成 6x3階 + 30 = 48物理傷害</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1de92057a275 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">[ 按鍵商人 ] 生命力 : 40 → 0</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1de92057a275 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">[ 望恩赴義 ] 生命力 : 25 → 0</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b5686c6bed39 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            奧拉莉絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">先前的炸藥，雖然將奧拉莉絲的坐騎給暫時炸到停機，但這並不妨礙奧拉莉絲的輸出，僅僅只是單純舞動著手中的皮繩，大劍的便斬穿兩名靠在奧拉莉絲身旁的玩家。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b5686c6bed39 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            奧拉莉絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「輕輕鬆鬆！剩下妳了，作壁上觀的傢伙。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c9527c182af _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「魚肉～要談談的話，現在還接受投降喔。」<br>存魅向上方揮了揮手。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6627eb8a664f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            按鍵商人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">按鍵商人被一刀兩斷，上半身緩緩滑落。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6627eb8a664f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            按鍵商人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">他用盡最後一絲力氣，伸出右手做出大拇指向上的姿勢，喊出最後的話：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6627eb8a664f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            按鍵商人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「I will be back！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c001b66dc97 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            望恩赴義
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「幹這不可能啦 草泥馬的糞Game……」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c001b66dc97 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            望恩赴義
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">另一邊則是一連串的汙言穢語。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_066c71787cdc _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「……仁道，記好這些機制，等我們高等回來挑戰。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_066c71787cdc _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">戰場上僅存的指揮官終於開口說話，那聲音依然冷靜平穩。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_066c71787cdc _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">隨著話語結束，他用槍鳴回應了存魅的勸降。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c9527c182af _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「真傷腦筋……我可是認真想把你們救出來的呢。<br>　人類呢，最後還是在肉體上嚥下最後一口氣比較好。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_066c71787cdc _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">【手砲】：射擊攻擊／9格／1體。進行武器攻擊，給對象［形狀：射擊］ 5d+5 的物理傷害。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_066c71787cdc _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">※命中=15</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_066c71787cdc _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">※目標：珠輝 存魅</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c9527c182af _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">2D6+6 #迴避判定 (2D6+6) ＞ 12[6,6]+6 ＞ 18</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1de92057a275 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">[ 珠輝 存魅 ] 大成功，一顆骰面變為 2</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_066c71787cdc _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">實心的砲彈從箭樓上轟了下來。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c9527c182af _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">存魅踩著舞步，輕巧地向後退了一步，剛剛好避開來勢洶洶的砲彈。<br>儘管成功躲開攻擊，但她仍眉頭微蹙，傷腦筋地看著高處的友人。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_066c71787cdc _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「……這遊戲真的做壞了。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_066c71787cdc _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">高樓上的友人眉頭皺得比存魅更深。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_812b6d4ef2c7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「我們的聲音傳不過去嗎？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c9527c182af _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「畢竟這不是遊戲呢。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b5686c6bed39 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            奧拉莉絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">※使用天賦《靈力變換機構》代價：無 ，對象：奧拉莉絲<br>3→超</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_812b6d4ef2c7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">//準備解猛毒</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_812b6d4ef2c7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">2D6+1 #體力判定 (2D6+1) ＞ 12[6,6]+1 ＞ 13</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1de92057a275 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">[ 霹靂霹靂 ] 大成功，一顆骰面變為 6</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_812b6d4ef2c7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">※使用天賦《強襲模組》代價：2、5，對象：魚肉香茗［屬性：電擊］，［階級：3］的［魔法傷害］</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_812b6d4ef2c7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">2D6+9 #發動判定 (2D6+9) ＞ 6[1,5]+9 ＞ 15</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_066c71787cdc _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">※抵抗=9</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_812b6d4ef2c7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">//32電擊傷害</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_066c71787cdc _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">※結界=3、遮蔽：傷害-5</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1de92057a275 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">[ 魚肉香茗 ] 生命力 : 30 → 6</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_812b6d4ef2c7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">霹靂把插在身上的毒刀拔出來，扔在地上。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_812b6d4ef2c7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「那只好把我們的聲音寄託在攻擊裡了。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_812b6d4ef2c7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「接招吧，魚魚。」他再度指著天空，一道雷劈在魚肉香茗所在之處。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_066c71787cdc _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">站在箭樓上被雷擊劈個正著的魚肉香茗悶哼一聲，單膝跪在地板上，伸手握拳引爆了寶箱炸彈。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_066c71787cdc _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">【驚喜揭曉】：結束／戰鬥地帶／範圍／減半。給標記為 [ 驚喜預備 ] 範圍內的所有對象［屬性：火炎］ 30 的魔法傷害。［被動判定］失敗時，對象獲得［狀態變化：倒地］。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_066c71787cdc _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">※發動=20</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_812b6d4ef2c7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">2D6+5 #抵抗判定 (2D6+5) ＞ 5[2,3]+5 ＞ 10</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_812b6d4ef2c7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">※使用天賦《治癒的神寶》代價：2，對象：自己　回２５血</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1de92057a275 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">[ 霹靂霹靂 ] 生命力 : 44 → 22</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1de92057a275 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">[ 霹靂霹靂 ] 生命力 : 22 → 47</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_066c71787cdc _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「這真的不是我們這個等級該打的怪，新地圖比想像中難。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_812b6d4ef2c7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">※裝備效果1輪1次，可藉由消耗1次［結束］來［回復］15點【生命力】。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1de92057a275 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">[ 霹靂霹靂 ] 生命力 : 47 → 59</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_066c71787cdc _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">看著轟炸過後不但沒有受傷，反而看起來更加完整的敵人，魚肉香茗長長嘆了一口氣。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">回復耗竭靈力</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b5686c6bed39 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            奧拉莉絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">3B6 (3B6) ＞ 3,6,3</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_812b6d4ef2c7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">3B6 (3B6) ＞ 2,2,1</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c9527c182af _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">2B6 #靈力回復 (2B6) ＞ 6,3</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c9527c182af _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">8格 #戰鬥移動</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c9527c182af _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">※使用天賦《怪力移動》<br>→進行一次體力判定，目標值 12</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c9527c182af _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">2D6+9 #體力判定 (2D6+9) ＞ 12[6,6]+9 ＞ 21</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1de92057a275 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">[ 珠輝 存魅 ] 大成功，一顆骰面變為 5</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c9527c182af _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">※使用武器攻擊　對象：魚肉香茗</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c9527c182af _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">2D6+7 #命中判定 (2D6+7) ＞ 10[4,6]+7 ＞ 17</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_066c71787cdc _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">※迴避=13</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c9527c182af _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">※命中成功，計算傷害<br>※造成 6x1階 + 25 = 31物理傷害</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c9527c182af _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「雖然不清楚是聽不到我們的聲音，還是當成了遊戲……」<br>矯捷攀上了塔樓，在看到身形不一樣的友人的表情時，存魅露出苦笑，壓低身形，一個箭步拉近距離。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_066c71787cdc _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">看著鬼魅般攀上塔樓的纖細女子，魚肉香茗以最後的競技精神拿起手砲，轉身做出象徵性意義的抵抗。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c9527c182af _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">拉近到肉搏距離的瞬間，存魅並沒有立刻出手攻擊，而是欺近魚肉香茗的懷中，幾乎將對方抱在了懷中。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c9527c182af _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「你們的靈魂被困在這裡，該清醒了。」<br>「真的要玩遊戲的話……對呢，我更喜歡魚肉妳在扮演拉拉菲的樣子。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_066c71787cdc _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「……嗯？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_066c71787cdc _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">她皺起眉頭，但手上的動作沒有停下，看上去是準備把手砲抵到存魅的腦門上扣扳機。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c9527c182af _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">彎月環刀的側面貼在魚肉香茗的胸前，隨著存魅的一聲嘆息，凝縮起來的黑色靈力倏地爆發，無奈地為這場戰鬥畫下句點。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">戰鬥結束</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_2f0bfcd37ec6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">隨著最後一位「玩家」被擊倒，廢土之上的哨站也迅速崩塌成漫天飛灰。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_2f0bfcd37ec6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">扭曲的漩渦把眾人捲回原先的世界，只留下一句呢喃。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_179558da5011 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            女帝
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「神我狩，這個世界不歡迎你們。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_2f0bfcd37ec6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">世界的主人發出了禁令，奧拉莉絲身上激發態的契約轉化成另一個形式，連帶著另外兩人也被標記。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_2f0bfcd37ec6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">霹靂霹靂可以解讀出這個契約代表的意義。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_2f0bfcd37ec6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">──他們被這個遊戲封號了。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_812b6d4ef2c7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「這個糞Game。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_812b6d4ef2c7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">「居然封鎖我們。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">戰利品</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_2f0bfcd37ec6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">※靈紋恢復：+5</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1de92057a275 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">[ 奧拉莉絲 ] 靈紋 : 17 → 22</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1de92057a275 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">[ 珠輝 存魅 ] 靈紋 : 16 → 21</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b5686c6bed39 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            奧拉莉絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">2D6 #戰利品 (2D6) ＞ 5[1,4] ＞ 5</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c9527c182af _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">2D6 #戰利品 (2D6) ＞ 5[1,4] ＞ 5</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_812b6d4ef2c7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">2d6 (2D6) ＞ 10[5,5] ＞ 10</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_812b6d4ef2c7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">2d6 (2D6) ＞ 5[2,3] ＞ 5</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_812b6d4ef2c7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">2d6 (2D6) ＞ 5[1,4] ＞ 5</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_2f0bfcd37ec6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">※【電子雜訊】X4<br>精神 +1 。500G（效果值：1）</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_2f0bfcd37ec6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">※【生命氣息】<br>生命 +6 。1000G（效果值：2）</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">締結感情</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c9527c182af _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">魚肉香茗：拯救</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b5686c6bed39 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            奧拉莉絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">魚肉香茗：敵意</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_812b6d4ef2c7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">按鍵商人：Good job</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1de92057a275 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">[ 珠輝 存魅 ] 關係 : 5 → 6</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1de92057a275 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">[ 奧拉莉絲 ] 關係 : 5 → 6</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1de92057a275 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">9bdfee0ddf5c</channel>
+        </div>
+        <div class="_content">[ 霹靂霹靂 ] 關係 : 5 → 6</div>
+    </div>
+</div>
+</div><!--EOS-->
+        </div>
+    </body>
+</html>
