@@ -1,0 +1,2596 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="場景 III、IV、V">
+        <meta property="og:description" content="">
+        <title>場景 III、IV、V</title>
+        <style>
+            :root{
+                --color-bg: #454752;
+                --color-title: #FFFFFF;
+                --color-subtitle: #dddddd;
+                --color-talk-bg: #1E1E1E;
+                --color-talk-panel-bg: #2A2A2A;
+                --color-talk-panel-text: #EEEEEE;
+            }
+            body { display:flex; flex-direction:column; align-items:center; background:var(--color-bg); }
+            h1{ margin: 5px 0; color:var(--color-title); }
+            ._hidden { display:none !important; }
+            ._main { display:flex; flex-direction:column; align-items:stretch; gap:10px; width:100%; max-width:1080px; }
+            ._subtitle { color:var(--color-subtitle); margin-top:0; margin-bottom: 20px; }
+            ._sctitle { background:#ddd; margin-top:30px; padding:10px;font-weight:bold;font-size:1.3rem;text-align:center; }
+
+            ._talk { display:flex; flex-direction:row; gap:2px; background:var(--color-talk-bg); width:100%; border-radius:5px; }
+            ._talk ._lCol { width:110px; flex-shrink:0; margin:6px; margin-right:0; }
+            ._talk ._rCol { flex:1; display:flex; flex-direction: column; }
+            ._talk ._img { width:110px; height:110px; background-repeat:no-repeat; background-size:cover; background-color:#ffffff10; }
+            ._talk ._name { margin:6px; height:20px; font-size:18px; display:flex; justify-content:space-between; }
+            ._talk ._channel { margin-left:5px; color:#888888; display:none; }
+            ._talk ._content { flex:1; margin:6px; background:var(--color-talk-panel-bg); color:var(--color-talk-panel-text); font-size:1.1rem; padding:10px; border-radius:5px; }
+            ._talk._other { width:50%; margin-left:auto; }
+            ._talk._other ._lCol { display:none; }
+            ._talk._other ._name { justify-content:end; }
+            ._talk._other ._channel { display:block; }
+            ._talk._other ._content { background:black; color:white; text-align:right; }
+
+            ._halt { padding:30px 0; }
+            ._sctitle { border-radius:5px; }
+            ._bg-img { display:flex; justify-content: center; }
+            ._bg-img img { max-width:100%; max-height:400px; }
+
+            ._actor_9ffd27053a4f ._name { color:#888888; content:'GM'; }
+            ._actor_9ffd27053a4f ._img { background-image:url(''); display:none; }
+            ._actor_4134d34827db ._name { color:#888888; content:'貓宮 正義'; }
+            ._actor_4134d34827db ._img { background-image:url('https://images.plurk.com/2dhnz5769g3zXvvu07GSOi.png'); display:block; }
+            ._actor_aace1c9be2e3 ._name { color:#fe8fa5; content:'奧拉莉絲'; }
+            ._actor_aace1c9be2e3 ._img { background-image:url('https://images.plurk.com/4DG80IqFxEVTJi4Q9O7eOb.png'); display:block; }
+            ._actor_ead11b283cf2 ._name { color:#888888; content:'卜部正人'; }
+            ._actor_ead11b283cf2 ._img { background-image:url('https://images.plurk.com/6yvJH4Dn5GDTnxRUX09AHQ.png'); display:block; }
+            ._actor_78f2c77713a3 ._name { color:#888888; content:'system'; }
+            ._actor_78f2c77713a3 ._img { background-image:url(''); display:none; }
+            ._actor_4944c6b9b2b3 ._name { color:#888888; content:'珠輝 羽生'; }
+            ._actor_4944c6b9b2b3 ._img { background-image:url('https://images.plurk.com/5ytlrtGIAP7wttZXFnGuh7.png'); display:block; }
+            ._actor_574bbe9f2793 ._name { color:#888888; content:'珠輝 存魅'; }
+            ._actor_574bbe9f2793 ._img { background-image:url('https://images.plurk.com/3JbHrmRndeaNkrgkYxUYwO.png'); display:block; }
+            ._actor_c70aca22d927 ._name { color:#888888; content:'霹靂霹靂'; }
+            ._actor_c70aca22d927 ._img { background-image:url('https://images.plurk.com/2DlluGhutZPwXJbgG2bGKL.png'); display:block; }
+            ._actor_b576c5def4d7 ._name { color:#888888; content:'艾默能助'; }
+            ._actor_b576c5def4d7 ._img { background-image:url('https://images.plurk.com/1sxKZediK6z6sBHicf8P3k.png'); display:block; }
+            ._actor_6644d3c3c282 ._name { color:#888888; content:'闡吾仁道'; }
+            ._actor_6644d3c3c282 ._img { background-image:url('https://images.plurk.com/1kGyQSemoyFYPaKxy5yOnR.png'); display:block; }
+            ._actor_765d95264abd ._name { color:#888888; content:'按鍵商人'; }
+            ._actor_765d95264abd ._img { background-image:url('https://images.plurk.com/4vH4aKNJgucrMJvyrbsegO.png'); display:block; }
+            ._actor_56fb4fb4a718 ._name { color:#888888; content:'望恩赴義'; }
+            ._actor_56fb4fb4a718 ._img { background-image:url('https://images.plurk.com/4zg2Do550CQIgUQu97FEO3.png'); display:block; }
+            ._actor_eee6d1b12707 ._name { color:#888888; content:'魚肉香茗'; }
+            ._actor_eee6d1b12707 ._img { background-image:url('https://images.plurk.com/2HF4RCPRLUGDK4kUKApy74.png'); display:block; }
+            ._actor_c45af3591b80 ._name { color:#888888; content:'女帝'; }
+            ._actor_c45af3591b80 ._img { background-image:url('https://images.plurk.com/3GxaQ14z2MsmudKyyPZwUI.png'); display:block; }
+            ._actor_5c04886a283b ._name { color:#888888; content:'竹內 不亂軒'; }
+            ._actor_5c04886a283b ._img { background-image:url('https://images.plurk.com/1l2UAn6pcxGO6uke4xUprY.png'); display:block; }
+            ._actor_da56dc8d3b7e ._name { color:#888888; content:'始座勇者'; }
+            ._actor_da56dc8d3b7e ._img { background-image:url('https://images.plurk.com/JTxH2EKSfNPirNPkJzHTM.png'); display:block; }
+        </style>
+        <meta-data class="_hidden">
+            <channel>
+                _ch_b32ba96cc1d4: { name:"主要"; main:true; hide:false; }
+            </channel>
+        </meta-data>
+    </head>
+    <body>
+        <div class="_hidden"><version>hazmole_v2.0</version></div>
+        <h1>場景 III、IV、V</h1>
+        <div class="_subtitle">不同的可能性</div>
+
+        <div class="_main">
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">特對辦公室</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="setBg">
+    <div class="_bg-img"><img src="https://images.plurk.com/5Gif769knUOuf5xzrt4IAM.jpg"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9ffd27053a4f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">在「致新世界」的伺服器錨點被拆除之後，事前登陸的頁面已經徹底癱瘓，再也不會有新的玩家註冊帳號。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9ffd27053a4f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">不過，原先與異界存在簽訂了契約的那些人……</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9ffd27053a4f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">遊戲無法透過電腦登入，他們現在每天晚上透過睡夢被拉到異世界繼續這個遊戲。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9ffd27053a4f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">這是顯而易見的超常事件，甚至有些人覺得比一開始的狀況更糟了。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4134d34827db _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            貓宮 正義
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">──例如奧拉莉絲的直屬長官貓宮正義。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4134d34827db _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            貓宮 正義
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「你們到底在搞什麼？不但沒有解決事件，反而把事情鬧大了？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_aace1c9be2e3 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            奧拉莉絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">奧拉莉絲縮的小小的，臉上雖然沒有表情，但可以感受出她很委屈也很不爽，明明他們是在解決事件。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_aace1c9be2e3 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            奧拉莉絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「哪有鬧大，如果不解決那個法則障礙，現在還有更多人把自己的靈魂出賣給那個壞蛋女王耶。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_aace1c9be2e3 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            奧拉莉絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「我明明......是在做好事，為什麼不稱讚我，還罵我......」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4134d34827db _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            貓宮 正義
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「不知道自己在做什麼的話有什麼意義？如果搞不清楚後果的話就──」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_ead11b283cf2 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            卜部正人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「──貓宮。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_ead11b283cf2 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            卜部正人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">特別對策室的室長推開門打斷了這場會議，奧拉莉絲聽說過這位鼎鼎有名的特對最高主管，但這是第一次見到他。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4134d34827db _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            貓宮 正義
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「室長。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4134d34827db _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            貓宮 正義
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">貓宮正義立刻停下訓話，佇立躬身聽候差遣。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_aace1c9be2e3 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            奧拉莉絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">『室長......？是特對裡面最厲害的人？！』原本低著頭的奧拉莉絲，猛地抬頭望向走進來的卜部正人，眼中閃爍著期待，希望對方會是能夠理解自己的人。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_ead11b283cf2 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            卜部正人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「貓宮，這次的事件我收到報告了，你接下來打算怎麼做？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_ead11b283cf2 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            卜部正人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">卜部正人抽空望了奧拉莉絲一眼，嚴肅的表情稍稍緩和，微微扯起嘴角給她安撫性的微笑，接著才繼續正色注視貓宮正義。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4134d34827db _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            貓宮 正義
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「報告室長！這次奧拉莉絲的處置失當，我很抱歉！我們接下來會立刻挽回，透過靈力隔絕手銬讓那些受到影響的一般人免於受到侵害，並且想辦法前往異界剷除問題的根源！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4134d34827db _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            貓宮 正義
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">貓宮正義站得直挺挺的，大聲地回覆自己的計畫。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_ead11b283cf2 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            卜部正人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">特對的室長捏著下巴，不置可否，出乎意料地轉過頭向奧拉莉絲問道：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_ead11b283cf2 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            卜部正人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「……妳怎麼看？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4134d34827db _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            貓宮 正義
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「……咦？長官──」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4134d34827db _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            貓宮 正義
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">錯愕的貓宮正義忍不住發出疑惑的聲音，被室長瞪了一眼後才沉默。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_aace1c9be2e3 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            奧拉莉絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">聽到卜部的詢問，奧拉莉絲立馬站直身子，嚴肅的回應道，「我認為，這已經是目前最好的處理方式，若是再繼續拖延下去，那麼對方也只是繼續拿著國民當他們的奴隸。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_aace1c9be2e3 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            奧拉莉絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「對方只要擁有越多人，那不僅對我們來說是人質，也可能會變成阻礙我們的敵人。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_ead11b283cf2 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            卜部正人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「那麼，妳覺得妳先前的處置有所失當嗎？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_aace1c9be2e3 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            奧拉莉絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「我不認為，不管是一開始選擇進入調查，還是這次拆除法則障礙的行為。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_aace1c9be2e3 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            奧拉莉絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「若是我們不採取行動，只等到事情發生後才去想著如何解決，那只是讓我們應該保護的對象持續暴露在威脅之中。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_ead11b283cf2 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            卜部正人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">特對室長的表情看不出是否同意，他只是點了點頭，轉身向奧拉莉絲的原長官下令：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_ead11b283cf2 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            卜部正人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「貓宮正義。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4134d34827db _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            貓宮 正義
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「屬下在。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_ead11b283cf2 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            卜部正人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「有一個緊急任務要交給你，事件發生在東京郊外，潛在危害巨大，事態緊急，接下這個任務可能會面臨生命危險，告訴我，你是否願意承擔這個職責？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4134d34827db _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            貓宮 正義
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「這是我的責任，我馬上動身！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_ead11b283cf2 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            卜部正人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">卜部正人的臉色和緩了許多，甚至看得出些許笑意，他點了點頭，讓貓宮正義去領取任務簡報。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_ead11b283cf2 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            卜部正人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「東京的安全就交付給你了，接下來，奧拉莉絲這邊由我接管。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_ead11b283cf2 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            卜部正人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">目送貓宮正義離開後，他才回過身，伸手示意奧拉莉絲入座，但自己卻沒有坐下，反而微微躬身道：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_ead11b283cf2 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            卜部正人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「奧拉莉絲，請接受我的歉意，當初安排貓宮正義作為妳的直屬長官，現在看來並不適切，你們的行事方針有原則性上的差異。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_aace1c9be2e3 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            奧拉莉絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「貓貓......我是說貓宮先生跟我，有什麼樣的差異？」奧拉莉絲有些納悶，畢竟從自己誕生到現在，一直都是由貓宮的團隊在照顧自己，所以就算那份差異如此巨大，身為當局者的自己卻怎樣也看不清。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_ead11b283cf2 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            卜部正人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">不知道是否錯覺，卜部正人的嘴角似乎抖動了一下。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_ead11b283cf2 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            卜部正人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「貓宮的哥哥是名出色的時空魔導士，他秉持的理念就是選擇『最優解』與『最小犧牲』的未來，那是個精密計算的行事作風，最可貴的是：那並非冷漠的上位者利益決策。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_ead11b283cf2 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            卜部正人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">他面色肅穆，以手撫胸道：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_ead11b283cf2 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            卜部正人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「他在一次任務中，為了消彌異常事件的惡劣影響壯烈犧牲了，儘管他可以不用那麼做的。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_ead11b283cf2 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            卜部正人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「貓宮很崇拜他的哥哥，總是期望自己以同樣的準則行事。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_ead11b283cf2 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            卜部正人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">他看著眼前的仿生人，更進一步解釋道：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_ead11b283cf2 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            卜部正人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「但人類時空魔導士的準則，對仿生機械來說並不是那麼符合。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_ead11b283cf2 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            卜部正人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「奧拉莉絲，妳有著人類的心，這是一件難能可貴的事。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_aace1c9be2e3 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            奧拉莉絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">眼前男人所說的事情，對少女來說有些困難，她並沒有完全了解卜部所說的意思，只能默默的點了點頭。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_ead11b283cf2 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            卜部正人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">卜部正人沒有繼續探討這個話題，轉而進入正題：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_ead11b283cf2 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            卜部正人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「我剛剛聽了妳的判斷，我認為沒有問題，我會讓後勤部門整理出受到影響的一般人名單，後續的處理就繼續由妳的聯合小隊負責。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_aace1c9be2e3 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            奧拉莉絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">聽到這個消息，奧拉莉絲的雙眼逐漸睜大，似乎還有些不敢置信。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_aace1c9be2e3 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            奧拉莉絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「真的嗎？！我可以繼續調查嗎？！貓貓不會罵我？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_ead11b283cf2 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            卜部正人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「抱持妳保護國民的理念，積極的行事就好，不要怕犯錯，面對超常事件永遠不可能做到百分之百，只要盡力就沒有遺憾了。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_ead11b283cf2 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            卜部正人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「我相信妳，讓貓宮完成任務回來後看看妳的成果吧。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_ead11b283cf2 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            卜部正人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「隔絕靈力契約的手銬就在後勤部，有需要的話也可以申請其他物資，任務的補貼我已經安排下去了，祝妳任務順利。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9ffd27053a4f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">※奧拉莉絲獲得 100 G</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">締結感情</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_aace1c9be2e3 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            奧拉莉絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">卜部正人：喜愛</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_78f2c77713a3 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">[ 奧拉莉絲 ] 關係 : 6 → 7</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">珠輝家</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="setBg">
+    <div class="_bg-img"><img src="https://images.plurk.com/1fYHrAlew7cCo0qgxC0B8F.jpg"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4944c6b9b2b3 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 羽生
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「姨奶奶，儀式的研究有初步成果了。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4944c6b9b2b3 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 羽生
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">珠輝家最成器的後輩頂著厚重的黑眼圈，帶領存魅來到新搭建好的儀式祭台：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4944c6b9b2b3 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 羽生
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「我們可以透過激發與共鳴，掩蓋住自身的靈力波動，跟目標一起被契約拉進異世界，但這需要對方發自內心願意協助。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_574bbe9f2793 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「嗯……非常活跳的想法呢。」<br>存魅露出鼓勵的微笑，摸了摸她從小看到大的青年的頭。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4944c6b9b2b3 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 羽生
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">珠輝羽生的表情有些微妙的尷尬，動作也有點遲疑，像是正在掙扎要彎腰方便存魅摸頭，還是站直一點避免這個互動繼續。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4944c6b9b2b3 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 羽生
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">但他最後只是推了推眼鏡，維持原本的姿勢與面無表情。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_574bbe9f2793 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「不過，既然要發自內心願意協助的話……<br>　就得告知關於超常世界的事情，這點有點傷腦筋呢……」<br>存魅思考了一下，把手指放在臉頰上。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_574bbe9f2793 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「退魔師協會這邊的協力者，有被捲入事件的活體嗎？」<br></div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4944c6b9b2b3 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 羽生
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「目前沒有聽說。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_574bbe9f2793 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「……嗯，那似乎沒辦法了。」<br>存魅輕輕嘆了口氣。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_574bbe9f2793 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「羽生，再麻煩你把這件事呈報給特對，剩下的我會處理。」<br>「……以防萬一，也把記憶咒術的準備好吧。」<br></div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_574bbe9f2793 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「……對了，如果要帶三個人進去……需要準備三具身體嗎？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4944c6b9b2b3 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 羽生
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「好的，我會轉知特對，記憶的咒術沒有問題，珠輝家平時的籌備就完全足以應對。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4944c6b9b2b3 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 羽生
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「是的，如果姨奶奶妳們三位都要過去，那就需要三名自願的協力者。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_574bbe9f2793 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「知道了，不愧是我們家羽生，珠輝家的未來就靠你們這些年輕的血液了。」<br>存魅露出微笑，比平常更高的嘴角在無意識間露出了異常銳利的虎齒。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_574bbe9f2793 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">再次摸了摸羽生的腦袋，存魅半瞇起眼睛，思考著腦中的人選。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_574bbe9f2793 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「……那麼，該從哪裡開始呢？」<br>像是自言自語一樣，存魅的身影緩緩遠去。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">締結感情</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_574bbe9f2793 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">闡吾仁道：關愛</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_78f2c77713a3 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">[ 珠輝 存魅 ] 關係 : 6 → 7</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">電子世界</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="setBg">
+    <div class="_bg-img"><img src="https://images.plurk.com/3Nwmazw4KdDo4BZcwE3OR2.jpg"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9ffd27053a4f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">霹靂霹靂在電子世界穿梭，手上還捏著那個「致新世界」的連結。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9ffd27053a4f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">這個連結現在已經被廢棄，就像「艾默能助」電腦裡被霹靂霹靂刪掉的遊戲檔案。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9ffd27053a4f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">但這些措施都無法阻止已經被契約綁定的玩家，霹靂霹靂在拆除法則障礙的隔天就注意到了，「艾默能助」只要一入睡就會被拉進遊戲。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9ffd27053a4f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">……他這幾天每天晚上十點前就會上床，規律得嚇人。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_c70aca22d927 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">雖然身體變健康了。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_c70aca22d927 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">為了避免他太早去睡覺，霹靂每天都拉他聊天。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_c70aca22d927 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「艾默，你說在遊戲內遇到我？當敵人？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_c70aca22d927 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「再講一次啊」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b576c5def4d7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾默能助
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「就那個新世界的幻象怪啊 超扯的 就像小說裡的心魔那樣」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b576c5def4d7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾默能助
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「我覺得你應該是我生出來的 還有一個不知道誰幻想出來的存魅 我一開始還認不出來 但她一講話感覺就是存魅」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b576c5def4d7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾默能助
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「最後還有一個騎重機的大劍少女 超帥的 不知道是誰想的」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_c70aca22d927 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「你是不是一直在想人家？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b576c5def4d7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾默能助
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">（輸入中……）</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b576c5def4d7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾默能助
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">艾默能助又陷入不知道該怎麼回的糾結狀態，霹靂霹靂知道如果不換話題，這狀態可能會持續超過十分鐘。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_c70aca22d927 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">哼哼，吃我這招。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_c70aca22d927 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">霹靂滿意地看著（輸入中．．．）。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_c70aca22d927 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">只要讓他在意到睡不著，就不會登入那個遊戲。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b576c5def4d7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾默能助
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">十分鐘後，他終於想出該怎麼接：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b576c5def4d7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾默能助
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「我覺得PZ如果來玩應該很適合 那個幻象的雷電技能感覺就是妳會喜歡的類型」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_c70aca22d927 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「那是敵人吧」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_c70aca22d927 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「那個幻象講話也跟我相似嗎？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b576c5def4d7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾默能助
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「還真的有點像耶 不過我覺得敵人的你比較嘲諷 有點像 按鍵 」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_c70aca22d927 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「哦是喔」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_c70aca22d927 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「比方說，她說了甚麼？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b576c5def4d7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾默能助
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「就是心魔會說的那種話 喚醒夥伴什麼的經典對話 我猜如果我們中計就要被捅刀了」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_c70aca22d927 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">居然都有聽見嗎……</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_c70aca22d927 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「喂，都叫你醒來了，怎麼不醒啊？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b576c5def4d7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾默能助
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「哈哈我媽也每天叫我去用功讀書啊 我還不是繼續玩 哪次不玩的」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_c70aca22d927 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「艾默」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_c70aca22d927 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「你不覺得這很奇怪嗎？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_c70aca22d927 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「那個遊戲讀你的心，我不喜歡」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b576c5def4d7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾默能助
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">（輸入中……）</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b576c5def4d7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾默能助
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">又是一個十分鐘。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b576c5def4d7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾默能助
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「我知道這很不正常 但我本來也就不是那種很正常或很好的人 如果這個遊戲讀我的心可以讓遊戲變更好 那我接受」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b576c5def4d7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾默能助
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">他難得認真地回了一大段話。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_c70aca22d927 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「哦？那看到我在遊戲裡變成敵人登場，你很高興嗎？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b576c5def4d7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾默能助
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「看到你很高興 但我還是更想跟你站在同一邊一起玩」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_c70aca22d927 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">唔……</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_c70aca22d927 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">霹靂在網海中盤腿坐下，覺得頭有點痛。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_c70aca22d927 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「那個啊」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_c70aca22d927 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「我是跟你站在同一邊的」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_c70aca22d927 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「是這樣子，但不是這樣」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_c70aca22d927 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">霹靂打字打到一半，覺得齒輪卡卡的，想不出怎麼跟艾默繼續溝通。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_c70aca22d927 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「齁－－哪有人突然那樣講那種話的呀？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_c70aca22d927 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「害我不知道怎麼回了啊」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_c70aca22d927 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">她有點著惱地回了幾句，劈哩啪啦頻道裡一串都是她的訊息。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b576c5def4d7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾默能助
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">被訊息淹沒的「艾默能助」再次陷入（輸入中……）的糾結，最後才回了一小段話：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b576c5def4d7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾默能助
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「我知道我們是同一邊的」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_c70aca22d927 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「知道就好」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_c70aca22d927 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「你根本就沒睡覺，連跟我聊天都在打哈欠」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_c70aca22d927 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">霹靂透過電腦螢幕都看到了。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b576c5def4d7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾默能助
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「呃 我有睡覺啦 只是順便玩了一下遊戲而已」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b576c5def4d7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾默能助
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「不用擔心 我現在早睡早起超健康的 我媽都嚇到了」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b576c5def4d7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾默能助
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「嗯 可能是最近都早睡習慣了 我可能也差不多要睡了」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_c70aca22d927 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">又打了一個哈欠……</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_c70aca22d927 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「好吧」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_c70aca22d927 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「晚安，明天再聊」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b576c5def4d7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾默能助
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「晚安 明天聊」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b576c5def4d7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾默能助
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">隔著電腦螢幕可以看到，他下線關電腦之後，幾乎是馬上躺平，不到三分鐘就開始打呼，身上也隱隱約約透出靈力的波動。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_c70aca22d927 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">好在他的床跟電腦非常近，霹靂不用花太大的力氣來延伸知覺。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_c70aca22d927 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">靈力的波動跟電子訊號有點相似……</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_c70aca22d927 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">雖然沒有試過，但說不定，這邊也可以駭入。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_c70aca22d927 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「我是站在你這邊的，艾默。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_c70aca22d927 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">她釋放靈力，與艾默身上的靈力波動調和，試圖潛入其中。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9ffd27053a4f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">這不是霹靂霹靂第一次這樣做了。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9ffd27053a4f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">經過幾天不眠不休的鑽研，霹靂霹靂終於有所突破，成功從「艾默能助」身上的契約找到可利用的漏洞。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9ffd27053a4f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">不過他沒有完全駭入，而是保留了這個「盜用帳號」的路徑，以免這個系統漏洞在下次的「更新」中迅速被修復。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9ffd27053a4f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">這個駭入的嘗試，他大概有八、九成的把握可以成功，甚至可以幫助其他人這樣做，把玩家踢回地球的同時讓神我狩駭入異世界。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9ffd27053a4f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">不過，很難說這樣駭進異世界會不會有什麼後果就是了。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_c70aca22d927 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「就這樣做吧……」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_c70aca22d927 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">「啊，也要跟冥月她們說一下。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9ffd27053a4f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">也許這樣的手段也可以用在其他公會的朋友身上，畢竟團隊的其他人也需要找到潛入異世界的方法。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9ffd27053a4f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">不過，這樣的駭入需要一定時間的現實接觸，除了「艾默能助」跟存魅之外，霹靂霹靂還沒有線下見過其他的公會朋友。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_c70aca22d927 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">霹靂也是這時才在反省，沒有跟其他成員締結認真的關係。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_c70aca22d927 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">嗯－－魚魚那邊……之後也去看看情況好了。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_c70aca22d927 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">畢竟平常都是魚魚在關心大家。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_c70aca22d927 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">或許，自己也該試試看對更多人表達關切。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">締結感情</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_c70aca22d927 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">//魚肉香茗：隱約在意</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_78f2c77713a3 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">b32ba96cc1d4</channel>
+        </div>
+        <div class="_content">[ 霹靂霹靂 ] 關係 : 6 → 7</div>
+    </div>
+</div>
+</div><!--EOS-->
+        </div>
+    </body>
+</html>
