@@ -1,0 +1,1392 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="場景 VI">
+        <meta property="og:description" content="">
+        <title>場景 VI</title>
+        <style>
+            :root{
+                --color-bg: #454752;
+                --color-title: #FFFFFF;
+                --color-subtitle: #dddddd;
+                --color-talk-bg: #1E1E1E;
+                --color-talk-panel-bg: #2A2A2A;
+                --color-talk-panel-text: #EEEEEE;
+            }
+            body { display:flex; flex-direction:column; align-items:center; background:var(--color-bg); }
+            h1{ margin: 5px 0; color:var(--color-title); }
+            ._hidden { display:none !important; }
+            ._main { display:flex; flex-direction:column; align-items:stretch; gap:10px; width:100%; max-width:1080px; }
+            ._subtitle { color:var(--color-subtitle); margin-top:0; margin-bottom: 20px; }
+            ._sctitle { background:#ddd; margin-top:30px; padding:10px;font-weight:bold;font-size:1.3rem;text-align:center; }
+
+            ._talk { display:flex; flex-direction:row; gap:2px; background:var(--color-talk-bg); width:100%; border-radius:5px; }
+            ._talk ._lCol { width:110px; flex-shrink:0; margin:6px; margin-right:0; }
+            ._talk ._rCol { flex:1; display:flex; flex-direction: column; }
+            ._talk ._img { width:110px; height:110px; background-repeat:no-repeat; background-size:cover; background-color:#ffffff10; }
+            ._talk ._name { margin:6px; height:20px; font-size:18px; display:flex; justify-content:space-between; }
+            ._talk ._channel { margin-left:5px; color:#888888; display:none; }
+            ._talk ._content { flex:1; margin:6px; background:var(--color-talk-panel-bg); color:var(--color-talk-panel-text); font-size:1.1rem; padding:10px; border-radius:5px; }
+            ._talk._other { width:50%; margin-left:auto; }
+            ._talk._other ._lCol { display:none; }
+            ._talk._other ._name { justify-content:end; }
+            ._talk._other ._channel { display:block; }
+            ._talk._other ._content { background:black; color:white; text-align:right; }
+
+            ._halt { padding:30px 0; }
+            ._sctitle { border-radius:5px; }
+            ._bg-img { display:flex; justify-content: center; }
+            ._bg-img img { max-width:100%; max-height:400px; }
+
+            ._actor_3cacc9e2cb0b ._name { color:#888888; content:'GM'; }
+            ._actor_3cacc9e2cb0b ._img { background-image:url(''); display:none; }
+            ._actor_71eb13ddf7a5 ._name { color:#888888; content:'霹靂霹靂'; }
+            ._actor_71eb13ddf7a5 ._img { background-image:url('https://images.plurk.com/2DlluGhutZPwXJbgG2bGKL.png'); display:block; }
+            ._actor_fd2aef7301d8 ._name { color:#fe8fa5; content:'奧拉莉絲'; }
+            ._actor_fd2aef7301d8 ._img { background-image:url('https://images.plurk.com/4DG80IqFxEVTJi4Q9O7eOb.png'); display:block; }
+            ._actor_1586993d3df5 ._name { color:#888888; content:'system'; }
+            ._actor_1586993d3df5 ._img { background-image:url(''); display:none; }
+            ._actor_6876ba7c572e ._name { color:#888888; content:'魚肉香茗'; }
+            ._actor_6876ba7c572e ._img { background-image:url('https://images.plurk.com/6xjLs1YxBLTBIp8yx9uCJr.png'); display:block; }
+            ._actor_ac3f7654e063 ._name { color:#888888; content:'珠輝 存魅'; }
+            ._actor_ac3f7654e063 ._img { background-image:url('https://images.plurk.com/3JbHrmRndeaNkrgkYxUYwO.png'); display:block; }
+            ._actor_6b9337dd0e66 ._name { color:#888888; content:'闡吾仁道'; }
+            ._actor_6b9337dd0e66 ._img { background-image:url('https://images.plurk.com/1tbg3fJcm1XwuZOxKtgq2.png'); display:block; }
+            ._actor_a1c518ce86a8 ._name { color:#888888; content:'按鍵商人'; }
+            ._actor_a1c518ce86a8 ._img { background-image:url('https://images.plurk.com/6eg4otIAmTfCzkK44zW3Ej.png'); display:block; }
+            ._actor_c7f9607aa479 ._name { color:#888888; content:'望恩赴義'; }
+            ._actor_c7f9607aa479 ._img { background-image:url('https://images.plurk.com/4pBzruZ8fVOeObkMRvPqvt.png'); display:block; }
+            ._actor_813c7743c782 ._name { color:#888888; content:'艾默能助'; }
+            ._actor_813c7743c782 ._img { background-image:url('https://images.plurk.com/2vN6XVQIriaQMaqNBQtOTT.png'); display:block; }
+            ._actor_d6927ade6aea ._name { color:#888888; content:'女帝'; }
+            ._actor_d6927ade6aea ._img { background-image:url('https://images.plurk.com/3GxaQ14z2MsmudKyyPZwUI.png'); display:block; }
+            ._actor_e9c3b9c3d112 ._name { color:#888888; content:'珠輝 羽生'; }
+            ._actor_e9c3b9c3d112 ._img { background-image:url('https://images.plurk.com/5ytlrtGIAP7wttZXFnGuh7.png'); display:block; }
+            ._actor_99d6db151342 ._name { color:#888888; content:'竹內 不亂軒'; }
+            ._actor_99d6db151342 ._img { background-image:url('https://images.plurk.com/1l2UAn6pcxGO6uke4xUprY.png'); display:block; }
+            ._actor_914b6f696ad8 ._name { color:#888888; content:'始座勇者'; }
+            ._actor_914b6f696ad8 ._img { background-image:url('https://images.plurk.com/JTxH2EKSfNPirNPkJzHTM.png'); display:block; }
+            ._actor_d9190bdfa52c ._name { color:#888888; content:'貓宮 正義'; }
+            ._actor_d9190bdfa52c ._img { background-image:url('https://images.plurk.com/2dhnz5769g3zXvvu07GSOi.png'); display:block; }
+        </style>
+        <meta-data class="_hidden">
+            <channel>
+                _ch_83118f22e7a5: { name:"主要"; main:true; hide:false; }
+            </channel>
+        </meta-data>
+    </head>
+    <body>
+        <div class="_hidden"><version>hazmole_v2.0</version></div>
+        <h1>場景 VI</h1>
+        <div class="_subtitle">地球 Online</div>
+
+        <div class="_main">
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">登場判定</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_71eb13ddf7a5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">2D6+5 #幸運判定 (2D6+5) ＞ 9[3,6]+5 ＞ 14</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_fd2aef7301d8 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            奧拉莉絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">/小休  ７（體力）<br>＋５（用餐：整備場）<br>＋４（睡眠：睡袋）<br>＋５（其他：卡洛里棒）<br>買C4</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1586993d3df5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">[ 奧拉莉絲 ] 生命力 : 41 → 59</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">辦公大樓</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="setBg">
+    <div class="_bg-img"><img src="https://images.plurk.com/3dG5HTm3zsvNA6pl0Uy3lf.jpg"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6876ba7c572e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">「……業務那邊私自承諾月底前交件，但倉庫那裏根本沒料，好，我知道了。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6876ba7c572e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">面對屬下報告的突發狀況，幹練的上班族女性沉穩地發號施令：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6876ba7c572e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">「先打電話跟倉庫確認物料什麼時候會到，然後我打電話給葉主管請他親自跟客戶解釋日期會延後。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6876ba7c572e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">一陣手忙腳亂後，她看了看外面的天色，嘆了口氣道：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6876ba7c572e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">「後面的事情我來處理，你們早點下班吧，明天恐怕還有很多事要處理。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6876ba7c572e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">在下屬們各自離去後，她才嘆了口氣，拿出手機遙控電腦登入遊戲，完成每日簽到後立刻退出。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6876ba7c572e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">「又是這樣的一天……」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6876ba7c572e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">她帶著厭世的神情坐回主管辦公室的電腦桌前，準備繼續奮鬥。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6876ba7c572e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">「咦？預約會面的信函，環境省特別對策室……」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6876ba7c572e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">他雙手摀住臉龐，椅背往後仰倒，癱倒著長長嘆了一大口氣。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6876ba7c572e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">然後起身，從自己的櫃子裡拿出睡袋，鋪在休息室的長沙發上，做好挑燈夜戰的準備。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3cacc9e2cb0b _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">隔天，準備好完整環境評估資料的魚肉香茗，在會議室接見了特對的客人。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6876ba7c572e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">她精緻的妝容下是有些憔悴的神情。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_ac3f7654e063 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">「晚安，魚肉……不對，現在應該叫您早川小姐呢？」<br>灰白色調的女性帶著那一如既往的平淡微笑,揮揮舉起的手,打著招呼。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_ac3f7654e063 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">「我是與環境省特別對策室合作的專員，名叫珠輝存魅。」<br>「或者……用冥月這個名字，您應該會比較熟悉吧。」<br>存魅低頭致意，正式地做了開場自我介紹。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6876ba7c572e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">她的表情從驚愕、防備，再轉換成不確定的遲疑：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6876ba7c572e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">「……冥月？妳怎麼知道是我？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_ac3f7654e063 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">「在政府那邊稍微有些認識的人呢。」<br>「而且……我覺得，如果是魚肉的話，應該能夠理解我過來的意圖的。」<br>存魅淡淡地笑了一下，舉起手指。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_ac3f7654e063 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">「這麼說吧……您還記得在前幾天，我在遊戲中對你們說過的話嗎？」<br>「你們的靈魂被困在遊戲中，該清醒了……這句話。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6876ba7c572e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">「……那果然是真的妳。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6876ba7c572e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">她拋開手上的環境評估資料，又吐出一口氣：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6876ba7c572e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">「所以我們的世界是什麼樣的設定？超能力、魔法，還是隱藏的黑科技？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6876ba7c572e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">她沒有直接回應存魅的話，反而問起其它資訊。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_ac3f7654e063 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">「都有喔～」<br>「比如說，我是退魔師家族的成員，PZ 則是電子生命體。」<br>就好像這不是什麼大事一樣，存魅用很輕鬆的語氣說道。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_ac3f7654e063 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">存魅簡單地交代了一下來龍去脈。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6876ba7c572e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">「我懂了。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6876ba7c572e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">聽完一長串的說明後，她終於回覆起最開始的那個問題：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6876ba7c572e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">「靈魂被困在遊戲……但那才是我生活中真正有意義的時刻，冥月，在睡夢中登入遊戲之後，我想了很久。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6876ba7c572e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">「人生數十年，又何嘗不是一場遊戲呢？既然現在有選擇，比起這款爛遊戲，坦白說，我更喜歡致新世界，我願意被困在那裏。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_ac3f7654e063 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">「這樣嗎……」存魅垂下視線。<br>「繼續待下去，你們人類的靈力會被一點一滴抽乾，精神持續衰弱，甚至可能會提前迎來最後的時刻。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_ac3f7654e063 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">「在未來，這個世界上還會有更多新遊戲能玩呢……<br>　待在現實讓心臟繼續跳動，難道不好嗎？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6876ba7c572e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">「坐在辦公室，身體一點一點劣化，精神逐漸衰弱，提早迎來最後的時刻……」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6876ba7c572e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">她突然笑了出來。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6876ba7c572e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">「我就是為了從這個麻木的世界逃脫，才會開始玩遊戲的，只有在遊戲裡我才覺得自己真的活著，妳知道我喜歡跟大家一起相處，每次換遊戲或有朋友棄坑我都很傷心，現在有這一款大家會一起玩下去的好遊戲……」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6876ba7c572e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">「抱歉了，冥月，我是『致新世界』的玩家，我不會主動棄坑，就算遊戲要倒閉，我也想親眼見證故事的結局，站在玩家的那一方奮戰到底。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_ac3f7654e063 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">「……這樣啊。」<br>存魅低下頭，有些遺憾地嘆了口氣。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_ac3f7654e063 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">「那麼……抱歉了，魚肉。」<br>她簡短地致歉，沒有明說，但相信對方能理解她的意思。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_ac3f7654e063 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">「之後……希望還能在原本的遊戲裡和妳一起玩呢。」<br>用這句話作為結尾，存魅轉身準備離開。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6876ba7c572e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">「冥月，抱歉了，我們還是朋──」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6876ba7c572e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">她的話說到一半就被打斷。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_71eb13ddf7a5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">「喂，給我等等喔。別這麼輕易放棄啊！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_71eb13ddf7a5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">這時有聲音從早川的電腦傳來。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_71eb13ddf7a5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">「可惡，那才不是大家會一起玩下去的好遊戲……」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_71eb13ddf7a5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">「身體弱的和玩不好的會先倒下啊，靈力又不是無限的！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_71eb13ddf7a5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">「那種強迫人一直玩不能休息的，根本就不是遊戲，是坐牢。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_71eb13ddf7a5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">「我以為魚魚妳很聰明的說。哼，我要在妳的報告上面畫圖！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_71eb13ddf7a5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">只見電腦螢幕上彈出早川剛剛改好的報告。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6876ba7c572e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">「霹靂！別動！妳畫下去我真的要在公司多坐牢幾個小時了！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_71eb13ddf7a5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">「哼哼哼～」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_71eb13ddf7a5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">簡報上出現各種下流梗的繪圖。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_71eb13ddf7a5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">「要一起玩好玩的遊戲，為什麼不繼續玩《再臨幻想１４》就好了咧？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_71eb13ddf7a5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">「妳們根本就是喜新厭舊而已。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_71eb13ddf7a5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">「很快的，妳就也會覺得致新世界變得無聊，想要換遊戲了。到時候就來不及了！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6876ba7c572e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">她伸手扶住額頭，顯得有些無奈，但看起來並沒有煩躁或敵意的情緒：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6876ba7c572e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">「霹靂，我現在才知道妳是電子生命，對你來說，從妳的世界來到我們的世界是什麼樣的感覺呢？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6876ba7c572e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">她按下電腦顯示器的關閉鍵，選擇眼不見為淨：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6876ba7c572e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">「其實我心裡有個沒來由但非常篤定的認知，我猜也許是契約的某個補充條文：我相信如果我在這個世界死去，會像睡著一樣，登入到那個世界，展開新生活。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6876ba7c572e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">「對我來說，那個世界還是比現在這個世界更有趣的，就算不去打怪、蓋房子，光是那些異世界料理就夠有趣了。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_71eb13ddf7a5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">「認識到新的世界，是很有趣。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_71eb13ddf7a5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">螢幕閃爍幾下之後，重新開啟。出現的不是簡報，而是霹靂的大臉。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_71eb13ddf7a5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">「但是我啊，很清楚自己是甚麼。知道自己最多只能走多遠。能跟妳們在網路上認識、一起玩，那樣我就很滿足……」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_71eb13ddf7a5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">「我為什麼非得看見妳們被異世界人抓去當奴隸呀？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6876ba7c572e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">「霹靂……謝謝妳，但我現在也是公司的奴隸呢！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6876ba7c572e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">她聳了聳肩，眨眼開了個玩笑。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_71eb13ddf7a5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">「那就不要做了呀。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_71eb13ddf7a5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">「來當我們的幫手吧。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_ac3f7654e063 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">「既然知道了那麼多不該知道的事……來我們家族幫忙也行呢。」<br>「說不定魚肉真的能學會一些魔法也說不定呢？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_ac3f7654e063 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">存魅理解了霹靂的意圖，適時的推了一把。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_71eb13ddf7a5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">【靈力操作】2 → 6 ，判定修正值 +4</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6876ba7c572e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">「哦……在現實世界成為魔法少女，不得不說，這個 DLC 可能會讓地球 Online 變得很不一樣，嗯……冥月，我想了解多一點，也許，這個方向不是不行……」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_ac3f7654e063 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">「那麼……實際細節就請再來珠輝本家詳談一番吧。」<br>存魅露出鬆了一口氣的表情，走上前握住了她的手。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_ac3f7654e063 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            珠輝 存魅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">「PZ，魚肉原本的工作可以麻煩你協助處理嗎？」<br>接著輕飄飄的把鍋丟出去</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_71eb13ddf7a5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">「嗯？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6876ba7c572e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">「好。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6876ba7c572e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">她伸手摘下自己的工作名牌，隨手塞進外套口袋。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6876ba7c572e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">「霹靂，那就拜託妳啦！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_71eb13ddf7a5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            霹靂霹靂
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">「欸，等等喔。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6876ba7c572e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            魚肉香茗
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">83118f22e7a5</channel>
+        </div>
+        <div class="_content">她伸手把電腦顯示器重新打開，頭也不回地起身。</div>
+    </div>
+</div>
+</div><!--EOS-->
+        </div>
+    </body>
+</html>
