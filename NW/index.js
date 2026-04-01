@@ -7,6 +7,7 @@ var INDEX = [
 		{ title: "疆域淪陷", url: "03", },
 		{ title: "不同的可能性", url: "04", },
 		{ title: "地球 Online", url: "05", },
+		{ title: "真實的死亡", url: "06", },
 	] },
 
 ];
