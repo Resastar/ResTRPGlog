@@ -1,0 +1,753 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="通路禁絕">
+        <meta property="og:description" content="">
+        <title>通路禁絕</title>
+        <style>
+            :root{
+                --color-bg: #454752;
+                --color-title: #FFFFFF;
+                --color-subtitle: #dddddd;
+                --color-talk-bg: #1E1E1E;
+                --color-talk-panel-bg: #2A2A2A;
+                --color-talk-panel-text: #EEEEEE;
+            }
+            body { display:flex; flex-direction:column; align-items:center; background:var(--color-bg); }
+            h1{ margin: 5px 0; color:var(--color-title); }
+            ._hidden { display:none !important; }
+            ._main { display:flex; flex-direction:column; align-items:stretch; gap:10px; width:100%; max-width:1080px; }
+            ._subtitle { color:var(--color-subtitle); margin-top:0; margin-bottom: 20px; }
+            ._sctitle { background:#ddd; margin-top:30px; padding:10px;font-weight:bold;font-size:1.3rem;text-align:center; }
+
+            ._talk { display:flex; flex-direction:row; gap:2px; background:var(--color-talk-bg); width:100%; border-radius:5px; }
+            ._talk ._lCol { width:110px; flex-shrink:0; margin:6px; margin-right:0; }
+            ._talk ._rCol { flex:1; display:flex; flex-direction: column; }
+            ._talk ._img { width:110px; height:110px; background-repeat:no-repeat; background-size:cover; background-color:#ffffff10; }
+            ._talk ._name { margin:6px; height:20px; font-size:18px; display:flex; justify-content:space-between; }
+            ._talk ._channel { margin-left:5px; color:#888888; display:none; }
+            ._talk ._content { flex:1; margin:6px; background:var(--color-talk-panel-bg); color:var(--color-talk-panel-text); font-size:1.1rem; padding:10px; border-radius:5px; }
+            ._talk._other { width:50%; margin-left:auto; }
+            ._talk._other ._lCol { display:none; }
+            ._talk._other ._name { justify-content:end; }
+            ._talk._other ._channel { display:block; }
+            ._talk._other ._content { background:black; color:white; text-align:right; }
+
+            ._halt { padding:30px 0; }
+            ._sctitle { border-radius:5px; }
+            ._bg-img { display:flex; justify-content: center; }
+            ._bg-img img { max-width:100%; max-height:400px; }
+
+            ._actor_7f9008abb789 ._name { color:#888888; content:'按鍵商人'; }
+            ._actor_7f9008abb789 ._img { background-image:url('https://images.plurk.com/6eg4otIAmTfCzkK44zW3Ej.png'); display:block; }
+            ._actor_147ff39e3417 ._name { color:#888888; content:'GM'; }
+            ._actor_147ff39e3417 ._img { background-image:url(''); display:none; }
+            ._actor_a1ce0eea1bed ._name { color:#888888; content:'望恩赴義'; }
+            ._actor_a1ce0eea1bed ._img { background-image:url('https://images.plurk.com/4pBzruZ8fVOeObkMRvPqvt.png'); display:block; }
+            ._actor_cea2032e4eed ._name { color:#888888; content:'客人'; }
+            ._actor_cea2032e4eed ._img { background-image:url('https://images.plurk.com/351EsG3g7dpREiwKPeMbzz.png'); display:block; }
+            ._actor_e08db0c42f34 ._name { color:#888888; content:'珠輝 存魅'; }
+            ._actor_e08db0c42f34 ._img { background-image:url('https://images.plurk.com/3JbHrmRndeaNkrgkYxUYwO.png'); display:block; }
+            ._actor_0dc8faa82482 ._name { color:#888888; content:'system'; }
+            ._actor_0dc8faa82482 ._img { background-image:url(''); display:none; }
+            ._actor_a52fd96eae3f ._name { color:#888888; content:'學生'; }
+            ._actor_a52fd96eae3f ._img { background-image:url('https://images.plurk.com/3v3ikKeKog8mGqqYxmGQLr.png'); display:block; }
+            ._actor_8aa3273a997f ._name { color:#888888; content:'艾默能助'; }
+            ._actor_8aa3273a997f ._img { background-image:url('https://images.plurk.com/2vN6XVQIriaQMaqNBQtOTT.png'); display:block; }
+            ._actor_bd14b429a10c ._name { color:#888888; content:'霹靂霹靂'; }
+            ._actor_bd14b429a10c ._img { background-image:url('https://images.plurk.com/2DlluGhutZPwXJbgG2bGKL.png'); display:block; }
+            ._actor_8738a878d115 ._name { color:#888888; content:'闡吾仁道'; }
+            ._actor_8738a878d115 ._img { background-image:url('https://images.plurk.com/1tbg3fJcm1XwuZOxKtgq2.png'); display:block; }
+            ._actor_410582bead48 ._name { color:#fe8fa5; content:'奧拉莉絲'; }
+            ._actor_410582bead48 ._img { background-image:url('https://images.plurk.com/4DG80IqFxEVTJi4Q9O7eOb.png'); display:block; }
+            ._actor_81bfe87eb7c4 ._name { color:#888888; content:'卜部正人'; }
+            ._actor_81bfe87eb7c4 ._img { background-image:url('https://images.plurk.com/6yvJH4Dn5GDTnxRUX09AHQ.png'); display:block; }
+            ._actor_54b0cda67cca ._name { color:#888888; content:'女帝'; }
+            ._actor_54b0cda67cca ._img { background-image:url('https://images.plurk.com/5bb5ulS9kBnV7aU1cUlL0T.png'); display:block; }
+            ._actor_f82ab74e2a63 ._name { color:#888888; content:'魚肉香茗'; }
+            ._actor_f82ab74e2a63 ._img { background-image:url('https://images.plurk.com/6xjLs1YxBLTBIp8yx9uCJr.png'); display:block; }
+            ._actor_5771c2483c3d ._name { color:#888888; content:'珠輝 羽生'; }
+            ._actor_5771c2483c3d ._img { background-image:url('https://images.plurk.com/5ytlrtGIAP7wttZXFnGuh7.png'); display:block; }
+            ._actor_1931fc530150 ._name { color:#888888; content:'竹內 不亂軒'; }
+            ._actor_1931fc530150 ._img { background-image:url('https://images.plurk.com/1l2UAn6pcxGO6uke4xUprY.png'); display:block; }
+            ._actor_a717cf4c3c0a ._name { color:#888888; content:'始座勇者'; }
+            ._actor_a717cf4c3c0a ._img { background-image:url('https://images.plurk.com/JTxH2EKSfNPirNPkJzHTM.png'); display:block; }
+            ._actor_043be60113ad ._name { color:#888888; content:'貓宮 正義'; }
+            ._actor_043be60113ad ._img { background-image:url('https://images.plurk.com/2dhnz5769g3zXvvu07GSOi.png'); display:block; }
+            ._actor_ab520a6fa999 ._name { color:#888888; content:'荒御魂'; }
+            ._actor_ab520a6fa999 ._img { background-image:url('https://images.plurk.com/4kg8F2tEkPJCCXoDLGogdm.png'); display:block; }
+        </style>
+        <meta-data class="_hidden">
+            <channel>
+                _ch_e83cce9b5a0d: { name:"主要"; main:true; hide:false; }
+            </channel>
+        </meta-data>
+    </head>
+    <body>
+        <div class="_hidden"><version>hazmole_v2.0</version></div>
+        <h1>通路禁絕</h1>
+        <div class="_subtitle">場景 IX</div>
+
+        <div class="_main">
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">商店街</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="setBg">
+    <div class="_bg-img"><img src="https://images.plurk.com/6Y0Uk5zc6MvfSNYO0k0EK3.jpg"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7f9008abb789 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            按鍵商人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e83cce9b5a0d</channel>
+        </div>
+        <div class="_content">「早上好！現在我有Bing Chilling！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7f9008abb789 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            按鍵商人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e83cce9b5a0d</channel>
+        </div>
+        <div class="_content">冰淇淋移動攤車的老闆拿出大聲公，重複播放意義不明的宣傳詞。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7f9008abb789 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            按鍵商人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e83cce9b5a0d</channel>
+        </div>
+        <div class="_content">他自己則是輕輕哼著魔性的旋律搖擺著身體：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7f9008abb789 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            按鍵商人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e83cce9b5a0d</channel>
+        </div>
+        <div class="_content">「Ma-ia-huu♩<br>Ma-ia-hii♩<br>Ma-ia-hoo♩<br>Ma-ia-ha ha♩」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_147ff39e3417 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e83cce9b5a0d</channel>
+        </div>
+        <div class="_content">風格強烈的宣傳引來了一些圍觀的客人，但也勸退了更多人。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_147ff39e3417 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e83cce9b5a0d</channel>
+        </div>
+        <div class="_content">過了好一會才有幾個高中生上前消費，買完之後刷了旁邊的付款掃碼，連結到了熟悉的迷因音樂。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7f9008abb789 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            按鍵商人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e83cce9b5a0d</channel>
+        </div>
+        <div class="_content">一陣笑鬧之後，攤主才拿出真正的付款碼。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_147ff39e3417 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e83cce9b5a0d</channel>
+        </div>
+        <div class="_content">在這期間，旁邊的攤位已經做完五、六筆生意了。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7f9008abb789 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            按鍵商人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e83cce9b5a0d</channel>
+        </div>
+        <div class="_content">愉悅的攤販生意持續了一整晚，儘管收入不高，但至少攤主本人的體驗挺不錯的。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7f9008abb789 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            按鍵商人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e83cce9b5a0d</channel>
+        </div>
+        <div class="_content">他一邊哼著支離破碎的曲調，一邊收拾攤位，抬頭的時候才發現，自己不知不覺間被黑衣的特務們包圍，周圍更是直接被清場淨空。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7f9008abb789 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            按鍵商人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e83cce9b5a0d</channel>
+        </div>
+        <div class="_content">「呃……投降輸一半？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7f9008abb789 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            按鍵商人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e83cce9b5a0d</channel>
+        </div>
+        <div class="_content">他舉起雙手，看著眼前的人群們，沒有太多驚恐反而更多的是好奇：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7f9008abb789 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            按鍵商人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e83cce9b5a0d</channel>
+        </div>
+        <div class="_content">「道理我都懂，再來你們要拿出亮閃閃的筆洗掉我的記憶對吧？如果我後來自己找回記憶，可以加入你們的行列嗎？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_147ff39e3417 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e83cce9b5a0d</channel>
+        </div>
+        <div class="_content">特對的探員們沒有回應他的幽默，只是掏出證件以及特製的手銬，在不透露更多細節的前提下，簡單宣判了封禁登入新世界資格的措施。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">女僕咖啡廳</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="setBg">
+    <div class="_bg-img"><img src="https://images.plurk.com/29L1mNotS9NJ1RfsuXrXbn.jpg"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a1ce0eea1bed _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            望恩赴義
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e83cce9b5a0d</channel>
+        </div>
+        <div class="_content">「美味しくなれ、萌え萌えキュン！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a1ce0eea1bed _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            望恩赴義
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e83cce9b5a0d</channel>
+        </div>
+        <div class="_content">女僕咖啡廳的女僕雙手比出愛心手勢，露出甜甜的笑容向客人眨眼道：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a1ce0eea1bed _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            望恩赴義
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e83cce9b5a0d</channel>
+        </div>
+        <div class="_content">「主人請慢用！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cea2032e4eed _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            客人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e83cce9b5a0d</channel>
+        </div>
+        <div class="_content">「那我可以享用妳嗎？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cea2032e4eed _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            客人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e83cce9b5a0d</channel>
+        </div>
+        <div class="_content">只穿著無袖背心的壯碩客人出言調戲，接著立刻和朋友相視大笑。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a1ce0eea1bed _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            望恩赴義
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e83cce9b5a0d</channel>
+        </div>
+        <div class="_content">「主人別開玩笑了！這樣子是不可以的哦！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a1ce0eea1bed _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            望恩赴義
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e83cce9b5a0d</channel>
+        </div>
+        <div class="_content">女僕伸出雙手十指交叉，用可愛的姿勢小碎步後退到廚房。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a1ce0eea1bed _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            望恩赴義
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e83cce9b5a0d</channel>
+        </div>
+        <div class="_content">退到簾幕後的下一刻，甜美的笑容瞬間扭曲成嫌惡的皺眉：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a1ce0eea1bed _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            望恩赴義
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e83cce9b5a0d</channel>
+        </div>
+        <div class="_content">「咒咒虐！啊哇呾喀呾啦！去死吧垃圾！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a1ce0eea1bed _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            望恩赴義
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e83cce9b5a0d</channel>
+        </div>
+        <div class="_content">嘴裡這樣碎碎念著，但一轉頭還是得端起笑容，繼續上班，這就是日常生活中的每一天。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_147ff39e3417 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e83cce9b5a0d</channel>
+        </div>
+        <div class="_content">然而，今天不一樣。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">夜間街道</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="setBg">
+    <div class="_bg-img"><img src="https://images.plurk.com/4ETe1lpylR33Q6St2tjlp9.jpg"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a1ce0eea1bed _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            望恩赴義
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e83cce9b5a0d</channel>
+        </div>
+        <div class="_content">下班時刻，換成便服的女僕注意到那群客人在轉角抽菸，皺了皺眉頭後，低頭加快腳步繞了開來。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a1ce0eea1bed _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            望恩赴義
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e83cce9b5a0d</channel>
+        </div>
+        <div class="_content">然而，眼角餘光瞄見後方跟了過來的男人們。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a1ce0eea1bed _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            望恩赴義
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e83cce9b5a0d</channel>
+        </div>
+        <div class="_content">她加快腳步，到最後幾乎是小跑步起來，卻始終沒能甩開後面的人。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a1ce0eea1bed _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            望恩赴義
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e83cce9b5a0d</channel>
+        </div>
+        <div class="_content">好不容易衝到轉角正好看見一輛計程車，她正打算上車，卻隔著窗戶瞥見染著黃毛刺蝟頭的司機滿手刺青……</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a1ce0eea1bed _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            望恩赴義
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e83cce9b5a0d</channel>
+        </div>
+        <div class="_content">她遲疑了一下，轉身往附近的便利商店跑去，但先前稍一耽擱卻已經被追上。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cea2032e4eed _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            客人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e83cce9b5a0d</channel>
+        </div>
+        <div class="_content">「幹嘛看到我們就跑？我們只是想認識認識一下嘛！妳這麼可愛有沒有男朋友啊？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a1ce0eea1bed _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            望恩赴義
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e83cce9b5a0d</channel>
+        </div>
+        <div class="_content">下班的女僕不再掛著甜美的笑容，滿臉陰沉，伸手悄悄握住包包裡隨身攜帶的水果刀……</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_147ff39e3417 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e83cce9b5a0d</channel>
+        </div>
+        <div class="_content">就在這個時候，一群穿著黑衣的特務走了過來。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cea2032e4eed _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            客人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e83cce9b5a0d</channel>
+        </div>
+        <div class="_content">「嘖！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cea2032e4eed _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            客人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e83cce9b5a0d</channel>
+        </div>
+        <div class="_content">注意到那群特務光明正大帶著配槍，先前糾纏不休的客人們相當識時務地自行消失。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a1ce0eea1bed _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            望恩赴義
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e83cce9b5a0d</channel>
+        </div>
+        <div class="_content">「呼……謝謝──等、等等，你們想幹嘛？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a1ce0eea1bed _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            望恩赴義
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e83cce9b5a0d</channel>
+        </div>
+        <div class="_content">她先是鬆了一口氣，緊接著看見對方拿出證件與手銬，又立刻提高警覺。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a1ce0eea1bed _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            望恩赴義
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e83cce9b5a0d</channel>
+        </div>
+        <div class="_content">在聽見對方提出要封禁自己登入新世界的資格，她拔出水果刀，轉身就跑，一邊跑還一邊胡亂揮刀。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_147ff39e3417 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e83cce9b5a0d</channel>
+        </div>
+        <div class="_content">然而，現實世界的她只是個身材嬌小的女僕，而不是新世界那樣殺怪如砍瓜的狂刺客。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_147ff39e3417 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e83cce9b5a0d</channel>
+        </div>
+        <div class="_content">即使拿著刀具也沒有突出重圍，很快就被特務們制服，銬上手銬，只餘下怨毒的尖叫與咒罵迴盪在空中。</div>
+    </div>
+</div>
+</div><!--EOS-->
+        </div>
+    </body>
+</html>
