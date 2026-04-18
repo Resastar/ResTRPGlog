@@ -10,6 +10,7 @@ var INDEX = [
 		{ title: "真實的死亡", url: "06", },
 		{ title: "迷途知返", url: "07", },
 		{ title: "通路禁絕", url: "08", },
+		{ title: "終焉之戰", url: "09", },
 	] },
 
 ];
