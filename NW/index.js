@@ -11,6 +11,7 @@ var INDEX = [
 		{ title: "迷途知返", url: "07", },
 		{ title: "通路禁絕", url: "08", },
 		{ title: "終焉之戰", url: "09", },
+		{ title: "致新生活", url: "10", },
 	] },
 
 ];
