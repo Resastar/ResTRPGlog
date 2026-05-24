@@ -1,0 +1,1949 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="海島據點">
+        <meta property="og:description" content="">
+        <title>海島據點</title>
+        <style>
+            :root{
+                --color-bg: #454752;
+                --color-title: #FFFFFF;
+                --color-subtitle: #dddddd;
+                --color-talk-bg: #1E1E1E;
+                --color-talk-panel-bg: #2A2A2A;
+                --color-talk-panel-text: #EEEEEE;
+            }
+            body { display:flex; flex-direction:column; align-items:center; background:var(--color-bg); }
+            h1{ margin: 5px 0; color:var(--color-title); }
+            ._hidden { display:none !important; }
+            ._main { display:flex; flex-direction:column; align-items:stretch; gap:10px; width:100%; max-width:1080px; }
+            ._subtitle { color:var(--color-subtitle); margin-top:0; margin-bottom: 20px; }
+            ._sctitle { background:#ddd; margin-top:30px; padding:10px;font-weight:bold;font-size:1.3rem;text-align:center; }
+
+            ._talk { display:flex; flex-direction:row; gap:2px; background:var(--color-talk-bg); width:100%; border-radius:5px; }
+            ._talk ._lCol { width:110px; flex-shrink:0; margin:6px; margin-right:0; }
+            ._talk ._rCol { flex:1; display:flex; flex-direction: column; }
+            ._talk ._img { width:110px; height:110px; background-repeat:no-repeat; background-size:cover; background-color:#ffffff10; }
+            ._talk ._name { margin:6px; height:20px; font-size:18px; display:flex; justify-content:space-between; }
+            ._talk ._channel { margin-left:5px; color:#888888; display:none; }
+            ._talk ._content { flex:1; margin:6px; background:var(--color-talk-panel-bg); color:var(--color-talk-panel-text); font-size:1.1rem; padding:10px; border-radius:5px; }
+            ._talk._other { width:50%; margin-left:auto; }
+            ._talk._other ._lCol { display:none; }
+            ._talk._other ._name { justify-content:end; }
+            ._talk._other ._channel { display:block; }
+            ._talk._other ._content { background:black; color:white; text-align:right; }
+
+            ._halt { padding:30px 0; }
+            ._sctitle { border-radius:5px; }
+            ._bg-img { display:flex; justify-content: center; }
+            ._bg-img img { max-width:100%; max-height:400px; }
+
+            ._actor_5da6fee17739 ._name { color:#888888; content:'system'; }
+            ._actor_5da6fee17739 ._img { background-image:url(''); display:none; }
+            ._actor_afc48ea7ba44 ._name { color:#888888; content:'GM'; }
+            ._actor_afc48ea7ba44 ._img { background-image:url(''); display:none; }
+            ._actor_9e92c220e753 ._name { color:#888888; content:'諾曼'; }
+            ._actor_9e92c220e753 ._img { background-image:url('https://images.plurk.com/7I6SyOsKqDXKbfFr7DlIAy.png'); display:block; }
+            ._actor_22e4f4302ed5 ._name { color:#888888; content:'潔妮兒'; }
+            ._actor_22e4f4302ed5 ._img { background-image:url('https://images.plurk.com/1jfVznIRlGVH9YLO9wRYte.png'); display:block; }
+            ._actor_6da0f5c9d8bd ._name { color:#888888; content:'維斯琪亞藍'; }
+            ._actor_6da0f5c9d8bd ._img { background-image:url('https://images.plurk.com/22Ldw1xIIHwraF4EAH5Sqe.png'); display:block; }
+            ._actor_80ac2925b71e ._name { color:#888888; content:'托曼'; }
+            ._actor_80ac2925b71e ._img { background-image:url('https://images.plurk.com/wqYxlu9ZhR0KGGlqG9LdY.png'); display:block; }
+            ._actor_d9c51501b852 ._name { color:#888888; content:'娜妲'; }
+            ._actor_d9c51501b852 ._img { background-image:url('https://images.plurk.com/5Vm0TX5zphanbu3hBgbokc.png'); display:block; }
+            ._actor_d61c5739eca3 ._name { color:#888888; content:'巫亞埃萬也因先'; }
+            ._actor_d61c5739eca3 ._img { background-image:url('https://images.plurk.com/5Vn7asLva0T5f5BX5IJPnX.png'); display:block; }
+            ._actor_34f912350284 ._name { color:#888888; content:'哲林'; }
+            ._actor_34f912350284 ._img { background-image:url('https://images.plurk.com/6961L1kSbr5RnvMy2h95fT.png'); display:block; }
+            ._actor_833c4e8a938d ._name { color:#888888; content:'赫斯馮恩'; }
+            ._actor_833c4e8a938d ._img { background-image:url('https://images.plurk.com/6JBYSEoMjIXX1aXSnDQp4W.png'); display:block; }
+            ._actor_28f36a94b84d ._name { color:#888888; content:'傭兵'; }
+            ._actor_28f36a94b84d ._img { background-image:url('https://images.plurk.com/1AVJWnX6GEcyjmaiNxiRYD.png'); display:block; }
+            ._actor_30b53a864fbf ._name { color:#888888; content:'碧波港衛兵'; }
+            ._actor_30b53a864fbf ._img { background-image:url('https://images.plurk.com/w0XjHXSJjzNlbihCbFi3e.png'); display:block; }
+            ._actor_7828def18990 ._name { color:#888888; content:'石虎熊'; }
+            ._actor_7828def18990 ._img { background-image:url('https://images.plurk.com/54RLFDZ84NvcnJojK7FBb8.png'); display:block; }
+            ._actor_748c1d663312 ._name { color:#888888; content:'蜓目'; }
+            ._actor_748c1d663312 ._img { background-image:url('https://images.plurk.com/3SUaHWPEElrYYl6Alqz4E7.png'); display:block; }
+            ._actor_9e665ee9fbb9 ._name { color:#888888; content:'協定龍'; }
+            ._actor_9e665ee9fbb9 ._img { background-image:url('https://images.plurk.com/6QVqGvj3Uw0xdxvZ6bs7le.png'); display:block; }
+            ._actor_41458c1a7d65 ._name { color:#888888; content:'辛格爾'; }
+            ._actor_41458c1a7d65 ._img { background-image:url('https://images.plurk.com/711YGUgIrHoByMstmrX2Rc.png'); display:block; }
+            ._actor_9eaddf571f81 ._name { color:#888888; content:'夏莉絲諾拉'; }
+            ._actor_9eaddf571f81 ._img { background-image:url('https://images.plurk.com/6jflhtzwBkl9UaoWbkhFm0.png'); display:block; }
+            ._actor_cbc7838c7f8c ._name { color:#888888; content:'夏耶雅'; }
+            ._actor_cbc7838c7f8c ._img { background-image:url('https://images.plurk.com/5lad2EyVdXJ3TqSaa4ttuW.png'); display:block; }
+            ._actor_e4916e059289 ._name { color:#888888; content:'艾丁'; }
+            ._actor_e4916e059289 ._img { background-image:url('https://images.plurk.com/6ebMI75cCxEr2cOIItMfye.png'); display:block; }
+            ._actor_6da43703326c ._name { color:#888888; content:'亞克'; }
+            ._actor_6da43703326c ._img { background-image:url('https://images.plurk.com/4dFfFOytkw3h3ee12sFasB.png'); display:block; }
+            ._actor_aca0b48d24b8 ._name { color:#888888; content:'海之靈'; }
+            ._actor_aca0b48d24b8 ._img { background-image:url('https://images.plurk.com/78gpfBjije8Qi61ndFRhmB.png'); display:block; }
+            ._actor_35257bded5f2 ._name { color:#888888; content:'希亞奇人'; }
+            ._actor_35257bded5f2 ._img { background-image:url('https://images.plurk.com/31lzBG7o6aAnMW4PzSAmT2.png'); display:block; }
+            ._actor_c57d096f0372 ._name { color:#888888; content:'碧波港市民'; }
+            ._actor_c57d096f0372 ._img { background-image:url('https://images.plurk.com/2FljCvP7KGT2ihZCAh0lyy.png'); display:block; }
+            ._actor_475e475f8114 ._name { color:#888888; content:'海貝爾'; }
+            ._actor_475e475f8114 ._img { background-image:url('https://images.plurk.com/qCjrlEK2ZiYja55mIOV7H.png'); display:block; }
+            ._actor_32d30669eedb ._name { color:#888888; content:'捧杯者'; }
+            ._actor_32d30669eedb ._img { background-image:url('https://images.plurk.com/5BFXsYn2P4wV8Jg15gfxwL.png'); display:block; }
+            ._actor_257d1e1f0f23 ._name { color:#888888; content:'雪曼'; }
+            ._actor_257d1e1f0f23 ._img { background-image:url('https://images.plurk.com/19HhcupnWDVllVyfOsyfqo.png'); display:block; }
+            ._actor_1a056323d32f ._name { color:#888888; content:'雷霆道館教師'; }
+            ._actor_1a056323d32f ._img { background-image:url('https://images.plurk.com/6JuBc15DDy6eqUIDcbiIhe.png'); display:block; }
+            ._actor_b94be2ae5323 ._name { color:#888888; content:'波爾達'; }
+            ._actor_b94be2ae5323 ._img { background-image:url('https://images.plurk.com/6XPri9AStpaWAtpNIglr7N.png'); display:block; }
+            ._actor_6d00fec1a045 ._name { color:#888888; content:'黛'; }
+            ._actor_6d00fec1a045 ._img { background-image:url('https://images.plurk.com/sD2sTDdnNSPcxTBZzyUSe.png'); display:block; }
+            ._actor_d8e58f1227c9 ._name { color:#888888; content:'勞桑'; }
+            ._actor_d8e58f1227c9 ._img { background-image:url('https://images.plurk.com/24dUnL63bWaWsJTqeEunrw.png'); display:block; }
+            ._actor_9d60389b2c64 ._name { color:#888888; content:'費恩'; }
+            ._actor_9d60389b2c64 ._img { background-image:url('https://images.plurk.com/5HtiqZJajk1yTHdpJylZtG.png'); display:block; }
+            ._actor_e0de06d17b75 ._name { color:#888888; content:'希雅'; }
+            ._actor_e0de06d17b75 ._img { background-image:url('https://images.plurk.com/Gj2EdtC75HWdnrFQrQ6GR.png'); display:block; }
+            ._actor_eb447a9f66fb ._name { color:#888888; content:'萊奧拉'; }
+            ._actor_eb447a9f66fb ._img { background-image:url('https://images.plurk.com/3BXFNBAi9UGMOSxngwhVj1.png'); display:block; }
+            ._actor_7d7e2b791849 ._name { color:#888888; content:'霍爾加'; }
+            ._actor_7d7e2b791849 ._img { background-image:url('https://images.plurk.com/2mgZmdlMF1gbRdsQ3J5ZIw.png'); display:block; }
+            ._actor_6bdebb5ac52d ._name { color:#888888; content:'菲比'; }
+            ._actor_6bdebb5ac52d ._img { background-image:url('https://images.plurk.com/2EW1f836afmoidLuqVsd77.png'); display:block; }
+            ._actor_56ad86d9f8b9 ._name { color:#888888; content:'風'; }
+            ._actor_56ad86d9f8b9 ._img { background-image:url('https://images.plurk.com/3u1BxigrTwqb1eG1szDfkT.png'); display:block; }
+            ._actor_f65229957808 ._name { color:#888888; content:'彩'; }
+            ._actor_f65229957808 ._img { background-image:url('https://images.plurk.com/4k6aZdUrAPhbiHqD8BZWWm.png'); display:block; }
+            ._actor_b902ff4977aa ._name { color:#888888; content:'重機「騎士」'; }
+            ._actor_b902ff4977aa ._img { background-image:url('https://images.plurk.com/3ba443J8KtRWBwzI1s7dZJ.png'); display:block; }
+            ._actor_3b6b6bf4ca35 ._name { color:#888888; content:'重型機車'; }
+            ._actor_3b6b6bf4ca35 ._img { background-image:url('https://images.plurk.com/5CuPtAG5AAJITZrEUAM64z.png'); display:block; }
+            ._actor_533b4f57afcb ._name { color:#888888; content:'曦族女子'; }
+            ._actor_533b4f57afcb ._img { background-image:url('https://images.plurk.com/7syNEzn6rwH9fAV0hsY2V1.png'); display:block; }
+            ._actor_8ebce1854ce6 ._name { color:#888888; content:'黑騎士'; }
+            ._actor_8ebce1854ce6 ._img { background-image:url('https://images.plurk.com/3OXKHI3ukrnoIjgSFWrzVM.png'); display:block; }
+            ._actor_8568b3dd548e ._name { color:#888888; content:'商隊護衛'; }
+            ._actor_8568b3dd548e ._img { background-image:url('https://images.plurk.com/2mgZmdlMF1gbRdsQ3J5ZIw.png'); display:block; }
+            ._actor_22c43d49e362 ._name { color:#888888; content:'白炎'; }
+            ._actor_22c43d49e362 ._img { background-image:url('https://images.plurk.com/HO5zMk1agBFUXP2BejAtS.png'); display:block; }
+            ._actor_15e5364c55de ._name { color:#888888; content:'拉歐'; }
+            ._actor_15e5364c55de ._img { background-image:url('https://images.plurk.com/7lrnbBV039ZOiI4MtWBHju.png'); display:block; }
+            ._actor_65e13ac9793c ._name { color:#888888; content:'蘭帝斯'; }
+            ._actor_65e13ac9793c ._img { background-image:url('https://images.plurk.com/46aqCMmCWEYQcmbY2GtaMU.png'); display:block; }
+            ._actor_55f0db451543 ._name { color:#888888; content:'蘿寧'; }
+            ._actor_55f0db451543 ._img { background-image:url('https://images.plurk.com/4BfVa4JKFwGPUadAnyz0SZ.png'); display:block; }
+            ._actor_d9edf282ef54 ._name { color:#888888; content:'風鳥'; }
+            ._actor_d9edf282ef54 ._img { background-image:url('https://images.plurk.com/3u1BxigrTwqb1eG1szDfkT.png'); display:block; }
+            ._actor_62d1fc834772 ._name { color:#888888; content:'莎拉'; }
+            ._actor_62d1fc834772 ._img { background-image:url('https://images.plurk.com/3zFJ5sKzyP71b7EPeJztp.png'); display:block; }
+            ._actor_344f8d491d22 ._name { color:#888888; content:'索萊鎮士兵'; }
+            ._actor_344f8d491d22 ._img { background-image:url('https://images.plurk.com/6Xmx7Cx8H4aIinWPp94AEy.png'); display:block; }
+            ._actor_13bf4ef5a8d9 ._name { color:#888888; content:'莉莉'; }
+            ._actor_13bf4ef5a8d9 ._img { background-image:url('https://images.plurk.com/27kOTKHQoD2XiZ5sOLJiim.png'); display:block; }
+            ._actor_da6d7ad8b0eb ._name { color:#888888; content:'梅莉雅'; }
+            ._actor_da6d7ad8b0eb ._img { background-image:url('https://images.plurk.com/6VzKMpskWHmkPwJ0GOyYPQ.png'); display:block; }
+        </style>
+        <meta-data class="_hidden">
+            <channel>
+                _ch_4dd6dbe550b7: { name:"主要"; main:true; hide:false; }
+            </channel>
+        </meta-data>
+    </head>
+    <body>
+        <div class="_hidden"><version>hazmole_v2.0</version></div>
+        <h1>海島據點</h1>
+        <div class="_subtitle"></div>
+
+        <div class="_main">
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">小知識</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_afc48ea7ba44 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">【海島】<br>由於雙月系統帶來的大潮汐，海外的島嶼會在特定的時期被淹沒大半，普遍被認為是無法居住的環境。<br>少數大型島嶼的山脈頂峰或許能夠在大潮中倖存，但起伏的山地卻也會成為危險的暗礁群，熟悉的航海員都知道該遠遠避開那些地方。<br></div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">狀態更新</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5da6fee17739 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">[ 潔妮兒 ] 物理壓力 : 2 → 6</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5da6fee17739 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">[ 潔妮兒 ] 命運點 : 1 → 3</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">市政廳</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="setBg">
+    <div class="_bg-img"><img src="https://images.plurk.com/2dMjl6TZkVP7ZpqZX38kX4.png"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_afc48ea7ba44 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">在伏擊之後過了幾天，潔妮兒終於收到市政廳的邀約，諾曼邀請潔妮兒和維亞過去商議。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9e92c220e753 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            諾曼
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「感謝你們先前的協助，知道你們救下娜妲的事，讓辛格爾透露了一些關鍵情報。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9e92c220e753 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            諾曼
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">碧波港的市政副官依然忙得焦頭爛額，和那位慵懶悠哉的治安副官形成強烈對比。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9e92c220e753 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            諾曼
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「我們目前大致推測，那些洛達的餘黨就盤踞在某個海島。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_22e4f4302ed5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「某個海島是指……？」見他沒說完，我便追問。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9e92c220e753 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            諾曼
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「確切未知我們無法判斷，海島周圍根據潮汐起伏，水下的變數實在太大了，一般來說船隻都會避開周圍，所以也很難鎖定特定目標。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9e92c220e753 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            諾曼
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">他停頓了一下，把目光投向潔妮兒道：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9e92c220e753 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            諾曼
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「如果說有哪些人知道的話，那最有可能的就是希亞奇人了。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_22e4f4302ed5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">我點點頭。「確實，這種事他們會更清楚。並且巫因大人先前也有意願，未來可能提供這方面的資訊。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_22e4f4302ed5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">我想起先前談論的內容，又問：「關於之前討論的岩鹽產業事宜，請問有進展嗎？有了那個，希亞奇族或許會更願意合作。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9e92c220e753 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            諾曼
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「有，我們已經跟巨獸商會達成初步的合作意向，還找到了幾個鐵岩城地區出產的岩鹽樣本。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6da0f5c9d8bd _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「需要我們去向巫因大人提起這個好消息嗎？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6da0f5c9d8bd _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">維亞猜出了對方找他們過來的用意。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9e92c220e753 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            諾曼
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「沒錯，考量到你們爭取到的突破性進展，由你們去接洽應該是最好的，就拜託你們了。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9e92c220e753 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            諾曼
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">他拿出了幾個貼了標籤的小袋子，裡面的岩鹽塊乍看之下差異不大，但似乎色調質地還是有些不同。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_afc48ea7ba44 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">※局勢形象【來自遠方的岩鹽樣本】</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_22e4f4302ed5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「看起來每個顏色好像不太一樣？是來自不同產區的樣本嗎？」我差點想拿起來舔舔看。最後還是決定用問的。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6da0f5c9d8bd _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「是的，你看每個袋子上面的標籤，都有寫出產地跟特色──是復甦道館的標準紀錄格式。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6da0f5c9d8bd _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">曦族的藥劑師仔細地解釋了每個標籤上的文字，其中包含許多潔妮兒沒看過的專用術語。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_22e4f4302ed5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「原來如此。是想讓希亞奇族人們嘗嘗看，看他們更偏好哪一個吧？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9e92c220e753 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            諾曼
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「是的，這些是確定可以穩定供貨的品種，但我也問過赫恩了，這裡似乎沒有他上次提供的那塊，他那塊是產自高山頂峰的珍稀收藏。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9e92c220e753 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            諾曼
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">諾曼苦笑了一下道：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9e92c220e753 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            諾曼
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「希望希亞奇人會喜歡這些吧。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_22e4f4302ed5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「是啊。我們這就去問問巫因大人。」我小心的將袋子收好。準備去一趟巫因的店。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9e92c220e753 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            諾曼
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「等等，還有一件事……」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9e92c220e753 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            諾曼
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">市政副官嘆了口氣道：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9e92c220e753 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            諾曼
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「辛格爾希望把……米哈克的撫卹交給娜妲，這也是他配合審訊的條件之一。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_22e4f4302ed5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「我知道了。我會去跟她說的。」說是撫恤金的話她可能不會收下，我暗自想著就用欠薪之類的名義給她吧。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9e92c220e753 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            諾曼
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「拜託你們了。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9e92c220e753 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            諾曼
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">諾曼把一個小小的袋子交給了潔妮兒，潔妮兒注意到袋子突起的輪廓是耀陽幣的盾型。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">碧波港</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="setBg">
+    <div class="_bg-img"><img src="https://images.plurk.com/1R8VD5OdC2Mh3a3VxtA7Tv.png"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_afc48ea7ba44 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">來到孩子們的房屋時，他們正好在準備午餐，娜妲煮了一大鍋蛋花燉菜湯。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_afc48ea7ba44 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">上次的任務也發放了一筆報酬，讓孩子們這段時間以來暫時不用擔心吃飯的問題。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_22e4f4302ed5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「我們來打擾了。」鍋內煮的是看似平凡的食物。不過如果知道他們之前的生活環境的話，便會深感這一頓飯得來不易。<br>「最近過得如何呢？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_80ac2925b71e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            托曼
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「很好！超棒的！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_80ac2925b71e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            托曼
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">男孩舉起裝了整碗燉菜的碗，開心地大聲回應。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_d9c51501b852 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            娜妲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「嗯……還不錯。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_d9c51501b852 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            娜妲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">少女的呼吸停頓了片刻，有些不安地捏著衣角望向潔妮兒，像是害怕聽到些不想聽到的消息。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_22e4f4302ed5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「有找到什麼好工作嗎？之前那些治安官好像很滿意我們的表現的樣子。說不定會想培訓你們加入。」我還沒找到很好的切入點，先隨便扯扯，噓寒問暖一下。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_d9c51501b852 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            娜妲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「赫斯馮恩大人有提到，他願意長期採購我的炸蛋，他給的價格蠻好的，比城衛隊那邊開出的還高很多。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_d9c51501b852 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            娜妲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">少女似乎稍稍鬆了一口氣，召喚出自己的蛋龜，挺起了胸膛。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_d9c51501b852 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            娜妲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">看來至少以養活自己來說，應該不會是太大的挑戰了。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_22e4f4302ed5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「那真是太好了。只是不知道他和城衛隊開不一樣價格要做什麼。」雖然這不是我該考慮的是就是了。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_22e4f4302ed5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「其他孩子怎麼樣？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_80ac2925b71e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            托曼
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「我找到兼職了！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_80ac2925b71e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            托曼
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">托曼一邊咀嚼菜葉一邊含糊地說：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_80ac2925b71e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            托曼
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「有固定住址之後工作好好找！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_afc48ea7ba44 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">其他的孩子還沒有找到穩定工作的，但也已經有人找到了短期的幫工。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_22e4f4302ed5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「大家的生活都在改善呢。看來就算我繼續踏上旅程，孩子們也可以自力生活了。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_22e4f4302ed5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">我最擔心的是我離開以後，他們又會變得和以前一樣，現在看來是不用擔心了。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_80ac2925b71e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            托曼
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「咦、大姊姊要走了嗎？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_d9c51501b852 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            娜妲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「藥劑師大人……你們要離開了嗎？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_22e4f4302ed5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「目前還沒，我至少會待到祭典後。不過我大概不會永遠住在這裡，我和維亞應該會繼續踏上旅程。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_d9c51501b852 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            娜妲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「這樣啊……那就祝你們之後旅途順利。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_d9c51501b852 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            娜妲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">少女垂下目光，但很快又抬起頭來：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_d9c51501b852 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            娜妲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「不用擔心我們，我們可以過得很好的。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_22e4f4302ed5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「嗯。不過這也不一定是永別，之後可能還有機會見面吧。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_22e4f4302ed5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">我思考了一下，還是決定拿出那個袋子。<br>「對了……這是辛格爾託我給妳的，希望妳收下。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_22e4f4302ed5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「這是，米哈克工作的酬勞。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_d9c51501b852 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            娜妲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">娜妲的手抖了一下，已經空了的碗差點滾下餐桌。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_d9c51501b852 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            娜妲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「哥、哥哥的……那、那哥哥呢？他怎麼沒有一起回來？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_d9c51501b852 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            娜妲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">她顫聲詢問，眼睛卻看也不敢看向潔妮兒。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_22e4f4302ed5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「……」結果我仍舊說不出話來。該直接坦白，還是用沉默代替一切？</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6da0f5c9d8bd _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">維亞輕輕拉起潔妮兒的手，把那個袋子遞了過去：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6da0f5c9d8bd _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「娜妲，收下吧，米哈克應該也會希望妳收下。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6da0f5c9d8bd _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">說完，她把目光轉向潔妮兒，讓她繼續發言。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_22e4f4302ed5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「娜妲，」<br>「這是他們的心意。辛格爾，還有妳哥哥都希望妳在往後的日子能好好的生活。」我語氣和緩，但態度堅定。也或許只是嘗試保持堅定。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_22e4f4302ed5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">我吸了一口氣，接著說：<br>「就像剛才我們聊的，我不會說這是永別。」<br>「希望妳能努力的度過接下來的每一天，為了終有一日再次見到他們時，能跟他們說我好好的活過了。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_d9c51501b852 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            娜妲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">少女沒有接過袋子，一滴水珠從她眼角滾落，接著是一串水痕。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_d9c51501b852 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            娜妲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">她一把推開椅子，踉踉蹌蹌躲回了屋子裡僅有的隔間，一句話也沒有回。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6da0f5c9d8bd _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「……她需要一點時間。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_22e4f4302ed5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">我點點頭。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">希亞奇商鋪</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="setBg">
+    <div class="_bg-img"><img src="https://images.plurk.com/i9dJZxs2ibbPi3XwuyyT9.png"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_d61c5739eca3 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            巫亞埃萬也因先
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">當妳們來到店鋪，剛開口說要見巫因，水池中就暈開波紋。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_d61c5739eca3 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            巫亞埃萬也因先
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">希亞奇人的繼位者探了出來，濺起不大不小的水花，雙手撐著池邊，難以辨識表情地斜眼看著潔妮兒與維亞。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_22e4f4302ed5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「你好，巫因大人。」我開門見山的說：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_22e4f4302ed5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「關於岩鹽的事，目前有了進展。」我拿出裝著樣品的袋子，遞給了他。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_22e4f4302ed5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「市政府方和巨獸商會進行了初步交涉，在鐵岩城地區找到幾個岩鹽產地。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_22e4f4302ed5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「如您所見，我們取得了幾種可以穩定供貨的樣本。可能會和上次的岩鹽有所不同，但還請您加以評估一下。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_d61c5739eca3 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            巫亞埃萬也因先
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">巫因毫不客套，直接伸手抓過袋子，直接就潛回水池深處，動作又快又穩，甚至沒帶起多少水花。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_d61c5739eca3 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            巫亞埃萬也因先
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">再次回來的時候，他的動作急躁了許多，揚起大片水花，手上那幾個袋子已經不見了。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_d61c5739eca3 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            巫亞埃萬也因先
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">他抓起旁邊的木板，挑出那個「原本的」字板用力敲了敲。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_22e4f4302ed5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">嗚哇。我在心裡暗叫道。「都不合您的意嗎？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_22e4f4302ed5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">希亞奇人真是挑剔。我已經有他會說原本的較好的心理準備，不過以為至少會看中另一個。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_d61c5739eca3 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            巫亞埃萬也因先
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">他居高臨下斜眼看著潔妮兒，拿出「低價」的木板敲了敲。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_22e4f4302ed5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">這次我看懂了。他覺得這些都是次級品，只能低價收購。但特地指著「低價」，表示如果有他們還是會收的。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_22e4f4302ed5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「我知道了，我們會再去詢問看看。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_d61c5739eca3 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            巫亞埃萬也因先
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">希亞奇人似乎還不打算結束對話，又拿起幾個價格、時間的木板敲了敲。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_d61c5739eca3 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            巫亞埃萬也因先
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">看來他雖然稍微有點嫌棄這些次級品，但不代表他不想要。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_22e4f4302ed5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「嗯。我們會試圖建立普通的供貨源，並再委託他們再找找看有沒有更好的品項。」沒錯，和我想的一樣。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_22e4f4302ed5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">4DF+3 #親善 (4DF+3) ＞ [ ][+][-][-]+3 ＞ Fair(+2)</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_22e4f4302ed5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">※援引局勢形象【巫因的認可】</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5da6fee17739 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">[ 潔妮兒 ] 命運點 : 3 → 2</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_22e4f4302ed5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">※檢定 +2</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_d61c5739eca3 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            巫亞埃萬也因先
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">看了看潔妮兒誠懇的表情，在考慮到她給出的貨物樣品，巫因想了想，開始拿起空白木板寫了幾個詞：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_d61c5739eca3 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            巫亞埃萬也因先
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「島嶼、人類、敵人、威脅。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_d61c5739eca3 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            巫亞埃萬也因先
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">關於上次的那個情報，他這次多釋出了一點資訊，這也正好符合諾曼提到的情報。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_22e4f4302ed5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">令我意外。我沒有主動問起，他就提到了這個資訊。「謝謝您的警示。我們會再多努力的。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_d61c5739eca3 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            巫亞埃萬也因先
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">他拋下木板，又看了一眼潔妮兒，確認話題結束後，重新一頭栽進水裡，消失在兩人眼前。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6da0f5c9d8bd _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「高山頂峰的珍品岩鹽啊……看來還是得去找赫恩那傢伙。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6da0f5c9d8bd _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">曦族的藥劑師苦笑了一下：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6da0f5c9d8bd _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「如果是不難取得的東西，諾曼大概早就直接從赫恩那裡問清楚來源搭建進貨管道了。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_22e4f4302ed5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「照剛才的樣子，他們也不是完全拒絕這次的產品。」我的看法比較樂觀。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_22e4f4302ed5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「我想可以再努力看看，能不能弄不同等級的產品線。就好像酒、香料都有分平常就能取得和數量稀少的高價品一樣。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_22e4f4302ed5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「高級岩鹽本來就少沒關係，只要有辦法進貨就可以了。日常所需的量用平價品補足，就好像普通人也是久久才吃一次高級料理。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6da0f5c9d8bd _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「的確，那我們就用這個方向跟市政廳回報吧。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6da0f5c9d8bd _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">他點頭道：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_6da0f5c9d8bd _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「至少，我們確認了希亞奇人知道海島的確切消息。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_22e4f4302ed5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">4dd6dbe550b7</channel>
+        </div>
+        <div class="_content">「是啊。」我點點頭。「不過看來這方面要有更多進展才能問出更詳細的消息了。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+        </div>
+    </body>
+</html>
