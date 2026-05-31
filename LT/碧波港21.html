@@ -1,0 +1,2924 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="風雨雷霆">
+        <meta property="og:description" content="">
+        <title>風雨雷霆</title>
+        <style>
+            :root{
+                --color-bg: #454752;
+                --color-title: #FFFFFF;
+                --color-subtitle: #dddddd;
+                --color-talk-bg: #1E1E1E;
+                --color-talk-panel-bg: #2A2A2A;
+                --color-talk-panel-text: #EEEEEE;
+            }
+            body { display:flex; flex-direction:column; align-items:center; background:var(--color-bg); }
+            h1{ margin: 5px 0; color:var(--color-title); }
+            ._hidden { display:none !important; }
+            ._main { display:flex; flex-direction:column; align-items:stretch; gap:10px; width:100%; max-width:1080px; }
+            ._subtitle { color:var(--color-subtitle); margin-top:0; margin-bottom: 20px; }
+            ._sctitle { background:#ddd; margin-top:30px; padding:10px;font-weight:bold;font-size:1.3rem;text-align:center; }
+
+            ._talk { display:flex; flex-direction:row; gap:2px; background:var(--color-talk-bg); width:100%; border-radius:5px; }
+            ._talk ._lCol { width:110px; flex-shrink:0; margin:6px; margin-right:0; }
+            ._talk ._rCol { flex:1; display:flex; flex-direction: column; }
+            ._talk ._img { width:110px; height:110px; background-repeat:no-repeat; background-size:cover; background-color:#ffffff10; }
+            ._talk ._name { margin:6px; height:20px; font-size:18px; display:flex; justify-content:space-between; }
+            ._talk ._channel { margin-left:5px; color:#888888; display:none; }
+            ._talk ._content { flex:1; margin:6px; background:var(--color-talk-panel-bg); color:var(--color-talk-panel-text); font-size:1.1rem; padding:10px; border-radius:5px; }
+            ._talk._other { width:50%; margin-left:auto; }
+            ._talk._other ._lCol { display:none; }
+            ._talk._other ._name { justify-content:end; }
+            ._talk._other ._channel { display:block; }
+            ._talk._other ._content { background:black; color:white; text-align:right; }
+
+            ._halt { padding:30px 0; }
+            ._sctitle { border-radius:5px; }
+            ._bg-img { display:flex; justify-content: center; }
+            ._bg-img img { max-width:100%; max-height:400px; }
+
+            ._actor_1434ba2857ba ._name { color:#888888; content:'GM'; }
+            ._actor_1434ba2857ba ._img { background-image:url(''); display:none; }
+            ._actor_00770ad02bba ._name { color:#888888; content:'system'; }
+            ._actor_00770ad02bba ._img { background-image:url(''); display:none; }
+            ._actor_c4d975d74de2 ._name { color:#888888; content:'海貝爾'; }
+            ._actor_c4d975d74de2 ._img { background-image:url('https://images.plurk.com/qCjrlEK2ZiYja55mIOV7H.png'); display:block; }
+            ._actor_9de96a0bd6a8 ._name { color:#888888; content:'潔妮兒'; }
+            ._actor_9de96a0bd6a8 ._img { background-image:url('https://images.plurk.com/1jfVznIRlGVH9YLO9wRYte.png'); display:block; }
+            ._actor_736fd947101b ._name { color:#888888; content:'維斯琪亞藍'; }
+            ._actor_736fd947101b ._img { background-image:url('https://images.plurk.com/22Ldw1xIIHwraF4EAH5Sqe.png'); display:block; }
+            ._actor_715585e91108 ._name { color:#888888; content:'協定龍'; }
+            ._actor_715585e91108 ._img { background-image:url('https://images.plurk.com/6QVqGvj3Uw0xdxvZ6bs7le.png'); display:block; }
+            ._actor_4f101d07797b ._name { color:#888888; content:'重型機車'; }
+            ._actor_4f101d07797b ._img { background-image:url('https://images.plurk.com/5CuPtAG5AAJITZrEUAM64z.png'); display:block; }
+            ._actor_bd7a6c102d91 ._name { color:#888888; content:'曦族女子'; }
+            ._actor_bd7a6c102d91 ._img { background-image:url('https://images.plurk.com/7syNEzn6rwH9fAV0hsY2V1.png'); display:block; }
+            ._actor_4f4eec59a8ef ._name { color:#888888; content:'芬里爾'; }
+            ._actor_4f4eec59a8ef ._img { background-image:url('https://images.plurk.com/3ba443J8KtRWBwzI1s7dZJ.png'); display:block; }
+            ._actor_c4cc1300565f ._name { color:#888888; content:'希亞奇人'; }
+            ._actor_c4cc1300565f ._img { background-image:url('https://images.plurk.com/5C9oVGOzMwKdHdRa9vuW0b.png'); display:block; }
+            ._actor_89834e322e35 ._name { color:#888888; content:'赫斯馮恩'; }
+            ._actor_89834e322e35 ._img { background-image:url('https://images.plurk.com/6JBYSEoMjIXX1aXSnDQp4W.png'); display:block; }
+            ._actor_f76839e6e94b ._name { color:#888888; content:'巫亞埃萬也因先'; }
+            ._actor_f76839e6e94b ._img { background-image:url('https://images.plurk.com/5Vn7asLva0T5f5BX5IJPnX.png'); display:block; }
+            ._actor_5e396f20b062 ._name { color:#888888; content:'碧波港市民'; }
+            ._actor_5e396f20b062 ._img { background-image:url('https://images.plurk.com/2FljCvP7KGT2ihZCAh0lyy.png'); display:block; }
+            ._actor_9575e4648652 ._name { color:#888888; content:'諾曼'; }
+            ._actor_9575e4648652 ._img { background-image:url('https://images.plurk.com/7I6SyOsKqDXKbfFr7DlIAy.png'); display:block; }
+            ._actor_f0d606163e7a ._name { color:#888888; content:'托曼'; }
+            ._actor_f0d606163e7a ._img { background-image:url('https://images.plurk.com/wqYxlu9ZhR0KGGlqG9LdY.png'); display:block; }
+            ._actor_2449647f0a71 ._name { color:#888888; content:'娜妲'; }
+            ._actor_2449647f0a71 ._img { background-image:url('https://images.plurk.com/5Vm0TX5zphanbu3hBgbokc.png'); display:block; }
+            ._actor_44acb9f23b59 ._name { color:#888888; content:'哲林'; }
+            ._actor_44acb9f23b59 ._img { background-image:url('https://images.plurk.com/6961L1kSbr5RnvMy2h95fT.png'); display:block; }
+            ._actor_75f371f016e7 ._name { color:#888888; content:'傭兵'; }
+            ._actor_75f371f016e7 ._img { background-image:url('https://images.plurk.com/1AVJWnX6GEcyjmaiNxiRYD.png'); display:block; }
+            ._actor_dc3bb6505927 ._name { color:#888888; content:'碧波港衛兵'; }
+            ._actor_dc3bb6505927 ._img { background-image:url('https://images.plurk.com/w0XjHXSJjzNlbihCbFi3e.png'); display:block; }
+            ._actor_7e3a6c159bd8 ._name { color:#888888; content:'蜓目'; }
+            ._actor_7e3a6c159bd8 ._img { background-image:url('https://images.plurk.com/3SUaHWPEElrYYl6Alqz4E7.png'); display:block; }
+            ._actor_af6327bc2889 ._name { color:#888888; content:'辛格爾'; }
+            ._actor_af6327bc2889 ._img { background-image:url('https://images.plurk.com/711YGUgIrHoByMstmrX2Rc.png'); display:block; }
+            ._actor_32614599e081 ._name { color:#888888; content:'夏莉絲諾拉'; }
+            ._actor_32614599e081 ._img { background-image:url('https://images.plurk.com/6jflhtzwBkl9UaoWbkhFm0.png'); display:block; }
+            ._actor_86227118b070 ._name { color:#888888; content:'夏耶雅'; }
+            ._actor_86227118b070 ._img { background-image:url('https://images.plurk.com/5lad2EyVdXJ3TqSaa4ttuW.png'); display:block; }
+            ._actor_061ccb3a874e ._name { color:#888888; content:'艾丁'; }
+            ._actor_061ccb3a874e ._img { background-image:url('https://images.plurk.com/6ebMI75cCxEr2cOIItMfye.png'); display:block; }
+            ._actor_dedf605e4cf8 ._name { color:#888888; content:'海之靈'; }
+            ._actor_dedf605e4cf8 ._img { background-image:url('https://images.plurk.com/78gpfBjije8Qi61ndFRhmB.png'); display:block; }
+            ._actor_b2a29a785935 ._name { color:#888888; content:'捧杯者'; }
+            ._actor_b2a29a785935 ._img { background-image:url('https://images.plurk.com/5BFXsYn2P4wV8Jg15gfxwL.png'); display:block; }
+            ._actor_0bd97f661c7d ._name { color:#888888; content:'雷霆道館教師'; }
+            ._actor_0bd97f661c7d ._img { background-image:url('https://images.plurk.com/6JuBc15DDy6eqUIDcbiIhe.png'); display:block; }
+            ._actor_941a37b40a05 ._name { color:#888888; content:'波爾達'; }
+            ._actor_941a37b40a05 ._img { background-image:url('https://images.plurk.com/6XPri9AStpaWAtpNIglr7N.png'); display:block; }
+            ._actor_328e3a54e11b ._name { color:#888888; content:'黛'; }
+            ._actor_328e3a54e11b ._img { background-image:url('https://images.plurk.com/sD2sTDdnNSPcxTBZzyUSe.png'); display:block; }
+            ._actor_e2afe18fc278 ._name { color:#888888; content:'勞桑'; }
+            ._actor_e2afe18fc278 ._img { background-image:url('https://images.plurk.com/24dUnL63bWaWsJTqeEunrw.png'); display:block; }
+            ._actor_2bd6bbecb6cf ._name { color:#888888; content:'費恩'; }
+            ._actor_2bd6bbecb6cf ._img { background-image:url('https://images.plurk.com/5HtiqZJajk1yTHdpJylZtG.png'); display:block; }
+            ._actor_c384e66d06ae ._name { color:#888888; content:'希雅'; }
+            ._actor_c384e66d06ae ._img { background-image:url('https://images.plurk.com/Gj2EdtC75HWdnrFQrQ6GR.png'); display:block; }
+            ._actor_186cba18f785 ._name { color:#888888; content:'萊奧拉'; }
+            ._actor_186cba18f785 ._img { background-image:url('https://images.plurk.com/3BXFNBAi9UGMOSxngwhVj1.png'); display:block; }
+            ._actor_f30d5f6964ca ._name { color:#888888; content:'霍爾加'; }
+            ._actor_f30d5f6964ca ._img { background-image:url('https://images.plurk.com/2mgZmdlMF1gbRdsQ3J5ZIw.png'); display:block; }
+            ._actor_fe827ddcae72 ._name { color:#888888; content:'菲比'; }
+            ._actor_fe827ddcae72 ._img { background-image:url('https://images.plurk.com/2EW1f836afmoidLuqVsd77.png'); display:block; }
+            ._actor_c38dcf9e3b6e ._name { color:#888888; content:'風'; }
+            ._actor_c38dcf9e3b6e ._img { background-image:url('https://images.plurk.com/3u1BxigrTwqb1eG1szDfkT.png'); display:block; }
+            ._actor_1be7e1463843 ._name { color:#888888; content:'彩'; }
+            ._actor_1be7e1463843 ._img { background-image:url('https://images.plurk.com/4k6aZdUrAPhbiHqD8BZWWm.png'); display:block; }
+            ._actor_82c8c8acfba9 ._name { color:#888888; content:'白炎'; }
+            ._actor_82c8c8acfba9 ._img { background-image:url('https://images.plurk.com/HO5zMk1agBFUXP2BejAtS.png'); display:block; }
+            ._actor_dc307fff3456 ._name { color:#888888; content:'拉歐'; }
+            ._actor_dc307fff3456 ._img { background-image:url('https://images.plurk.com/7lrnbBV039ZOiI4MtWBHju.png'); display:block; }
+            ._actor_b4bb8f7d7edd ._name { color:#888888; content:'蘭帝斯'; }
+            ._actor_b4bb8f7d7edd ._img { background-image:url('https://images.plurk.com/46aqCMmCWEYQcmbY2GtaMU.png'); display:block; }
+            ._actor_a3f6f1acfafe ._name { color:#888888; content:'蘿寧'; }
+            ._actor_a3f6f1acfafe ._img { background-image:url('https://images.plurk.com/4BfVa4JKFwGPUadAnyz0SZ.png'); display:block; }
+            ._actor_e72f116a3182 ._name { color:#888888; content:'風鳥'; }
+            ._actor_e72f116a3182 ._img { background-image:url('https://images.plurk.com/3u1BxigrTwqb1eG1szDfkT.png'); display:block; }
+            ._actor_b3b666023de7 ._name { color:#888888; content:'莎拉'; }
+            ._actor_b3b666023de7 ._img { background-image:url('https://images.plurk.com/3zFJ5sKzyP71b7EPeJztp.png'); display:block; }
+            ._actor_7de8688d0297 ._name { color:#888888; content:'莉莉'; }
+            ._actor_7de8688d0297 ._img { background-image:url('https://images.plurk.com/27kOTKHQoD2XiZ5sOLJiim.png'); display:block; }
+            ._actor_e090d688f5c6 ._name { color:#888888; content:'梅莉雅'; }
+            ._actor_e090d688f5c6 ._img { background-image:url('https://images.plurk.com/6VzKMpskWHmkPwJ0GOyYPQ.png'); display:block; }
+        </style>
+        <meta-data class="_hidden">
+            <channel>
+                _ch_257e48815e65: { name:"主要"; main:true; hide:false; }
+            </channel>
+        </meta-data>
+    </head>
+    <body>
+        <div class="_hidden"><version>hazmole_v2.0</version></div>
+        <h1>風雨雷霆</h1>
+        <div class="_subtitle"></div>
+
+        <div class="_main">
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">小知識</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1434ba2857ba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">【芬里爾】<br>「洛達」利伯特 的副手，惡名昭彰的外來者、寶物獵人、天空騎士。<br>雖然他沒有燒殺擄掠那樣直接的惡跡，但只要被他盯上的東西就一定會拿到手，就算訴諸偷竊搶奪的暴行也在所不惜。<br>在他成名之後，就很少人會拒絕他提出的交易，畢竟他也不會吝嗇於給出足量甚至超額的曜陽幣。<br></div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">狀態更新</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_00770ad02bba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">[ 潔妮兒 ] 命運點 : 1 → 3</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">碧波港</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="setBg">
+    <div class="_bg-img"><img src="https://images.plurk.com/1R8VD5OdC2Mh3a3VxtA7Tv.png"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1434ba2857ba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">潔妮兒雖然沒有直接參與籌備，但也從諾曼和維亞那邊知道許多消息：各個大城市和道館原本就派了代表團前來，在碧波港傳訊之後，也調整隨行人員，安排善於海戰的橙袍者前來。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1434ba2857ba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">那位維斯琪亞藍深深憧憬的「洛古」似乎也來了，還有好些赫赫有名但潔妮兒沒聽說過的大人物。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1434ba2857ba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">甚至海貝爾提過的四斧錘傭兵團，也有代表前來──高大威武的四臂猛男一拳把海貝爾揍倒在地，接著才哈哈大笑拉她起身，豪邁地詢問她什麼時候才要回傭兵團。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_c4d975d74de2 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            海貝爾
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">海貝爾很是不服氣地起身還了幾拳，似乎還打算繼續在外面闖蕩一陣子才要回去。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9de96a0bd6a8 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">我是第一次看到海貝爾所說的四斧錘傭兵團，沒想到在他們面前海貝爾居然顯得很迷你。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1434ba2857ba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">最後，在熱潮祭開始前一週，潔妮兒乘上一艘小型帆船。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_736fd947101b _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">身旁除了水手，就只有那個說過「之後戰鬥我也想在你身邊」的曦族藥劑師。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">海洋</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="setBg">
+    <div class="_bg-img"><img src="https://images.plurk.com/3DJqwVlk3qouqOunMubvZ1.jpg"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1434ba2857ba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">小船根據海圖來到包圍圈的外圍，這裡有塊即使大潮也不會被海水淹沒的礁石，可以讓協定龍有個立足點。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1434ba2857ba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">不過，今天的天氣可以說差得嚇人，傾盆大雨潑在甲板上，像是戰場的鼓聲一樣連綿不絕，視野也是連船頭船尾都看不清楚。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9de96a0bd6a8 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">「唔……這天氣不太妙呢。這樣適合出海嗎？」我小聲的向維亞問道。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_736fd947101b _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">「我也不清楚，也許是要趁著這樣的天氣掩蓋船隊的行蹤？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_736fd947101b _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">曦族的藥劑師皮膚鱗片色澤變得有些偏暗，整個人也顯得有些萎靡。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9de96a0bd6a8 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">「協定龍的感知不會因為視野昏暗而被影響……」我將協定龍召喚出來，再次確認這件事情。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9de96a0bd6a8 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">「……不過有另一件麻煩的事。」我仰著頭，看著這頭巨大的金屬怪物。不知道是不是錯覺，今天它頭上好像頂著一道黯淡的光芒。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9de96a0bd6a8 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">「這傢伙的攻擊手段是放電，也容易引雷。所以在雷雨天放在這艘小船上實在不太安全。」我怕到時候打起來，會把我們自己先炸沉。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9de96a0bd6a8 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">「所以我建議把我和守護靈放在那個礁岩上，這樣就算雷劈下來也不用擔心船會受損。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_736fd947101b _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">「……但這樣的話，妳會不會有危險？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9de96a0bd6a8 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">「只有我的話應該沒問題。主要還是怕立足點被破壞，在那個堅硬的礁石上的話應該就沒問題了。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_736fd947101b _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">「這麼說也是……那這些給妳。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_736fd947101b _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">藥劑師從腰帶上摘下好幾個不同顏色的小瓶子：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_736fd947101b _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">「這是防蚊蟲的、這是止痛的、這是外敷的，還有刺激性氣味驅逐野獸的……」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1434ba2857ba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">※局勢形象【維亞的藥劑儲備】</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_00770ad02bba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">[ 潔妮兒 ] 免費援引 : 0 → 2</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9de96a0bd6a8 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">「謝謝你。」我以微笑回應他的好意。雖然那個刺激性氣味的感覺不是很需要，但我還是全部收下了。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9de96a0bd6a8 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">「等等我會嘗試找個暗礁少的地方，麻煩把我放在離礁石近一點的地方，我會在守護靈的幫助下自己過去的。」我向負責開船的人員們囑咐道。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1434ba2857ba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">船員們很快聽從指示，小心翼翼地划槳（暴風雨中船帆已經完全收攏了）對抗風浪，往潔妮兒指示的方向靠過去。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9de96a0bd6a8 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">我想我是沒辦法在這風浪中游泳的。於是我跳上協定龍的手。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_715585e91108 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            協定龍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">待我站穩，協定龍便以精準的力道控制，直接將我丟上那塊礁岩。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9de96a0bd6a8 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">草原角人那能在山岩間穿梭的反應力應該足夠使我安全著陸在礁石上。不過我這個當角人沒多久的人沒自信能辦到這種事。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_715585e91108 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            協定龍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">於是，我在協定龍把我丟出去的瞬間解除召喚，並在接近礁石時重新將它召喚到礁石上，讓它用那精準的雙手接住我。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1434ba2857ba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">這樣的高級操作假如放在兩個月前，潔妮兒大概還做不出來，但經過這段期間以來在雷霆道館的學習，她也已經不是一開始那個對守護靈一無所知的穿越者了。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1434ba2857ba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">她順利被協定龍接住，隨後落足在高大的礁岩上，岩石表面佈滿滑膩的青苔，但身體的本能讓她下意識掌握住平衡，沒有一路滑進海裡。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1434ba2857ba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">她看著小船在風浪中稍微開遠了些，避開了礁岩附近危險的暗礁群。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9de96a0bd6a8 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">我開始在這錯綜複雜的礁岩陣中尋找一個藏身點。儘管我認為在這種天氣中要打中我很困難，但還是躲好一點比較保險。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9de96a0bd6a8 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">4DF+1 #隱匿 (4DF+1) ＞ [+][ ][+][+]+1 ＞ Great(+4)</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1434ba2857ba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">※局勢形象【突出海面的礁石】→【崎嶇不平的礁石藏身點】</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_00770ad02bba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">[ 潔妮兒 ] 免費援引 : 0 → 2</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1434ba2857ba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">遍布青苔的礁岩崎嶇不平，潔妮兒放眼望去就能看到好幾個可以完全躲進去的凹陷，只要小心不要滑倒，這裡是個絕佳的藏身處。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9de96a0bd6a8 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">另外，我讓協定龍站在礁岩上，令它啟動探測功能。以確定它的探測能覆蓋多大範圍。特別是水下的部分。<br>據說漁船也是用雷達來探測水下的魚群的，剛才已經試過探測礁岩，而這次我打算試著探測更深、更小的目標，畢竟敵方也有可能有能在水下行動的守護靈。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_715585e91108 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            協定龍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">4DF+4 #協定龍：感知 (4DF+4) ＞ [-][+][ ][-]+4 ＞ Good(+3)</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_715585e91108 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            協定龍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">※守護靈絕技【生命雷達】：針對潛伏的生物或守護靈，以【感知】進行【克服】行動時檢定 +2 。（行動負擔不變）</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9de96a0bd6a8 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">4DF+2 #守護靈行動負擔（傳說） (4DF+2) ＞ [-][+][+][ ]+2 ＞ Good(+3)</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1434ba2857ba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">協定龍首先探查到密密麻麻的微小生命反應，大概是螃蟹、貝類，或是小型魚類，聚集在礁岩附近享受暴風雨下的饗宴。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1434ba2857ba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">接著，則是看上去相當正常的海底生態：魚群、掠食者，還有海洋深處即使隔了好一段距離，仍然可以感應到的龐大生命反應──大概是某種巨型海怪吧。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1434ba2857ba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">在這樣的天氣，天空幾乎看不到任何鳥類，於是，當生命反應從空中接近的時候，協定龍第一時間就察覺到異狀。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1434ba2857ba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">那個方向，正好就是包圍圈的內部。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1434ba2857ba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">有兩個生命反應以相當快的速度接近，看上去是打算直接從天上飛過。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9de96a0bd6a8 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">在這暴風雨中，不會有鳥類在空中飛，能飛的大概也只有守護靈了。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9de96a0bd6a8 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">而這片海域中就只有我負責守，所以也不會是盟友的。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_715585e91108 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            協定龍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">於是，協定龍大膽的往上空發射雷光，打算直接擊落可疑目標。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">衝突開始</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="setBg">
+    <div class="_bg-img"><img src="https://images.plurk.com/P0y0X3FaOTGSL2IwhO9l7.png"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1434ba2857ba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">※局勢形象：【狂風暴雨（１）】【一望無際的海洋】【洶湧的浪潮】</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_00770ad02bba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">[ 潔妮兒 ] 免費援引 : 0 → 1</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1434ba2857ba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">※區塊：【小型帆船】【突出海面的礁石】【海洋（東）】【海洋（南）】【海洋（西）】【海洋（北）】</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_715585e91108 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            協定龍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">4DF+5 #協定龍：射擊 (4DF+5) ＞ [+][+][ ][-]+5 ＞ Fantastic(+6)</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4f101d07797b _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            重型機車
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">4DF+7 #運動 (4DF+7) ＞ [-][-][ ][-]+7 ＞ Great(+4)</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_715585e91108 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            協定龍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">※援引局勢形象【狂風暴雨】</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_00770ad02bba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">[ 潔妮兒 ] 免費援引 : 1 → 0</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_715585e91108 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            協定龍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">※檢定 +2</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_715585e91108 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            協定龍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">※守護靈絕技【突觸脈衝噴流】：放出擾亂對手生理機能的雷電，以【射擊】進行【攻擊】成功時，對目標造成局勢形象並獲得一次免費援引（行動負擔+2）</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_715585e91108 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            協定龍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">※降低1點傷害換推助</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9de96a0bd6a8 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">4DF+2 #守護靈行動負擔（傳說） (4DF+2) ＞ [-][+][ ][ ]+2 ＞ Fair(+2)</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_00770ad02bba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">[ 芬里爾 ] 物理壓力軌 : 5 → 2</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_00770ad02bba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">[ 重型機車 ] 物理壓力軌 : 4 → 1</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_00770ad02bba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">[ 芬里爾 ] 精神壓力軌 : 4 → 1</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1434ba2857ba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">※局勢形象【感電顫抖】</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_00770ad02bba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">[ 潔妮兒 ] 免費援引 : 0 → 1</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1434ba2857ba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">※推助【手腳發麻】</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_00770ad02bba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">[ 潔妮兒 ] 物理壓力 : 6 → 4</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1434ba2857ba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">電光噴湧，在這雨幕下幾乎是直接擴散成整片的電網，轟向那片區域，完全避無可避。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1434ba2857ba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">從協定龍的雷達可以感應到，那兩個快速移動的反應隨慣性墜落了一小段距離，接下來才繼續移動。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1434ba2857ba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">潔妮兒隱隱約約聽見全力催動的機車引擎聲。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4f101d07797b _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            重型機車
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">4DF+5 #工匠 (4DF+5) ＞ [-][-][-][+]+5 ＞ Good(+3)</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1434ba2857ba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">※局勢形象【數位六角格路面】</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_bd7a6c102d91 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            曦族女子
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">在潔妮兒看不到的天空之上，對方不知道做了什麼，先前激盪不穩的生命反應逐漸穩定了下來。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_bd7a6c102d91 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            曦族女子
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">※克服推助【手腳發麻】</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9de96a0bd6a8 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">暴雨打在我皮膚上，不但刺痛，守護靈帶來的消耗還讓本就冰冷的雨滴更加凍澈入骨。<br>然而這沒有影響到我的感官。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9de96a0bd6a8 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">這不就是在索萊鎮郊外的那兩人嗎？我記得一個是會製作盾牌的機車，另一個則是能用催眠香氣的守護靈。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9de96a0bd6a8 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">不向我走過來而是繼續逃離我嗎？他們似乎有個明確的目標。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9de96a0bd6a8 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">我想到他們上次試圖奪走某個危險物品，又想到從浪潮傭兵團奪來的那批貨物。如果他們的目標是那個的話，那無論如何我一定要在這裡把他們打下來。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_715585e91108 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            協定龍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">協定龍再次張大嘴巴，吐出第二發雷光。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_715585e91108 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            協定龍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">4DF+5 #協定龍：射擊 (4DF+5) ＞ [+][ ][-][-]+5 ＞ Great(+4)</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4f101d07797b _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            重型機車
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">4DF+7 #運動 (4DF+7) ＞ [+][+][+][+]+7 ＞ Legendary(+11)</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9de96a0bd6a8 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">4DF+2 #守護靈行動負擔（傳說） (4DF+2) ＞ [-][-][ ][ ]+2 ＞ Mediocre(+0)</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_00770ad02bba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">[ 潔妮兒 ] 物理壓力 : 4 → 2</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4f4eec59a8ef _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            芬里爾
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">做好防備的敵人這次把虛擬實像六角格放得相當厚實，鋪路的同時也塑造了一條長形的盾牆。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4f4eec59a8ef _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            芬里爾
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">電光射在半虛半實的護盾上，閃爍出大片電光，卻沒能穿透過去，反而被捕捉到攻擊的來向。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1434ba2857ba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">※推助【察覺來向】</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">競爭／衝突</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1434ba2857ba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">※芬里爾取得 5 次勝利時，競爭結束，脫離戰場。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1434ba2857ba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">※無競爭對抗者時，視為對抗難度 4 。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4f101d07797b _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            重型機車
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">4DF+7 #運動 (4DF+7) ＞ [ ][+][ ][-]+7 ＞ Epic(+7)</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1434ba2857ba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">※芬里爾取得 2 次勝利</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_00770ad02bba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">[ GM ] 事件計數器 : 0 → 2</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_00770ad02bba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">[ 芬里爾 ] 物理壓力軌 : 2 → 1</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_bd7a6c102d91 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            曦族女子
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">機車繼續奔馳，俯衝的過程中，一個小小的藍色植物被拋了下來。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1434ba2857ba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">協定龍從那上頭感應到守護靈的生命反應。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_bd7a6c102d91 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            曦族女子
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">4DF+3 #射擊 (4DF+3) ＞ [-][+][+][+]+3 ＞ Superb(+5)</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9de96a0bd6a8 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">※援引局勢形象【狂風暴雨】</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_00770ad02bba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">[ 潔妮兒 ] 命運點 : 3 → 2</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9de96a0bd6a8 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">※難度 +2</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9de96a0bd6a8 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">※援引局勢形象【感電顫抖】</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_00770ad02bba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">[ 潔妮兒 ] 免費援引 : 1 → 0</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9de96a0bd6a8 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">※難度 +2</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1434ba2857ba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">也許是因為先前雷擊造成的肢體顫抖，也許是因為當前的狂風暴雨，那個小小的花朵被吹飛到遠處，沒能落在潔妮兒所在的礁岩附近。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9de96a0bd6a8 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">還好，那位置應該吹不到我這裡。這天氣真是幫大忙了。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_715585e91108 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            協定龍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">協定龍再次行動。<br>這次它嘗試從其他角度發起攻擊。它往敵人正上方的雲層噴出雷電，然後雲層就以一道落雷回應它。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_715585e91108 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            協定龍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">4DF+5 #協定龍：射擊 (4DF+5) ＞ [-][ ][+][+]+5 ＞ Fantastic(+6)</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4f101d07797b _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            重型機車
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">4DF+7 #運動 (4DF+7) ＞ [ ][ ][+][ ]+7 ＞ Legendary(+8)</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_715585e91108 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            協定龍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">※援引局勢形象【狂風暴雨】</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_00770ad02bba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">[ 潔妮兒 ] 命運點 : 2 → 1</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9de96a0bd6a8 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">※檢定 +2</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_715585e91108 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            協定龍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">※援引局勢形象【感電顫抖】</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_00770ad02bba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">[ 潔妮兒 ] 命運點 : 1 → 0</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9de96a0bd6a8 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">※檢定 +2</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_715585e91108 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            協定龍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">※守護靈絕技【突觸脈衝噴流】：放出擾亂對手生理機能的雷電，以【射擊】進行【攻擊】成功時，對目標造成局勢形象並獲得一次免費援引（行動負擔+2）</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1434ba2857ba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">※後果：電灼傷</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_00770ad02bba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">[ 潔妮兒 ] 免費援引 : 0 → 1</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1434ba2857ba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">※局勢形象【感電顫抖】→【手腳抽搐】</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9de96a0bd6a8 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">4DF+2 #守護靈行動負擔（傳說） (4DF+2) ＞ [+][+][-][-]+2 ＞ Fair(+2)</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_00770ad02bba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">[ 潔妮兒 ] 物理壓力 : 2 → 0</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1434ba2857ba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">敵人的路面護盾鋪得又厚又廣，還針對察覺到的攻擊來向做了重重防備，卻沒料到這次的襲擊從雲層落下。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1434ba2857ba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">促不及防之下，整個機車直直墜下數秒才勉強重新拉抬起來，隔著橘紅色的六角格，潔妮兒已經可以看見對方的迷彩鎧甲。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9de96a0bd6a8 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">4DF+1 #感知 (4DF+1) ＞ [-][-][-][+]+1 ＞ Poor(-1)</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1434ba2857ba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">迷彩的綠色塗裝在森林是絕佳的保護色，在此刻的天空卻顯得不是那麼有效，但，其中差異在連綿不絕的雨幕下倒也無關緊要了。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1434ba2857ba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">反正在潔妮兒眼中都是一團模糊的馬賽克。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4f101d07797b _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            重型機車
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">4DF+7 #運動 (4DF+7) ＞ [+][ ][+][ ]+7 ＞ Legendary(+9)</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1434ba2857ba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">※芬里爾取得 2 勝利</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_00770ad02bba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">[ GM ] 事件計數器 : 2 → 4</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_00770ad02bba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">[ 芬里爾 ] 物理壓力軌 : 1 → 0</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1434ba2857ba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">重型機車重新拉抬高度，這次它不再專注於撐起護盾，而是把所有能力集中在加速上，引擎的轟鳴聲幾乎要讓漫天的雨滴都震動起來。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9de96a0bd6a8 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">越跑越遠了。下一擊一定要打下來。<br>儘管協定龍的感知能力應該比我好，我還是嘗試用我的眼睛試圖多提高一點成功率。<br>我觀察它移動的軌跡，看有沒有因為傷到哪而使行動有偏離方向，又看看上空，看哪裡像是能打出更強的雷電。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9de96a0bd6a8 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">4DF+2 #調查 (4DF+2) ＞ [+][ ][ ][ ]+2 ＞ Good(+3)</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1434ba2857ba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">※推助【倏忽即逝的去向】</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1434ba2857ba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">在這個短暫的瞬間，潔妮兒注意到一個事實：對方的空中疾馳建立在空中跑道的基礎上，也就是說，看清楚六角格的延伸方向，那就是對方下一秒的落腳點！</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1434ba2857ba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">如果是剛剛鋪得又寬又大的護盾牆，還沒有辦法完全確定，但現在對方為了加速把路鋪得僅僅只比車輪寬一點，去向就非常明確了。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1434ba2857ba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">雖然，從六角格顯現到車輪駛過，也只有不到半秒的時間，但潔妮兒確確實實在某個瞬間捕捉到了那個方向。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_715585e91108 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            協定龍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">在我發現這個事實的同時，協定龍也隨之修正了攻擊方向。<br>這次它射出多道雷電。從空中的、從後方的雷電同時襲來，意圖封死他所有的退路。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_715585e91108 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            協定龍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">4DF+5 #協定龍：射擊 (4DF+5) ＞ [-][ ][-][+]+5 ＞ Great(+4)</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4f101d07797b _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            重型機車
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">4DF+7 #運動 (4DF+7) ＞ [+][ ][-][ ]+7 ＞ Epic(+7)</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_715585e91108 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            協定龍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">※援引推助【倏忽即逝的去向】</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_715585e91108 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            協定龍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">※檢定 +2</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_715585e91108 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            協定龍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">※援引輕微後果【電灼傷】</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_715585e91108 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            協定龍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">※檢定 +2</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_715585e91108 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            協定龍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">※援引局勢形象【手腳抽搐】</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_715585e91108 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            協定龍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">※檢定 +2</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4f4eec59a8ef _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            芬里爾
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">※無法承受傷害，芬里爾被剔除</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9de96a0bd6a8 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">4DF+2 #守護靈行動負擔（傳說） (4DF+2) ＞ [-][+][ ][ ]+2 ＞ Fair(+2)</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1434ba2857ba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">散射的雷電幾乎覆蓋了整片天空，隨著炫目的白光和轟鳴，重型機車在空中消散，兩個著甲的人影墜入海中，迅速下沉……</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">衝突／競爭結束</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9de96a0bd6a8 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">我看著兩人落入這漆黑的海浪中。這天氣還受重傷，掉到海裡大概死定了。就算是海巡署應該也救不上來。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9de96a0bd6a8 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">不過，如果是他們的話或許有辦法。<br>我拿出海之靈大人給的禮物。他們固然是壞人，不過如果活著的話我們還有機會向他們問出更多情報，所以救下來的話其實各方面來說都比較好。<br>況且，如果他們在這裡變成魚飼料，我這個月接下來每天晚上睡前應該都會想起這個畫面。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9de96a0bd6a8 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">於是，我把留聲珠捏碎，並大喊：<br>「有兩個人掉到海裡了！請救救他們！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9de96a0bd6a8 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">※援引局勢形象【留聲珠】</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_00770ad02bba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">[ 潔妮兒 ] 免費援引 : 1 → 0</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_c4cc1300565f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            希亞奇人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">回應來得比妳預期得還快，從水下傳來妳這段期間聽過無數次的高亢鳴聲。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_c4cc1300565f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            希亞奇人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">接著，身材高大健壯的希亞奇人與他的守護靈，一人（靈）拖著一個失去意識的迷彩裝逃亡者，來到了礁岩邊上。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_c4cc1300565f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            希亞奇人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">這個看上去有些眼熟的希亞奇人放下俘虜，非常戒備地瞥了一眼協定龍，看來他這麼快回應的原因，就是因為先前就被戰鬥的動靜引了過來。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_c4cc1300565f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            希亞奇人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">他回頭望向潔妮兒，發出一段意義不明的低沉聲音，後者可以猜得出來，大概是詢問她還有沒有什麼需要幫忙的。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9de96a0bd6a8 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">「謝謝您。這種天氣還要來幫忙。」我向他道謝。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9de96a0bd6a8 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">「可以的話，能不能幫我把他們搬到那邊那艘船上呢？」考慮到我是怎麼來這裡的，我決定再拜託他好人做到底。不然明天我們可能要洗甲板。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_c4cc1300565f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            希亞奇人
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">希亞奇人發出一聲短促的回應，伸手抓起兩名俘虜就潛到水裡。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1434ba2857ba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">看來這兩人還得多喝幾口海水。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1434ba2857ba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">但至少他們的命多半是保住了，帆船那邊正好有個藥劑師。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4f4eec59a8ef _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            芬里爾
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">在這麼近的距離下，潔妮兒也注意到，芬里爾──迷彩鎧甲的騎士──其實早已負傷，他的腹部鎧甲碎出一片蛛網狀的裂紋，最中心的貫穿孔洞還隱隱滲出鮮血。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_1434ba2857ba _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">那碎裂的形狀看起來有點像是挨了一標槍。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9de96a0bd6a8 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">「啊……（察覺）」<br>辛苦你了。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9de96a0bd6a8 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">257e48815e65</channel>
+        </div>
+        <div class="_content">我繼續躲回礁石後，守著這片海域。畢竟戰鬥還沒結束。</div>
+    </div>
+</div>
+</div><!--EOS-->
+        </div>
+    </body>
+</html>
