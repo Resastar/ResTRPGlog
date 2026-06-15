@@ -1,0 +1,1528 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="潮起潮落">
+        <meta property="og:description" content="">
+        <title>潮起潮落</title>
+        <style>
+            :root{
+                --color-bg: #454752;
+                --color-title: #FFFFFF;
+                --color-subtitle: #dddddd;
+                --color-talk-bg: #1E1E1E;
+                --color-talk-panel-bg: #2A2A2A;
+                --color-talk-panel-text: #EEEEEE;
+            }
+            body { display:flex; flex-direction:column; align-items:center; background:var(--color-bg); }
+            h1{ margin: 5px 0; color:var(--color-title); }
+            ._hidden { display:none !important; }
+            ._main { display:flex; flex-direction:column; align-items:stretch; gap:10px; width:100%; max-width:1080px; }
+            ._subtitle { color:var(--color-subtitle); margin-top:0; margin-bottom: 20px; }
+            ._sctitle { background:#ddd; margin-top:30px; padding:10px;font-weight:bold;font-size:1.3rem;text-align:center; }
+
+            ._talk { display:flex; flex-direction:row; gap:2px; background:var(--color-talk-bg); width:100%; border-radius:5px; }
+            ._talk ._lCol { width:110px; flex-shrink:0; margin:6px; margin-right:0; }
+            ._talk ._rCol { flex:1; display:flex; flex-direction: column; }
+            ._talk ._img { width:110px; height:110px; background-repeat:no-repeat; background-size:cover; background-color:#ffffff10; }
+            ._talk ._name { margin:6px; height:20px; font-size:18px; display:flex; justify-content:space-between; }
+            ._talk ._channel { margin-left:5px; color:#888888; display:none; }
+            ._talk ._content { flex:1; margin:6px; background:var(--color-talk-panel-bg); color:var(--color-talk-panel-text); font-size:1.1rem; padding:10px; border-radius:5px; }
+            ._talk._other { width:50%; margin-left:auto; }
+            ._talk._other ._lCol { display:none; }
+            ._talk._other ._name { justify-content:end; }
+            ._talk._other ._channel { display:block; }
+            ._talk._other ._content { background:black; color:white; text-align:right; }
+
+            ._halt { padding:30px 0; }
+            ._sctitle { border-radius:5px; }
+            ._bg-img { display:flex; justify-content: center; }
+            ._bg-img img { max-width:100%; max-height:400px; }
+
+            ._actor_f72cf0dec6e4 ._name { color:#888888; content:'GM'; }
+            ._actor_f72cf0dec6e4 ._img { background-image:url(''); display:none; }
+            ._actor_38e191e61150 ._name { color:#888888; content:'system'; }
+            ._actor_38e191e61150 ._img { background-image:url(''); display:none; }
+            ._actor_cda09fb2b208 ._name { color:#888888; content:'潔妮兒'; }
+            ._actor_cda09fb2b208 ._img { background-image:url('https://images.plurk.com/1jfVznIRlGVH9YLO9wRYte.png'); display:block; }
+            ._actor_a363f5b9308c ._name { color:#888888; content:'維斯琪亞藍'; }
+            ._actor_a363f5b9308c ._img { background-image:url('https://images.plurk.com/22Ldw1xIIHwraF4EAH5Sqe.png'); display:block; }
+            ._actor_3b15fced5022 ._name { color:#888888; content:'海貝爾'; }
+            ._actor_3b15fced5022 ._img { background-image:url('https://images.plurk.com/qCjrlEK2ZiYja55mIOV7H.png'); display:block; }
+            ._actor_051c5babb01d ._name { color:#888888; content:'協定龍'; }
+            ._actor_051c5babb01d ._img { background-image:url('https://images.plurk.com/6QVqGvj3Uw0xdxvZ6bs7le.png'); display:block; }
+            ._actor_e00e7f295991 ._name { color:#888888; content:'重型機車'; }
+            ._actor_e00e7f295991 ._img { background-image:url('https://images.plurk.com/5CuPtAG5AAJITZrEUAM64z.png'); display:block; }
+            ._actor_656be8efd556 ._name { color:#888888; content:'曦族女子'; }
+            ._actor_656be8efd556 ._img { background-image:url('https://images.plurk.com/7syNEzn6rwH9fAV0hsY2V1.png'); display:block; }
+            ._actor_02e1cf91ba8b ._name { color:#888888; content:'芬里爾'; }
+            ._actor_02e1cf91ba8b ._img { background-image:url('https://images.plurk.com/3ba443J8KtRWBwzI1s7dZJ.png'); display:block; }
+            ._actor_e75097020bbe ._name { color:#888888; content:'希亞奇人'; }
+            ._actor_e75097020bbe ._img { background-image:url('https://images.plurk.com/5C9oVGOzMwKdHdRa9vuW0b.png'); display:block; }
+            ._actor_500bbf8995db ._name { color:#888888; content:'赫斯馮恩'; }
+            ._actor_500bbf8995db ._img { background-image:url('https://images.plurk.com/6JBYSEoMjIXX1aXSnDQp4W.png'); display:block; }
+            ._actor_f0f936a07d90 ._name { color:#888888; content:'巫亞埃萬也因先'; }
+            ._actor_f0f936a07d90 ._img { background-image:url('https://images.plurk.com/5Vn7asLva0T5f5BX5IJPnX.png'); display:block; }
+            ._actor_5636ac2bda95 ._name { color:#888888; content:'碧波港市民'; }
+            ._actor_5636ac2bda95 ._img { background-image:url('https://images.plurk.com/2FljCvP7KGT2ihZCAh0lyy.png'); display:block; }
+            ._actor_7d081dce9f03 ._name { color:#888888; content:'諾曼'; }
+            ._actor_7d081dce9f03 ._img { background-image:url('https://images.plurk.com/7I6SyOsKqDXKbfFr7DlIAy.png'); display:block; }
+            ._actor_06c00b4cda75 ._name { color:#888888; content:'托曼'; }
+            ._actor_06c00b4cda75 ._img { background-image:url('https://images.plurk.com/wqYxlu9ZhR0KGGlqG9LdY.png'); display:block; }
+            ._actor_cb4c966f4925 ._name { color:#888888; content:'娜妲'; }
+            ._actor_cb4c966f4925 ._img { background-image:url('https://images.plurk.com/5Vm0TX5zphanbu3hBgbokc.png'); display:block; }
+            ._actor_4956fd6531de ._name { color:#888888; content:'哲林'; }
+            ._actor_4956fd6531de ._img { background-image:url('https://images.plurk.com/6961L1kSbr5RnvMy2h95fT.png'); display:block; }
+            ._actor_2fe372973754 ._name { color:#888888; content:'傭兵'; }
+            ._actor_2fe372973754 ._img { background-image:url('https://images.plurk.com/1AVJWnX6GEcyjmaiNxiRYD.png'); display:block; }
+            ._actor_d107d6ab37e8 ._name { color:#888888; content:'碧波港衛兵'; }
+            ._actor_d107d6ab37e8 ._img { background-image:url('https://images.plurk.com/w0XjHXSJjzNlbihCbFi3e.png'); display:block; }
+            ._actor_88f529b3b93e ._name { color:#888888; content:'蜓目'; }
+            ._actor_88f529b3b93e ._img { background-image:url('https://images.plurk.com/3SUaHWPEElrYYl6Alqz4E7.png'); display:block; }
+            ._actor_39587886d435 ._name { color:#888888; content:'辛格爾'; }
+            ._actor_39587886d435 ._img { background-image:url('https://images.plurk.com/711YGUgIrHoByMstmrX2Rc.png'); display:block; }
+            ._actor_d574be84218c ._name { color:#888888; content:'夏莉絲諾拉'; }
+            ._actor_d574be84218c ._img { background-image:url('https://images.plurk.com/6jflhtzwBkl9UaoWbkhFm0.png'); display:block; }
+            ._actor_28f55d53707d ._name { color:#888888; content:'夏耶雅'; }
+            ._actor_28f55d53707d ._img { background-image:url('https://images.plurk.com/5lad2EyVdXJ3TqSaa4ttuW.png'); display:block; }
+            ._actor_25fb7465e584 ._name { color:#888888; content:'艾丁'; }
+            ._actor_25fb7465e584 ._img { background-image:url('https://images.plurk.com/6ebMI75cCxEr2cOIItMfye.png'); display:block; }
+            ._actor_355672d409f0 ._name { color:#888888; content:'海之靈'; }
+            ._actor_355672d409f0 ._img { background-image:url('https://images.plurk.com/78gpfBjije8Qi61ndFRhmB.png'); display:block; }
+            ._actor_7cac3563c962 ._name { color:#888888; content:'捧杯者'; }
+            ._actor_7cac3563c962 ._img { background-image:url('https://images.plurk.com/5BFXsYn2P4wV8Jg15gfxwL.png'); display:block; }
+            ._actor_73a3d1e55ba8 ._name { color:#888888; content:'雷霆道館教師'; }
+            ._actor_73a3d1e55ba8 ._img { background-image:url('https://images.plurk.com/6JuBc15DDy6eqUIDcbiIhe.png'); display:block; }
+            ._actor_579cd7ddd06b ._name { color:#888888; content:'波爾達'; }
+            ._actor_579cd7ddd06b ._img { background-image:url('https://images.plurk.com/6XPri9AStpaWAtpNIglr7N.png'); display:block; }
+            ._actor_fcbd587b416d ._name { color:#888888; content:'黛'; }
+            ._actor_fcbd587b416d ._img { background-image:url('https://images.plurk.com/sD2sTDdnNSPcxTBZzyUSe.png'); display:block; }
+            ._actor_48dd599d762e ._name { color:#888888; content:'勞桑'; }
+            ._actor_48dd599d762e ._img { background-image:url('https://images.plurk.com/24dUnL63bWaWsJTqeEunrw.png'); display:block; }
+            ._actor_e922c0bbc51a ._name { color:#888888; content:'費恩'; }
+            ._actor_e922c0bbc51a ._img { background-image:url('https://images.plurk.com/5HtiqZJajk1yTHdpJylZtG.png'); display:block; }
+            ._actor_eaee51192298 ._name { color:#888888; content:'希雅'; }
+            ._actor_eaee51192298 ._img { background-image:url('https://images.plurk.com/Gj2EdtC75HWdnrFQrQ6GR.png'); display:block; }
+            ._actor_e21020709b74 ._name { color:#888888; content:'萊奧拉'; }
+            ._actor_e21020709b74 ._img { background-image:url('https://images.plurk.com/3BXFNBAi9UGMOSxngwhVj1.png'); display:block; }
+            ._actor_60931e2465ab ._name { color:#888888; content:'霍爾加'; }
+            ._actor_60931e2465ab ._img { background-image:url('https://images.plurk.com/2mgZmdlMF1gbRdsQ3J5ZIw.png'); display:block; }
+            ._actor_072c32f69838 ._name { color:#888888; content:'菲比'; }
+            ._actor_072c32f69838 ._img { background-image:url('https://images.plurk.com/2EW1f836afmoidLuqVsd77.png'); display:block; }
+            ._actor_6085ec072230 ._name { color:#888888; content:'風'; }
+            ._actor_6085ec072230 ._img { background-image:url('https://images.plurk.com/3u1BxigrTwqb1eG1szDfkT.png'); display:block; }
+            ._actor_9dd73712d0bb ._name { color:#888888; content:'彩'; }
+            ._actor_9dd73712d0bb ._img { background-image:url('https://images.plurk.com/4k6aZdUrAPhbiHqD8BZWWm.png'); display:block; }
+            ._actor_514f52ecec73 ._name { color:#888888; content:'白炎'; }
+            ._actor_514f52ecec73 ._img { background-image:url('https://images.plurk.com/HO5zMk1agBFUXP2BejAtS.png'); display:block; }
+            ._actor_a8a91c7795ed ._name { color:#888888; content:'拉歐'; }
+            ._actor_a8a91c7795ed ._img { background-image:url('https://images.plurk.com/7lrnbBV039ZOiI4MtWBHju.png'); display:block; }
+            ._actor_5f9092bb6226 ._name { color:#888888; content:'蘭帝斯'; }
+            ._actor_5f9092bb6226 ._img { background-image:url('https://images.plurk.com/46aqCMmCWEYQcmbY2GtaMU.png'); display:block; }
+            ._actor_59010d2dfd9f ._name { color:#888888; content:'蘿寧'; }
+            ._actor_59010d2dfd9f ._img { background-image:url('https://images.plurk.com/4BfVa4JKFwGPUadAnyz0SZ.png'); display:block; }
+            ._actor_5bf3dd249934 ._name { color:#888888; content:'風鳥'; }
+            ._actor_5bf3dd249934 ._img { background-image:url('https://images.plurk.com/3u1BxigrTwqb1eG1szDfkT.png'); display:block; }
+            ._actor_0a17fd2fbdd7 ._name { color:#888888; content:'莎拉'; }
+            ._actor_0a17fd2fbdd7 ._img { background-image:url('https://images.plurk.com/3zFJ5sKzyP71b7EPeJztp.png'); display:block; }
+            ._actor_e6d82756b608 ._name { color:#888888; content:'莉莉'; }
+            ._actor_e6d82756b608 ._img { background-image:url('https://images.plurk.com/27kOTKHQoD2XiZ5sOLJiim.png'); display:block; }
+            ._actor_c18f74a25423 ._name { color:#888888; content:'梅莉雅'; }
+            ._actor_c18f74a25423 ._img { background-image:url('https://images.plurk.com/6VzKMpskWHmkPwJ0GOyYPQ.png'); display:block; }
+        </style>
+        <meta-data class="_hidden">
+            <channel>
+                _ch_0d74f9a55ce1: { name:"主要"; main:true; hide:false; }
+            </channel>
+        </meta-data>
+    </head>
+    <body>
+        <div class="_hidden"><version>hazmole_v2.0</version></div>
+        <h1>潮起潮落</h1>
+        <div class="_subtitle"></div>
+
+        <div class="_main">
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">小知識</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_f72cf0dec6e4 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">【回聲道館】<br>回聲道館是個規模不大的冷門道館，坐落在文化之都彩蘭城，以培育的音樂家與吟遊詩人聞名，基礎課程中的音樂相關內容也相當受歡迎。<br>除了藝術方面的課程之外，也有少數作為戰場傳令員方面的課程培訓。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">狀態更新</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_38e191e61150 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">[ 潔妮兒 ] 物理壓力 : 0 → 6</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_38e191e61150 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">[ 潔妮兒 ] 命運點 : 0 → 3</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">海洋</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="setBg">
+    <div class="_bg-img"><img src="https://images.plurk.com/3DJqwVlk3qouqOunMubvZ1.jpg"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_f72cf0dec6e4 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">擊落芬里爾之後，潔妮兒重新躲回礁石後，卻發現遠方的天空突然映出一大片紅光。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_f72cf0dec6e4 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">暴雨阻隔了視野與聲息，但她還是可以隱隱感覺到環境的細微變化──氣溫似乎升高了、水面好像稍微下降了些、遠處出現大片水氣與濃霧。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_f72cf0dec6e4 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">就好像火鍋煮滾之後的種種反應，只是這次的火鍋湯底是遠方的海域，裡面的主料則是那個不知道藏了多少陷阱的海島。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_f72cf0dec6e4 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">「人類是火焰的民族。」潔妮兒突然想起先前維亞提過的這句話，就像地球的遊戲一樣，就算沒有太複雜的機制，只要數值撐得夠高，就是最強勢的能力。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cda09fb2b208 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">「那是……敵方還是我方？」我認識其他使用火守護靈的人都沒有那麼大的火力。希望是自己人。因為我現在不太能趕過去幫忙。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cda09fb2b208 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">據說能用火系能力的人類很多，那些高熱也可能是兩軍擁有大量同類能力的人交戰所產生的吧。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_f72cf0dec6e4 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">潔妮兒突然發現腳下的水位又退了些，讓礁石露出更多部分。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_f72cf0dec6e4 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">浪潮以肉眼可見的程度往戰場的方向湧去，一道道巨浪被推擠得越來越高，不知道在主戰場那裏會是多壯觀的場面。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_f72cf0dec6e4 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">最後，隨著沉悶的巨浪撲岸聲穿破雨幕，破碎的浪濤擴散開來，礁石根基重新被海水淹沒。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_f72cf0dec6e4 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">這次出手的人是誰，潔妮兒就猜測得出來了。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_f72cf0dec6e4 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">這也是最後的戰場規模異相，接下來的動靜就不是外圍能窺見的了。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cda09fb2b208 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">能辦到這種事的，也只有海之靈大人吧。他的能力在海上可謂是最強的，我無法想像他輸的樣子。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_f72cf0dec6e4 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">過了不知道多久，潔妮兒耳邊突然聽見一個雀躍的女聲：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_f72cf0dec6e4 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">「結束啦！大家可以撤離了！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_f72cf0dec6e4 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">那是回聲道館少有的橙袍者，戰場傳令課程的指導老師，負責這次行動的聯繫。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_f72cf0dec6e4 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">帆船那邊似乎也聽到了同樣的聲音，開始往礁石這邊靠過來。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cda09fb2b208 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">戰爭結束了。聽老師的口氣，我們應該是勝利方吧。<br>我站起身，從礁岩中走出，海風帶來一絲寒意，才發現我渾身早已被海水醃透了。角人族的耐寒能力似乎不差，如果是以前的我，待在這一整晚大概已經凍到站不起來了吧。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cda09fb2b208 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">協定龍沿著山壁慢慢爬下，我則尋找著理應在附近的船隻燈光，回程大概也是要我自己飛過去。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a363f5b9308c _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">潔妮兒可以看到帆船上的維斯奇亞蘭舉起提燈，船員們也在一小段距離之外下錨穩定船身。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cda09fb2b208 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">「我在這裡！」我站在協定龍手上，向他們揮揮手。「然後我要飛過去了，麻煩讓開一下喔。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a363f5b9308c _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">維斯奇亞蘭揮了揮提燈，然後退了開來。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cda09fb2b208 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">三秒鐘後，我已經出現在甲板上。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cda09fb2b208 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">「大家都沒事嗎？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a363f5b9308c _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">「沒事，妳還好嗎？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a363f5b9308c _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">曦族藥劑師看上去依然有些萎靡，但她更關切全身溼透的潔妮兒，拉著後者的手就往船艙裡走。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a363f5b9308c _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">一邊讓船員們返航，她一邊拿起大毛巾給潔妮兒擦拭身體。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cda09fb2b208 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">「沒事，回去洗個澡就行了。」我接過毛巾，簡單擦拭了一下。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a363f5b9308c _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">船艙裡還有兩個俘虜，他們已經被捆了起來，旁邊還有幾個藥劑空瓶，不知道灌了什麼藥，完全昏睡過去沒有意識。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cda09fb2b208 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">「他們……短時間內應該不會醒吧。」雖然我的確打暈了他們，但暈到現在應該不是出自我手。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a363f5b9308c _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">「藥效應該可以撐到回程……還是妳想跟他們說幾句話嗎？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cda09fb2b208 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">「不必了，還是先交給你吧。」我對那個騎機車的有點好奇，但那些可以之後問。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a363f5b9308c _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">「那麼，我們就回去吧，潔妮兒，辛苦了。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a363f5b9308c _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">她點了點頭，讓辛苦的戰士回到自己房間更換衣服，凱旋回港。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cda09fb2b208 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">「嗯，你們也辛苦了。」我向大家道謝。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">碧波港</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="setBg">
+    <div class="_bg-img"><img src="https://images.plurk.com/62jdIoZIJPXgZi5ZGkm8ns.jpg"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_f72cf0dec6e4 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">距離圍剿洛達餘黨已經過了幾天，潔妮兒聽說這次圍剿相當成功，把洛達的餘黨近乎一網打盡。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_f72cf0dec6e4 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">沒有後顧之憂的碧波港，也開始準備迎接熱海祭，城市裡到處掛滿了不同顏色與徽記的旗幟，有代表種族的、有代表道館的、還有代表特定商會或是某個工匠的……</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_f72cf0dec6e4 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">那些代表團的人們完成任務後，也開始享受起慶典的氛圍，讓碧波港多了許多生面孔：包含原本並不多見的角人與霍恩族。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a363f5b9308c _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">「潔妮兒，嚐嚐這個！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a363f5b9308c _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">曦族的藥劑師捧了一顆排球大小的食物回來，帶著笑意遞給潔妮兒。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="setBg">
+    <div class="_bg-img"><img src="https://images.plurk.com/1z6cOQC41aZwMCzRlNw4Uu.png"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cda09fb2b208 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">「這是……什麼？」維亞應該不會害我，於是我一邊問，一邊咬了一口。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_f72cf0dec6e4 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">那東西遠比看起來輕盈許多，表面是烤得焦脆的網格狀餅皮，內部則是不知名的白色物質，有的部分看起來像是起司，有些部分則是看得出蓬鬆乾脆的質感。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_f72cf0dec6e4 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">潔妮兒一口咬下，立刻感覺到豐富的口感。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_f72cf0dec6e4 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">口感非常複雜，外層焦脆的網格狀餅皮像是吐司邊的口感，裡面白色的部分則相當鬆脆，有點像台灣的零食「乖乖」，其中還有部分較札實的菌球，吃起來像是沙其馬的口感，整體味道呈現淡淡的鹹甜香氣。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_f72cf0dec6e4 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">這種零食還有個特點：非常容易掉碎屑，潔妮兒注意到飄落的碎屑裡有著熟悉的粉塵狀孢子。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a363f5b9308c _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">「如何？角人族的菌球餅，是很有特色的角人傳統乾糧哦！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cda09fb2b208 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">「唔……好吃。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cda09fb2b208 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">「你說『菌球餅』，難道是和我的角一樣的生物嗎？」角人族頭上的角是一種菇類，因為太有特色了我記得很清楚。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a363f5b9308c _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">「具體的工序我不太清楚，但我記得裡面確實有角人菌的成分。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_f72cf0dec6e4 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">維亞沒有給出具體工藝，但潔妮兒腦海中卻自行浮現了模糊的畫面。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_f72cf0dec6e4 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">她看見了自己──氣質明顯不同的自己──用銼刀磨了磨角，裝了一小碗角人菌的碎屑，然後撒在某種豆子上面，又澆了些湯汁，讓它發酵生長成一大顆球型，接著才加上其他食材調味、烘烤。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_f72cf0dec6e4 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">她甚至可以回想起自己認真製作「菌球餅」，是為了某個人……</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_f72cf0dec6e4 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">記憶跟情緒到這裡嘎然而止，最後似乎是某種自我厭惡的心情，讓那個意識重新消沉下去。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cda09fb2b208 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">這應該是「菲比」的記憶吧。她也有著重視的人嗎？記憶就到這邊，可能要之後才能知道了。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cda09fb2b208 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">話說角人這種族真是有夠神奇的，令我想到在身上長能吃的藻類的樹懶。我不禁摸了一下自己的角。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cda09fb2b208 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">「有機會的話，想去角人的聚居地看看呢。感覺會有更多有趣的東西。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a363f5b9308c _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">「角人的聚居地啊……不過角人也分好幾個不同的亞種哦！不同亞種的文化也有些差異。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cda09fb2b208 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">「居然還有亞種啊……他們也都是像我這種體型嗎？」我剛剛也有看到別的角人，有些角好像和我不太一樣，但我不太確定那是不是只是因為菌類本來就每一朵都有差異。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a363f5b9308c _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">「角人的體型大概都像這個樣子，不過森林角人會更纖細嬌小一點，凍原角人會更高大一點，而且皮膚色調會跟我們曦族有點接近，不過沒有鱗片就是了。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a363f5b9308c _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">她想了想，補充道：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a363f5b9308c _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">「潔妮兒是草原角人，是體能最好的亞種。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cda09fb2b208 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">我點點頭。「膚色相近的話我應該會有印象，那我應該還沒看到凍原角人。真想看看他們長什麼樣子。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a363f5b9308c _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">「凍原角人的話，也許我們可以去鐵岩城代表團那邊看看，我記得他們被安排在廣場區域。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cda09fb2b208 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">「凍原角人聽起來像是寒帶物種。所以鐵岩城那裡是寒帶嗎？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a363f5b9308c _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">「鐵岩城在國度的邊境，是最靠近北方高原、凍林的大城市，也是那個地區少有的大型城市，所以有蠻多旅行的凍原角人會出沒在那一帶。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a363f5b9308c _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">他思考了一下道：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a363f5b9308c _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">「鐵岩城所在的位置我不確定算不算你們所說的『寒帶』，畢竟我們的季節差異也不小，但那邊比這裡冷非常多是確定的。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cda09fb2b208 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">「以後有機會的話，想去看看呢。」啊，不過曦族大概很難同行了。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cda09fb2b208 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">「森林角人所住的地方好像也不錯。」於是我又補了一句。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a363f5b9308c _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">「森林角人啊……我認識幾位角人藥劑師，他們的調配手法相當獨特，對於菌類的運用大概是其他種族怎麼樣也學不來的。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a363f5b9308c _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">他突然笑了出來：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a363f5b9308c _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">「如果我用他們的方式調配藥劑，大概還沒處理完材料就要被毒死了。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cda09fb2b208 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">「沒辦法學的話，是本身就特別耐毒嗎？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a363f5b9308c _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">「是啊，森林角人的毒素和疾病抗性在所有種族裡面也是首屈一指的。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cda09fb2b208 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">「這個種族真是神祕啊……又是身體部位可以吃又是有各種抵抗力的。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a363f5b9308c _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">「說到身體部位可以吃這件事，雖然妳是角人比較不會被誤會，但還是盡量別在其他角人面前提這件事比較好。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a363f5b9308c _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">聽到潔妮兒的感嘆，維斯琪亞藍突然認真地提醒道：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a363f5b9308c _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">「正是因為角人的角有非常多的應用價值，所以也曾經發生過不太好的歷史事件，有些角人會對這個很敏感，甚至有人會固定把角修掉。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cda09fb2b208 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">「這裡也有這種黑暗的歷史啊……」我好像想到了甚麼，又問道：<br>「如果是自願賣的話可以嗎？我在想如果我以後破產是不是能用它們換點錢急用。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a363f5b9308c _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">「自願的話基本上是沒問題的，畢竟那樣的歷史事件也是很久以前的事了，現在也偶爾會有角人族會把修剪的角拿去賣。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cda09fb2b208 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">「這樣啊。如果改天你需要我的角當藥材的話，我很樂意提供喔。」我開玩笑道。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a363f5b9308c _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">「哈哈哈，那我可就不客氣囉！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a363f5b9308c _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">0d74f9a55ce1</channel>
+        </div>
+        <div class="_content">維亞眨了眨眼，正面回應了這個玩笑。</div>
+    </div>
+</div>
+</div><!--EOS-->
+        </div>
+    </body>
+</html>
