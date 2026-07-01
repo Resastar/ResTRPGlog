@@ -1,6 +1,5 @@
 var TITLE = "【FATE】藤藤蛇的農場大冒險";
 var INDEX = [
-	{ title: "團務區", url: "https://docs.google.com/spreadsheets/d/1XMg3m8SPPQLFRkCV6c3hJOJaFV6u0SajlSDl_Vx9GTI/edit?usp=sharing", },
 	{ title: "一天的開始(1)", url: "藤藤蛇00.html", },
 	{ title: "一天的開始(2)", url: "藤藤蛇01.html", },
 	{ title: "一天的開始(3)", url: "藤藤蛇02.html", },
@@ -12,5 +11,4 @@ var INDEX = [
 	{ title: "遍體鱗傷", url: "藤藤蛇08.html", },
 	{ title: "勇往直前", url: "藤藤蛇09.html", },
 	{ title: "一觸即發", url: "藤藤蛇10.html", },
-
 ];
