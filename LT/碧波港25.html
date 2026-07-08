@@ -1,0 +1,1481 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="珍重送別">
+        <meta property="og:description" content="">
+        <title>珍重送別</title>
+        <style>
+            :root{
+                --color-bg: #454752;
+                --color-title: #FFFFFF;
+                --color-subtitle: #dddddd;
+                --color-talk-bg: #1E1E1E;
+                --color-talk-panel-bg: #2A2A2A;
+                --color-talk-panel-text: #EEEEEE;
+            }
+            body { display:flex; flex-direction:column; align-items:center; background:var(--color-bg); }
+            h1{ margin: 5px 0; color:var(--color-title); }
+            ._hidden { display:none !important; }
+            ._main { display:flex; flex-direction:column; align-items:stretch; gap:10px; width:100%; max-width:1080px; }
+            ._subtitle { color:var(--color-subtitle); margin-top:0; margin-bottom: 20px; }
+            ._sctitle { background:#ddd; margin-top:30px; padding:10px;font-weight:bold;font-size:1.3rem;text-align:center; }
+
+            ._talk { display:flex; flex-direction:row; gap:2px; background:var(--color-talk-bg); width:100%; border-radius:5px; }
+            ._talk ._lCol { width:110px; flex-shrink:0; margin:6px; margin-right:0; }
+            ._talk ._rCol { flex:1; display:flex; flex-direction: column; }
+            ._talk ._img { width:110px; height:110px; background-repeat:no-repeat; background-size:cover; background-color:#ffffff10; }
+            ._talk ._name { margin:6px; height:20px; font-size:18px; display:flex; justify-content:space-between; }
+            ._talk ._channel { margin-left:5px; color:#888888; display:none; }
+            ._talk ._content { flex:1; margin:6px; background:var(--color-talk-panel-bg); color:var(--color-talk-panel-text); font-size:1.1rem; padding:10px; border-radius:5px; }
+            ._talk._other { width:50%; margin-left:auto; }
+            ._talk._other ._lCol { display:none; }
+            ._talk._other ._name { justify-content:end; }
+            ._talk._other ._channel { display:block; }
+            ._talk._other ._content { background:black; color:white; text-align:right; }
+
+            ._halt { padding:30px 0; }
+            ._sctitle { border-radius:5px; }
+            ._bg-img { display:flex; justify-content: center; }
+            ._bg-img img { max-width:100%; max-height:400px; }
+
+            ._actor_236dea1ad3ef ._name { color:#888888; content:'GM'; }
+            ._actor_236dea1ad3ef ._img { background-image:url(''); display:none; }
+            ._actor_5e2c8f632b7b ._name { color:#888888; content:'潔妮兒'; }
+            ._actor_5e2c8f632b7b ._img { background-image:url('https://images.plurk.com/1jfVznIRlGVH9YLO9wRYte.png'); display:block; }
+            ._actor_487fa9e92a3d ._name { color:#888888; content:'維斯琪亞藍'; }
+            ._actor_487fa9e92a3d ._img { background-image:url('https://images.plurk.com/22Ldw1xIIHwraF4EAH5Sqe.png'); display:block; }
+            ._actor_7edfd5bb5d4a ._name { color:#888888; content:'海之靈'; }
+            ._actor_7edfd5bb5d4a ._img { background-image:url('https://images.plurk.com/78gpfBjije8Qi61ndFRhmB.png'); display:block; }
+            ._actor_9a7e55e3f057 ._name { color:#888888; content:'巫阿鳩厄亞埃爾翁'; }
+            ._actor_9a7e55e3f057 ._img { background-image:url('https://images.plurk.com/4pspEDo1Wa391EMnehrwhf.png'); display:block; }
+            ._actor_de0bd84b411c ._name { color:#888888; content:'黛'; }
+            ._actor_de0bd84b411c ._img { background-image:url('https://images.plurk.com/5cI8YcRQYjjm7UDZfcY4JA.png'); display:block; }
+            ._actor_073828327ef1 ._name { color:#888888; content:'阿曼 ‧ 索萊 ‧ 古'; }
+            ._actor_073828327ef1 ._img { background-image:url('https://images.plurk.com/4amubWf5M9nP8TmcpIROvn.png'); display:block; }
+            ._actor_34734c564ca2 ._name { color:#888888; content:'芙娜'; }
+            ._actor_34734c564ca2 ._img { background-image:url('https://images.plurk.com/35wOWnSX8UxLSPcQvqEfxS.png'); display:block; }
+            ._actor_206f0dd3ef4c ._name { color:#888888; content:'赫斯馮恩'; }
+            ._actor_206f0dd3ef4c ._img { background-image:url('https://images.plurk.com/6JBYSEoMjIXX1aXSnDQp4W.png'); display:block; }
+            ._actor_d2c83aa4caaa ._name { color:#888888; content:'諾曼'; }
+            ._actor_d2c83aa4caaa ._img { background-image:url('https://images.plurk.com/7I6SyOsKqDXKbfFr7DlIAy.png'); display:block; }
+            ._actor_687ad1d2893a ._name { color:#888888; content:'system'; }
+            ._actor_687ad1d2893a ._img { background-image:url(''); display:none; }
+            ._actor_4b41175a00fb ._name { color:#888888; content:'哲林'; }
+            ._actor_4b41175a00fb ._img { background-image:url('https://images.plurk.com/6961L1kSbr5RnvMy2h95fT.png'); display:block; }
+            ._actor_774024e420de ._name { color:#888888; content:'海貝爾'; }
+            ._actor_774024e420de ._img { background-image:url('https://images.plurk.com/qCjrlEK2ZiYja55mIOV7H.png'); display:block; }
+            ._actor_7707d993bb6c ._name { color:#888888; content:'協定龍'; }
+            ._actor_7707d993bb6c ._img { background-image:url('https://images.plurk.com/6QVqGvj3Uw0xdxvZ6bs7le.png'); display:block; }
+            ._actor_70bc9d222c35 ._name { color:#888888; content:'希亞奇人'; }
+            ._actor_70bc9d222c35 ._img { background-image:url('https://images.plurk.com/5C9oVGOzMwKdHdRa9vuW0b.png'); display:block; }
+            ._actor_697ac1e17ae1 ._name { color:#888888; content:'巫亞埃萬也因先'; }
+            ._actor_697ac1e17ae1 ._img { background-image:url('https://images.plurk.com/5Vn7asLva0T5f5BX5IJPnX.png'); display:block; }
+            ._actor_f57025649bc9 ._name { color:#888888; content:'碧波港市民'; }
+            ._actor_f57025649bc9 ._img { background-image:url('https://images.plurk.com/2FljCvP7KGT2ihZCAh0lyy.png'); display:block; }
+            ._actor_a62868e9b43c ._name { color:#888888; content:'托曼'; }
+            ._actor_a62868e9b43c ._img { background-image:url('https://images.plurk.com/wqYxlu9ZhR0KGGlqG9LdY.png'); display:block; }
+            ._actor_15c246cecbd7 ._name { color:#888888; content:'娜妲'; }
+            ._actor_15c246cecbd7 ._img { background-image:url('https://images.plurk.com/5Vm0TX5zphanbu3hBgbokc.png'); display:block; }
+            ._actor_8ad1c947c9dc ._name { color:#888888; content:'碧波港衛兵'; }
+            ._actor_8ad1c947c9dc ._img { background-image:url('https://images.plurk.com/w0XjHXSJjzNlbihCbFi3e.png'); display:block; }
+            ._actor_84a118b8c21d ._name { color:#888888; content:'夏莉絲諾拉'; }
+            ._actor_84a118b8c21d ._img { background-image:url('https://images.plurk.com/6jflhtzwBkl9UaoWbkhFm0.png'); display:block; }
+            ._actor_4ef6818a0140 ._name { color:#888888; content:'夏耶雅'; }
+            ._actor_4ef6818a0140 ._img { background-image:url('https://images.plurk.com/5lad2EyVdXJ3TqSaa4ttuW.png'); display:block; }
+            ._actor_1fbc6810590d ._name { color:#888888; content:'捧杯者'; }
+            ._actor_1fbc6810590d ._img { background-image:url('https://images.plurk.com/5BFXsYn2P4wV8Jg15gfxwL.png'); display:block; }
+            ._actor_fc5e2cc4ceff ._name { color:#888888; content:'波爾達'; }
+            ._actor_fc5e2cc4ceff ._img { background-image:url('https://images.plurk.com/6XPri9AStpaWAtpNIglr7N.png'); display:block; }
+            ._actor_49f90b62c51b ._name { color:#888888; content:'費恩'; }
+            ._actor_49f90b62c51b ._img { background-image:url('https://images.plurk.com/5HtiqZJajk1yTHdpJylZtG.png'); display:block; }
+            ._actor_2b258c2c319e ._name { color:#888888; content:'希雅'; }
+            ._actor_2b258c2c319e ._img { background-image:url('https://images.plurk.com/Gj2EdtC75HWdnrFQrQ6GR.png'); display:block; }
+            ._actor_6cb00aeadbd8 ._name { color:#888888; content:'萊奧拉'; }
+            ._actor_6cb00aeadbd8 ._img { background-image:url('https://images.plurk.com/3BXFNBAi9UGMOSxngwhVj1.png'); display:block; }
+            ._actor_4f6465a18eac ._name { color:#888888; content:'菲比'; }
+            ._actor_4f6465a18eac ._img { background-image:url('https://images.plurk.com/2EW1f836afmoidLuqVsd77.png'); display:block; }
+            ._actor_c25d291dbb47 ._name { color:#888888; content:'風'; }
+            ._actor_c25d291dbb47 ._img { background-image:url('https://images.plurk.com/3u1BxigrTwqb1eG1szDfkT.png'); display:block; }
+            ._actor_c77a15cc0ce6 ._name { color:#888888; content:'拉歐'; }
+            ._actor_c77a15cc0ce6 ._img { background-image:url('https://images.plurk.com/7lrnbBV039ZOiI4MtWBHju.png'); display:block; }
+            ._actor_90b958d05ca4 ._name { color:#888888; content:'蘭帝斯'; }
+            ._actor_90b958d05ca4 ._img { background-image:url('https://images.plurk.com/46aqCMmCWEYQcmbY2GtaMU.png'); display:block; }
+        </style>
+        <meta-data class="_hidden">
+            <channel>
+                _ch_2bf97f59d6d8: { name:"主要"; main:true; hide:false; }
+            </channel>
+        </meta-data>
+    </head>
+    <body>
+        <div class="_hidden"><version>hazmole_v2.0</version></div>
+        <h1>珍重送別</h1>
+        <div class="_subtitle"></div>
+
+        <div class="_main">
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">小知識</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_236dea1ad3ef _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">【摩踏族】<br>摩踏族是大地的種族，比起話語更仰賴行走與姿態的肢體語言，他們沉默而固執，多半集體生活在特定的城鎮聚落。<br>他們的守護靈常見無機物或岩石、泥土構裝體，能力則常與大地或方位有關，是著名的建築師種族。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">碧波港</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="setBg">
+    <div class="_bg-img"><img src="https://images.plurk.com/62jdIoZIJPXgZi5ZGkm8ns.jpg"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_236dea1ad3ef _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">潔妮兒與維斯奇亞藍彼此坦露心聲之後，把握最後的時間好好逛了逛慶典下的碧波港，不僅是先前提到的衣服買了好幾件，也把各種旅行用品都添購齊全。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_236dea1ad3ef _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">不過，最為關鍵的專屬裝備，考慮到難以預測菲比醒來後會發生什麼事，最終還是擱置沒有下訂。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_236dea1ad3ef _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">儘管如此，參觀了工坊的潔妮兒還是大開眼界。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_236dea1ad3ef _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">碧波港的鐵匠大師守護靈是個火人，直接走進燃燒著熊熊烈火的爐子，一邊加溫一邊鍛打，這是地球上不可能存在的工法。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5e2c8f632b7b _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">「原來如此……有能直接接觸高溫的守護靈的話，確實工法也會不一樣呢。」他們不必把鋼材拿出來就能作業，實在方便，而且更安全。就算出意外也只有守護靈會受傷。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_487fa9e92a3d _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">「我聽說還有位匠師的守護靈是食鐵獸，能力是操控骨板生長，就會結合物種特點：攝食礦材之後生長出金屬質感的角狀骨板，再用能力調整讓骨板直接定型成盾牌或胸甲的樣子。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_487fa9e92a3d _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">他提起好幾位著名的匠師，那些工法一個比一個還要不科學，但非常守護靈。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5e2c8f632b7b _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">「似乎也能因此做出特別材料的裝備呢。守護靈產生的材料想必和天然的不同。」不過，這大概代表失傳也很容易。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5e2c8f632b7b _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">「只是如果這個人退休了，就再也沒有一樣的素材了。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_487fa9e92a3d _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">「是啊，所以有想要訂製什麼專屬裝備的話，真的要把握時機找好工匠，不然錯過可能就沒有了。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5e2c8f632b7b _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">「是啊。娜妲的炸蛋大概也是這種類型。獨一無二的裝備道具。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_487fa9e92a3d _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">「這種能產出素材或道具的能力，都是蠻適合黃袍者的優秀能力呢！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_487fa9e92a3d _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">自己就有這種類型能力的維亞，即使選擇的是白袍者的路線，依然成為了傑出的藥劑師。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5e2c8f632b7b _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">「仔細想想，你也是這種類型呢。能產出可以維持存在的物品的守護靈，似乎全都是很實用的能力。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_487fa9e92a3d _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">「畢竟能維持存在就有很多配合的機會嘛，就像娜妲的炸蛋，她自己使用只能設置成陷阱，但赫恩把它賣給城衛隊的斥候小隊長，從空中拋投炸蛋就是完全不同的效果了。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_487fa9e92a3d _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">他看了看逐漸明亮的天色，加快腳步道：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_487fa9e92a3d _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">「潔妮兒，我們早點過去港口廣場吧！太晚到可能會擠不進去，熱海祭最精彩的一幕可不能錯過！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5e2c8f632b7b _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">「嗯，走吧。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_236dea1ad3ef _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">兩人來到港口廣場的時候，這裡已經擠滿了人，幸好維護秩序的城衛隊看見潔妮兒的榮譽市民勳章後，主動引導他們到視野開闊的保留位置。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_236dea1ad3ef _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">這裡距離藍袍者們所在的高台非常近，甚至可以看見台上的諾曼、赫斯馮恩、芙娜洛古，以及……</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7edfd5bb5d4a _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            海之靈
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">海之靈向兩人微笑招了招手。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9a7e55e3f057 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            巫阿鳩厄亞埃爾翁
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">在海之靈身旁，一團懸浮的海水輕輕搖曳，年邁的希亞奇長者也隨著搖擺尾巴。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5e2c8f632b7b _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">「您好，海之靈大人。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5e2c8f632b7b _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">「身體還好嗎？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7edfd5bb5d4a _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            海之靈
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">少年模樣的守護靈臉色有些蒼白，先前可以掀起巨浪的他，此刻卻連維持巫厄翁身邊的海水泡泡都有些吃力。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7edfd5bb5d4a _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            海之靈
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">但他臉上還是帶著笑容，伴隨著巫厄翁的點頭致意，他也開口回道：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7edfd5bb5d4a _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            海之靈
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">「挺好的，我們都覺得今天是個好日子，很適合在這裡跟大家正式告別。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5e2c8f632b7b _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">告別嗎……我沉默了一會。然後道：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5e2c8f632b7b _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">「希望您能盡情享受今天。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7edfd5bb5d4a _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            海之靈
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">「我們會的，妳也好好享受這次的慶典吧！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_236dea1ad3ef _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">高台上的人們除了碧波港的市政、治安官員之外，還有許多潔妮兒不認識的藍袍者，維亞認出了其中幾人是各個城邦的代表，但台上卻沒有看到索萊鎮的人們。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_487fa9e92a3d _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">「我看到了！黛在那裡！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_487fa9e92a3d _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">維亞突然拉了拉潔妮兒的衣角，指著廣場外圍，被城衛隊隔離出來幾個位置，黛就在其中一處。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_de0bd84b411c _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            黛
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">她站在一名摩踏族藍袍者深厚，伸手托起守護靈彩。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_236dea1ad3ef _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">虹羽鳥的守護靈飛上天空，展開翅膀，身形逐漸變得模糊，取而代之的是牠投射出來的幻象──碧波港的高空俯視圖。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_236dea1ad3ef _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">接著，先前擔任戰場傳令員的回聲道館教師起身，讓自己的小動物守護靈走向碧波港的官員們，下一刻，市政官熱情洋溢的演講就在每個人耳邊響起。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_236dea1ad3ef _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">演講方式雖然新奇，但內容卻和地球上的慶典開場致詞沒有太多變化，這位市政官似乎也是嚴肅幹練的性格，只是中規中矩地從城市歷史講到未來展望，並且簡單總結了今年度的大事件。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_236dea1ad3ef _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">他提到了與希亞奇族的合作，以及清剿洛達餘黨的功績，並對「積極協助的榮譽市民」表達了感謝。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_236dea1ad3ef _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">天空中的城市影像相當立體，遠遠超過黛先前展現出來的能力，看來參與的「投影機」可能不只彩一個，因為附帶的某些聲光特效明顯不屬於彩的能力範疇。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5e2c8f632b7b _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">「唔，這可真酷呢。」不知道這個世界有沒有類似電影業的娛樂。雇用這類能力者感覺就能賺很多錢。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_236dea1ad3ef _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">隨著市政官致詞告一段落，天空中的影像突然放大，潔妮兒的眼角餘光也瞄到隔離區有很多人召喚出守護靈。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_073828327ef1 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            阿曼 ‧ 索萊 ‧ 古
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">這其中最為顯眼的就是黛身前的索萊鎮市政官，他召喚出了三層樓高的岩石巨人，儘管它呈現半蹲的姿態，但與摩踏族相近的矮胖體格配上體型還是相當駭人。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_236dea1ad3ef _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">其他幾個地方召喚出來的守護靈也看得出傾向多半是大地或岩石的類型。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_236dea1ad3ef _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">從各地前來的大地能力者共同施展能力，潔妮兒突然感覺到腳下一震，就像上輩子在台灣經歷過許多次的地震，但這次的強度是就連台灣人都會逃出家門的程度。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_236dea1ad3ef _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">天空上的投影幻象也清楚呈現此刻正在發生的事──碧波港正在「長高」。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5e2c8f632b7b _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">搖這麼大，這裡的佈置和附近的建物沒問題嗎？我暗自想道。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_487fa9e92a3d _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">「為了因應炎季的大潮，碧波港會在熱海祭的時候把城市的地基抬高，據說是城市建立的時候地基本身就有相關的安排，否則就算再多大地守護靈可能也辦不到這種事。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_487fa9e92a3d _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">維亞一邊看著潔妮兒的表情，一邊說明起熱海祭的大場面，為了保留驚喜感，他之前都沒有向潔妮兒提過會發生什麼事。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_487fa9e92a3d _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">「等到寒季的冷海祭，水位消退的時候會有相反的儀式，主要港口也會從現在的近港遷移到更靠近海洋的遠港。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5e2c8f632b7b _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">「這也太厲害了吧。」這應該是我來這裡到現在最令我驚嘆的事。其他東西無論多神奇，在我那邊都多少找得到對應物，但這個確實是我們沒有的東西。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_487fa9e92a3d _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">「對吧！這也是我最想帶妳過來看的東西！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_487fa9e92a3d _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">維亞看著潔妮兒驚嘆的表情，笑得相當開懷，自從表露心意之後，他就不再隱藏自己的心思，就像現在也是目光灼灼地盯著潔妮兒。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5e2c8f632b7b _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">「確實很令人驚訝呢。是我們那邊完全沒有的技術。我們最多只有人在研究浮在海上的城市。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_487fa9e92a3d _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">「浮在海上的城市？這聽起來也相當不可思議，真想親眼看看呢……」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_487fa9e92a3d _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">他望著潔妮兒的目光停頓了片刻，把話題轉移到另一個方向：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_487fa9e92a3d _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">「說起來，有機會的話，我也很期待妳看到鐵岩城的感想，那也是一位洛古留下來的奇蹟，可惜那裡太冷了，不是曦族能去的地方。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5e2c8f632b7b _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">「或許哪天我會去的。聽說我們的日子很長。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_487fa9e92a3d _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">「那我就等妳的感想了。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_236dea1ad3ef _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">兩人談話之際，碧波港的地動也逐漸平息，從天上的俯瞰圖可以看得出來，這並非單純的拔高，而是循著既定的規劃：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_236dea1ad3ef _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">城市拉抬之後，往內陸的城門口外是一長串的階梯，現在的港口則是呈現了複雜的立體結構，每條停泊船隻的水道，在不同高度都設有繫繩的樁柱跟入口。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_073828327ef1 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            阿曼 ‧ 索萊 ‧ 古
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">那些大地守護靈被收起，潔妮兒注意到摩踏族人的動作相當整齊，儘管被分在不同的隔離區，但他們幾乎是同一瞬間把守護靈解除召喚，跟其他各自解除召喚的人類不同。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9a7e55e3f057 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            巫阿鳩厄亞埃爾翁
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">巫厄翁突然抬頭，發出一陣低頻沉默的聲音。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7edfd5bb5d4a _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            海之靈
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">「啊……看來時候到了呢。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7edfd5bb5d4a _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            海之靈
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">海之靈嘆了一口氣，站起身來舉起雙手：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7edfd5bb5d4a _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            海之靈
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">「諸位……很高興能夠認識你們，祝你們未來順遂。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7edfd5bb5d4a _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            海之靈
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">遠方的大海發出同頻的嗡鳴聲，像是要把巫厄翁的遺言傳回海底。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_236dea1ad3ef _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">聲音持續了片刻，緊接著是更大、更厚重的共鳴聲，無數的希亞奇人從海底發出全力的鳴叫。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_236dea1ad3ef _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">從海底到天空，整個世界都被那股聲音佔據，儘管語言不通，但潔妮兒依然可以感受到其中哀嘆送別的情緒。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7edfd5bb5d4a _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            海之靈
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">海之靈雙手垂落，大海不再發聲，但希亞奇人延續了這個樂章。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9a7e55e3f057 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            巫阿鳩厄亞埃爾翁
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">海水泡泡崩解，年邁的長者還被落地，就被身旁的芙娜洛古抱住。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9a7e55e3f057 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            巫阿鳩厄亞埃爾翁
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">他伸出虛弱顫抖的手，咧開嘴，笑著向眼前的人們行了最後一個焰指禮。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7edfd5bb5d4a _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            海之靈
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">在他背後，海之靈的身影一點一點消散，像是水面的泡沫一般，消散在空氣之中。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5e2c8f632b7b _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">「海之靈大人！」我反射性的望了維亞一眼。儘管我心裡知道這大概是不能改變的。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_487fa9e92a3d _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">維斯琪亞藍的臉上已經掛了兩串淚痕，他保持著焰指禮的最後一個動作，目送著眼前長者的最後一程。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5e2c8f632b7b _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">我也仿照維亞，擺出了焰指禮。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">市政廳</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="setBg">
+    <div class="_bg-img"><img src="https://images.plurk.com/2dMjl6TZkVP7ZpqZX38kX4.png"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_34734c564ca2 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            芙娜
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">「妳已經決定了嗎？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_34734c564ca2 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            芙娜
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">再次來到洛古面前，已經是熱海祭結束後的第三天了。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_487fa9e92a3d _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">曦族的藥劑師看起來有些憔悴，先是送別了自己景仰的長輩，接著又是心儀的摯友選擇了可能再也回不來的道路。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_487fa9e92a3d _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            維斯琪亞藍
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">但他還是陪著潔妮兒來到這裡。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5e2c8f632b7b _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            潔妮兒
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">我點點頭。儘管有點忐忑不安，不過我決定了。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_34734c564ca2 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            芙娜
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">「那麼……」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_34734c564ca2 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            芙娜
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">她張開雙手，上前擁抱潔妮兒，背上則展開一對花瓣組成的巨大翅膀，同樣向前延伸，把兩人完全包覆在內。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_236dea1ad3ef _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">2bf97f59d6d8</channel>
+        </div>
+        <div class="_content">潔妮兒的意識逐漸模糊，最後一眼看見花瓣之下緩緩延伸出來的、黑色藤蔓狀的真菌翅膀……</div>
+    </div>
+</div>
+</div><!--EOS-->
+        </div>
+    </body>
+</html>
