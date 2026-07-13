@@ -11,4 +11,5 @@ var INDEX = [
 	{ title: "遍體鱗傷", url: "藤藤蛇08.html", },
 	{ title: "勇往直前", url: "藤藤蛇09.html", },
 	{ title: "一觸即發", url: "藤藤蛇10.html", },
+	{ title: "營火晚會", url: "藤藤蛇11.html", },
 ];
