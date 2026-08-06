@@ -1,0 +1,2673 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="農場危機">
+        <meta property="og:description" content="">
+        <title>農場危機</title>
+        <style>
+            :root{
+                --color-bg: #454752;
+                --color-title: #FFFFFF;
+                --color-subtitle: #dddddd;
+                --color-talk-bg: #1E1E1E;
+                --color-talk-panel-bg: #2A2A2A;
+                --color-talk-panel-text: #EEEEEE;
+            }
+            body { display:flex; flex-direction:column; align-items:center; background:var(--color-bg); }
+            h1{ margin: 5px 0; color:var(--color-title); }
+            ._hidden { display:none !important; }
+            ._main { display:flex; flex-direction:column; align-items:stretch; gap:10px; width:100%; max-width:1080px; }
+            ._subtitle { color:var(--color-subtitle); margin-top:0; margin-bottom: 20px; }
+            ._sctitle { background:#ddd; margin-top:30px; padding:10px;font-weight:bold;font-size:1.3rem;text-align:center; }
+
+            ._talk { display:flex; flex-direction:row; gap:2px; background:var(--color-talk-bg); width:100%; border-radius:5px; }
+            ._talk ._lCol { width:110px; flex-shrink:0; margin:6px; margin-right:0; }
+            ._talk ._rCol { flex:1; display:flex; flex-direction: column; }
+            ._talk ._img { width:110px; height:110px; background-repeat:no-repeat; background-size:cover; background-color:#ffffff10; }
+            ._talk ._name { margin:6px; height:20px; font-size:18px; display:flex; justify-content:space-between; }
+            ._talk ._channel { margin-left:5px; color:#888888; display:none; }
+            ._talk ._content { flex:1; margin:6px; background:var(--color-talk-panel-bg); color:var(--color-talk-panel-text); font-size:1.1rem; padding:10px; border-radius:5px; }
+            ._talk._other { width:50%; margin-left:auto; }
+            ._talk._other ._lCol { display:none; }
+            ._talk._other ._name { justify-content:end; }
+            ._talk._other ._channel { display:block; }
+            ._talk._other ._content { background:black; color:white; text-align:right; }
+
+            ._halt { padding:30px 0; }
+            ._sctitle { border-radius:5px; }
+            ._bg-img { display:flex; justify-content: center; }
+            ._bg-img img { max-width:100%; max-height:400px; }
+
+            ._actor_62f22a4819c8 ._name { color:#888888; content:'system'; }
+            ._actor_62f22a4819c8 ._img { background-image:url(''); display:none; }
+            ._actor_466bf5cc9588 ._name { color:#888888; content:'GM'; }
+            ._actor_466bf5cc9588 ._img { background-image:url(''); display:none; }
+            ._actor_fcdb88538fb7 ._name { color:#2bba21; content:'艾斯沃'; }
+            ._actor_fcdb88538fb7 ._img { background-image:url('https://images.plurk.com/5tHecVwoXTGsR9bRK1wkxr.png'); display:block; }
+            ._actor_5ecd130111e3 ._name { color:#e68619; content:'菲雅'; }
+            ._actor_5ecd130111e3 ._img { background-image:url('https://images.plurk.com/5igGttCaBS5WszZcKUACY9.png'); display:block; }
+            ._actor_793092ad62d2 ._name { color:#7308dd; content:'阿勃梭魯'; }
+            ._actor_793092ad62d2 ._img { background-image:url('https://images.plurk.com/4zUrZgJ5yoyh8inLdWXiqZ.png'); display:block; }
+            ._actor_bf8fe1b28305 ._name { color:#7308dd; content:'艾妮薇'; }
+            ._actor_bf8fe1b28305 ._img { background-image:url('https://images.plurk.com/7N1DwOkUya3vT0ktRLIOFV.png'); display:block; }
+            ._actor_3f586f7a44e7 ._name { color:#245bdb; content:'電綿綿'; }
+            ._actor_3f586f7a44e7 ._img { background-image:url('https://images.plurk.com/1ytr3obW1XgCVFqaJSHaGC.png'); display:block; }
+            ._actor_146e55e70f2e ._name { color:#245bdb; content:'小樹'; }
+            ._actor_146e55e70f2e ._img { background-image:url('https://images.plurk.com/2M3f9tKx6YV8ZY9VjhTFIW.png'); display:block; }
+            ._actor_bea5c74f3348 ._name { color:#245bdb; content:'拿諾亞'; }
+            ._actor_bea5c74f3348 ._img { background-image:url('https://images.plurk.com/7Gz834HkH0fOBsW7ja1Npc.png'); display:block; }
+            ._actor_bc1648076e49 ._name { color:#245bdb; content:'小黑'; }
+            ._actor_bc1648076e49 ._img { background-image:url('https://images.plurk.com/41lS4pEbVbLHYeGZhg1vh5.png'); display:block; }
+            ._actor_675e083aeffd ._name { color:#245bdb; content:'小櫻'; }
+            ._actor_675e083aeffd ._img { background-image:url('https://images.plurk.com/uSt1siaEvksunEJB6DYqx.png'); display:block; }
+            ._actor_9d419da155f5 ._name { color:#245bdb; content:'莫述'; }
+            ._actor_9d419da155f5 ._img { background-image:url('https://images.plurk.com/7HZ6pH2J3Chn7Jxngv7L8Z.png'); display:block; }
+            ._actor_cd78ebd1c1ce ._name { color:#245bdb; content:'天芽'; }
+            ._actor_cd78ebd1c1ce ._img { background-image:url('https://images.plurk.com/13C4uP4YQd25A5wEhnO3c.png'); display:block; }
+            ._actor_8ccf62795c9b ._name { color:#245bdb; content:'水圓圓'; }
+            ._actor_8ccf62795c9b ._img { background-image:url('https://images.plurk.com/27qXWy3qfV896CbS86G12N.png'); display:block; }
+            ._actor_5a43b22e3afe ._name { color:#888888; content:'毒粉蛾群'; }
+            ._actor_5a43b22e3afe ._img { background-image:url('https://images.plurk.com/3qlb4g5hfLQ3N6QVs5tUKQ.png'); display:block; }
+            ._actor_db36fea13634 ._name { color:#e68619; content:'波諾雅'; }
+            ._actor_db36fea13634 ._img { background-image:url('https://images.plurk.com/4GU4AqFmRJ0wNnx7miJkrw.png'); display:block; }
+            ._actor_0157a8fd3014 ._name { color:#888888; content:'大力鱷'; }
+            ._actor_0157a8fd3014 ._img { background-image:url('https://images.plurk.com/2n1jo6sNaiA0c5gCBvovfZ.png'); display:block; }
+            ._actor_71fe363ab255 ._name { color:#888888; content:'藍鱷'; }
+            ._actor_71fe363ab255 ._img { background-image:url('https://images.plurk.com/6uQyoR3KnC0KcO9dMv9zO2.png'); display:block; }
+            ._actor_df06eb3f6858 ._name { color:#245bdb; content:'艾莉克絲'; }
+            ._actor_df06eb3f6858 ._img { background-image:url('https://images.plurk.com/6mbRg8liCqhLs5d0Ar5Ux2.png'); display:block; }
+            ._actor_10efc84c030b ._name { color:#888888; content:'百帕'; }
+            ._actor_10efc84c030b ._img { background-image:url(''); display:none; }
+            ._actor_df70559b8b80 ._name { color:#888888; content:'梨梨'; }
+            ._actor_df70559b8b80 ._img { background-image:url(''); display:none; }
+            ._actor_b6a1dca94637 ._name { color:#245bdb; content:'小Q'; }
+            ._actor_b6a1dca94637 ._img { background-image:url('https://images.plurk.com/703K7q0TKkDPg1PEDhKsf.png'); display:block; }
+            ._actor_fcac1fdbc06a ._name { color:#f00000; content:'胖嘟嘟'; }
+            ._actor_fcac1fdbc06a ._img { background-image:url('https://images.plurk.com/7Kxpqw1vqvn19z5GQthp3v.png'); display:block; }
+            ._actor_87664f8b81d0 ._name { color:#f00000; content:'輕飄飄'; }
+            ._actor_87664f8b81d0 ._img { background-image:url('https://images.plurk.com/5PMPqeupSMm6jksUpgB8lP.png'); display:block; }
+            ._actor_f355d91ec54a ._name { color:#f00000; content:'輕飄飄 '; }
+            ._actor_f355d91ec54a ._img { background-image:url('https://images.plurk.com/13AAS9bP0FcQJXrjCQsoRd.png'); display:block; }
+            ._actor_8c3f3b1e3e6d ._name { color:#888888; content:'？？？'; }
+            ._actor_8c3f3b1e3e6d ._img { background-image:url(''); display:none; }
+            ._actor_f1b18aae7adb ._name { color:#7308dd; content:'雷卡'; }
+            ._actor_f1b18aae7adb ._img { background-image:url('https://images.plurk.com/75lW0f9mpy1R8UVNOjJ54y.png'); display:block; }
+            ._actor_ce9b0127db6d ._name { color:#f00000; content:'大王'; }
+            ._actor_ce9b0127db6d ._img { background-image:url('https://images.plurk.com/5cj8ZfGdbyYqTpOBNxOz3S.png'); display:block; }
+            ._actor_eb16900a49eb ._name { color:#245bdb; content:'小櫻 '; }
+            ._actor_eb16900a49eb ._img { background-image:url('https://images.plurk.com/1ePQ0UNMi7O5zSjFG57qcD.png'); display:block; }
+        </style>
+        <meta-data class="_hidden">
+            <channel>
+                _ch_e5e42d1e3075: { name:"主要"; main:true; hide:false; }
+            </channel>
+        </meta-data>
+    </head>
+    <body>
+        <div class="_hidden"><version>hazmole_v2.0</version></div>
+        <h1>農場危機</h1>
+        <div class="_subtitle"></div>
+
+        <div class="_main">
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">狀態更新</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_62f22a4819c8 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">[ 艾斯沃 ] 命運點 : 2 → 3</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">農場</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="setBg">
+    <div class="_bg-img"><img src="https://images.plurk.com/jYLgJZj9hMUyBVLdUJUn5.jpg"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_466bf5cc9588 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">在草屬性樹才怪實驗計畫過後幾天，小樹似乎找到了新的實驗方向，每天去找莫述接受他的蘑菇孢子，然後就在溫室裡睡上一整天。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_466bf5cc9588 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">幾天下來，整個農場都顯得平和了不少。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_fcdb88538fb7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">艾斯沃看著斜陽，一個人坐在他平常常待的窗沿上，看著樓下的小朋友跑來跑去<br>這樣說起來，他稍微也算是有點孤僻，不太喜歡待人多的地方，或者是訓練什麼的<br>他更喜歡自己一個人思考事情<br><br>此時此刻，他正想著農場上這阿勃梭魯要何去何從?</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5ecd130111e3 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            菲雅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">大主人正在幫農場的傷員們換藥，她已經聯繫附近寶可夢中心的喬伊小姐了。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5ecd130111e3 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            菲雅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">不過，最近剛好其它地方也發生嚴重的災害，寶可夢中心除了一、兩個輪班的喬伊小姐之外，其它的人力都外派支援了。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5ecd130111e3 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            菲雅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">更麻煩的是，受傷的阿勃梭魯和黏美龍艾妮薇都沒有訓練家，也沒辦法靠寶貝球帶去求診，只能靠著農場的藥品進行治療。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_793092ad62d2 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            阿勃梭魯
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">幸好阿勃梭魯看起來也並不著急，認定先前的災厄已經平息的他，倒是相當安分地享受起這邊悠哉的生活，只是依然不願意和大家多聊。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_bf8fe1b28305 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">艾妮薇更是已經開始和大家都處好關係了，不管是鬧騰的小黑還是求知慾強烈的水圓圓，都喜歡在棚架旁邊聽她講故事。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_fcdb88538fb7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">艾斯沃隨意閒晃到了傷者的棚子旁<br>「艾妮薇姊姊，你的傷還要緊嗎?」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_bf8fe1b28305 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「沒事沒事，我好多了。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_bf8fe1b28305 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">黏美龍用觸角摸了摸艾斯沃的頭，在他身上裹了一層黏糊糊的黏液。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_bf8fe1b28305 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「在這邊的生活很美好呢！之後也許我可以偶爾帶沼澤的小傢伙們過來玩！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_fcdb88538fb7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「當然阿，小黑他們會很開心的。搞不好還可以玩個球賽或什麼的。」<br>他回道，但顯然心頭上有更大的石頭<br><br>「姊姊，我一直想問你。當時你為何要為了我跟艾莉克絲戰鬥? 明明事情都已經結束了。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_bf8fe1b28305 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「那是你們之間的戰鬥結束而已哦～」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_bf8fe1b28305 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">艾妮薇輕輕笑了一下，就跟平常一樣溫柔。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_bf8fe1b28305 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「戰鬥跟受傷這種事不該發生在你們身上。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_fcdb88538fb7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「只是點皮肉傷而已啦。」<br>雖然當時其實傷得很重<br><br>「她只是對待戰鬥的態度很認真。我當時也是因為特殊情況才跟她下挑戰的。以後我不會隨便惹她啦! 應該就沒事了」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_bf8fe1b28305 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「我知道、我知道，下次就沒事了。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_bf8fe1b28305 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">艾妮薇繼續輕撫著艾斯沃的腦袋，巧妙地把話題轉移開來：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_bf8fe1b28305 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「下次記得不要逞強了哦！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_fcdb88538fb7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「我只是做我該做的嘛...」<br>他低頭看著自己的手<br><br>「我只是想自己負責」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_bf8fe1b28305 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「艾斯沃，別太勉強自己哦。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_bf8fe1b28305 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">艾妮薇沒有繼續勸說下去，讓話題停留在這裡。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_fcdb88538fb7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「...」<br>艾斯沃沒有做出承諾<br>他知道自己就是這種很愛逞強的人，說什麼也要完成該做的事情。是惹了很多麻煩，但不這麼做的話，怎麼能防止壞事發生呢?</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3f586f7a44e7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            電綿綿
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「咩！！！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3f586f7a44e7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            電綿綿
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">電綿綿的尖叫聲從蘑菇溫室傳來，打斷了兩人之間短暫的凝滯。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_fcdb88538fb7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「嗯?電綿綿?!」<br>艾斯沃的雷達模式又開啟了，是麻煩的聲音<br>最近小樹都躺在溫室，不知道又搞出甚麼名堂了<br><br>「謝謝你，艾妮薇姊，我很快去看看發生甚麼事了! 」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_bf8fe1b28305 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「記得不要太勉強自己哦！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">蘑菇溫室</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="setBg">
+    <div class="_bg-img"><img src="https://images.plurk.com/3TYHJzq15dZ4UzIO070aL1.jpg"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3f586f7a44e7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            電綿綿
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">艾斯沃第一個抵達蘑菇溫室，就看到縮成一團，把小手藏進棉花裡的電綿綿。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_146e55e70f2e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            小樹
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">以及地上一大節焦掉的木頭──是小樹。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_fcdb88538fb7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「小樹!! 你怎麼變成這樣!」<br>他急得伸出小手想把小樹翻起來</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_146e55e70f2e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            小樹
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">小樹的雙眼呈現螺旋形，這個畫面對艾斯沃來說顯得相當熟悉，配合身上的焦痕就更熟悉了。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_146e55e70f2e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            小樹
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">他每次被艾莉克絲教訓之後大概都會呈現這種狀態。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3f586f7a44e7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            電綿綿
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「我、我沒有看到他，不小心被絆倒，然、然後把他電昏了……」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3f586f7a44e7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            電綿綿
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">電綿綿兩隻小手在胸前對著，目光下意識低垂，但看到螺旋眼的小樹之後，又別開了目光。<br></div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_fcdb88538fb7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「噢，原來是這樣...」<br>艾斯沃搔搔頭<br><br>「那我們還是快點把它搬到傷患區，讓主人治療一下要緊吧!」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_bea5c74f3348 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            拿諾亞
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「怎麼了？小樹又做了什麼惡作劇嗎？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_bea5c74f3348 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            拿諾亞
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">第二個抵達的是拿諾亞，看著在場的寶可夢們，下意識就開口詢問。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3f586f7a44e7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            電綿綿
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「咩、沒事……」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3f586f7a44e7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            電綿綿
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">電綿綿又垂下了頭。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_fcdb88538fb7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「呃...」<br>他看了畏縮的電綿綿，又看了拿諾亞哥<br>就誠實的說發生甚麼事，應該不會怎麼樣吧<br><br>「電綿綿說她被小樹絆倒，不小心電暈他了」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_bea5c74f3348 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            拿諾亞
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「原來如此，好，那交給我──」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_bea5c74f3348 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            拿諾亞
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">拿諾亞話說到一半，就被一個黑影打斷。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_bc1648076e49 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            小黑
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「嗷～沃沃哥、諾諾哥、綿綿姊！快、快來果園幫忙！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_bc1648076e49 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            小黑
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">突然衝了進來的小黑險些撞到電綿綿，幸好拿諾亞及時按住了這隻小狗，但他仍然不安分地跳來跳去。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_fcdb88538fb7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「欸，等等小黑，我們正在忙耶! 有人受傷了!」<br>每次他都在這種時候衝出來<br><br>「你那邊的事情有更嚴重嗎?」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_bc1648076e49 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            小黑
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「有有有！當然有！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_bc1648076e49 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            小黑
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">他高高仰起頭，充滿自信地說道：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_bc1648076e49 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            小黑
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「那個那個、大蛾群又來了！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_fcdb88538fb7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">4DF+0 #學識 (4DF) ＞ [ ][+][ ][+] ＞ Fair(+2)</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_466bf5cc9588 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">艾斯沃很快理解小黑說的是什麼，現在的季節，正好是盾甲繭大規模進化的時期，他們進化分支的毒粉蛾向來都是農場的一大困擾。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_466bf5cc9588 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">這種寶可夢會在太陽下山後開始行動，有著被燈光吸引的趨勢，經常會循著農場的燈火接近，然後往果園那邊肆虐過去，不但把果實跟樹葉都啃得乾乾淨淨，還會撒下一大片的毒鱗粉。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_466bf5cc9588 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">要是沒守護好果園，恐怕不僅僅是當季的收成會泡湯，還會有一大片果樹因此枯萎。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_466bf5cc9588 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">這的確是個不容輕忽的嚴重狀況，尤其是在農場躺了好幾個傷員的情況下。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_fcdb88538fb7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「大蛾群?」<br>艾斯沃又瞄了一眼地上的小樹<br><br>「好像確實是比較優先。我馬上過去!」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3f586f7a44e7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            電綿綿
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「我、我……」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3f586f7a44e7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            電綿綿
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">電綿綿的目光在小樹和門口之間來回游移。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_bea5c74f3348 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            拿諾亞
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「小樹交給我，你們先走，我馬上就到！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_bea5c74f3348 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            拿諾亞
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">農場的大哥當機立斷，扛起小樹就往外衝。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_fcdb88538fb7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「好，電綿綿。先別管小樹的事了，快跟我走!」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3f586f7a44e7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            電綿綿
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「好……好！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">果園</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="setBg">
+    <div class="_bg-img"><img src="https://images.plurk.com/6mnNB0DtbyBwf0Vdu9a5tj.jpg"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_466bf5cc9588 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">來到果園的時候，天色已經漸漸暗了下來。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_675e083aeffd _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            小櫻
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">被紫色花瓣包住的小櫻站在樹梢埋怨：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_675e083aeffd _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            小櫻
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「最需要母老虎的時候偏偏她倒了……」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9d419da155f5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            莫述
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「哎呀呀，小傢伙你們也來啦！快來想想辦法，我已經放倒幾隻來得最快的了，但大群的還在後面。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_fcdb88538fb7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「他們通常都有多少人馬? 感覺我們好像以寡敵眾」<br><br>他左右掠過躺在地上的毒粉蛾<br>「有沒有除了戰鬥之外的方法可以處理?」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9d419da155f5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            莫述
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「至少會有十幾隻吧，我記得最多的那次光母老虎就打下了二十幾隻。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_675e083aeffd _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            小櫻
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「想跟沒腦袋的蟲寶可夢溝通，你的腦袋裡面也長蟲了嗎？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cd78ebd1c1ce _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            天芽
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「我、我記得他們會用觸角尋找食物，找到食物就不會輕易放棄……」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_fcdb88538fb7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">4DF+1 #傳說 (4DF+1) ＞ [-][+][-][-]+1 ＞ Poor(-1)</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_466bf5cc9588 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">艾斯沃只想到一個壞消息：毒粉蛾的觸角堪比雷達，對於食物的反應相當敏銳。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_fcdb88538fb7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「如果我們...我不知道...」<br>他在地上園地轉著圈圈<br><br>「摘下部分的樹果堆成一座小山，當作歲幣買和呢?」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_bc1648076e49 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            小黑
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「嗷嗷！農場的勇士絕不投降！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_675e083aeffd _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            小櫻
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「那你最好祈禱那些樹果會爆炸，不然連半天都拖不過去。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9d419da155f5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            莫述
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「爆炸……如果我們用樹果吸引他們聚集，然後我在上風處灑孢子呢？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_fcdb88538fb7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「好主意! 智取，我們智取!」<br>艾斯沃在腦中盤算著位置<br><br>「這樣就不用大家傷成一片了」<br><br>「快，工兵隊! 採各種口味的樹果都一些在這裡堆起來!」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">挑戰開始</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_466bf5cc9588 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">※局勢形象：【被本能驅使的毒粉蛾群】、【遼闊豐饒的農場果園】</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_466bf5cc9588 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">※挑戰內容：<br>→【收集樹果】<br>→【安排樹果堆放點】<br>→【播撒蘑菇孢子】<br></div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_bea5c74f3348 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            拿諾亞
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「我、我來了！狀況如何？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_bea5c74f3348 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            拿諾亞
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">疾馳的火焰雞也及時趕到現場：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_bea5c74f3348 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            拿諾亞
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「我通知其他人了，水圓圓也在路上了！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_fcdb88538fb7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「拿諾亞哥，我們要來一個甕中捉鱉!」<br>「小黑、電綿綿、天芽、拿諾亞哥! 每種樹果都來一些，先堆起來! 這是吸引他們的誘餌!」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_bea5c74f3348 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            拿諾亞
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「好！交給我！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_bea5c74f3348 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            拿諾亞
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">身上還冒著熱氣的火焰雞頭也不回，邁開雙腿就往果樹群衝去。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_bea5c74f3348 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            拿諾亞
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">4DF+2 #運動 (4DF+2) ＞ [ ][+][+][ ]+2 ＞ Great(+4)</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_bc1648076e49 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            小黑
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「嗷嗷好好！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_bc1648076e49 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            小黑
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">小黑也跟在後面，開始撿拾那些被摘到地上的樹果。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_bc1648076e49 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            小黑
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">※團隊合作 +1</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_466bf5cc9588 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">電綿綿跟天芽也跟在後面幫忙，但相較起兩個行動敏捷的寶可夢，他們的幫忙就顯得聊勝於無。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_fcdb88538fb7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">艾斯沃像個忍者一樣</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_fcdb88538fb7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">用藤編在樹跟樹之間跳躍，快速的用腳將樹果踢到地上，讓小黑撿走</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_fcdb88538fb7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">※團隊合作 +1</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_466bf5cc9588 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">※挑戰【收集樹果】達成，絕妙成功。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_466bf5cc9588 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">※局勢形象：【小山般的樹果】</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_8ccf62795c9b _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            水圓圓
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「呼、呼、呼……」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_8ccf62795c9b _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            水圓圓
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">在大家忙碌的時候，水圓圓也終於趕到果園。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_8ccf62795c9b _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            水圓圓
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「毒、毒粉蛾有趨光性，他們、他們會被燈光吸引，我們可以利用這……」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_8ccf62795c9b _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            水圓圓
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">他還沒站穩，就一邊喘著氣一邊提供分析。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9d419da155f5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            莫述
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「好計畫！可惜來不及了，他們已經聞到果園的香味了。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9d419da155f5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            莫述
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">莫述看著遠方，微微側頭做出傾聽的姿勢。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_fcdb88538fb7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「沒關係，那我們就兩個都用!」<br>「水圓圓、小櫻! 找到最大的風口! 我們其他人把樹果移過去。天芽，等一下站在附近使用大晴天!」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_8ccf62795c9b _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            水圓圓
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「我想想……以這附近的地勢、傍晚時分的溫差跟風向來說的話……」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_8ccf62795c9b _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            水圓圓
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">4DF+2 #調查 (4DF+2) ＞ [ ][+][ ][-]+2 ＞ Fair(+2)</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_fcdb88538fb7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">※團隊合作 +1</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_fcdb88538fb7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">艾斯沃往空中射出幾片飛葉，讓他飄散<br>「風向是這邊!」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_466bf5cc9588 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">※挑戰【安排樹果堆放點】平手。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_8ccf62795c9b _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            水圓圓
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「我知道了！最好的位置在果園西邊的小山丘下面，只有那邊的風向適合！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_8ccf62795c9b _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            水圓圓
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「但是那個位置不在森林到果園的直線之間，我們需要想辦法把他們引過去！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_466bf5cc9588 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">※局勢形象：【偏離主軸的絕佳埋伏點】</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_466bf5cc9588 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">※新增挑戰內容：【引誘毒粉蛾群】</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_fcdb88538fb7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「我想想...拿諾亞哥，你能抱著天芽和小櫻跑嗎? 抱著她讓她使用大晴天!」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_bea5c74f3348 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            拿諾亞
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「當然沒問題！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_bea5c74f3348 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            拿諾亞
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">火焰雞一手一個，抱起常駐果園的兩名大晴天選手。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_bea5c74f3348 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            拿諾亞
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「抓穩囉！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_675e083aeffd _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            小櫻
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「……你覺得我們有手可以抓穩嗎？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_675e083aeffd _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            小櫻
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">小櫻的吐槽在風中飄盪，下一刻就被全速奔馳的火焰雞拉扯到完全說不出話來。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_466bf5cc9588 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">紅紅的身影夾雜著紫色跟綠色的痕跡，畫出一道長長的弧線，接著，強烈的光芒在遠處綻放。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_675e083aeffd _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            小櫻
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">4DF+3 #操控 (4DF+3) ＞ [ ][+][+][+]+3 ＞ Fantastic(+6)</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cd78ebd1c1ce _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            天芽
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">※團隊合作 +1</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_466bf5cc9588 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">※挑戰【引誘毒粉蛾群】達成，絕妙成功。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_466bf5cc9588 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">※局勢形象【大晴天】</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5a43b22e3afe _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            毒粉蛾群
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">在光芒的照耀下，艾斯沃終於看見遠方的毒粉蛾群，他們的數量大概有二十幾隻，群聚在一起拍打著翅膀，拐了個彎往埋伏點的位置飛去。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_fcdb88538fb7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「快快快，工兵隊快跟上!」<br>艾斯沃自己頭頂著好幾個樹果，朝著目標地狂奔衝鋒</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_466bf5cc9588 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">後方的寶可夢們也各自抱著、咬著樹果跟上。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3f586f7a44e7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            電綿綿
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">電綿綿甚至把自己藏在絨毛裡的寶貝都清了出來，在地上堆成閃亮亮的一堆，好讓她能帶上更多樹果。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_466bf5cc9588 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">一行人順利趕到埋伏點，把小山般的樹果堆在下封口的位置。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_fcdb88538fb7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「好，莫述，就定位...其他人躲好!」<br>他跳到最接近的一棵樹上<br><br>「看到他們要飛撲上來的時候就放出孢子!」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9d419da155f5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            莫述
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「沒～問題～」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9d419da155f5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            莫述
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">躲在山丘上的莫述正在踢腿抬尾巴作拉伸，儘管這些動作跟釋放孢子沒什麼關聯。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5a43b22e3afe _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            毒粉蛾群
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">被光線引誘過來的毒粉蛾群迅速撲向樹果小山，一大群毒系兼蟲系的天敵近在眼前，讓艾斯沃的危機本能瘋狂示警。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9d419da155f5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            莫述
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">不過，他也能看到山上的莫述開始抖動伸出，一大團灰色的孢子雲開始向下飄揚……</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9d419da155f5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            莫述
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">4DF+2 #操控 (4DF+2) ＞ [+][ ][ ][ ]+2 ＞ Good(+3)</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_fcdb88538fb7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">※援引局勢形象【偏離主軸的絕佳埋伏點】</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_fcdb88538fb7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">※檢定 +2</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_62f22a4819c8 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">[ 艾斯沃 ] 命運點 : 3 → 2</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_fcdb88538fb7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">※援引局勢形象【小山般的樹果】</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_fcdb88538fb7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">※檢定 +2</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_62f22a4819c8 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">[ 艾斯沃 ] 命運點 : 2 → 1</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_466bf5cc9588 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">※挑戰【播撒蘑菇孢子】達成，絕妙成功。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9d419da155f5 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            莫述
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">莫述在山上抖動的姿勢大到像是在跳舞，一團又一團的孢子雲被撒下，然後隨風飄落。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5a43b22e3afe _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            毒粉蛾群
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">毒粉蛾群正在大快朵頤，完全沒有察覺到空氣中挾帶的孢子。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_466bf5cc9588 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">艾斯沃找出來的風向，配合水圓圓的計算，最後安排的埋伏點相當巧妙，山上飄來的孢子在這裡沉積，最後完全覆蓋了這片區域。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5a43b22e3afe _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            毒粉蛾群
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">艾斯沃看見毒粉蛾群一個接著一個垂下翅膀，栽倒在樹果堆裡面，陷入安穩的沉眠。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">挑戰結束</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_eb16900a49eb _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            小櫻 
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「在這種時候也做得還行嘛，那傢伙。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_bc1648076e49 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            小黑
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「嘶……呼……」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_bc1648076e49 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            小黑
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">躲在不遠處的小黑睡得和毒粉蛾們一樣香甜。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cd78ebd1c1ce _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            天芽
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「耶！耶！我、我做到了！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cd78ebd1c1ce _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            天芽
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">天芽取代了小黑平常的樣子，開心雀躍地跳來跳去。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_8ccf62795c9b _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            水圓圓
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">水圓圓站在一段距離之外，避開了孢子雲的壟罩範圍，雙手抱胸，得意地仰著頭。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_bea5c74f3348 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            拿諾亞
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「你們都做得很棒！化解了農場的危機！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_bea5c74f3348 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            拿諾亞
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">拿諾亞也站在她的身旁。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3f586f7a44e7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            電綿綿
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「太、太棒了……」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_fcdb88538fb7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「辛苦各位啦~ 今晚喝我珍藏的汽水~」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3f586f7a44e7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            電綿綿
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「還、還有我的糖果！啊、我、我要趕快回去撿我的糖果！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_bea5c74f3348 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            拿諾亞
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「交給我吧！我這就回去幫妳守著，不會讓別人偷走的。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_8ccf62795c9b _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            水圓圓
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「我要零餘果口味的。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_fcdb88538fb7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e5e42d1e3075</channel>
+        </div>
+        <div class="_content">「啊，真好。」<br>疲勞終於湧上身體，小草蛇癱坐到了地上<br><br>「這應該不算逞強吧...」</div>
+    </div>
+</div>
+</div><!--EOS-->
+        </div>
+    </body>
+</html>
