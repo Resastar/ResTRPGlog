@@ -1,0 +1,1642 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="揭露身份">
+        <meta property="og:description" content="">
+        <title>揭露身份</title>
+        <style>
+            :root{
+                --color-bg: #454752;
+                --color-title: #FFFFFF;
+                --color-subtitle: #dddddd;
+                --color-talk-bg: #1E1E1E;
+                --color-talk-panel-bg: #2A2A2A;
+                --color-talk-panel-text: #EEEEEE;
+            }
+            body { display:flex; flex-direction:column; align-items:center; background:var(--color-bg); }
+            h1{ margin: 5px 0; color:var(--color-title); }
+            ._hidden { display:none !important; }
+            ._main { display:flex; flex-direction:column; align-items:stretch; gap:10px; width:100%; max-width:1080px; }
+            ._subtitle { color:var(--color-subtitle); margin-top:0; margin-bottom: 20px; }
+            ._sctitle { background:#ddd; margin-top:30px; padding:10px;font-weight:bold;font-size:1.3rem;text-align:center; }
+
+            ._talk { display:flex; flex-direction:row; gap:2px; background:var(--color-talk-bg); width:100%; border-radius:5px; }
+            ._talk ._lCol { width:110px; flex-shrink:0; margin:6px; margin-right:0; }
+            ._talk ._rCol { flex:1; display:flex; flex-direction: column; }
+            ._talk ._img { width:110px; height:110px; background-repeat:no-repeat; background-size:cover; background-color:#ffffff10; }
+            ._talk ._name { margin:6px; height:20px; font-size:18px; display:flex; justify-content:space-between; }
+            ._talk ._channel { margin-left:5px; color:#888888; display:none; }
+            ._talk ._content { flex:1; margin:6px; background:var(--color-talk-panel-bg); color:var(--color-talk-panel-text); font-size:1.1rem; padding:10px; border-radius:5px; }
+            ._talk._other { width:50%; margin-left:auto; }
+            ._talk._other ._lCol { display:none; }
+            ._talk._other ._name { justify-content:end; }
+            ._talk._other ._channel { display:block; }
+            ._talk._other ._content { background:black; color:white; text-align:right; }
+
+            ._halt { padding:30px 0; }
+            ._sctitle { border-radius:5px; }
+            ._bg-img { display:flex; justify-content: center; }
+            ._bg-img img { max-width:100%; max-height:400px; }
+
+            ._actor_19481117f840 ._name { color:#888888; content:'GM'; }
+            ._actor_19481117f840 ._img { background-image:url(''); display:none; }
+            ._actor_aaf93a299ec2 ._name { color:#888888; content:'system'; }
+            ._actor_aaf93a299ec2 ._img { background-image:url(''); display:none; }
+            ._actor_eca45213a23e ._name { color:#888888; content:'戈丹'; }
+            ._actor_eca45213a23e ._img { background-image:url('https://images.plurk.com/6uX9qhlxNAChiHt0uspMap.png'); display:block; }
+            ._actor_757ce0db5dbe ._name { color:#888888; content:'菲比'; }
+            ._actor_757ce0db5dbe ._img { background-image:url('https://images.plurk.com/4la2Q2CEQKUYUUftR5bq1r.png'); display:block; }
+            ._actor_fd99b9c42913 ._name { color:#888888; content:'護衛'; }
+            ._actor_fd99b9c42913 ._img { background-image:url('https://images.plurk.com/73yNpd3kbeLX6Wknqa3pAk.png'); display:block; }
+            ._actor_d96026bf2099 ._name { color:#888888; content:'黑羽夜翼'; }
+            ._actor_d96026bf2099 ._img { background-image:url('https://images.plurk.com/61uLLtO4dG6Gk3tFJlYufy.png'); display:block; }
+            ._actor_5ca9f6731eb1 ._name { color:#888888; content:'黑市主持者'; }
+            ._actor_5ca9f6731eb1 ._img { background-image:url('https://images.plurk.com/3Rps0XOHiVpsUEjMcjJkLK.png'); display:block; }
+            ._actor_bb3f643facf2 ._name { color:#888888; content:'黑市成員'; }
+            ._actor_bb3f643facf2 ._img { background-image:url('https://images.plurk.com/5MgLjzyrVHgjndehPOXcmg.png'); display:block; }
+            ._actor_9a87e0035097 ._name { color:#888888; content:'炭鼬'; }
+            ._actor_9a87e0035097 ._img { background-image:url('https://images.plurk.com/3XpoixPWBAYuPNzcevUxx0.png'); display:block; }
+            ._actor_17b291bff7c9 ._name { color:#888888; content:'皮克'; }
+            ._actor_17b291bff7c9 ._img { background-image:url('https://images.plurk.com/6PHeoaoAFafNiZzLVyWHpW.png'); display:block; }
+            ._actor_a36b4b52224b ._name { color:#888888; content:'獵人'; }
+            ._actor_a36b4b52224b ._img { background-image:url('https://images.plurk.com/16ZSbheu8H4Pz9sgm1zon6.png'); display:block; }
+            ._actor_8a446fb681f5 ._name { color:#888888; content:'鱗鼠'; }
+            ._actor_8a446fb681f5 ._img { background-image:url('https://images.plurk.com/2TS1waTwxStqsmLBZIQMZa.png'); display:block; }
+            ._actor_e27d453c7234 ._name { color:#888888; content:'蠍蟲'; }
+            ._actor_e27d453c7234 ._img { background-image:url('https://images.plurk.com/2XabTC5vFxymglJdjF8kVZ.png'); display:block; }
+            ._actor_d1620ecb1d98 ._name { color:#888888; content:'亞斯夫'; }
+            ._actor_d1620ecb1d98 ._img { background-image:url('https://images.plurk.com/3E3UeFeCWPfIN47UTiOrSf.png'); display:block; }
+            ._actor_13f13618a56f ._name { color:#888888; content:'尼斯'; }
+            ._actor_13f13618a56f ._img { background-image:url('https://images.plurk.com/7nTPgIwyfLoeh8pH0PxOrq.png'); display:block; }
+            ._actor_c73c9ac1304a ._name { color:#888888; content:'葛伊'; }
+            ._actor_c73c9ac1304a ._img { background-image:url('https://images.plurk.com/iYbdOfEXKsORfmhz4UHv5.png'); display:block; }
+            ._actor_8466d840f95a ._name { color:#888888; content:'艾詩妮雅'; }
+            ._actor_8466d840f95a ._img { background-image:url('https://images.plurk.com/5NbZJwBwjciGY9So17OM0l.png'); display:block; }
+        </style>
+        <meta-data class="_hidden">
+            <channel>
+                _ch_fa95a6c75a11: { name:"主要"; main:true; hide:false; }
+            </channel>
+        </meta-data>
+    </head>
+    <body>
+        <div class="_hidden"><version>hazmole_v2.0</version></div>
+        <h1>揭露身份</h1>
+        <div class="_subtitle"></div>
+
+        <div class="_main">
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">小知識</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_19481117f840 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">【炭鼬】<br>生活在火山上的稀有物種，體表長滿木炭質感的特殊角質層，以遭遇危險時會從尾部噴出刺鼻濃煙的習性著名。<br></div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">狀態更新</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_aaf93a299ec2 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">[ 菲比 ] 命運點 : 2 → 3</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">暗巷</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="setBg">
+    <div class="_bg-img"><img src="https://images.plurk.com/3Dxd7ASHZpHKzCIjh7vEPP.jpg"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_19481117f840 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">月圓之夜，黑市集會如期舉行。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_eca45213a23e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            戈丹
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">戈丹帶領菲比來到集會的地上據點，戴起面具和紅斗篷後，沉穩地說道：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_eca45213a23e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            戈丹
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">「走吧。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_757ce0db5dbe _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            菲比
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">我點點頭，以大約距離五公尺的距離跟在他身後。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_757ce0db5dbe _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            菲比
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">黑羽夜翼包裹著我的身體，藉著它的匿蹤效應，我的身影幾乎溶解在牆壁的暗面中。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">挑戰開始</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="setBg">
+    <div class="_bg-img"><img src="https://images.plurk.com/2UWHV8L3sYNd3G8HrUujqE.jpg"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_19481117f840 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">※局勢形象：【秘密經營的黑市集會】【昏暗蜿蜒的地下通道】</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_19481117f840 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">※挑戰內容：<br>→【潛入集會】<br>→【跟蹤目標】<br>→【抓住目標】<br>→【逼問真相】</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_eca45213a23e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            戈丹
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">戈丹看了後面的黑影一眼，掀開秘密通道的門踏了進去。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_fd99b9c42913 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            護衛
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">和上次一樣，狹窄的通道裡有護衛守著，假如只是一般的匿蹤技巧，是無論如何也沒辦法躲過去的。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_d96026bf2099 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            黑羽夜翼
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">※守護靈絕技【消失了？！】：每場衝突／挑戰一次，承受 1 點物理壓力，建立【消失了？！】局勢形象，並獲得 1 次免費援引。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_aaf93a299ec2 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">[ 菲比 ] 物理壓力 : 6 → 5</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_d96026bf2099 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            黑羽夜翼
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">4DF+4 #隱匿 (4DF+4) ＞ [+][ ][ ][+]+4 ＞ Fantastic(+6)</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_aaf93a299ec2 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">[ 菲比 ] 免費援引 : 0 → 1</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_d96026bf2099 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            黑羽夜翼
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">※援引局勢形象【消失了？！】</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_aaf93a299ec2 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">[ 菲比 ] 免費援引 : 1 → 0</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_d96026bf2099 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            黑羽夜翼
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">※檢定 +2</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_19481117f840 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">※挑戰【潛入集會】達成，絕妙成功。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_19481117f840 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">※局勢形象【消失了？！】→【悄然潛入】</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_aaf93a299ec2 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">[ 菲比 ] 免費援引 : 0 → 1</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_19481117f840 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">兩人前往地下集會廳，和上次一樣，紅衣的與會者慢慢抵達，而白袍的主持者則是一開始就站在中間。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_eca45213a23e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            戈丹
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">戈丹來到集會所之後，沉默地環顧了一下四周，接著就找了靠近角落陰影的位置入座。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_757ce0db5dbe _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            菲比
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">我環視周遭環境確認地形。隨後我挑了一個方便觀察和支援戈丹的角落，隱藏在那裡。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5ca9f6731eb1 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            黑市主持者
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">等人們到齊之後，黑市的主持者率先公告了讓菲比有些在意的提醒：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5ca9f6731eb1 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            黑市主持者
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">「關於先前某位成員發佈的攻擊獵人跟燒毀獵人小屋委託，近期內先暫停行動，市政廳那邊收到了一些獵人的集體通報，可能會有人盯著，要是擅自行動撞到我們的肌肉腦治安官，後果自行負責。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_bb3f643facf2 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            黑市成員
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">台下傳來些許聲響，菲比聽到亞斯夫跟尼斯的竊竊私語，但沒有太多實質意義，只是些無謂的抱怨。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_757ce0db5dbe _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            菲比
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">看樣子之前叫獵人互相警告，確實起了作用。再來，你們打算怎麼辦呢。我繼續聽下去。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_bb3f643facf2 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            黑市成員
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">其中一人開口回答：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_bb3f643facf2 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            黑市成員
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">「我知道了，但這個委託長期有效，可以等風聲過去繼續執行，我依然會給出相同的報酬。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_bb3f643facf2 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            黑市成員
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">看來他就是任務的委託者了。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_757ce0db5dbe _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            菲比
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">長期任務的話，難道說這事情不急嗎？</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_757ce0db5dbe _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            菲比
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">不然他應該會說再加派人力趕緊做完。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_eca45213a23e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            戈丹
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">雖然看不到戈丹的表情，但想必他也在分析相同的問題。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_757ce0db5dbe _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            菲比
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">不過是長期任務的話，也代表需要防範的時間變長了。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5ca9f6731eb1 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            黑市主持者
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">傳達過來自執政方的內線消息後，他緊接著宣佈據會繼續，讓慣例的交易正常進行。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_bb3f643facf2 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            黑市成員
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">同樣，鷹之冠的代理人是最受歡迎的那個，迎來了許多的交易者。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5ca9f6731eb1 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            黑市主持者
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">隨著交易結束，還有幾項不法委託也被提出，暫時找不到接取者的委託被主持人記錄下來，留在集會廳告示板上讓缺席者也有機會看到。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_19481117f840 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">最後，到了散場階段，同樣是從鷹之冠的代理人最先離去，其他人則是隔了一段時間之後，才分別從一個又一個不同的通道疏散。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_757ce0db5dbe _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            菲比
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">我依照原定計畫，跟在代理人身後。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_d96026bf2099 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            黑羽夜翼
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">4DF+4 #隱匿 (4DF+4) ＞ [+][ ][-][+]+4 ＞ Superb(+5)</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_bb3f643facf2 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            黑市成員
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">4DF+3 #感知 (4DF+3) ＞ [ ][-][ ][-]+3 ＞ Average(+1)</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_fd99b9c42913 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            護衛
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">4DF+1 #感知 (4DF+1) ＞ [+][+][ ][-]+1 ＞ Fair(+2)</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_19481117f840 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">※挑戰【跟蹤目標】達成，絕妙成功。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_19481117f840 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">※菲比在局勢形象【昏暗蜿蜒的地下通道】獲得 1 次免費援引。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_aaf93a299ec2 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">[ 菲比 ] 免費援引 : 0 → 1</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_19481117f840 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">菲比跟在鷹之冠的代理人身後，繞過護衛走向地表，這條通道是她和戈丹都從未走過的路線，也許是 VIP 通道吧。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_19481117f840 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">她注意到這條路線半途還有經過地下水道，假如真的情況緊急，屏住呼吸潛下去也是個逃脫方案，比起兩人過來那條無路可逃的狹窄樓梯道要周全許多。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_19481117f840 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">兩人一路走出地表，最後出現的位置是──</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">酒館</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="setBg">
+    <div class="_bg-img"><img src="https://images.plurk.com/4Gy3E6I821TONhAKohgxby.jpg"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_19481117f840 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">酒館倉庫地窖的某個大酒桶內。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_757ce0db5dbe _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            菲比
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">我跟著那人走出酒桶，並小心地把蓋子蓋回去。在黑羽夜翼的作用下，就算我在別人面前移動某樣東西也不會被發現，但如果操作完後狀態和操作前有異的話那就另當別論了。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_bb3f643facf2 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            黑市成員
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">鷹之冠的代理人相當謹慎，在出酒桶前先放出了守護靈，確認外頭沒有問題才出去，而在出了秘道之後，也始終讓守護靈觀望著地窖與密道的出口。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9a87e0035097 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            炭鼬
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">但菲比的潛行並不只是單純的潛行，這讓她順利避過了那隻守護靈的監視。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_17b291bff7c9 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            皮克
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">然後，她看到了鷹之冠代理人的真面目──商人皮克。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_17b291bff7c9 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            皮克
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">她跟這人不算太熟，但當初擔任鷹之團副團長的時候，有跟他進行過幾次銷贓交易，知道這個小有名氣的走私商人。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_757ce0db5dbe _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            菲比
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">雖然是認識的人，但我沒猜到是他。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_757ce0db5dbe _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            菲比
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">這人唯利是圖，就算背地裡有做壞事也不奇怪。不過他和團只是做過幾次交易的關係，關係並沒有那麼密切。我本來還以為是團員之一。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_757ce0db5dbe _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            菲比
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">我決定繼續跟蹤，看他會帶我去哪裡。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_17b291bff7c9 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            皮克
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">確認過安全後，皮克從地窖走了出去，外頭是酒館的廚房與後門，他相當自然地從後門走了出去。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_19481117f840 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">菲比注意到，這正是她剛進瑪塔鎮時進到的那個酒館。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_17b291bff7c9 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            皮克
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">走出酒館後，皮克哼著輕快的小曲，走到鄰近市政廳的高級住宅區，進了其中一家。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">瑪塔鎮</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="setBg">
+    <div class="_bg-img"><img src="https://images.plurk.com/5MZNEeogIEFk0SjjRiYGgG.jpg"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_17b291bff7c9 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            皮克
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">以菲比對他的了解，他確實是個講究生活品質的人，如果是長期會待的地方，比起旅店會更傾向直接買棟住宅。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_17b291bff7c9 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            皮克
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">看來，這裡就是他的落腳點了。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_19481117f840 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">這地方距離市政廳並不遠，假如有什麼動靜傳出去，恐怕就要真的體會到那個「肌肉腦治安官」拋下智商情商換來的實力了。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_757ce0db5dbe _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            菲比
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">住在這種地方的話，要逮人應該蠻方便的。或許收集些犯罪證據後給市政官處理就好了。聽他剛剛的發言，他也很怕市政官直接來抓他。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_757ce0db5dbe _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            菲比
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">我決定先回去，和戈丹分享一下這些情報。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_19481117f840 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">※局勢形象【悄然潛入】解除。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_aaf93a299ec2 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">[ 菲比 ] 免費援引 : 1 → 0</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">旅館房間</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="setBg">
+    <div class="_bg-img"><img src="https://images.plurk.com/dpPZOM62dG0x4FjxTP2mM.jpg"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_19481117f840 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">按照先前的約定，菲比回到旅館房間的時候，戈丹已經在這邊等她了。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_eca45213a23e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            戈丹
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">「知道位置了嗎？我們出發吧。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_757ce0db5dbe _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            菲比
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">「嗯……我想說不定直接報官就好了。他就住在市政廳附近而已。」我把鷹之冠代理人的真實身分以及他住的位置告知了戈登。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_757ce0db5dbe _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            菲比
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">「先前我已經收集好亞斯沃等人的犯罪證據，現在只要能再把他和他們扯在一塊就可以了。照他給的任務期限，皮克短期內大概都不會走，我們還有時間。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">挑戰結束</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_eca45213a23e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            戈丹
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">「皮克……跟鷹之團有合作的商人，那、鷹之冠本人到底是誰？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_eca45213a23e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            戈丹
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">戈丹皺起眉頭：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_eca45213a23e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            戈丹
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">「我不想再等了，我們耽擱的每一刻都可能有無辜的人受害。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_757ce0db5dbe _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            菲比
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">「這也是我搞不懂的一點。皮克和鷹之團關係其實沒那麼密切，取這名字不太像他的主意。」戈丹似乎比以前衝動許多，我又道：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_757ce0db5dbe _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            菲比
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">「現在動手的話，通往鷹之冠的線索說不定就斷了。我建議和亞斯夫一樣先監控。下一步等我們調查完主持人再說。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_eca45213a23e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            戈丹
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">「調查主持人……還要等到下次集會嗎？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_eca45213a23e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            戈丹
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">戈丹雙手抱胸，表情是顯而易見的抗拒。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_757ce0db5dbe _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            菲比
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">「如果我們沒有其他追蹤方式的話，是的。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_757ce0db5dbe _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            菲比
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">「不過這段期間我想調查一下皮克的動向，和亞斯沃那種雜碎不一樣，他或許有更多機會接觸核心人物或是與之相關的事物。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_eca45213a23e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            戈丹
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">「直接動手抓住皮克，能問出的情報可能比跟治安官合作更多。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_eca45213a23e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            戈丹
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">戈丹張開雙手，直視著眼前曾經的副團長：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_eca45213a23e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            戈丹
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">「要我改變想法的話，說服我。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_757ce0db5dbe _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            菲比
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">「我們甚至連他的能力都不清楚。待發掘的情報多，能力也不明，所以我不打算貿然出手。先留著幾天的收益會更高。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_757ce0db5dbe _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            菲比
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">「我一直都不是那麼擅長說服別人，我只能說要動手的話我不會介入。」戈丹的守護靈戰鬥力雖然強，但也很好針對。我不出手的話他失敗率很高，希望他能意識到這點。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_757ce0db5dbe _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            菲比
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">4DF+0 #親善 (4DF) ＞ [ ][ ][ ][ ] ＞ Mediocre(+0)</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_eca45213a23e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            戈丹
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">4DF+4 #意志 (4DF+4) ＞ [+][-][+][+]+4 ＞ Fantastic(+6)</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_eca45213a23e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            戈丹
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">「……妳的邏輯，跟後來的團長越來越像了。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_eca45213a23e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            戈丹
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">他搖了搖頭，堅定地轉身：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_eca45213a23e _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            戈丹
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">「我不會再接受『為了長遠的利益』這種話，抱歉了，我會在午夜時分展開行動，就算妳不支援也沒關係。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_757ce0db5dbe _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            菲比
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">「唉，好吧。那祝你順利。」我搖搖頭。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_757ce0db5dbe _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            菲比
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">fa95a6c75a11</channel>
+        </div>
+        <div class="_content">雖說如此，我應該還是會偷偷跟去吧。</div>
+    </div>
+</div>
+</div><!--EOS-->
+        </div>
+    </body>
+</html>
