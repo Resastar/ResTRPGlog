@@ -1,0 +1,1668 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="心心相印">
+        <meta property="og:description" content="">
+        <title>心心相印</title>
+        <style>
+            :root{
+                --color-bg: #454752;
+                --color-title: #FFFFFF;
+                --color-subtitle: #dddddd;
+                --color-talk-bg: #1E1E1E;
+                --color-talk-panel-bg: #2A2A2A;
+                --color-talk-panel-text: #EEEEEE;
+            }
+            body { display:flex; flex-direction:column; align-items:center; background:var(--color-bg); }
+            h1{ margin: 5px 0; color:var(--color-title); }
+            ._hidden { display:none !important; }
+            ._main { display:flex; flex-direction:column; align-items:stretch; gap:10px; width:100%; max-width:1080px; }
+            ._subtitle { color:var(--color-subtitle); margin-top:0; margin-bottom: 20px; }
+            ._sctitle { background:#ddd; margin-top:30px; padding:10px;font-weight:bold;font-size:1.3rem;text-align:center; }
+
+            ._talk { display:flex; flex-direction:row; gap:2px; background:var(--color-talk-bg); width:100%; border-radius:5px; }
+            ._talk ._lCol { width:110px; flex-shrink:0; margin:6px; margin-right:0; }
+            ._talk ._rCol { flex:1; display:flex; flex-direction: column; }
+            ._talk ._img { width:110px; height:110px; background-repeat:no-repeat; background-size:cover; background-color:#ffffff10; }
+            ._talk ._name { margin:6px; height:20px; font-size:18px; display:flex; justify-content:space-between; }
+            ._talk ._channel { margin-left:5px; color:#888888; display:none; }
+            ._talk ._content { flex:1; margin:6px; background:var(--color-talk-panel-bg); color:var(--color-talk-panel-text); font-size:1.1rem; padding:10px; border-radius:5px; }
+            ._talk._other { width:50%; margin-left:auto; }
+            ._talk._other ._lCol { display:none; }
+            ._talk._other ._name { justify-content:end; }
+            ._talk._other ._channel { display:block; }
+            ._talk._other ._content { background:black; color:white; text-align:right; }
+
+            ._halt { padding:30px 0; }
+            ._sctitle { border-radius:5px; }
+            ._bg-img { display:flex; justify-content: center; }
+            ._bg-img img { max-width:100%; max-height:400px; }
+
+            ._actor_3b4f336ad959 ._name { color:#888888; content:'system'; }
+            ._actor_3b4f336ad959 ._img { background-image:url(''); display:none; }
+            ._actor_ac4c10591819 ._name { color:#888888; content:'GM'; }
+            ._actor_ac4c10591819 ._img { background-image:url(''); display:none; }
+            ._actor_58a098d2a1a4 ._name { color:#2bba21; content:'艾斯沃'; }
+            ._actor_58a098d2a1a4 ._img { background-image:url('https://images.plurk.com/5tHecVwoXTGsR9bRK1wkxr.png'); display:block; }
+            ._actor_96f6dae395b8 ._name { color:#e68619; content:'波諾雅'; }
+            ._actor_96f6dae395b8 ._img { background-image:url('https://images.plurk.com/4GU4AqFmRJ0wNnx7miJkrw.png'); display:block; }
+            ._actor_a6c39403dcbc ._name { color:#245bdb; content:'電綿綿'; }
+            ._actor_a6c39403dcbc ._img { background-image:url('https://images.plurk.com/1ytr3obW1XgCVFqaJSHaGC.png'); display:block; }
+            ._actor_42963f2352bb ._name { color:#e68619; content:'菲雅'; }
+            ._actor_42963f2352bb ._img { background-image:url('https://images.plurk.com/5igGttCaBS5WszZcKUACY9.png'); display:block; }
+            ._actor_7b8e500e63a6 ._name { color:#7308dd; content:'艾妮薇'; }
+            ._actor_7b8e500e63a6 ._img { background-image:url('https://images.plurk.com/7N1DwOkUya3vT0ktRLIOFV.png'); display:block; }
+            ._actor_217ffa2cfb40 ._name { color:#245bdb; content:'拿諾亞'; }
+            ._actor_217ffa2cfb40 ._img { background-image:url('https://images.plurk.com/7Gz834HkH0fOBsW7ja1Npc.png'); display:block; }
+            ._actor_848227438670 ._name { color:#245bdb; content:'小黑'; }
+            ._actor_848227438670 ._img { background-image:url('https://images.plurk.com/41lS4pEbVbLHYeGZhg1vh5.png'); display:block; }
+            ._actor_9651d3901c74 ._name { color:#245bdb; content:'水圓圓'; }
+            ._actor_9651d3901c74 ._img { background-image:url('https://images.plurk.com/27qXWy3qfV896CbS86G12N.png'); display:block; }
+            ._actor_ea9106d6bb61 ._name { color:#245bdb; content:'天芽'; }
+            ._actor_ea9106d6bb61 ._img { background-image:url('https://images.plurk.com/13C4uP4YQd25A5wEhnO3c.png'); display:block; }
+            ._actor_b824fff4c2aa ._name { color:#888888; content:'朝北鼻'; }
+            ._actor_b824fff4c2aa ._img { background-image:url('https://images.plurk.com/5RLV1ADSH5m0ZNwJroAROA.png'); display:block; }
+            ._actor_e74a04b00647 ._name { color:#888888; content:'喬伊小姐'; }
+            ._actor_e74a04b00647 ._img { background-image:url('https://images.plurk.com/6KqkQSmfC1xkvQ4JRFiSUW.png'); display:block; }
+            ._actor_ac782f593fcd ._name { color:#245bdb; content:'艾莉克絲'; }
+            ._actor_ac782f593fcd ._img { background-image:url('https://images.plurk.com/6mbRg8liCqhLs5d0Ar5Ux2.png'); display:block; }
+            ._actor_8ad8949ee6f5 ._name { color:#7308dd; content:'阿勃梭魯'; }
+            ._actor_8ad8949ee6f5 ._img { background-image:url('https://images.plurk.com/4zUrZgJ5yoyh8inLdWXiqZ.png'); display:block; }
+            ._actor_8b4f9e1e2c91 ._name { color:#888888; content:'吉利蛋'; }
+            ._actor_8b4f9e1e2c91 ._img { background-image:url('https://images.plurk.com/1CLL0AniaghgMJT0Fz4vhi.png'); display:block; }
+            ._actor_27f3cd4f7216 ._name { color:#245bdb; content:'小樹'; }
+            ._actor_27f3cd4f7216 ._img { background-image:url('https://images.plurk.com/2M3f9tKx6YV8ZY9VjhTFIW.png'); display:block; }
+            ._actor_fc0ae854c9c3 ._name { color:#245bdb; content:'小櫻'; }
+            ._actor_fc0ae854c9c3 ._img { background-image:url('https://images.plurk.com/uSt1siaEvksunEJB6DYqx.png'); display:block; }
+            ._actor_7c51a7b15f28 ._name { color:#245bdb; content:'莫述'; }
+            ._actor_7c51a7b15f28 ._img { background-image:url('https://images.plurk.com/7HZ6pH2J3Chn7Jxngv7L8Z.png'); display:block; }
+            ._actor_4675b54634fa ._name { color:#888888; content:'毒粉蛾群'; }
+            ._actor_4675b54634fa ._img { background-image:url('https://images.plurk.com/3qlb4g5hfLQ3N6QVs5tUKQ.png'); display:block; }
+            ._actor_13336b2a396e ._name { color:#888888; content:'大力鱷'; }
+            ._actor_13336b2a396e ._img { background-image:url('https://images.plurk.com/2n1jo6sNaiA0c5gCBvovfZ.png'); display:block; }
+            ._actor_59a4e9ab4609 ._name { color:#888888; content:'藍鱷'; }
+            ._actor_59a4e9ab4609 ._img { background-image:url('https://images.plurk.com/6uQyoR3KnC0KcO9dMv9zO2.png'); display:block; }
+            ._actor_49fa4c55bac4 ._name { color:#888888; content:'百帕'; }
+            ._actor_49fa4c55bac4 ._img { background-image:url(''); display:none; }
+            ._actor_1075a05e7f34 ._name { color:#888888; content:'梨梨'; }
+            ._actor_1075a05e7f34 ._img { background-image:url(''); display:none; }
+            ._actor_feae0d33f0f4 ._name { color:#245bdb; content:'小Q'; }
+            ._actor_feae0d33f0f4 ._img { background-image:url('https://images.plurk.com/703K7q0TKkDPg1PEDhKsf.png'); display:block; }
+            ._actor_4001d4f4bf7a ._name { color:#f00000; content:'胖嘟嘟'; }
+            ._actor_4001d4f4bf7a ._img { background-image:url('https://images.plurk.com/7Kxpqw1vqvn19z5GQthp3v.png'); display:block; }
+            ._actor_204bf0a69011 ._name { color:#f00000; content:'輕飄飄'; }
+            ._actor_204bf0a69011 ._img { background-image:url('https://images.plurk.com/5PMPqeupSMm6jksUpgB8lP.png'); display:block; }
+            ._actor_83eff6048112 ._name { color:#f00000; content:'輕飄飄 '; }
+            ._actor_83eff6048112 ._img { background-image:url('https://images.plurk.com/13AAS9bP0FcQJXrjCQsoRd.png'); display:block; }
+            ._actor_3f784933d64d ._name { color:#888888; content:'？？？'; }
+            ._actor_3f784933d64d ._img { background-image:url(''); display:none; }
+            ._actor_1ebf1164ee5a ._name { color:#7308dd; content:'雷卡'; }
+            ._actor_1ebf1164ee5a ._img { background-image:url('https://images.plurk.com/75lW0f9mpy1R8UVNOjJ54y.png'); display:block; }
+            ._actor_3b4554fd0bb5 ._name { color:#f00000; content:'大王'; }
+            ._actor_3b4554fd0bb5 ._img { background-image:url('https://images.plurk.com/5cj8ZfGdbyYqTpOBNxOz3S.png'); display:block; }
+            ._actor_2800e21b541e ._name { color:#245bdb; content:'小櫻 '; }
+            ._actor_2800e21b541e ._img { background-image:url('https://images.plurk.com/1ePQ0UNMi7O5zSjFG57qcD.png'); display:block; }
+        </style>
+        <meta-data class="_hidden">
+            <channel>
+                _ch_017ef695e643: { name:"主要"; main:true; hide:false; }
+            </channel>
+        </meta-data>
+    </head>
+    <body>
+        <div class="_hidden"><version>hazmole_v2.0</version></div>
+        <h1>心心相印</h1>
+        <div class="_subtitle"></div>
+
+        <div class="_main">
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">狀態更新</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3b4f336ad959 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">[ 艾斯沃 ] 命運點 : 0 → 3</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">農場</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="setBg">
+    <div class="_bg-img"><img src="https://images.plurk.com/jYLgJZj9hMUyBVLdUJUn5.jpg"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_ac4c10591819 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">尋寶探險過後，勉強支撐到家的艾斯沃幾乎是直接睡死，就這麼一覺到天明。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_ac4c10591819 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">翌日一早，他耳邊聽見一連串大大小小的腳步聲和喘氣聲，那是晨跑隊伍經過農舍前的聲響！</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_ac4c10591819 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">自從大家開始跟著拿諾亞晨跑，艾斯沃的睡眠時間變短，但睡眠品質卻是變得更好了──小黑不合時宜的清晨咆哮頻率明顯減少了。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_58a098d2a1a4 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">「哀...今天偷懶一下就好...」<br>他假裝沒醒，翻個身背對窗外的晨跑隊伍</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_ac4c10591819 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">艾斯沃聽到晨跑的隊伍在下方原地踏步了幾秒鐘，還有小黑被摀住嘴巴的「嗚嗚」聲。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_ac4c10591819 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">接著，晨跑隊伍繼續前進，從農舍下離開。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_ac4c10591819 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">艾斯沃也從裝睡變回沉睡，眼睛一閉一睜就到了接近中午的時間。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_96f6dae395b8 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            波諾雅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">農舍前的空地是小主人在「訓練寶可夢」，波諾雅拿著水槍蹦蹦跳跳地跟水圓圓對射，從兩人身上的水痕來看意外地不分高下。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a6c39403dcbc _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            電綿綿
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">電綿綿揣著小手坐在旁邊的台階上吃餅乾。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_42963f2352bb _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            菲雅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">大主人在後院曬衣服，拿諾雅抱著洗衣籃跟在她身後。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_ac4c10591819 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">就像每一個平凡的農舍早晨那樣輕鬆愜意。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_58a098d2a1a4 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">藤藤蛇揉揉眼，慢慢地爬起來<br>今天感覺自己好懶喔，好想被誰抱著度過一個很懶的下午<br>難得很有主見又很有精神的他好想要被誰照顧的感覺</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_58a098d2a1a4 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">「嗯...該去找艾妮薇姊姊嗎」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_58a098d2a1a4 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">她看著好像沒人在找自己，偷偷的就摸著房門，準備要離開屋子</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a6c39403dcbc _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            電綿綿
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">「艾、艾斯沃！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a6c39403dcbc _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            電綿綿
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">藤藤蛇的動靜被觀戰的茸茸羊發現，她突然喊了一聲之後，就邁開步伐跑進農舍，不知道做什麼去了。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_58a098d2a1a4 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">「嗯? 怎麼啦?」<br>他看向沼澤的方向，想了想之後還是覺得先辦完事再走比較好<br><br>他跟著電綿綿的腳步進到了農舍</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a6c39403dcbc _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            電綿綿
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">跟進農舍的艾斯沃看見電綿綿鑽進廚房，沒多久端了個用紙袋包好的三明治出來：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a6c39403dcbc _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            電綿綿
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">「你、你的早餐，大主人幫你留好了。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_58a098d2a1a4 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">「對耶，睡太晚，都忘了要吃早餐」<br>艾斯沃接過三明治<br><br>「謝啦，電綿綿。我先吃完再出門好了」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a6c39403dcbc _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            電綿綿
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">「嗯……嗯！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_a6c39403dcbc _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            電綿綿
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">電綿綿點了點頭，掛著滿足的微笑走回門口，繼續當小主人跟水圓圓「大戰」的忠實觀眾。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_58a098d2a1a4 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">他三兩口將三明治吃完，滿心期待的朝著沼澤出發<br>好想要一點點跟艾妮薇姊的相處時間，他只是這麼想著<br>這種感覺是怎麼回事呢?</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">沼澤</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="setBg">
+    <div class="_bg-img"><img src="https://images.plurk.com/5q8JppUkcQ3aAyHktJXnqa.jpg"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7b8e500e63a6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">「艾斯沃，你來了！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7b8e500e63a6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">從沼澤裡浮出來的黏美龍像往常一樣，低頭用觸角在艾斯沃身上裹了一層黏液，輕輕地撫著他的小腦袋。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_58a098d2a1a4 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">「姊姊...我想你了!」<br>今天艾斯沃卸下了所有防備，抱上了艾妮薇的脖頸<br><br>「你今天能陪陪我嗎?」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7b8e500e63a6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">艾斯沃注意到艾妮薇的動作停頓了片刻，微微地後縮之後，重新抱了上來，用臉頰蹭著艾斯沃，向後躺臥在沼澤裡。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7b8e500e63a6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">「當然、當然沒問題，你想待多久就待多久。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_58a098d2a1a4 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">4DF+1 #同理 (4DF+1) ＞ [+][ ][-][+]+1 ＞ Fair(+2)</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_58a098d2a1a4 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">※援引角色形象【景仰的前輩】</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3b4f336ad959 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">[ 艾斯沃 ] 命運點 : 3 → 2</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_58a098d2a1a4 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">※檢定 +2</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7b8e500e63a6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">※揭露艾妮薇角色形象【神秘的過往】</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7b8e500e63a6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">艾斯沃注意到艾妮薇細微的表情變化，那個本能的退縮反應既不是電綿綿那樣的害羞，也不是艾莉克絲那樣的傲嬌，很可能是和她過往的經歷有關。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7b8e500e63a6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">也許，她始終與大家保持疏離的態度也是這個原因，但無論那是什麼，她在此時此刻都決定先把它拋開不管。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_58a098d2a1a4 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">「姊姊...?」<br>艾斯沃停下了動作，臉上寫滿擔心<br><br>「你不開心嗎? 還是不舒服?」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7b8e500e63a6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">艾妮薇抱著艾斯沃輕輕搖曳，寬厚的雙腿在沼澤下邁步，輕柔地低頭回答：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7b8e500e63a6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">「沒事喲，只是想起了一些過去的事，倒是你怎麼今天突然就撒嬌起來了？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7b8e500e63a6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">黏美龍輕巧地轉移話題，頭上的觸角輕輕拍打著艾斯沃。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_58a098d2a1a4 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">「沒有啊，就是想你了。」<br>艾斯沃決定還是給她一點空間，別破壞這個美妙的瞬間<br><br>「待在你身邊很安心，會讓人覺得好像甚麼都不用擔心」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7b8e500e63a6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">「很高興聽到你這麼說～」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7b8e500e63a6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">艾妮薇伸手摘下一棵樹果，塞到艾斯沃懷裡：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7b8e500e63a6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">「你啊，總是喜歡自己把責任都扛起來，要記得哦！我們隨時都在，有什麼事都可以幫忙的，有什麼心情也都可以跟我說。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7b8e500e63a6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">「壓力分擔給我就是一半的壓力，快樂分享給我就是兩倍的開心，知道嗎？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_58a098d2a1a4 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">「姊姊這樣不會累嗎?」<br>艾斯沃閉起眼，感受黏美龍皮膚滑嫩的觸感<br><br>「如果有一天你也想要撒嬌，想要被照顧跟保護的時候怎麼辦?」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7b8e500e63a6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">艾妮薇的動作停滯了片刻，但很快又繼續漫步：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7b8e500e63a6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">「姊姊已經是成熟的大人了呢！雖然很開心聽到你這麼問，但是你不用擔心我哦！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_58a098d2a1a4 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">「成熟的大人不需要溫暖跟照顧嗎?」<br>艾斯沃緊緊擁住對方，像是放手就會失去她一樣<br><br>「我也可以做到，我也可以幫姐姐分擔一些東西」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_58a098d2a1a4 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">4DF+3 #親善 (4DF+3) ＞ [ ][-][-][+]+3 ＞ Fair(+2)</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_58a098d2a1a4 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">※絕技【你最真誠的朋友】：艾斯沃對於熟識的對象使用親善克服時，檢定+2</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7b8e500e63a6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">4DF+3 #意志 (4DF+3) ＞ [-][-][ ][ ]+3 ＞ Average(+1)</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7b8e500e63a6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">「我……我不行、我沒有那樣的資格……」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7b8e500e63a6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">黏美龍的反應出乎意料地強烈，她往後栽倒，整隻龍躺進水中，一點一點沉到沼澤的泥濘之中……</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_58a098d2a1a4 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">「什、什麼? 姊姊你在說什麼?」<br>艾斯沃必須放手，不然會被淹死<br>但他決定深吸一口氣，不要放開這個擁抱<br>因為擁抱是世界上最溫柔的語言<br>而現在這個溫柔的姊姊需要這個<br><br>「什麼資格呢? 互相照顧彼此，不是很自然的事情嗎?」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7b8e500e63a6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">艾妮薇試圖逃走，但艾斯沃不放手。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_ac4c10591819 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">兩人沉進水中，艾斯沃開始感覺到憋氣的痛苦……</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7b8e500e63a6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">但在他嘴巴吐出第一串泡泡的瞬間，艾妮薇立刻跳了起來，比他還緊張地爬到岸上：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7b8e500e63a6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">「艾斯沃、艾斯沃，你沒事吧？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7b8e500e63a6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">「為什麼……不放手？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_58a098d2a1a4 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">「因為我想讓姊姊知道，不管怎麼樣，我永遠都會陪著你...」<br>艾斯沃咳出了幾口水<br><br>「赴湯蹈火」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7b8e500e63a6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">「永遠……」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7b8e500e63a6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">艾妮薇用觸角抹了抹臉，在臉上裹了一層濕潤的黏液。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7b8e500e63a6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">「艾斯沃，你知道嗎？我不配的，我以前做過很糟很糟的事……」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7b8e500e63a6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">黏美龍大半個身子重新縮進水裡，只有被艾斯沃抱著的胸口停在岸上。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_58a098d2a1a4 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">「我想聽...」<br>艾斯沃堅毅的大眼看進艾妮薇的雙瞳中<br><br>「這樣我才能更接近姊姊。妳為我做過太多溫柔的事情了，現在該我了。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7b8e500e63a6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">「好……」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7b8e500e63a6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">艾妮薇深吸了一口氣，目光盯著沼澤水面的反光，用一種飄渺而抽離的語氣開始訴說：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7b8e500e63a6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">「我以前有個訓練家……」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7b8e500e63a6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">「我是他的第一個寶可夢，也是他的王牌，從最開始就互相陪伴、互相依賴……」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7b8e500e63a6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">「後來，他有了其他的寶可夢，陪我的時間變少了，但那沒關係，我知道我還是他最愛的寶可夢……」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7b8e500e63a6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">「直到有一天，在一次我戰敗受了重傷之後，他消失了，帶著其他寶可夢消失了……」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7b8e500e63a6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">「三個月又十七天，他消失了三個月又十七天才回來，看到我站在家門口等他，他的反應是轉身就跑……」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7b8e500e63a6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">「我生氣了，我做了最不好的行動，我……對他用了破壞光線……」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7b8e500e63a6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">「我……後來才知道，他去找到了傳說中的寶可夢，擁有治療能力的寶可夢，只是為了求祂來治癒我的傷勢……」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7b8e500e63a6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">「是我的錯，我不配再被那樣溫柔對待……」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7b8e500e63a6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">※角色形象【神秘的過往】→【不堪的回憶】</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_58a098d2a1a4 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">「我都不知道姊姊發生過了這麼大的事情...」<br>艾斯沃趴在他圓圓的大肚子上<br><br>「我不會說謊說一些甜言蜜語的話，確實是姊姊你的錯!」<br>「不過...」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_58a098d2a1a4 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">「沒人說妳的生命中只有一次機會呀? 妳還有一輩子可以用溫柔去彌補你的過錯。」<br><br>「也許有一天，再給你曾經的主人一個擁抱呀。」<br>他閉上眼，給艾妮薇一個大大的抱抱</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7b8e500e63a6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">「艾斯沃……」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7b8e500e63a6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">黏美龍用兩隻手和兩條觸角緊緊抱著艾斯沃，力道幾乎要把他勒死。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7b8e500e63a6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">「謝謝你，謝謝你沒有離開我……」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7b8e500e63a6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">濕潤的液體滴在艾斯沃的頭上，也許是黏美龍的黏液吧。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_58a098d2a1a4 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">「嗯，我不會離開的...」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7b8e500e63a6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">「真的嗎？永遠永遠不離開這片沼澤……」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7b8e500e63a6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">艾妮薇的聲音變得有些低迷，隱隱約約讓艾斯沃感到有些危險。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_58a098d2a1a4 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">「嗯，呃呃...我的家還是在農場上啦! 但我會常常來看妳~就像現在這樣。」<br>艾斯沃被抱著，突然感受到溫暖中帶有一點涼意<br><br>「但如果主人要帶著我出去旅行的話，我一定會拒絕的」<br></div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7b8e500e63a6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">「……」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7b8e500e63a6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">艾妮薇沉默了幾秒鐘。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7b8e500e63a6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">在艾斯沃心中的不安感越來越重之際，她才突然笑出來，放開了艾斯沃：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7b8e500e63a6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">「嚇到了嗎？我開玩笑的啦～」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7b8e500e63a6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">她側著臉，樹蔭遮蓋了她的雙眼，艾斯沃只看得到她臉頰上被清水沖淡的黏液。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7b8e500e63a6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">「抱歉讓你擔心了，不過，我們也都累了，還是先好好休息一下吧～」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_7b8e500e63a6 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾妮薇
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">她用尾巴拍了拍艾斯沃，接著直接一頭栽進沼澤裡，拋下了先前陪伴艾斯沃一整天的承諾。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_58a098d2a1a4 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">017ef695e643</channel>
+        </div>
+        <div class="_content">「好啊，姊姊你好好睡吧!」<br>他猶豫了一下<br><br>「明天! 明天再來找妳!」<br></div>
+    </div>
+</div>
+</div><!--EOS-->
+        </div>
+    </body>
+</html>

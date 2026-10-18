@@ -16,4 +16,5 @@ var INDEX = [
 	{ title: "農場危機", url: "藤藤蛇13.html", },
 	{ title: "晨跑比賽", url: "藤藤蛇14.html", },
 	{ title: "尋寶冒險", url: "藤藤蛇15.html", },
+	{ title: "心心相印", url: "藤藤蛇16.html", },
 ];
