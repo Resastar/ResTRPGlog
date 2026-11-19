@@ -1,0 +1,2106 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="離奇失蹤">
+        <meta property="og:description" content="">
+        <title>離奇失蹤</title>
+        <style>
+            :root{
+                --color-bg: #454752;
+                --color-title: #FFFFFF;
+                --color-subtitle: #dddddd;
+                --color-talk-bg: #1E1E1E;
+                --color-talk-panel-bg: #2A2A2A;
+                --color-talk-panel-text: #EEEEEE;
+            }
+            body { display:flex; flex-direction:column; align-items:center; background:var(--color-bg); }
+            h1{ margin: 5px 0; color:var(--color-title); }
+            ._hidden { display:none !important; }
+            ._main { display:flex; flex-direction:column; align-items:stretch; gap:10px; width:100%; max-width:1080px; }
+            ._subtitle { color:var(--color-subtitle); margin-top:0; margin-bottom: 20px; }
+            ._sctitle { background:#ddd; margin-top:30px; padding:10px;font-weight:bold;font-size:1.3rem;text-align:center; }
+
+            ._talk { display:flex; flex-direction:row; gap:2px; background:var(--color-talk-bg); width:100%; border-radius:5px; }
+            ._talk ._lCol { width:110px; flex-shrink:0; margin:6px; margin-right:0; }
+            ._talk ._rCol { flex:1; display:flex; flex-direction: column; }
+            ._talk ._img { width:110px; height:110px; background-repeat:no-repeat; background-size:cover; background-color:#ffffff10; }
+            ._talk ._name { margin:6px; height:20px; font-size:18px; display:flex; justify-content:space-between; }
+            ._talk ._channel { margin-left:5px; color:#888888; display:none; }
+            ._talk ._content { flex:1; margin:6px; background:var(--color-talk-panel-bg); color:var(--color-talk-panel-text); font-size:1.1rem; padding:10px; border-radius:5px; }
+            ._talk._other { width:50%; margin-left:auto; }
+            ._talk._other ._lCol { display:none; }
+            ._talk._other ._name { justify-content:end; }
+            ._talk._other ._channel { display:block; }
+            ._talk._other ._content { background:black; color:white; text-align:right; }
+
+            ._halt { padding:30px 0; }
+            ._sctitle { border-radius:5px; }
+            ._bg-img { display:flex; justify-content: center; }
+            ._bg-img img { max-width:100%; max-height:400px; }
+
+            ._actor_cecab96dc7d7 ._name { color:#888888; content:'GM'; }
+            ._actor_cecab96dc7d7 ._img { background-image:url(''); display:none; }
+            ._actor_5227f3ec0999 ._name { color:#245bdb; content:'拿諾亞'; }
+            ._actor_5227f3ec0999 ._img { background-image:url('https://images.plurk.com/7Gz834HkH0fOBsW7ja1Npc.png'); display:block; }
+            ._actor_3c1173a4709f ._name { color:#2bba21; content:'艾斯沃'; }
+            ._actor_3c1173a4709f ._img { background-image:url('https://images.plurk.com/5tHecVwoXTGsR9bRK1wkxr.png'); display:block; }
+            ._actor_77246e9df899 ._name { color:#245bdb; content:'水圓圓'; }
+            ._actor_77246e9df899 ._img { background-image:url('https://images.plurk.com/27qXWy3qfV896CbS86G12N.png'); display:block; }
+            ._actor_d8f5c7c8344d ._name { color:#245bdb; content:'天芽'; }
+            ._actor_d8f5c7c8344d ._img { background-image:url('https://images.plurk.com/13C4uP4YQd25A5wEhnO3c.png'); display:block; }
+            ._actor_2fb92d79d2bb ._name { color:#245bdb; content:'電綿綿'; }
+            ._actor_2fb92d79d2bb ._img { background-image:url('https://images.plurk.com/1ytr3obW1XgCVFqaJSHaGC.png'); display:block; }
+            ._actor_4713be295c37 ._name { color:#888888; content:'system'; }
+            ._actor_4713be295c37 ._img { background-image:url(''); display:none; }
+            ._actor_cd91a12fab37 ._name { color:#245bdb; content:'艾莉克絲'; }
+            ._actor_cd91a12fab37 ._img { background-image:url('https://images.plurk.com/6mbRg8liCqhLs5d0Ar5Ux2.png'); display:block; }
+            ._actor_4c91ba760d11 ._name { color:#245bdb; content:'小櫻'; }
+            ._actor_4c91ba760d11 ._img { background-image:url('https://images.plurk.com/uSt1siaEvksunEJB6DYqx.png'); display:block; }
+            ._actor_9f184ce12d20 ._name { color:#245bdb; content:'小黑'; }
+            ._actor_9f184ce12d20 ._img { background-image:url('https://images.plurk.com/41lS4pEbVbLHYeGZhg1vh5.png'); display:block; }
+            ._actor_b91dfb46f890 ._name { color:#245bdb; content:'小樹'; }
+            ._actor_b91dfb46f890 ._img { background-image:url('https://images.plurk.com/2M3f9tKx6YV8ZY9VjhTFIW.png'); display:block; }
+            ._actor_01c7e8a9173c ._name { color:#e68619; content:'菲雅'; }
+            ._actor_01c7e8a9173c ._img { background-image:url('https://images.plurk.com/5igGttCaBS5WszZcKUACY9.png'); display:block; }
+            ._actor_8c2d8bb0f860 ._name { color:#e68619; content:'波諾雅'; }
+            ._actor_8c2d8bb0f860 ._img { background-image:url('https://images.plurk.com/4GU4AqFmRJ0wNnx7miJkrw.png'); display:block; }
+            ._actor_edb89bce9125 ._name { color:#7308dd; content:'艾妮薇'; }
+            ._actor_edb89bce9125 ._img { background-image:url('https://images.plurk.com/7N1DwOkUya3vT0ktRLIOFV.png'); display:block; }
+            ._actor_8883302f1c2b ._name { color:#888888; content:'朝北鼻'; }
+            ._actor_8883302f1c2b ._img { background-image:url('https://images.plurk.com/5RLV1ADSH5m0ZNwJroAROA.png'); display:block; }
+            ._actor_9d37950684c7 ._name { color:#888888; content:'喬伊小姐'; }
+            ._actor_9d37950684c7 ._img { background-image:url('https://images.plurk.com/6KqkQSmfC1xkvQ4JRFiSUW.png'); display:block; }
+            ._actor_e41fd2c4496c ._name { color:#7308dd; content:'阿勃梭魯'; }
+            ._actor_e41fd2c4496c ._img { background-image:url('https://images.plurk.com/4zUrZgJ5yoyh8inLdWXiqZ.png'); display:block; }
+            ._actor_b8ed31024150 ._name { color:#888888; content:'吉利蛋'; }
+            ._actor_b8ed31024150 ._img { background-image:url('https://images.plurk.com/1CLL0AniaghgMJT0Fz4vhi.png'); display:block; }
+            ._actor_c47f83ff8aca ._name { color:#245bdb; content:'莫述'; }
+            ._actor_c47f83ff8aca ._img { background-image:url('https://images.plurk.com/7HZ6pH2J3Chn7Jxngv7L8Z.png'); display:block; }
+            ._actor_515aa1360bd1 ._name { color:#888888; content:'毒粉蛾群'; }
+            ._actor_515aa1360bd1 ._img { background-image:url('https://images.plurk.com/3qlb4g5hfLQ3N6QVs5tUKQ.png'); display:block; }
+            ._actor_71100bdb7ed2 ._name { color:#888888; content:'大力鱷'; }
+            ._actor_71100bdb7ed2 ._img { background-image:url('https://images.plurk.com/2n1jo6sNaiA0c5gCBvovfZ.png'); display:block; }
+            ._actor_4ed856cdc312 ._name { color:#888888; content:'藍鱷'; }
+            ._actor_4ed856cdc312 ._img { background-image:url('https://images.plurk.com/6uQyoR3KnC0KcO9dMv9zO2.png'); display:block; }
+            ._actor_aa39607dfd10 ._name { color:#888888; content:'百帕'; }
+            ._actor_aa39607dfd10 ._img { background-image:url(''); display:none; }
+            ._actor_4f8ce8206ec8 ._name { color:#888888; content:'梨梨'; }
+            ._actor_4f8ce8206ec8 ._img { background-image:url(''); display:none; }
+            ._actor_2ce9d66e6aae ._name { color:#245bdb; content:'小Q'; }
+            ._actor_2ce9d66e6aae ._img { background-image:url('https://images.plurk.com/703K7q0TKkDPg1PEDhKsf.png'); display:block; }
+            ._actor_4fb1ec8302a5 ._name { color:#f00000; content:'胖嘟嘟'; }
+            ._actor_4fb1ec8302a5 ._img { background-image:url('https://images.plurk.com/7Kxpqw1vqvn19z5GQthp3v.png'); display:block; }
+            ._actor_1a226890309b ._name { color:#f00000; content:'輕飄飄'; }
+            ._actor_1a226890309b ._img { background-image:url('https://images.plurk.com/5PMPqeupSMm6jksUpgB8lP.png'); display:block; }
+            ._actor_2cf0f18f4e29 ._name { color:#f00000; content:'輕飄飄 '; }
+            ._actor_2cf0f18f4e29 ._img { background-image:url('https://images.plurk.com/13AAS9bP0FcQJXrjCQsoRd.png'); display:block; }
+            ._actor_c09e71eca1a1 ._name { color:#888888; content:'？？？'; }
+            ._actor_c09e71eca1a1 ._img { background-image:url(''); display:none; }
+            ._actor_eddf1abca9b6 ._name { color:#7308dd; content:'雷卡'; }
+            ._actor_eddf1abca9b6 ._img { background-image:url('https://images.plurk.com/75lW0f9mpy1R8UVNOjJ54y.png'); display:block; }
+            ._actor_a8c278f39c0a ._name { color:#f00000; content:'大王'; }
+            ._actor_a8c278f39c0a ._img { background-image:url('https://images.plurk.com/5cj8ZfGdbyYqTpOBNxOz3S.png'); display:block; }
+            ._actor_ecf03e27d193 ._name { color:#245bdb; content:'小櫻 '; }
+            ._actor_ecf03e27d193 ._img { background-image:url('https://images.plurk.com/1ePQ0UNMi7O5zSjFG57qcD.png'); display:block; }
+        </style>
+        <meta-data class="_hidden">
+            <channel>
+                _ch_e7891386afff: { name:"主要"; main:true; hide:false; }
+            </channel>
+        </meta-data>
+    </head>
+    <body>
+        <div class="_hidden"><version>hazmole_v2.0</version></div>
+        <h1>離奇失蹤</h1>
+        <div class="_subtitle"></div>
+
+        <div class="_main">
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">農場</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="setBg">
+    <div class="_bg-img"><img src="https://images.plurk.com/jYLgJZj9hMUyBVLdUJUn5.jpg"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cecab96dc7d7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">又是一天清晨，艾斯沃自然而然醒轉過來，準備迎接小黑的嚎叫。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cecab96dc7d7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">……但他遲遲沒有等到，甚至連晨跑隊伍中也沒看到小黑，這就有點奇怪了，他可是從來沒有缺席過晨跑的。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5227f3ec0999 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            拿諾亞
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">拿諾亞也覺得不解，但他昨天才被精力旺盛的艾莉克絲抓去跟莫述、小樹打了好幾場雙打練習賽，實在沒有力氣四處尋找，就連晨跑都是靠毅力強撐下來的。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3c1173a4709f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">艾斯沃隨便跑了幾圈就坐下來偷懶了<br>他坐在門廊前看著經過的眾人<br><br>「有人知道小黑睡在哪嗎?」<br>他眨眨眼，之前絲毫沒有注意過這種事<br><br>「說到這個，小黑平常睡哪啊?」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_77246e9df899 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            水圓圓
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「有時候會在農舍外面的棚子下。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_d8f5c7c8344d _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            天芽
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「果、果園樹上跟樹下，還有草叢也都有可能！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_2fb92d79d2bb _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            電綿綿
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「還、還有屋頂……」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3c1173a4709f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「總覺得可能範圍好像完全沒有縮小...」<br>艾斯沃苦惱地站起身來，打算去到處找找<br>對他來說這又是個必須處理的麻煩了<br><br>「那他有在野外過夜過嗎?」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5227f3ec0999 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            拿諾亞
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「應該沒有，我記得他都是玩累了就隨地躺下，但至少知道晚上跑出去外面很危險。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5227f3ec0999 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            拿諾亞
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「呃……至少知道不能晚上單獨跑出去。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cecab96dc7d7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">※局勢形象【小黑的入睡習慣】</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3c1173a4709f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「那我去找他好了」<br>他拍拍屁股上的灰<br><br>「反正我今天份的跑步已經跑完了」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5227f3ec0999 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            拿諾亞
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「那就拜託你了。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5227f3ec0999 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            拿諾亞
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">拿諾亞打了個哈欠，看來是真的有點累了。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3c1173a4709f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「放心交給我吧!」<br><br>艾斯沃手插腰，看著眼前的房子<br>也許最不可能的地方反而是正確的?<br><br>小黑也許跑到室內去睡了<br>他這麼心想著，邊穿過門上的小門進到屋內，打算先從這裡開始找起</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3c1173a4709f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">4DF+2 #運動 (4DF+2) ＞ [+][+][-][+]+2 ＞ Great(+4)</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cecab96dc7d7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">艾斯沃在房子裡繞來繞去，巡過每一個角落，但並沒有找到小黑的任何蹤跡。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cecab96dc7d7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">得益於他靈巧矯健的身手，這並沒有花上太多時間。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4713be295c37 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">[ GM ] 事件計數器 : 0 → 0</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3c1173a4709f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「為何剛好是小黑不見啊」<br>他灰溜溜的繞了房子一圈，連個影子都沒看到<br><br>「要是他在的話，就請他用聞的就好了不是嗎?」<br><br>他停在客廳，看到小主人正抱著她的蛋，跟蛋講故事。<br>「或是蛋裡孵個利歐路也不錯，用波導感知!」<br><br>他想著隨便想著，有沒有快速一點的方法...<br>「嗯...貓的鼻子應該也蠻靈的吧?」<br><br>他腦中浮出一個人物，但這點子不知道是好還是壞...</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cd91a12fab37 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾莉克絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">艾莉克絲前一天找拿諾亞等人好好打了一架，按照艾斯沃對她的瞭解，今天的心情應該會是比較好的。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cd91a12fab37 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾莉克絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">應該。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3c1173a4709f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">剛剛看她在睡覺...好像有點危險<br>藤藤蛇頭上冒了一點汗<br><br>「咳咳，應該禮貌一點然後說點好話的話還是可以的吧...」<br><br>他搔著頭，慢慢踱步到了大主人的房門前面。輕輕的伸出藤編敲了三下門<br>「我是艾斯沃! 那個...艾莉姊在嗎?」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cd91a12fab37 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾莉克絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「……唔、嗯？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cd91a12fab37 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾莉克絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">聽起來像是翻了個身，迷迷濛濛的聲音。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3c1173a4709f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">4DF+3 #親善 (4DF+3) ＞ [+][-][-][ ]+3 ＞ Fair(+2)</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3c1173a4709f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">※絕技【你最真誠的朋友】：艾斯沃對於熟識的對象使用親善克服時，檢定+2</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cd91a12fab37 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾莉克絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">然後，艾莉克絲頂開了門，皺著眉頭看向門外的小傢伙：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cd91a12fab37 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾莉克絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「幹嘛？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cd91a12fab37 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾莉克絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">幸好她並沒有起床氣，或者可以這樣說：她剛起床的脾氣跟平常一樣差。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3c1173a4709f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「呃、呃...」<br>被盯著看的艾斯沃突然有點本能反應的害怕起來<br><br>「就是，姊的鼻子很靈對不對! 我就是在想，那個，可不可以請你幫個小小的忙...」<br>他甚至不太敢正對著她的眼睛，只敢低著頭玩弄自己的手</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cd91a12fab37 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾莉克絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">艾莉克絲瞇起眼睛盯著支支吾吾的艾斯沃，不耐煩地說道：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cd91a12fab37 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾莉克絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「有話就說！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3c1173a4709f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「就是! 小黑不見了，從早上就找不到!」<br>他嚇得僵直了身子<br><br>「可以請艾莉姊幫忙用聞的追蹤一下他的氣味嗎?」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cd91a12fab37 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾莉克絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「哼，這種小事情也來吵我睡覺！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cd91a12fab37 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾莉克絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">說歸說，但她還是走出了房間。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cd91a12fab37 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾莉克絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「咦，那傢伙昨天蠻安分的嘛，沒什麼味道……」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cd91a12fab37 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾莉克絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">她在門口停了下來，轉過頭問：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cd91a12fab37 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾莉克絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「給我其他線索！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3c1173a4709f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">4DF+0 #資源 (4DF) ＞ [+][-][ ][+] ＞ Average(+1)</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cecab96dc7d7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">※推助【小黑的毛球】</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cecab96dc7d7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">艾斯沃在房間裡找來找去，沒找到小黑的那些玩具，但從各個奇怪的門縫角落掏了一堆淺灰色的毛，團出了一坨小黑的毛球。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3c1173a4709f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「嗯...等我一下!」<br>他快速地跑進房間，沒有任何玩具，只找到了一球小黑的毛。其實他覺得有點噁心。<br><br>「這個是他的...東西!」他有點小心虛的把毛球舉在艾莉克絲面前。這種東西她願意聞嗎?</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cd91a12fab37 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾莉克絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">艾莉克絲用極度嫌棄的眼神盯著那團毛球，不但沒有往前，反而向後別開了頭。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cd91a12fab37 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾莉克絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">但她還是吸了吸鼻子，轉身就往房間裡退，只留下甩過艾斯沃眼前的星形尾巴。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cd91a12fab37 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾莉克絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">以及一句：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cd91a12fab37 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾莉克絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「果園的方向。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cecab96dc7d7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">※推助【小黑的毛球】→局勢形象【小黑的去向】</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4713be295c37 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">[ 艾斯沃 ] 免費援引 : 0 → 1</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3c1173a4709f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「謝謝! 謝謝姊姊~你最漂亮最帥了! 我不會虧待你的!」<br>艾斯沃終於放下心驚膽戰，大聲地朝房內開心地喊到<br>接著，把毛球捏在手上，往戶外趴搭趴搭的奔去了</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">果園</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="setBg">
+    <div class="_bg-img"><img src="https://images.plurk.com/6mnNB0DtbyBwf0Vdu9a5tj.jpg"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3c1173a4709f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">果園是誰的地盤就很明確了，有事情在這裡第一個就該找她<br><br>「小櫻! 小櫻!」<br>小身子在廣大的果園裡邊跑邊喊道<br><br>「我是艾斯沃! 你在哪裡?」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c91ba760d11 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            小櫻
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「幹嘛，你又得罪母老虎跑來避難了嗎？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3c1173a4709f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「我才沒有! 我今天可是『馴服』了她!」<br>藤藤蛇得意的在樹下挺著胸<br><br>「不過我沒那麼常來你這裡避難吧! 我有很常得罪她嗎...」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c91ba760d11 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            小櫻
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「呦，口氣很大嘛！我下次跟她說你『馴服』了她。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c91ba760d11 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            小櫻
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">小櫻站在枝頭上，居高臨下望著艾斯沃：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c91ba760d11 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            小櫻
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「沒多久前才被她咬成重傷的人有資格說話嗎？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3c1173a4709f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「等等等等...不要跟她說，我開玩笑的而已!」<br>藤藤蛇馬上揮揮手<br><br>「而且至少我有自己承擔好嗎! 才沒有逃跑!」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c91ba760d11 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            小櫻
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「行吧，找外援的自行承擔。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c91ba760d11 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            小櫻
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">小櫻一如既往的毒舌：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c91ba760d11 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            小櫻
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「那這位吃軟飯的小朋友，今天來找我有什麼事？我可不會搶別人碗裡的菜。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3c1173a4709f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「沒有! 我那時候明明就說...算了!」<br>小櫻真是樂子人，越狡辯她只會越開心吧<br><br>「今天不是得罪她。今天是要認真找你幫忙! 這個!」<br>他舉起小黑的毛球，不服氣的瞪著小櫻<br><br>「好吧，果園的女王大人，我確實很常找人幫我。今天也想找你幫忙。」<br>「你幾乎都在果園，應該對果園的動靜寮如指掌吧? 今天小黑不見了，根據可靠的情資他往你這裡跑了。你有看到他嗎?」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3c1173a4709f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">4DF+3 #親善 (4DF+3) ＞ [ ][-][+][-]+3 ＞ Fair(+2)</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3c1173a4709f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">※絕技【你最真誠的朋友】：艾斯沃對於熟識的對象使用親善克服時，檢定+2</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4713be295c37 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">[ 艾斯沃 ] 免費援引 : 1 → 3</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4713be295c37 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">[ 艾斯沃 ] 免費援引 : 3 → 2</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c91ba760d11 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            小櫻
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「小笨狗啊，我記得昨天中午看到他往桃桃果樹那邊去了，可能是卡在樹洞或是掉到坑理了吧。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3c1173a4709f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「小笨狗...你怎麼對每個人都有一個難聽的綽號?」<br>艾斯沃皺皺眉<br><br>「那拿諾亞哥有綽號嗎?」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c91ba760d11 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            小櫻
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「你說過動火雞嗎？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c91ba760d11 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            小櫻
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">小櫻笑得無比甜美，但嘴裡吐出來的話卻相當傷人。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3c1173a4709f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「好傷人啊，他人很好耶!」<br>艾斯沃實在是不想聽到自己的綽號是什麼<br>不過說到底她還是幫了忙<br><br>「好啦，抱歉打擾女王大人的果園巡視」<br>他故意油腔滑調的感謝道<br><br>「我下次會貢上謝禮給您的!」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4c91ba760d11 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            小櫻
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「好好好，去去去，有事准奏，沒事滾蛋。」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3c1173a4709f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「謝陛下~」<br>看到自己得逞，艾斯沃開心的快步跑開了<br><br>至於小黑嗎? 以他的個性跟冒失，掉到坑裡的機會蠻大的吧...<br>他快步奔起來，覺得剛才好像浪費太多時間在打哈哈了</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4713be295c37 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">[ GM ] 事件計數器 : 0 → 1</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3c1173a4709f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">4DF+2 #調查 (4DF+2) ＞ [-][ ][ ][ ]+2 ＞ Average(+1)</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3c1173a4709f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">※援引局勢形象【小黑的去向】</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4713be295c37 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">[ 艾斯沃 ] 免費援引 : 2 → 1</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3c1173a4709f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">※檢定 +2</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3c1173a4709f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">※援引局勢形象【小黑的去向】</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4713be295c37 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">[ 艾斯沃 ] 免費援引 : 1 → 0</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3c1173a4709f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">※檢定 +2</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cecab96dc7d7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">循著線索，艾斯沃很快在某個被草叢掩蓋的樹底坑洞找到小黑。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cecab96dc7d7 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            GM
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">看到小黑的瞬間，他無比慶幸自己有主動來找。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9f184ce12d20 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            小黑
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">像來精力充沛的戴魯比奄奄一息地躺倒在地，雙眼呈現昏迷的螺旋形。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9f184ce12d20 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            小黑
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">他的身體變得有些乾癟，像是被抽走了大半的水分。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3c1173a4709f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「噢我的天...小黑!」<br>他二話不說，急著跳下洞裡，搖了搖昏倒的他<br><br>「小黑! 醒醒!」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9f184ce12d20 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            小黑
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「嗚……沃沃哥、怎、怎麼了嗎？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9f184ce12d20 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            小黑
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">他虛弱地睜開眼睛看著艾斯沃，但看起來完全不清楚發生了什麼事。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3c1173a4709f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「我就看到你躺在這個洞裡...你從今早就不見了!」<br><br>他邊說著邊用一邊的藤編纏住他的腹部，另一邊勾上洞口外的地面<br>「先跟我上去再說!」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_9f184ce12d20 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            小黑
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「好、好……拜託你了，沃沃哥……」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3c1173a4709f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">4DF+1 #體魄 (4DF+1) ＞ [-][ ][-][ ]+1 ＞ Poor(-1)</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3c1173a4709f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">※援引局勢形象【晨跑習慣】</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4713be295c37 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">[ 艾斯沃 ] 命運點 : 3 → 2</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3c1173a4709f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">※重新擲骰</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3c1173a4709f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">4DF+1 #體魄 (4DF+1) ＞ [+][-][+][-]+1 ＞ Average(+1)</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3c1173a4709f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">※援引角色形象【熱血的小傢伙】</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_4713be295c37 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            system
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">[ 艾斯沃 ] 命運點 : 2 → 1</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3c1173a4709f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">※檢定 +2</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="halt">
+    <div class="_halt"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3c1173a4709f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「哥哥我可是每天都跑步...」<br>但其實有偷懶，所以還是很吃力。<br>話雖如此，他還是憑著意志力一路把小黑抱回了果園</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b91dfb46f890 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            小樹
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「哇！小黑黑，你這是要變成幽靈系了嗎？」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b91dfb46f890 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            小樹
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">小樹遠遠看到這邊的動靜，快步跑過來，然後用雙手摀住臉，身體彎成Ｓ型大聲驚嘆。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3c1173a4709f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「嗚...你來的正好，幫我接手!」<br>艾斯沃終於撐不住的停下腳步，趴倒在小樹面前的地上<br><br>「快把他帶回去治療...」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b91dfb46f890 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            小樹
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「得令！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b91dfb46f890 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            小樹
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">小樹一手一個，憑藉著比艾斯沃還要大上好幾倍的身材，邁開小短腿就往農場快步跑去。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="title">
+    <div class="_sctitle">農場</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="setBg">
+    <div class="_bg-img"><img src="https://images.plurk.com/jYLgJZj9hMUyBVLdUJUn5.jpg"></div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b91dfb46f890 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            小樹
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「救命哦！救狗哦！小黑快要變成肉乾啦啦啦啦啦～」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_b91dfb46f890 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            小樹
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">還沒跑到農場，小樹就高聲大喊著，但聲音裡卻還是像往常一樣充滿戲謔的惡作劇感。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cd91a12fab37 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾莉克絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「你們又在──」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_cd91a12fab37 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾莉克絲
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">艾莉克絲腳上閃爍著電弧踏出房門，但在看見小黑狀況的瞬間，立刻往回彈躍進門，沒多久就扯著大主人出現。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_01c7e8a9173c _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            菲雅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「怎麼了？艾莉克絲，這麼急急忙忙的……」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_01c7e8a9173c _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            菲雅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">大主人出現的時候還一時間摸不著頭腦，但看見小黑之後，立刻展現出優秀訓練家的素質。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_01c7e8a9173c _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            菲雅
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">從隨身包包掏出療傷噴霧，急救之後抱著進屋，翻出一堆文柚果切塊塞進小黑嘴裡。</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3c1173a4709f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「呼...太好了，任務完成了...」<br>艾斯沃癱軟在小樹的手臂上<br><br>「真不知道小黑這次是怎麼回事...」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5227f3ec0999 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            拿諾亞
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「沒想到小黑真的出事了……」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5227f3ec0999 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            拿諾亞
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">拿諾亞出現在艾斯沃身旁，臉色凝重：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5227f3ec0999 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            拿諾亞
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「謝了，艾斯沃，還好你有發現，不然還不知道會發生什麼事……」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3c1173a4709f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「就是直覺啦，直覺...危險感知之類的。」<br>「雖然還不清楚原因，但小黑沒事就好。」<br>艾斯沃大聲的打了個哈欠<br><br>「這樣我今天份的運動應該有補齊了吧?」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5227f3ec0999 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            拿諾亞
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「當然有！你是今天的冠軍！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3c1173a4709f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「嘻嘻...所以我明天可以不要跑步對不對?」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5227f3ec0999 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            拿諾亞
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「狀態不好的時候，休息也很重要，但艾斯沃，訓練是最不會說謊的東西哦！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5227f3ec0999 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            拿諾亞
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">今天撐著疲憊身軀也跑完全程的拿諾亞，輕輕揉了揉艾斯沃的腦袋：</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5227f3ec0999 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            拿諾亞
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「要不要跑步這件事情，不需要徵求我的同意，但遇到像今天這種事情的時候，你就會很感謝過去的自己撐了下來哦！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_3c1173a4709f _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            艾斯沃
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「好啦，我知道了嘛...」<br>他將臉埋進火焰雞溫暖的手掌裡<br><br>「但今天我要睡到飽!」</div>
+    </div>
+</div>
+</div><!--EOS-->
+<div class="_script-outer " data-type="talk">
+    
+<div class="_talk _actor_5227f3ec0999 _main ">
+    <div class="_lCol">
+        <div class="_img"></div>
+    </div>
+    <div class="_rCol">
+        <div class="_name">
+            拿諾亞
+            <div class="_channel">[主要]</div>
+            <channel class="_hidden">e7891386afff</channel>
+        </div>
+        <div class="_content">「那當然沒問題！」</div>
+    </div>
+</div>
+</div><!--EOS-->
+        </div>
+    </body>
+</html>
